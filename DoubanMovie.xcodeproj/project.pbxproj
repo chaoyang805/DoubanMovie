@@ -33,6 +33,9 @@
 		21BC28331D367E9E00E5E98C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BC28311D367E9E00E5E98C /* LaunchScreen.storyboard */; };
 		21BC283E1D367E9E00E5E98C /* DoubanMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC283D1D367E9E00E5E98C /* DoubanMovieTests.swift */; };
 		21BC28491D367E9E00E5E98C /* DoubanMovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC28481D367E9E00E5E98C /* DoubanMovieUITests.swift */; };
+		21DC25951D438777009FEA0C /* MovieInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC25941D438777009FEA0C /* MovieInfoView.swift */; };
+		21DC25971D438783009FEA0C /* MovieInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21DC25961D438783009FEA0C /* MovieInfoView.xib */; };
+		21DC259A1D4389EF009FEA0C /* Ratingbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC25991D4389EF009FEA0C /* Ratingbar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +88,9 @@
 		21BC28441D367E9E00E5E98C /* DoubanMovieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoubanMovieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BC28481D367E9E00E5E98C /* DoubanMovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubanMovieUITests.swift; sourceTree = "<group>"; };
 		21BC284A1D367E9E00E5E98C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21DC25941D438777009FEA0C /* MovieInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfoView.swift; sourceTree = "<group>"; };
+		21DC25961D438783009FEA0C /* MovieInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieInfoView.xib; sourceTree = "<group>"; };
+		21DC25991D4389EF009FEA0C /* Ratingbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ratingbar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,12 +163,14 @@
 		2149FA731D3D2A1500F0D0C6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				21DC25981D43897D009FEA0C /* MovieInfoView */,
 				2149FA741D3D2A2900F0D0C6 /* BaseMovieCell.swift */,
 				211B3BD31D3FC11D00887B31 /* DetailMovieCell.swift */,
 				211B3BD51D3FC13A00887B31 /* FavoriteMovieCell.swift */,
 				211B3BD71D3FC14800887B31 /* MovieCardView.swift */,
 				211B3BD91D3FC15800887B31 /* AvatarView.swift */,
 				211B3BDB1D3FC16C00887B31 /* MenuButton.swift */,
+				21DC25991D4389EF009FEA0C /* Ratingbar.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -228,6 +236,15 @@
 				21BC284A1D367E9E00E5E98C /* Info.plist */,
 			);
 			path = DoubanMovieUITests;
+			sourceTree = "<group>";
+		};
+		21DC25981D43897D009FEA0C /* MovieInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				21DC25941D438777009FEA0C /* MovieInfoView.swift */,
+				21DC25961D438783009FEA0C /* MovieInfoView.xib */,
+			);
+			name = MovieInfoView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21BC28331D367E9E00E5E98C /* LaunchScreen.storyboard in Resources */,
+				21DC25971D438783009FEA0C /* MovieInfoView.xib in Resources */,
 				21BC28301D367E9E00E5E98C /* Assets.xcassets in Resources */,
 				21BC282E1D367E9E00E5E98C /* Main.storyboard in Resources */,
 			);
@@ -379,8 +397,10 @@
 				2149FA6C1D3D29E900F0D0C6 /* ArtistDetailViewController.swift in Sources */,
 				211B3BDA1D3FC15800887B31 /* AvatarView.swift in Sources */,
 				211B3BD81D3FC14800887B31 /* MovieCardView.swift in Sources */,
+				21DC259A1D4389EF009FEA0C /* Ratingbar.swift in Sources */,
 				211B3BD41D3FC11D00887B31 /* DetailMovieCell.swift in Sources */,
 				2149FA681D3D29D300F0D0C6 /* NowTableViewController.swift in Sources */,
+				21DC25951D438777009FEA0C /* MovieInfoView.swift in Sources */,
 				2149FA601D3D296F00F0D0C6 /* MovieSubject.swift in Sources */,
 				211B3BDE1D3FC1DD00887B31 /* DoubanService.swift in Sources */,
 				211B3BDC1D3FC16C00887B31 /* MenuButton.swift in Sources */,

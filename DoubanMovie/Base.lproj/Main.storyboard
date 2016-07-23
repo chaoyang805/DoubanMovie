@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="NWk-3e-Kap">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
@@ -100,6 +100,87 @@
                 <exit id="qxg-6O-zlX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="480.80000000000001" y="419.64017991004499"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xim-7p-1N9">
+            <objects>
+                <navigationController id="NWk-3e-Kap" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" alpha="0.10000000000000001" contentMode="scaleToFill" id="IxT-B3-xnh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="17"/>
+                            <color key="textColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="RZY-mf-UVa" kind="relationship" relationship="rootViewController" id="MQy-jT-cnq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YOp-dX-dkv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1537" y="-317"/>
+        </scene>
+        <!--正在热映-->
+        <scene sceneID="5lu-bQ-RAp">
+            <objects>
+                <viewController id="RZY-mf-UVa" customClass="HomeViewController" customModule="DoubanMovie" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="s6m-6S-xpa"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cij-N8-zY5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9ke-YE-mjX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="now-you-see-me" translatesAutoresizingMaskIntoConstraints="NO" id="631-CK-BoP"/>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zxz-dG-FP5">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4Rh-00-uRq">
+                                    <frame key="frameInset"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9D-Dw-bau" customClass="MovieInfoView" customModule="DoubanMovie" customModuleProvider="target">
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="373" id="d4A-d7-W4z"/>
+                                                <constraint firstAttribute="width" constant="280" id="sBz-BB-T7F"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="C9D-Dw-bau" firstAttribute="centerX" secondItem="4Rh-00-uRq" secondAttribute="centerX" id="HtL-7d-4CF"/>
+                                        <constraint firstItem="C9D-Dw-bau" firstAttribute="centerY" secondItem="4Rh-00-uRq" secondAttribute="centerY" constant="22" id="uOd-1K-KPP"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Zxz-dG-FP5" secondAttribute="trailing" id="Emt-Mp-RPP"/>
+                            <constraint firstItem="Cij-N8-zY5" firstAttribute="top" secondItem="631-CK-BoP" secondAttribute="bottom" id="GKD-uK-Fvh"/>
+                            <constraint firstItem="Zxz-dG-FP5" firstAttribute="leading" secondItem="9ke-YE-mjX" secondAttribute="leading" id="jQq-T0-P90"/>
+                            <constraint firstItem="631-CK-BoP" firstAttribute="top" secondItem="9ke-YE-mjX" secondAttribute="top" id="lqw-fM-hTY"/>
+                            <constraint firstItem="631-CK-BoP" firstAttribute="leading" secondItem="9ke-YE-mjX" secondAttribute="leading" id="pM4-Dn-Bhc"/>
+                            <constraint firstItem="Zxz-dG-FP5" firstAttribute="top" secondItem="9ke-YE-mjX" secondAttribute="top" id="tBK-SY-BYY"/>
+                            <constraint firstAttribute="trailing" secondItem="631-CK-BoP" secondAttribute="trailing" id="vFf-ie-L47"/>
+                            <constraint firstItem="Cij-N8-zY5" firstAttribute="top" secondItem="Zxz-dG-FP5" secondAttribute="bottom" id="zDz-Rc-30U"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="正在热映" id="F91-UI-7WP">
+                        <barButtonItem key="leftBarButtonItem" image="icon-menu" id="E60-HS-rFX">
+                            <color key="tintColor" red="0.082352941176470587" green="0.58431372549019611" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="movieInfoDialog" destination="C9D-Dw-bau" id="8y9-gM-hCp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sb5-f0-DHA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-852" y="-320"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="1b2-o4-Up7">
@@ -304,6 +385,8 @@
         <image name="Screen-Now" width="375" height="667"/>
         <image name="Screen-Search" width="375" height="667"/>
         <image name="Screen-Search-Result Copy" width="375" height="667"/>
+        <image name="icon-menu" width="22" height="16"/>
+        <image name="now-you-see-me" width="300" height="419"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7tu-dz-5D5"/>
