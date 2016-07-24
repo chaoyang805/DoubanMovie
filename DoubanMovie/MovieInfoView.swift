@@ -17,17 +17,23 @@ class MovieInfoView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        print("init")
-        
+        setup()
     }
-    
+    func setup() {
+        self.layer.cornerRadius = 10
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowRadius = 4
+        self.layer.shadowOffset = CGSize(width: 1, height: 1)
+        self.layer.shadowColor = UIColor.darkGray().cgColor
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        print("layoutSubviews")
         if let view = Bundle.main().loadNibNamed("MovieInfoView", owner: self, options: nil).first as? UIView {
-            self.backgroundColor = UIColor.clear()
+            view.frame = self.bounds
             self.addSubview(view)
         }
+        
     }
     
 }
