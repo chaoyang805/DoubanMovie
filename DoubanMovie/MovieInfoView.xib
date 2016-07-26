@@ -9,7 +9,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieInfoView" customModule="DoubanMovie" customModuleProvider="target">
             <connections>
                 <outlet property="collectCountLabel" destination="RO3-Dz-bM9" id="NTw-O8-DEu"/>
-                <outlet property="posterImageView" destination="Y0l-7m-XmU" id="Ayo-6e-R9g"/>
+                <outlet property="posterImageButton" destination="BTx-R9-yiQ" id="G6m-gL-yXZ"/>
                 <outlet property="ratingInfoView" destination="K8J-hY-Nqs" id="qFA-dD-Pke"/>
                 <outlet property="titleLabel" destination="T3P-Rr-ZcO" id="1bQ-AK-oZj"/>
             </connections>
@@ -19,7 +19,9 @@
             <rect key="frame" x="0.0" y="0.0" width="280" height="373"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="now-you-see-me" translatesAutoresizingMaskIntoConstraints="NO" id="Y0l-7m-XmU"/>
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTx-R9-yiQ">
+                    <state key="normal" image="now-you-see-me"/>
+                </button>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jt2-Lp-MHU">
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2nt-qH-IbN">
                         <frame key="frameInset"/>
@@ -68,13 +70,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="BTx-R9-yiQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="52Q-Ja-vGk"/>
                 <constraint firstItem="Jt2-Lp-MHU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6hO-fU-AmG"/>
                 <constraint firstItem="Jt2-Lp-MHU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="B3u-Dy-htl"/>
-                <constraint firstItem="Y0l-7m-XmU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NOb-Hn-iSL"/>
+                <constraint firstItem="BTx-R9-yiQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Dhb-43-vh2"/>
+                <constraint firstAttribute="trailing" secondItem="BTx-R9-yiQ" secondAttribute="trailing" id="Mdv-yF-wI9"/>
+                <constraint firstAttribute="bottom" secondItem="BTx-R9-yiQ" secondAttribute="bottom" id="lEZ-qG-OGJ"/>
                 <constraint firstAttribute="trailing" secondItem="Jt2-Lp-MHU" secondAttribute="trailing" id="lu6-il-yA8"/>
-                <constraint firstItem="Y0l-7m-XmU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mnU-po-G0r"/>
-                <constraint firstAttribute="bottom" secondItem="Y0l-7m-XmU" secondAttribute="bottom" id="uK4-h9-Y1t"/>
-                <constraint firstAttribute="trailing" secondItem="Y0l-7m-XmU" secondAttribute="trailing" id="vWV-ge-fgd"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

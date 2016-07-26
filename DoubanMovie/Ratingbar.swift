@@ -76,9 +76,8 @@ class Ratingbar: UIView {
         super.init(coder: aDecoder)
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
+    override func awakeFromNib() {
+        super.awakeFromNib()
         ratingLayer = CALayer()
         let widthRatio = _ratingScore / 10
         print("widthRatio: \(widthRatio)")
@@ -116,10 +115,17 @@ class Ratingbar: UIView {
         ratingLabel.textColor = UIColor(cgColor: yellowColor)
         ratingLabel.font = UIFont(name: "PingFang SC", size: 10)
         ratingLabel.textAlignment = .center
-        ratingLabel.frame.origin = CGPoint(x: 0, y: self.frame.height - 14)
+        ratingLabel.tag = 0x0001
+//        ratingLabel.frame.origin = CGPoint(x: 0, y: self.frame.height - 14)
         self.addSubview(ratingLabel)
-        print("layoutSubviews Ratingbar")
+        print("awakeFromNib Ratingbar")
         
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.viewWithTag(0x0001)?.frame.origin = CGPoint(x: 0, y: self.frame.height - 14)
+    
     }
 
 }
