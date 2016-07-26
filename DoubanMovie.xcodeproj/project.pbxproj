@@ -25,10 +25,12 @@
 		2149FA701D3D29FA00F0D0C6 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA6F1D3D29FA00F0D0C6 /* SearchResultsViewController.swift */; };
 		2149FA721D3D2A0A00F0D0C6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA711D3D2A0A00F0D0C6 /* BaseViewController.swift */; };
 		2149FA751D3D2A2900F0D0C6 /* BaseMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA741D3D2A2900F0D0C6 /* BaseMovieCell.swift */; };
+		216C5DA91D4726E9008A4A75 /* MenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C5DA81D4726E9008A4A75 /* MenuViewControllerDelegate.swift */; };
+		216C5DAB1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */; };
 		21A6E0FB1D3FC2AE000D48D4 /* InTheatersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A6E0FA1D3FC2AE000D48D4 /* InTheatersData.swift */; };
 		21B8B2E91D45A84700B7D344 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B8B2E81D45A84700B7D344 /* AvatarView.swift */; };
 		21BC28291D367E9E00E5E98C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC28281D367E9E00E5E98C /* AppDelegate.swift */; };
-		21BC282B1D367E9E00E5E98C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC282A1D367E9E00E5E98C /* ViewController.swift */; };
+		21BC282B1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC282A1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift */; };
 		21BC282E1D367E9E00E5E98C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BC282C1D367E9E00E5E98C /* Main.storyboard */; };
 		21BC28301D367E9E00E5E98C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BC282F1D367E9E00E5E98C /* Assets.xcassets */; };
 		21BC28331D367E9E00E5E98C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BC28311D367E9E00E5E98C /* LaunchScreen.storyboard */; };
@@ -75,11 +77,13 @@
 		2149FA6F1D3D29FA00F0D0C6 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		2149FA711D3D2A0A00F0D0C6 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		2149FA741D3D2A2900F0D0C6 /* BaseMovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMovieCell.swift; sourceTree = "<group>"; };
+		216C5DA81D4726E9008A4A75 /* MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewControllerDelegate.swift; sourceTree = "<group>"; };
+		216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+MenuViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		21A6E0FA1D3FC2AE000D48D4 /* InTheatersData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InTheatersData.swift; sourceTree = "<group>"; };
 		21B8B2E81D45A84700B7D344 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		21BC28251D367E9E00E5E98C /* DoubanMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubanMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BC28281D367E9E00E5E98C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		21BC282A1D367E9E00E5E98C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		21BC282A1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UnWindSegue.swift"; sourceTree = "<group>"; };
 		21BC282D1D367E9E00E5E98C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		21BC282F1D367E9E00E5E98C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21BC28321D367E9E00E5E98C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -123,8 +127,10 @@
 		2149FA591D3D28ED00F0D0C6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2149FA631D3D29B000F0D0C6 /* MenuViewController.swift */,
 				2149FA651D3D29BA00F0D0C6 /* HomeViewController.swift */,
+				216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */,
+				2149FA631D3D29B000F0D0C6 /* MenuViewController.swift */,
+				216C5DA81D4726E9008A4A75 /* MenuViewControllerDelegate.swift */,
 				2149FA691D3D29E000F0D0C6 /* MovieDetailViewController.swift */,
 				2149FA671D3D29D300F0D0C6 /* NowTableViewController.swift */,
 				2149FA6B1D3D29E900F0D0C6 /* ArtistDetailViewController.swift */,
@@ -222,7 +228,7 @@
 				2149FA731D3D2A1500F0D0C6 /* UI */,
 				2149FA5B1D3D293E00F0D0C6 /* Model */,
 				21BC28281D367E9E00E5E98C /* AppDelegate.swift */,
-				21BC282A1D367E9E00E5E98C /* ViewController.swift */,
+				21BC282A1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift */,
 				21BC282C1D367E9E00E5E98C /* Main.storyboard */,
 				21BC282F1D367E9E00E5E98C /* Assets.xcassets */,
 				21BC28311D367E9E00E5E98C /* LaunchScreen.storyboard */,
@@ -415,11 +421,13 @@
 				2149FA601D3D296F00F0D0C6 /* MovieSubject.swift in Sources */,
 				211B3BDE1D3FC1DD00887B31 /* DoubanService.swift in Sources */,
 				211B3BDC1D3FC16C00887B31 /* MenuButton.swift in Sources */,
+				216C5DAB1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift in Sources */,
 				21A6E0FB1D3FC2AE000D48D4 /* InTheatersData.swift in Sources */,
 				2149FA6E1D3D29F100F0D0C6 /* FavoritesTableViewController.swift in Sources */,
 				2149FA621D3D297E00F0D0C6 /* Work.swift in Sources */,
-				21BC282B1D367E9E00E5E98C /* ViewController.swift in Sources */,
+				21BC282B1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift in Sources */,
 				21B8B2E91D45A84700B7D344 /* AvatarView.swift in Sources */,
+				216C5DA91D4726E9008A4A75 /* MenuViewControllerDelegate.swift in Sources */,
 				2149FA661D3D29BA00F0D0C6 /* HomeViewController.swift in Sources */,
 				2149FA6A1D3D29E000F0D0C6 /* MovieDetailViewController.swift in Sources */,
 				21BC28291D367E9E00E5E98C /* AppDelegate.swift in Sources */,

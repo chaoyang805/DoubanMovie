@@ -26,8 +26,10 @@ class HomeViewController: UIViewController {
     
     func movieInfoDialogDidTouch(sender: AnyObject) {
         print("movieInfoDialogDidTouch")
-        self.performSegue(withIdentifier: "ShowDetail", sender: self)
+        self.performSegue(withIdentifier: "ShowDetailSegue", sender: self)
     }
+    // MARK: - IBActions
+    
     @IBAction func handGesture(_ sender: UIPanGestureRecognizer) {
         switch sender.state {
         case .began:
@@ -43,9 +45,20 @@ class HomeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowDetail" {
+        print("prepare for segue:\(segue.identifier)")
+        
+        if segue.identifier == "ShowDetailSegue" {
             
             print("prepare")
         }
+        
+        if segue.identifier == "MenuSegue" {
+            if let toVC = segue.destinationViewController as? MenuViewController {
+                if toVC.delegate == nil {
+                    toVC.delegate = self
+                }
+            }
+        }
+        
     }
 }
