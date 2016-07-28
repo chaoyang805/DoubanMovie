@@ -23,7 +23,14 @@ class DoubanMovieTests: XCTestCase {
     
     func testExample() {
         // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.  
+        var ratingScore = 7.2
+        let yellowStarCount = floor(ratingScore / 2)
+    
+        let hasHalfStar =  (ratingScore / 2 - yellowStarCount > 0.1) && (ratingScore / 2 - yellowStarCount <= 0.6)
+        print("\(ratingScore / 2 - yellowStarCount)")
+
+        XCTAssertTrue(hasHalfStar)
     }
     
     func testPerformanceExample() {

@@ -12,8 +12,7 @@ class MovieInfoView: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var collectCountLabel: UILabel!
-//    @IBOutlet weak var posterImageView: UIImageView!
-    @IBOutlet weak var ratingInfoView: Ratingbar!
+    @IBOutlet weak var ratingInfoView: RatingStar!
     @IBOutlet weak var posterImageButton: UIButton!
     
     required init?(coder aDecoder: NSCoder) {

@@ -8,8 +8,8 @@
 
 import UIKit
 
-class Ratingbar: UIView {
-
+class RatingStar: UIView {
+    
     private var ratingbarStyle: RatingbarStyle
     
     private var grayColor: CGColor {
@@ -54,15 +54,12 @@ class Ratingbar: UIView {
         }
     }
     
-    
-    
     init(ratingScore: CGFloat, style: RatingbarStyle) {
         self.ratingbarStyle = style
         _ratingScore = ratingScore
         var frame: CGRect!
         switch style {
         case .small:
-//            frame = CGRect(x: 0, y: 0, width: 23.78, height: 22.61)
             frame = CGRect(x: 0, y: 0, width: 26, height: 44)
         case .large:
             frame = CGRect(x: 0, y: 0, width: 108, height: 16)
@@ -78,9 +75,9 @@ class Ratingbar: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        print("ratingBar's frame:\(self.frame)")
         ratingLayer = CALayer()
         let widthRatio = _ratingScore / 10
-        print("widthRatio: \(widthRatio)")
         ratingLayer?.frame = CGRect(x: 0, y: 0, width: self.starWidth * widthRatio, height: self.starHeight)
         ratingLayer?.backgroundColor = yellowColor
         
@@ -116,9 +113,7 @@ class Ratingbar: UIView {
         ratingLabel.font = UIFont(name: "PingFang SC", size: 10)
         ratingLabel.textAlignment = .center
         ratingLabel.tag = 0x0001
-//        ratingLabel.frame.origin = CGPoint(x: 0, y: self.frame.height - 14)
         self.addSubview(ratingLabel)
-        print("awakeFromNib Ratingbar")
         
     }
     

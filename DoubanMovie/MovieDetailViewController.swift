@@ -48,17 +48,19 @@ class MovieDetailViewController: UIViewController {
             print("movieSubject is empty, can't configure view.")
             return
         }
+        
         if let artists = movieSubject["casts"] as? [[String: AnyObject]], let directors = movieSubject["directors"] as? [[String: AnyObject]] {
             
             let artistCount = artists.count + directors.count
             let vSpacing: CGFloat = 20
             let width: CGFloat = 60
+            
             artistsScrollView.contentSize = CGSize(width: CGFloat(artistCount) * (60 + 20), height: artistsScrollView.frame.height)
             artistsScrollView.showsVerticalScrollIndicator = false
             artistsScrollView.showsHorizontalScrollIndicator = false
             artistsScrollView.bounces = false
+            
             for (index, artist) in (directors + artists).enumerated() {
-//            for (index, artist) in artists.enumerated() {
                 guard let avatars = artist["avatars"] as? [String: String] else {
                     continue
                 }
@@ -76,7 +78,6 @@ class MovieDetailViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("scrollView frame: \(scrollView.frame) \nscrollView contentSize: \(scrollView.contentSize)")
     }
     
 }

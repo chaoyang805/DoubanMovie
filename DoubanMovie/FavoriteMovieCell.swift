@@ -7,3 +7,7 @@
 //
 
 import UIKit
+
+class FavoriteMovieCell: UITableViewCell {
+    
+}

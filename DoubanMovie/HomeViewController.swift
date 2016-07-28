@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var movieInfoDialog: MovieInfoView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad")
@@ -21,11 +21,10 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("viewDidAppear")
-        
+
     }
     
     func movieInfoDialogDidTouch(sender: AnyObject) {
-        print("movieInfoDialogDidTouch")
         self.performSegue(withIdentifier: "ShowDetailSegue", sender: self)
     }
     // MARK: - IBActions
@@ -45,11 +44,9 @@ class HomeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("prepare for segue:\(segue.identifier)")
         
         if segue.identifier == "ShowDetailSegue" {
             
-            print("prepare")
         }
         
         if segue.identifier == "MenuSegue" {
