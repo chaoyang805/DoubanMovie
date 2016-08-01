@@ -230,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				21BC282C1D367E9E00E5E98C /* Main.storyboard */,
+				21BC28311D367E9E00E5E98C /* LaunchScreen.storyboard */,
 				21A6E0F91D3FC28A000D48D4 /* Test */,
 				2149FA591D3D28ED00F0D0C6 /* Controllers */,
 				2149FA731D3D2A1500F0D0C6 /* UI */,
@@ -237,7 +238,6 @@
 				21BC28281D367E9E00E5E98C /* AppDelegate.swift */,
 				21BC282A1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift */,
 				21BC282F1D367E9E00E5E98C /* Assets.xcassets */,
-				21BC28311D367E9E00E5E98C /* LaunchScreen.storyboard */,
 				21BC28341D367E9E00E5E98C /* Info.plist */,
 			);
 			path = DoubanMovie;

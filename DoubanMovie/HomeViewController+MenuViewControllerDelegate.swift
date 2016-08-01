@@ -9,6 +9,8 @@
 import UIKit
 
 extension HomeViewController: MenuViewControllerDelegate {
+    
+    // MARK - MenuViewControllerDelegate
     func menuViewController(_ controller: MenuViewController, didClickButtonWithType type: MenuButtonType) {
         switch type {
         case .now:
@@ -19,11 +21,17 @@ extension HomeViewController: MenuViewControllerDelegate {
         case .search:
             break
         case .favorite:
-            break
+            presentFavoritesTableViewController()
+        
         }
     }
     
     func presentNowTableViewController() {
-        self.performSegue(withIdentifier: "AllMovieSegue", sender: self)
+        self.performSegue(withIdentifier: "AllMoviesSegue", sender: self)
     }
+    
+    func presentFavoritesTableViewController() {
+        self.performSegue(withIdentifier: "FavoritesSegue", sender: self)
+    }
+    
 }

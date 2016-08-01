@@ -22,13 +22,13 @@ class MenuViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func inTheaterButtonPressed(_ sender: AnyObject) {
-        dismiss(animated: true) { 
+        dismiss(animated: false) {
             self.delegate?.menuViewController(self, didClickButtonWithType: .now)
         }
     }
     
     @IBAction func searchButtonPressed(_ sender: AnyObject) {
-        dismiss(animated: true) { 
+        dismiss(animated: false) {
             self.delegate?.menuViewController(self, didClickButtonWithType: .search)
         }
     }
@@ -40,7 +40,7 @@ class MenuViewController: UIViewController {
     }
     
     @IBAction func favoritesButtonPressed(_ sender: AnyObject) {
-        dismiss(animated: true) { 
+        dismiss(animated: false) {
             self.delegate?.menuViewController(self, didClickButtonWithType: .favorite)
         }
     }
