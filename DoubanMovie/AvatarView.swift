@@ -23,7 +23,7 @@ class AvatarView: UIView {
     init(frame: CGRect, avatar: Avatar) {
         self.avatar = avatar
         super.init(frame: frame)
-        Bundle.main().loadNibNamed("AvatarView", owner: self, options: nil)
+        NSBundle.mainBundle().loadNibNamed("AvatarView", owner: self, options: nil)
         self.addSubview(containerView)
 //        setup()
     }
@@ -39,13 +39,13 @@ class AvatarView: UIView {
         self.layer.shadowOpacity = 0.5
         self.layer.shadowRadius = 4
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.layer.shadowColor = UIColor.darkGray().cgColor
+        self.layer.shadowColor = UIColor.darkGrayColor().CGColor
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         avatarImageButton.layer.cornerRadius = 30
-        avatarImageButton.setImage(#imageLiteral(resourceName: "director"), for: [])
+        avatarImageButton.setImage(UIImage(named: "director"), forState: .Normal)
         artistNameLabel.text = avatar.name
         
     }

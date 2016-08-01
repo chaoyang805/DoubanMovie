@@ -19,7 +19,7 @@ class BaseMovieCell: UITableViewCell {
     
     func configureCell(withMovie movie: MovieSubject) {
         self.movieSubject = movie
-        posterImageView.image = #imageLiteral(resourceName: "now-you-see-me")
+        posterImageView.image = UIImage(named: "now-you-see-me")
         titleLabel.text = "惊天魔盗团2"
         movieGenresLabel.text = "动作/喜剧"
         let collectCount = 142192
