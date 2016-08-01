@@ -13,64 +13,108 @@ class SearchResultsViewController: UITableViewController {
     lazy var searchController: UISearchController = {
         let _searchController = UISearchController(searchResultsController: nil)
         _searchController.searchResultsUpdater = self
+        _searchController.delegate = self
+        
         let scopeButtonTitles = ["全部", "电影", "电视剧", "其他"]
         _searchController.searchBar.scopeButtonTitles = scopeButtonTitles
+        
         _searchController.searchBar.delegate = self
+        _searchController.searchBar.barTintColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1)
+        _searchController.searchBar.tintColor = UIColor(red: 0.0823, green: 0.584, blue: 0.533, alpha: 1)
+        _searchController.searchBar.placeholder = "输入搜索内容"
         _searchController.dimsBackgroundDuringPresentation = false
         return _searchController
     }()
+    
+    var datas: [String] = [] {
+        didSet {
+            tableView.scrollEnabled = datas.count != 0
+        }
+    }
     let searchScopeButtonTitles = ["全部", "电影", "电视剧", "其他"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableHeaderView = searchController.searchBar
+        tableView.scrollEnabled = false
         definesPresentationContext = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        searchController.active = true
         
     }
     
-    // MARK: UITableViewDelegate
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+    // MARK: UITableViewDataSource
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return datas.count
     }
     
     let firstSearchCellIdentifier = "FirstSearchResultCell"
     let secondSearchCellIdentifier = "SecondSearchResultCell"
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell?
         if indexPath.row == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: firstSearchCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCellWithIdentifier(firstSearchCellIdentifier, forIndexPath: indexPath)
             
         } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: secondSearchCellIdentifier, for: indexPath)
+            cell = tableView.dequeueReusableCellWithIdentifier(secondSearchCellIdentifier, forIndexPath: indexPath)
         }
         
         if cell is DetailMovieCell {
             (cell as! DetailMovieCell).configureCell(withMovie: MovieSubject())
         }
-        
+        if cell is BaseMovieCell {
+            (cell as! BaseMovieCell).configureCell(withMovie: MovieSubject())
+        }
         return cell!
     }
+    
+    // MARK: - UITableViewDelegate
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 165
+        } else {
+            return 120
+        }
+    }
 }
+
+extension SearchResultsViewController: UISearchControllerDelegate {
+    
+    func didPresentSearchController(searchController: UISearchController) {
+        searchController.searchBar.becomeFirstResponder()
+    }
+}
+
 // MARK: - UISearchBarDelegate
 extension SearchResultsViewController: UISearchBarDelegate {
     
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         // DoubanService.search....
-        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
+            self.datas.append("new")
+            self.datas.append("new2")
+            NSLog("reload")
+            self.tableView.reloadData()
+        }
     }
+    
+    
     
 }
 
 // MARK: - UISearchResultsUpdating
 extension SearchResultsViewController: UISearchResultsUpdating {
     
-    func updateSearchResults(for searchController: UISearchController) {
-        
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        NSLog("updateSearchResultsForSearchController")
     }
 }

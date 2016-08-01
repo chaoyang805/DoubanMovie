@@ -15,27 +15,27 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         print("viewDidLoad")
         movieInfoDialog.ratingInfoView.ratingScore = 5
-        movieInfoDialog.addTarget(target: self, action: #selector(HomeViewController.movieInfoDialogDidTouch(sender:)), for: .touchUpInside)
+        movieInfoDialog.addTarget(self, action: #selector(HomeViewController.movieInfoDialogDidTouch(_:)), for: .TouchUpInside)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         print("viewDidAppear")
 
     }
     
     func movieInfoDialogDidTouch(sender: AnyObject) {
-        self.performSegue(withIdentifier: "ShowDetailSegue", sender: self)
+        self.performSegueWithIdentifier("ShowDetailSegue", sender: self)
     }
     // MARK: - IBActions
     
-    @IBAction func handGesture(_ sender: UIPanGestureRecognizer) {
+    @IBAction func handGesture(sender: UIPanGestureRecognizer) {
         switch sender.state {
-        case .began:
+        case .Began:
             break
-        case .changed:
+        case .Changed:
             break
-        case .ended:
+        case .Ended:
             break
         default:
             break
@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "ShowDetailSegue" {
             

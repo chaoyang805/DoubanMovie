@@ -44,7 +44,7 @@ class RatingBar: UIView {
         scoreLabel!.font = UIFont(name: "PingFang SC", size: 12)
         scoreLabel!.textColor = UIColor(red: 1.0, green: 0.678, blue: 0.043, alpha: 1)
         
-        scoreLabel!.frame = CGRect(origin: CGPoint(x: 82, y: 1), size: (scoreLabel!.text! as NSString).size(attributes: [NSFontAttributeName: scoreLabel!.font]))
+        scoreLabel!.frame = CGRect(origin: CGPoint(x: 82, y: 1), size: (scoreLabel!.text! as NSString).sizeWithAttributes([NSFontAttributeName: scoreLabel!.font]))
         addSubview(scoreLabel!)
     }
     
@@ -54,7 +54,7 @@ class RatingBar: UIView {
             return
         }
         
-        let appearenceArray =  [StarLayerAppearence](repeating: .full, count: 5)
+        let appearenceArray =  [StarLayerAppearence](count: 5, repeatedValue: .full)
         let yellowStarCount = Int(ratingScore / 2)
         
         for index in 0..<appearenceArray.count {
@@ -86,7 +86,7 @@ class RatingBar: UIView {
     }
 
     /// 是否需要显示半星，ratingScore / 2 后的小数部分在(0.1, 0.6]之间的需要显示半星
-    private func hasHalfStar(_ ratingScore: Float) -> Bool {
+    private func hasHalfStar(ratingScore: Float) -> Bool {
         let a = Int(ratingScore * 100) / 2 % 100
         return 10 < a && a <= 60
         

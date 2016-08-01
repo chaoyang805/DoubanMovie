@@ -38,7 +38,7 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         configureView()
     }
@@ -60,7 +60,7 @@ class MovieDetailViewController: UIViewController {
             artistsScrollView.showsHorizontalScrollIndicator = false
             artistsScrollView.bounces = false
             
-            for (index, artist) in (directors + artists).enumerated() {
+            for (index, artist) in (directors + artists).enumerate() {
                 guard let avatars = artist["avatars"] as? [String: String] else {
                     continue
                 }
@@ -76,7 +76,7 @@ class MovieDetailViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
     

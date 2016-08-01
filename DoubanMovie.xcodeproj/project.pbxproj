@@ -7,40 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		210EED401D4892A1000F3D0D /* StarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EED3F1D4892A1000F3D0D /* StarLayer.swift */; };
-		210EED421D48A1DE000F3D0D /* RatingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EED411D48A1DE000F3D0D /* RatingBar.swift */; };
-		211B3BD41D3FC11D00887B31 /* DetailMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211B3BD31D3FC11D00887B31 /* DetailMovieCell.swift */; };
-		211B3BD61D3FC13A00887B31 /* FavoriteMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211B3BD51D3FC13A00887B31 /* FavoriteMovieCell.swift */; };
-		211B3BD81D3FC14800887B31 /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211B3BD71D3FC14800887B31 /* MovieCardView.swift */; };
-		211B3BDC1D3FC16C00887B31 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211B3BDB1D3FC16C00887B31 /* MenuButton.swift */; };
-		211B3BDE1D3FC1DD00887B31 /* DoubanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211B3BDD1D3FC1DD00887B31 /* DoubanService.swift */; };
-		2134E50E1D45AEFC00DACE81 /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2134E50D1D45AEFC00DACE81 /* AvatarView.xib */; };
-		2149FA5E1D3D296400F0D0C6 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA5D1D3D296400F0D0C6 /* Artist.swift */; };
-		2149FA601D3D296F00F0D0C6 /* MovieSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA5F1D3D296F00F0D0C6 /* MovieSubject.swift */; };
-		2149FA621D3D297E00F0D0C6 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA611D3D297E00F0D0C6 /* Work.swift */; };
-		2149FA641D3D29B000F0D0C6 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA631D3D29B000F0D0C6 /* MenuViewController.swift */; };
-		2149FA661D3D29BA00F0D0C6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA651D3D29BA00F0D0C6 /* HomeViewController.swift */; };
-		2149FA681D3D29D300F0D0C6 /* NowMoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA671D3D29D300F0D0C6 /* NowMoviesTableViewController.swift */; };
-		2149FA6A1D3D29E000F0D0C6 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA691D3D29E000F0D0C6 /* MovieDetailViewController.swift */; };
-		2149FA6C1D3D29E900F0D0C6 /* ArtistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA6B1D3D29E900F0D0C6 /* ArtistDetailViewController.swift */; };
-		2149FA6E1D3D29F100F0D0C6 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA6D1D3D29F100F0D0C6 /* FavoritesTableViewController.swift */; };
-		2149FA701D3D29FA00F0D0C6 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA6F1D3D29FA00F0D0C6 /* SearchResultsViewController.swift */; };
-		2149FA721D3D2A0A00F0D0C6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA711D3D2A0A00F0D0C6 /* BaseViewController.swift */; };
-		2149FA751D3D2A2900F0D0C6 /* BaseMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA741D3D2A2900F0D0C6 /* BaseMovieCell.swift */; };
-		216C5DA91D4726E9008A4A75 /* MenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C5DA81D4726E9008A4A75 /* MenuViewControllerDelegate.swift */; };
-		216C5DAB1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */; };
-		21A6E0FB1D3FC2AE000D48D4 /* InTheatersData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A6E0FA1D3FC2AE000D48D4 /* InTheatersData.swift */; };
-		21B8B2E91D45A84700B7D344 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B8B2E81D45A84700B7D344 /* AvatarView.swift */; };
+		2118D3A61D4F34F700644D84 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BE1DF81D4F31A5006D405B /* TestData.swift */; };
+		2118D3A71D4F34F700644D84 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA651D3D29BA00F0D0C6 /* HomeViewController.swift */; };
+		2118D3A81D4F34F700644D84 /* HomeViewController+MenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */; };
+		2118D3A91D4F34F700644D84 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA631D3D29B000F0D0C6 /* MenuViewController.swift */; };
+		2118D3AA1D4F34F700644D84 /* MenuViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C5DA81D4726E9008A4A75 /* MenuViewControllerDelegate.swift */; };
+		2118D3AB1D4F34F700644D84 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA691D3D29E000F0D0C6 /* MovieDetailViewController.swift */; };
+		2118D3AC1D4F34F700644D84 /* NowMoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA671D3D29D300F0D0C6 /* NowMoviesTableViewController.swift */; };
+		2118D3AD1D4F34F700644D84 /* ArtistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA6B1D3D29E900F0D0C6 /* ArtistDetailViewController.swift */; };
+		2118D3AE1D4F34F700644D84 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA6D1D3D29F100F0D0C6 /* FavoritesTableViewController.swift */; };
+		2118D3AF1D4F34F700644D84 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA6F1D3D29FA00F0D0C6 /* SearchResultsViewController.swift */; };
+		2118D3B01D4F34F700644D84 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA711D3D2A0A00F0D0C6 /* BaseViewController.swift */; };
+		2118D3B11D4F34F700644D84 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B8B2E81D45A84700B7D344 /* AvatarView.swift */; };
+		2118D3B21D4F34F700644D84 /* MovieInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC25941D438777009FEA0C /* MovieInfoView.swift */; };
+		2118D3B31D4F34F700644D84 /* BaseMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA741D3D2A2900F0D0C6 /* BaseMovieCell.swift */; };
+		2118D3B41D4F34F700644D84 /* DetailMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211B3BD31D3FC11D00887B31 /* DetailMovieCell.swift */; };
+		2118D3B51D4F34F700644D84 /* FavoriteMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211B3BD51D3FC13A00887B31 /* FavoriteMovieCell.swift */; };
+		2118D3B61D4F34F700644D84 /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211B3BD71D3FC14800887B31 /* MovieCardView.swift */; };
+		2118D3B71D4F34F700644D84 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211B3BDB1D3FC16C00887B31 /* MenuButton.swift */; };
+		2118D3B81D4F34F700644D84 /* RatingStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC25991D4389EF009FEA0C /* RatingStar.swift */; };
+		2118D3B91D4F34F700644D84 /* StarLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EED3F1D4892A1000F3D0D /* StarLayer.swift */; };
+		2118D3BA1D4F34F700644D84 /* RatingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210EED411D48A1DE000F3D0D /* RatingBar.swift */; };
+		2118D3BB1D4F34F700644D84 /* DoubanService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211B3BDD1D3FC1DD00887B31 /* DoubanService.swift */; };
+		2118D3BC1D4F34F700644D84 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA5D1D3D296400F0D0C6 /* Artist.swift */; };
+		2118D3BD1D4F34F700644D84 /* MovieSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA5F1D3D296F00F0D0C6 /* MovieSubject.swift */; };
+		2118D3BE1D4F34F700644D84 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA611D3D297E00F0D0C6 /* Work.swift */; };
+		2118D3BF1D4F34F700644D84 /* UIViewController+UnWindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC282A1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift */; };
 		21BC28291D367E9E00E5E98C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC28281D367E9E00E5E98C /* AppDelegate.swift */; };
-		21BC282B1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC282A1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift */; };
 		21BC282E1D367E9E00E5E98C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BC282C1D367E9E00E5E98C /* Main.storyboard */; };
 		21BC28301D367E9E00E5E98C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BC282F1D367E9E00E5E98C /* Assets.xcassets */; };
 		21BC28331D367E9E00E5E98C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BC28311D367E9E00E5E98C /* LaunchScreen.storyboard */; };
 		21BC283E1D367E9E00E5E98C /* DoubanMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC283D1D367E9E00E5E98C /* DoubanMovieTests.swift */; };
 		21BC28491D367E9E00E5E98C /* DoubanMovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC28481D367E9E00E5E98C /* DoubanMovieUITests.swift */; };
-		21DC25951D438777009FEA0C /* MovieInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC25941D438777009FEA0C /* MovieInfoView.swift */; };
-		21DC25971D438783009FEA0C /* MovieInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21DC25961D438783009FEA0C /* MovieInfoView.xib */; };
-		21DC259A1D4389EF009FEA0C /* RatingStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC25991D4389EF009FEA0C /* RatingStar.swift */; };
+		21BE1DF41D4F3149006D405B /* MovieInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21DC25961D438783009FEA0C /* MovieInfoView.xib */; };
+		21BE1DF51D4F3151006D405B /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2134E50D1D45AEFC00DACE81 /* AvatarView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +83,6 @@
 		2149FA741D3D2A2900F0D0C6 /* BaseMovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMovieCell.swift; sourceTree = "<group>"; };
 		216C5DA81D4726E9008A4A75 /* MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+MenuViewControllerDelegate.swift"; sourceTree = "<group>"; };
-		21A6E0FA1D3FC2AE000D48D4 /* InTheatersData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InTheatersData.swift; sourceTree = "<group>"; };
 		21B8B2E81D45A84700B7D344 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		21BC28251D367E9E00E5E98C /* DoubanMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubanMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BC28281D367E9E00E5E98C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +97,7 @@
 		21BC28441D367E9E00E5E98C /* DoubanMovieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoubanMovieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BC28481D367E9E00E5E98C /* DoubanMovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubanMovieUITests.swift; sourceTree = "<group>"; };
 		21BC284A1D367E9E00E5E98C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21BE1DF81D4F31A5006D405B /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		21DC25941D438777009FEA0C /* MovieInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfoView.swift; sourceTree = "<group>"; };
 		21DC25961D438783009FEA0C /* MovieInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieInfoView.xib; sourceTree = "<group>"; };
 		21DC25991D4389EF009FEA0C /* RatingStar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingStar.swift; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 		21A6E0F91D3FC28A000D48D4 /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				21A6E0FA1D3FC2AE000D48D4 /* InTheatersData.swift */,
+				21BE1DF81D4F31A5006D405B /* TestData.swift */,
 			);
 			name = Test;
 			sourceTree = "<group>";
@@ -383,10 +383,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21BE1DF51D4F3151006D405B /* AvatarView.xib in Resources */,
+				21BE1DF41D4F3149006D405B /* MovieInfoView.xib in Resources */,
 				21BC28331D367E9E00E5E98C /* LaunchScreen.storyboard in Resources */,
-				21DC25971D438783009FEA0C /* MovieInfoView.xib in Resources */,
 				21BC28301D367E9E00E5E98C /* Assets.xcassets in Resources */,
-				2134E50E1D45AEFC00DACE81 /* AvatarView.xib in Resources */,
 				21BC282E1D367E9E00E5E98C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,32 +412,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2149FA721D3D2A0A00F0D0C6 /* BaseViewController.swift in Sources */,
-				2149FA5E1D3D296400F0D0C6 /* Artist.swift in Sources */,
-				211B3BD61D3FC13A00887B31 /* FavoriteMovieCell.swift in Sources */,
-				2149FA701D3D29FA00F0D0C6 /* SearchResultsViewController.swift in Sources */,
-				2149FA641D3D29B000F0D0C6 /* MenuViewController.swift in Sources */,
-				210EED401D4892A1000F3D0D /* StarLayer.swift in Sources */,
-				2149FA751D3D2A2900F0D0C6 /* BaseMovieCell.swift in Sources */,
-				2149FA6C1D3D29E900F0D0C6 /* ArtistDetailViewController.swift in Sources */,
-				210EED421D48A1DE000F3D0D /* RatingBar.swift in Sources */,
-				211B3BD81D3FC14800887B31 /* MovieCardView.swift in Sources */,
-				21DC259A1D4389EF009FEA0C /* RatingStar.swift in Sources */,
-				211B3BD41D3FC11D00887B31 /* DetailMovieCell.swift in Sources */,
-				2149FA681D3D29D300F0D0C6 /* NowMoviesTableViewController.swift in Sources */,
-				21DC25951D438777009FEA0C /* MovieInfoView.swift in Sources */,
-				2149FA601D3D296F00F0D0C6 /* MovieSubject.swift in Sources */,
-				211B3BDE1D3FC1DD00887B31 /* DoubanService.swift in Sources */,
-				211B3BDC1D3FC16C00887B31 /* MenuButton.swift in Sources */,
-				216C5DAB1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift in Sources */,
-				21A6E0FB1D3FC2AE000D48D4 /* InTheatersData.swift in Sources */,
-				2149FA6E1D3D29F100F0D0C6 /* FavoritesTableViewController.swift in Sources */,
-				2149FA621D3D297E00F0D0C6 /* Work.swift in Sources */,
-				21BC282B1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift in Sources */,
-				21B8B2E91D45A84700B7D344 /* AvatarView.swift in Sources */,
-				216C5DA91D4726E9008A4A75 /* MenuViewControllerDelegate.swift in Sources */,
-				2149FA661D3D29BA00F0D0C6 /* HomeViewController.swift in Sources */,
-				2149FA6A1D3D29E000F0D0C6 /* MovieDetailViewController.swift in Sources */,
+				2118D3A61D4F34F700644D84 /* TestData.swift in Sources */,
+				2118D3A71D4F34F700644D84 /* HomeViewController.swift in Sources */,
+				2118D3A81D4F34F700644D84 /* HomeViewController+MenuViewControllerDelegate.swift in Sources */,
+				2118D3A91D4F34F700644D84 /* MenuViewController.swift in Sources */,
+				2118D3AA1D4F34F700644D84 /* MenuViewControllerDelegate.swift in Sources */,
+				2118D3AB1D4F34F700644D84 /* MovieDetailViewController.swift in Sources */,
+				2118D3AC1D4F34F700644D84 /* NowMoviesTableViewController.swift in Sources */,
+				2118D3AD1D4F34F700644D84 /* ArtistDetailViewController.swift in Sources */,
+				2118D3AE1D4F34F700644D84 /* FavoritesTableViewController.swift in Sources */,
+				2118D3AF1D4F34F700644D84 /* SearchResultsViewController.swift in Sources */,
+				2118D3B01D4F34F700644D84 /* BaseViewController.swift in Sources */,
+				2118D3B11D4F34F700644D84 /* AvatarView.swift in Sources */,
+				2118D3B21D4F34F700644D84 /* MovieInfoView.swift in Sources */,
+				2118D3B31D4F34F700644D84 /* BaseMovieCell.swift in Sources */,
+				2118D3B41D4F34F700644D84 /* DetailMovieCell.swift in Sources */,
+				2118D3B51D4F34F700644D84 /* FavoriteMovieCell.swift in Sources */,
+				2118D3B61D4F34F700644D84 /* MovieCardView.swift in Sources */,
+				2118D3B71D4F34F700644D84 /* MenuButton.swift in Sources */,
+				2118D3B81D4F34F700644D84 /* RatingStar.swift in Sources */,
+				2118D3B91D4F34F700644D84 /* StarLayer.swift in Sources */,
+				2118D3BA1D4F34F700644D84 /* RatingBar.swift in Sources */,
+				2118D3BB1D4F34F700644D84 /* DoubanService.swift in Sources */,
+				2118D3BC1D4F34F700644D84 /* Artist.swift in Sources */,
+				2118D3BD1D4F34F700644D84 /* MovieSubject.swift in Sources */,
+				2118D3BE1D4F34F700644D84 /* Work.swift in Sources */,
+				2118D3BF1D4F34F700644D84 /* UIViewController+UnWindSegue.swift in Sources */,
 				21BC28291D367E9E00E5E98C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,7 +531,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -572,7 +572,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -584,11 +584,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DoubanMovie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jikexueyuan.DoubanMovie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -596,11 +599,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DoubanMovie/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jikexueyuan.DoubanMovie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -609,6 +615,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = DoubanMovieTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jikexueyuan.DoubanMovieTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -622,6 +629,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = DoubanMovieTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jikexueyuan.DoubanMovieTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -634,6 +642,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = DoubanMovieUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jikexueyuan.DoubanMovieUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -646,6 +655,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = DoubanMovieUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jikexueyuan.DoubanMovieUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

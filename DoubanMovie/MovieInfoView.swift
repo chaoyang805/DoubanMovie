@@ -25,13 +25,13 @@ class MovieInfoView: UIView {
         self.layer.shadowOpacity = 0.5
         self.layer.shadowRadius = 4
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.layer.shadowColor = UIColor.darkGray().cgColor
+        self.layer.shadowColor = UIColor.darkGrayColor().CGColor
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         print("awake from nib")
-        if let view = Bundle.main().loadNibNamed("MovieInfoView", owner: self, options: nil).first as? UIView {
+        if let view = NSBundle.mainBundle().loadNibNamed("MovieInfoView", owner: self, options: nil).first as? UIView {
             view.frame = self.bounds
             self.addSubview(view)
         }
@@ -39,7 +39,7 @@ class MovieInfoView: UIView {
 
     func addTarget(target: AnyObject?, action: Selector, for controlEvents: UIControlEvents) {
         if posterImageButton != nil {
-            posterImageButton.addTarget(target, action: action, for: controlEvents)
+            posterImageButton.addTarget(target, action: action, forControlEvents: controlEvents)
         } else {
             print("can't find button.")
         }

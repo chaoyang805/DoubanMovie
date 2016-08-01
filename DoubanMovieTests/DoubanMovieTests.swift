@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import DoubanMovie
+//@testable import DoubanMovie
 
 class DoubanMovieTests: XCTestCase {
     
@@ -24,7 +24,7 @@ class DoubanMovieTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.  
-        var ratingScore = 7.2
+        let ratingScore = 7.2
         let yellowStarCount = floor(ratingScore / 2)
     
         let hasHalfStar =  (ratingScore / 2 - yellowStarCount > 0.1) && (ratingScore / 2 - yellowStarCount <= 0.6)
@@ -35,7 +35,7 @@ class DoubanMovieTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measure {
+        self.measureBlock {
             // Put the code you want to measure the time of here.
         }
     }
