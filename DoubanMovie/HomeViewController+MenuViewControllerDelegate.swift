@@ -14,12 +14,11 @@ extension HomeViewController: MenuViewControllerDelegate {
     func menuViewController(_ controller: MenuViewController, didClickButtonWithType type: MenuButtonType) {
         switch type {
         case .now:
-            
             break
         case .all:
             presentNowTableViewController()
         case .search:
-            break
+            presentSearchTableViewController()
         case .favorite:
             presentFavoritesTableViewController()
         
@@ -32,6 +31,10 @@ extension HomeViewController: MenuViewControllerDelegate {
     
     func presentFavoritesTableViewController() {
         self.performSegue(withIdentifier: "FavoritesSegue", sender: self)
+    }
+    
+    func presentSearchTableViewController() {
+        self.performSegue(withIdentifier: "SearchSegue", sender: self)
     }
     
 }
