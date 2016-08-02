@@ -8,7 +8,8 @@
 
 import UIKit
 import SDWebImage
-class HomeViewController: UIViewController {
+
+class HomeViewController: UIViewController{
     @IBOutlet weak var movieInfoDialog: MovieInfoView!
 
     override func viewDidLoad() {
