@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 class HomeViewController: UIViewController {
     @IBOutlet weak var movieInfoDialog: MovieInfoView!
 
@@ -21,7 +21,6 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         print("viewDidAppear")
-
     }
     
     func movieInfoDialogDidTouch(sender: AnyObject) {

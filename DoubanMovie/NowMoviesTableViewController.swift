@@ -7,13 +7,11 @@
 //
 
 import UIKit
-
 class NowMoviesTableViewController: UITableViewController {
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     // MARK: UITableViewControllerDelegate
