@@ -23,7 +23,7 @@ class NowMoviesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(DetailCellIdentifier, forIndexPath: indexPath)
         if let detailCell = cell as? DetailMovieCell {
-            detailCell.configureCell(withMovie: MovieSubject())
+            detailCell.configureCell(withMovie: DoubanMovie())
         }
         return cell
     }

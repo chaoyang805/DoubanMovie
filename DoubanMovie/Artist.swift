@@ -8,7 +8,9 @@
 
 import UIKit
 import RealmSwift
-class Artist: Object {
+import ObjectMapper
+
+class Artist: Object, Mappable {
     
     dynamic var id: String = ""
     
@@ -20,7 +22,7 @@ class Artist: Object {
     
     dynamic var mobileURL: String = ""
     
-    dynamic var avatars = MovieImage()
+    dynamic var avatars: DoubanImage?
     
     dynamic var gender: String = "男"
     
@@ -33,12 +35,58 @@ class Artist: Object {
     let works = List<Work>()
     
     // Ignored
-    var akaArray: [String] = []
+    var akaArray: [String] = [] {
+        didSet {
+            if akaArray.isEmpty {
+                return
+            }
+            self.aka = akaArray.reduce(""){ $0 + "/" + $1 }
+        }
+    }
     
-    var akaEnArray: [String] = []
+    var akaEnArray: [String] = [] {
+        didSet {
+            if akaEnArray.isEmpty {
+                return
+            }
+            self.akaEn = akaEnArray.reduce(""){ $0 + "/" + $1 }
+        }
+    }
+    
+    var worksArray = [Work]() {
+        didSet {
+            works.appendContentsOf(worksArray)
+        }
+    }
+    
+    override class func primaryKey() -> String {
+        return "id"
+    }
+    
+    override class func indexedProperties() -> [String] {
+        return ["name", "nameEn"]
+    }
     
     override class func ignoredProperties() -> [String] {
-        return ["akaArray", "akaEnArray"]
+        return ["akaArray", "akaEnArray", "worksArray"]
+    }
+    
+    required convenience init?(_ map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+        nameEn <- map["name_en"]
+        alt <- map["alt"]
+        mobileURL <- map["mobile_url"]
+        avatars <- map["avatars"]
+        gender <- map["gender"]
+        bornPlace <- map["born_place"]
+        akaArray <- map["aka"]
+        akaEnArray <- map["aka_en"]
+        worksArray <- map["works"]
     }
     
     

@@ -15,9 +15,9 @@ class BaseMovieCell: UITableViewCell {
     @IBOutlet weak var movieGenresLabel: UILabel!
     @IBOutlet weak var collectCountLabel: UILabel!
     
-    var movieSubject: MovieSubject?
+    var movieSubject: DoubanMovie?
     
-    func configureCell(withMovie movie: MovieSubject) {
+    func configureCell(withMovie movie: DoubanMovie) {
         self.movieSubject = movie
         posterImageView.image = UIImage(named: "now-you-see-me")
         titleLabel.text = "惊天魔盗团2"

@@ -7,9 +7,15 @@
 //
 
 import XCTest
-//@testable import DoubanMovie
+import ObjectMapper
+@testable import DoubanMovie
 
 class DoubanMovieTests: XCTestCase {
+    let searchURL = NSURL(string: "http://localhost/DoubanServer/api/douban_movie/search/index.php")
+    let celebrityURL = NSURL(string: "http://localhost/DoubanServer/api/douban_movie/celebrity/index.php")
+    let inTheatersURL = NSURL(string: "http://localhost/DoubanServer/api/douban_movie/in_theater/index.php")
+    let inTheatersSubjectURL = NSURL(string: "http://localhost/DoubanServer/api/douban_movie/in_theater_subject/index.php")
+    let subjectByIdURL = NSURL(string: "http://localhost/DoubanServer/api/douban_movie/subject_by_id/index.php")
     
     override func setUp() {
         super.setUp()
@@ -21,7 +27,25 @@ class DoubanMovieTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func textSearchAPI() {
+        
+    }
+    
+    func testInTheaterSubject() {
+        
+        let inTheaterSubjectJSON = try?  String(contentsOfURL: inTheatersSubjectURL!, encoding: NSUTF8StringEncoding)
+        
+        let movie = Mapper<DoubanMovie>().map(inTheaterSubjectJSON)
+        XCTAssertNotNil(movie)
+        XCTAssertGreaterThan(movie!.casts.count, 0)
+        
+    }
+    
+    func testSearchAPI() {
+        
+    }
+    
+    func testRating() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.  
         let ratingScore = 7.2

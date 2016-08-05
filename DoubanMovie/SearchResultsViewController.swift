@@ -65,10 +65,10 @@ class SearchResultsViewController: UITableViewController {
         }
         
         if cell is DetailMovieCell {
-            (cell as! DetailMovieCell).configureCell(withMovie: MovieSubject())
+            (cell as! DetailMovieCell).configureCell(withMovie: DoubanMovie())
         }
         if cell is BaseMovieCell {
-            (cell as! BaseMovieCell).configureCell(withMovie: MovieSubject())
+            (cell as! BaseMovieCell).configureCell(withMovie: DoubanMovie())
         }
         return cell!
     }

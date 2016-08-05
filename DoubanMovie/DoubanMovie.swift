@@ -10,12 +10,12 @@ import UIKit
 import RealmSwift
 import ObjectMapper
 
-class MovieSubject: Object, Mappable{
+class DoubanMovie: Object, Mappable{
 
     dynamic var id: String = ""
     
     /// The movie's rating info
-    dynamic var rating: Rating?
+    dynamic var rating: MovieRating?
     
     /// The movie's name
     dynamic var title: String = ""
@@ -38,7 +38,7 @@ class MovieSubject: Object, Mappable{
     
     dynamic var summary: String = ""
     
-    dynamic var images: MovieImage?
+    dynamic var images: DoubanImage?
     
     /// The detail page on Douban
     dynamic var alt = ""
@@ -57,32 +57,34 @@ class MovieSubject: Object, Mappable{
     
     // MARK - Ignored Properties
     /// The movie's genres should be ignored by Realm
-    var genresArray: [String] = []
+    var genresArray: [String] = [] {
+        didSet {
+            self.genres = genresArray.isEmpty ? "" : genresArray.reduce("") { $0 + "/" + $1 }
+        }
+    }
     
-    var contriesArray: [String] = []
+    var contriesArray: [String] = [] {
+        didSet {
+            self.contries = contriesArray.isEmpty ? "" : contriesArray.reduce("") { $0 + "/" + $1 }
+        }
+    }
     
     var castsArray: [Artist] = [] {
         didSet {
-            if castsArray.count > 0 {
-                for artist in castsArray {
-                    casts.append(artist)
-                }
-            }
+            casts.removeAll()
+            casts.appendContentsOf(castsArray)
         }
     }
     
     var directorsArray: [Artist] = [] {
         didSet {
-            if directorsArray.count > 0 {
-                for artist in directorsArray {
-                    directors.append(artist)
-                }
-            }
+            directors.removeAll()
+            directors.appendContentsOf(directorsArray)
         }
     }
     
     override class func ignoredProperties() -> [String] {
-        return ["genresArray", "contriesArray"]
+        return ["genresArray", "contriesArray", "castsArray", "directorsArray"]
     }
     
     override class func primaryKey() -> String {
@@ -120,36 +122,3 @@ class MovieSubject: Object, Mappable{
 }
 
 
-class MovieImage: Object, Mappable {
-    dynamic var smallImageURL = ""
-    dynamic var mediumImageURL = ""
-    dynamic var largeImageURL = ""
-    
-    required convenience init?(_ map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        smallImageURL <- map["small"]
-        mediumImageURL <- map["medium"]
-        largeImageURL <- map["large"]
-    }
-}
-
-class Rating: Object, Mappable {
-    dynamic var max: Float = 0
-    dynamic var average: Float = 0
-    dynamic var stars: String = "0"
-    dynamic var min: String = "0"
-    
-    required convenience init?(_ map: Map) {
-        self.init()
-    }
-    
-    func mapping(map: Map) {
-        max <- map["max"]
-        average <- map["average"]
-        stars <- map["average"]
-        min <- map["min"]
-    }
-}

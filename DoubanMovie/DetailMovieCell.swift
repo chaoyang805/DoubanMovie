@@ -15,7 +15,7 @@ class DetailMovieCell: BaseMovieCell {
     @IBOutlet weak var castsLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     
-    override func configureCell(withMovie movie: MovieSubject) {
+    override func configureCell(withMovie movie: DoubanMovie) {
         super.configureCell(withMovie: movie)
         ratingInfo.ratingScore = 2.3
         directorsLabel.text = "朱浩伟"

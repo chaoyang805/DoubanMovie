@@ -14,8 +14,8 @@ class FavoriteMovieCell: UITableViewCell {
     @IBOutlet weak var movieSummaryLabel: UILabel!
     @IBOutlet weak var collectDateLabel: UILabel!
     
-    var movie: MovieSubject?
-    func configureCell(withMovie movie: MovieSubject) {
+    var movie: DoubanMovie?
+    func configureCell(withMovie movie: DoubanMovie) {
         self.movie = movie
         posterImageView.image = UIImage(named: "now-you-see-me")
         titleLabel.text = "忍者神龟2:破影而出"

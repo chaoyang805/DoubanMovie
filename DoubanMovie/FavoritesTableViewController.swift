@@ -25,7 +25,7 @@ class FavoritesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(FavoriteMovieCellIdentifier, forIndexPath: indexPath)
         if let favoriteCell  = cell as? FavoriteMovieCell {
-            favoriteCell.configureCell(withMovie: MovieSubject())
+            favoriteCell.configureCell(withMovie: DoubanMovie())
         }
         
         return cell
