@@ -7,3 +7,171 @@
 //
 
 import UIKit
+import AFNetworking
+import ObjectMapper
+
+class DoubanService: DoubanAPI {
+    
+    typealias ResponseHandler = ((responseJSON: NSDictionary?, error: NSError?) -> Void)
+    
+    static let sharedService = DoubanService()
+    
+    private init() {}
+    
+    private lazy var manager: AFHTTPSessionManager = {
+        
+        let _manager = AFHTTPSessionManager(sessionConfiguration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        _manager.responseSerializer = AFJSONResponseSerializer(readingOptions: .AllowFragments)
+        
+        return _manager
+    }()
+    
+    
+    /**
+     请求正在上映的电影
+     
+     - parameter city:              请求数据所在的城市
+     - parameter start:             返回数据的起始位置
+     - parameter count:             请求结果数
+     - parameter completionHandler: 请求完成的回调
+     */
+    func getInTheaterMovies(inCity city: String = "北京", at start: Int, resultCount count: Int, completionHandler: ResponseHandler?) {
+        let url = RequestType.inTheater.description
+        
+        let parameters = ["start": start, "city": city, "count":count]
+        
+        makeGETRequest(
+            withURL: url,
+            parameters: parameters,
+            completionHandler: completionHandler)?
+            .resume()
+    }
+    
+    /**
+     根据关键字搜索电影
+     
+     - parameter query:             关键字
+     - parameter start:             开始位置
+     - parameter count:             请求结果数
+     - parameter completionHandler: 请求完成的回调
+     */
+    func searchMovies(withQuery query: String, at start: Int, resultCount count: Int, completionHandler: ResponseHandler?) {
+        let url = RequestType.search.description
+        let parameters = ["q": query, "start": start, "count": count]
+        makeGETRequest(
+            withURL: url,
+            parameters: parameters,
+            completionHandler: completionHandler)?
+            .resume()
+    }
+    
+    /**
+     根据标签搜索电影
+     
+     - parameter tag:               搜索标签
+     - parameter start:             开始位置
+     - parameter count:             请求结果数
+     - parameter completionHandler: 请求完成的回调
+     */
+    func searchMovies(withTag tag: String, at start: Int, resultCount count: Int, completionHandler: ResponseHandler?) {
+        let url = RequestType.search.description
+        let parameters = ["tag" : tag, "start": start, "count": count]
+        makeGETRequest(
+            withURL: url,
+            parameters: parameters,
+            completionHandler: completionHandler)?
+            .resume()
+    }
+    
+    /**
+     根据 id 获取对应电影条目
+     
+     - parameter id:                电影 id
+     - parameter completionHanlder: 请求完成的回调
+     */
+    func movie(forId id: Int, completionHandler: ResponseHandler?) {
+        let url = RequestType.subject(subjectId: id).description
+        makeGETRequest(
+            withURL: url,
+            parameters: nil,
+            completionHandler: completionHandler)?
+            .resume()
+    }
+    
+    /**
+     根据 id 获取影人条目
+     
+     - parameter id:                影人 id
+     - parameter completionHandler: 请求完成的回调
+     */
+    func celebrity(forId id: Int, completionHandler: ResponseHandler?) {
+        let url = RequestType.celebrity(celebritId: id).description
+        makeGETRequest(
+            withURL: url,
+            parameters: nil,
+            completionHandler: completionHandler)?
+            .resume()
+    }
+    /**
+     创建 GET 请求
+     
+     - parameter url:               请求的 url
+     - parameter parameters:        请求参数
+     - parameter completionHandler: 完成时的回调
+     
+     - returns: 返回创建好的task
+     */
+    private func makeGETRequest(withURL url: String, parameters: AnyObject?, completionHandler: ResponseHandler?) -> NSURLSessionDataTask? {
+        NSLog("request url: \(url)")
+        
+        return manager.GET(url, parameters: parameters,
+                    progress: { (progress: NSProgress) in
+                        
+                    },
+                    success: { (task: NSURLSessionDataTask, object:AnyObject?) in
+                        completionHandler?(responseJSON: object as? NSDictionary, error: nil)
+                    },
+                    failure: { (task: NSURLSessionDataTask?, error: NSError) in
+                        completionHandler?(responseJSON: nil, error: error)
+                    })
+    }
+    
+    deinit{
+        for task in manager.dataTasks {
+            task.suspend()
+        }
+    }
+}
+
+/**
+ 网络请求的类型
+ 
+ - inTheater: 请求正在热映
+ - search:    搜索电影
+ - subject:   指定的电影条目
+ - celebrity: 指定的影人条目
+ */
+private enum RequestType: CustomStringConvertible {
+    case inTheater
+    case search
+    case subject(subjectId: Int)
+    case celebrity(celebritId: Int)
+    
+    private var baseURL: String {
+        return "http://api.douban.com/v2/movie/"
+    }
+    
+    private var description: String {
+        switch self {
+        case .inTheater:
+            return baseURL + "in_theaters"
+        case .search:
+            return baseURL + "search"
+        case .celebrity(let id):
+            return baseURL + "celebrity/\(id)"
+            
+        case .subject(let id):
+            return baseURL + "subject/\(id)"
+        }
+    }
+}

@@ -46,10 +46,10 @@ class DoubanMovie: Object, Mappable{
     // MARK - One to many properties
     
     /// The movie's actors
-    let casts = List<Artist>()
+    let casts = List<DoubanCelebrity>()
     
     /// Directors who made this movie
-    let directors = List<Artist>()
+    let directors = List<DoubanCelebrity>()
     
     dynamic var genres: String = ""
     
@@ -69,14 +69,14 @@ class DoubanMovie: Object, Mappable{
         }
     }
     
-    var castsArray: [Artist] = [] {
+    var castsArray: [DoubanCelebrity] = [] {
         didSet {
             casts.removeAll()
             casts.appendContentsOf(castsArray)
         }
     }
     
-    var directorsArray: [Artist] = [] {
+    var directorsArray: [DoubanCelebrity] = [] {
         didSet {
             directors.removeAll()
             directors.appendContentsOf(directorsArray)

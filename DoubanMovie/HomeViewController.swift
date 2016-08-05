@@ -17,6 +17,43 @@ class HomeViewController: UIViewController{
         print("viewDidLoad")
         movieInfoDialog.ratingInfoView.ratingScore = 5
         movieInfoDialog.addTarget(self, action: #selector(HomeViewController.movieInfoDialogDidTouch(_:)), for: .TouchUpInside)
+//        DoubanService.sharedService.getInTheaterMovies(inCity: "石家庄", at: 5, resultCount: 10) { (responseJSON, error) in
+//            if let error = error {
+//                print(error)
+//            }
+//            print(responseJSON)
+//        }
+//        DoubanService.sharedService.searchMovies(withQuery: "周杰伦", at: 0, resultCount: 4) { (responseJSON, error) in
+//            if let error = error {
+//                print(error)
+//                return
+//            }
+//            print(responseJSON)
+//        }
+
+//        DoubanService.sharedService.searchMovies(withTag: "喜剧", at: 0, resultCount: 2) { (responseJSON, error) in
+//            if let error = error {
+//                print(error)
+//                return
+//            }
+//            print(responseJSON)
+//        }
+//        
+//        DoubanService.sharedService.movie(forId: 1764796) { (responseJSON, error) in
+//            if let error = error {
+//                print(error)
+//                return
+//            }
+//            print(responseJSON)
+//        }
+//        
+//        DoubanService.sharedService.celebrity(forId: 1054395, completionHandler: { (responseJSON, error) in
+//            if let error = error {
+//                print(error)
+//                return
+//            }
+//            print(responseJSON)
+//        })
     }
     
     override func viewDidAppear(animated: Bool) {
