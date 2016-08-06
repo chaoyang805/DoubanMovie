@@ -103,7 +103,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sb5-f0-DHA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="Oc8-9w-axw">
                     <connections>
-                        <action selector="handGesture:" destination="RZY-mf-UVa" id="IaV-0a-Egh"/>
+                        <action selector="handleGestures:" destination="RZY-mf-UVa" id="MwO-HP-k1e"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>
