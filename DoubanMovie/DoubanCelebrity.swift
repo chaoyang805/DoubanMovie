@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import ObjectMapper
 
-class Artist: Object, Mappable {
+class DoubanCelebrity: Object, Mappable {
     
     dynamic var id: String = ""
     

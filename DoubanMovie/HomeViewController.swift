@@ -14,14 +14,14 @@ class HomeViewController: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
+
         movieInfoDialog.ratingInfoView.ratingScore = 5
         movieInfoDialog.addTarget(self, action: #selector(HomeViewController.movieInfoDialogDidTouch(_:)), for: .TouchUpInside)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print("viewDidAppear")
+        
     }
     
     func movieInfoDialogDidTouch(sender: AnyObject) {
