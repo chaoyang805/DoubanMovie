@@ -35,6 +35,7 @@
 		2118D3BF1D4F34F700644D84 /* UIViewController+UnWindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC282A1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift */; };
 		214C5D521D5466D40057B1B8 /* DoubanResultsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D511D5466D40057B1B8 /* DoubanResultsSet.swift */; };
 		214C5D541D5473AB0057B1B8 /* DoubanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D531D5473AB0057B1B8 /* DoubanAPI.swift */; };
+		219E11D81D581D6500F2A66B /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219E11D71D581D6500F2A66B /* RealmHelper.swift */; };
 		21BC28291D367E9E00E5E98C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC28281D367E9E00E5E98C /* AppDelegate.swift */; };
 		21BC282E1D367E9E00E5E98C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BC282C1D367E9E00E5E98C /* Main.storyboard */; };
 		21BC28301D367E9E00E5E98C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BC282F1D367E9E00E5E98C /* Assets.xcassets */; };
@@ -90,6 +91,7 @@
 		214C5D531D5473AB0057B1B8 /* DoubanAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanAPI.swift; sourceTree = "<group>"; };
 		216C5DA81D4726E9008A4A75 /* MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+MenuViewControllerDelegate.swift"; sourceTree = "<group>"; };
+		219E11D71D581D6500F2A66B /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		21B8B2E81D45A84700B7D344 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		21BC28251D367E9E00E5E98C /* DoubanMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubanMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BC28281D367E9E00E5E98C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			children = (
 				2149FA5C1D3D294A00F0D0C6 /* Network */,
 				2149FA5A1D3D28F700F0D0C6 /* Entities */,
+				219E11D71D581D6500F2A66B /* RealmHelper.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				2118D3BD1D4F34F700644D84 /* DoubanMovie.swift in Sources */,
 				2118D3BE1D4F34F700644D84 /* Work.swift in Sources */,
 				21C247F91D5431E600F919D6 /* MovieRating.swift in Sources */,
+				219E11D81D581D6500F2A66B /* RealmHelper.swift in Sources */,
 				2118D3BF1D4F34F700644D84 /* UIViewController+UnWindSegue.swift in Sources */,
 				21BC28291D367E9E00E5E98C /* AppDelegate.swift in Sources */,
 			);

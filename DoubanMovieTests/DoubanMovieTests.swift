@@ -8,6 +8,7 @@
 
 import XCTest
 import ObjectMapper
+import RealmSwift
 @testable import DoubanMovie
 
 class DoubanMovieTests: XCTestCase {
@@ -82,18 +83,21 @@ class DoubanMovieTests: XCTestCase {
         XCTAssertFalse(hasHalfStar)
     }
     
+    func testRealmWriteMany() {
+        var resultsSet: DoubanResultsSet?
+        DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount: 5) { (responseJSON, error) in
+            resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+            let realmHelper = RealmHelper()
+            if let movies = resultsSet?.subjects where movies.count > 0 {
+                realmHelper.addFavoriteMovies(movies)
+            }
+        }
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {
             // Put the code you want to measure the time of here.
-//            DoubanService.sharedService.movie(forId: 1764796) { (responseJSON, error) in
-//                if let error = error {
-//                    print(error)
-//                    return
-//                }
-//                print(responseJSON)
-//            }
-            
         }
     }
     

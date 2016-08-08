@@ -8,10 +8,40 @@
 
 import UIKit
 import SDWebImage
+import ObjectMapper
+import RealmSwift
 
 class HomeViewController: UIViewController{
+    
     @IBOutlet weak var movieInfoDialog: MovieInfoView!
-
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    
+    var animator: UIDynamicAnimator!
+    var attachmentBehavior: UIAttachmentBehavior!
+    var gravityBehavior: UIGravityBehavior!
+    var snapBehavior: UISnapBehavior!
+    
+    lazy var realm: RealmHelper = {
+        return RealmHelper()
+    }()
+    
+    lazy var placeHolderImage: UIImage = {
+    
+        return UIImage(named: "placeholder")!
+    }()
+    
+    var movieCount: Int {
+        return resultsSet != nil ? resultsSet.subjects.count : 0
+    }
+    
+    var resultsSet: DoubanResultsSet! {
+        didSet {
+            showCurrentMovie()
+        }
+    }
+    
+    var currentPage: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +49,11 @@ class HomeViewController: UIViewController{
         movieInfoDialog.addTarget(self, action: #selector(HomeViewController.movieInfoDialogDidTouch(_:)), for: .TouchUpInside)
         
         animator = UIDynamicAnimator(referenceView: self.view)
+        
+        DoubanService.sharedService.getInTheaterMovies(at: 5, resultCount:20) { (responseJSON, error) in
+            
+            self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -29,12 +64,28 @@ class HomeViewController: UIViewController{
     func movieInfoDialogDidTouch(sender: AnyObject) {
         self.performSegueWithIdentifier("ShowDetailSegue", sender: self)
     }
-    // MARK: - IBActions
     
-    var animator: UIDynamicAnimator!
-    var attachmentBehavior: UIAttachmentBehavior!
-    var gravityBehavior: UIGravityBehavior!
-    var snapBehavior: UISnapBehavior!
+    // MAKR: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "ShowDetailSegue" {
+            
+        }
+        
+        if segue.identifier == "MenuSegue" {
+            if let toVC = segue.destinationViewController as? MenuViewController {
+                if toVC.delegate == nil {
+                    toVC.delegate = self
+                }
+            }
+        }
+        
+    }
+}
+
+
+// MARK: - HomeView Gestures
+extension HomeViewController {
     
     @IBAction func handleGestures(sender: UIPanGestureRecognizer) {
         
@@ -99,25 +150,27 @@ class HomeViewController: UIViewController{
         let translation = CGAffineTransformMakeTranslation(offsetX, 0)
         movieInfoDialog.transform = CGAffineTransformConcat(scale, translation)
         
+        if gravityBehavior.gravityDirection.dx < 0 {
+            currentPage = (currentPage + 1) % movieCount
+            
+        } else {
+            currentPage = currentPage <= 0 ? movieCount - 1 : currentPage - 1
+        }
+        
+        showCurrentMovie()
+        
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.CurveEaseIn, animations: {
             self.movieInfoDialog.transform = CGAffineTransformIdentity
             }, completion: nil)
     }
     
-    // MAKR: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "ShowDetailSegue" {
-            
-        }
-        
-        if segue.identifier == "MenuSegue" {
-            if let toVC = segue.destinationViewController as? MenuViewController {
-                if toVC.delegate == nil {
-                    toVC.delegate = self
-                }
-            }
-        }
+    
+    func showCurrentMovie() {
+        guard movieCount > 0 && currentPage < movieCount else { return }
+        let currentMovie = resultsSet.subjects[currentPage]
+        movieInfoDialog.configure(withMovie: currentMovie)
+        backgroundImageView.sd_setImageWithURL(NSURL(string: currentMovie.images!.mediumImageURL), placeholderImage: placeHolderImage)
         
     }
+    
 }
