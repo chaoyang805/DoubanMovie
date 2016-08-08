@@ -69,7 +69,8 @@ class HomeViewController: UIViewController{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "ShowDetailSegue" {
-            
+            guard let toVC = segue.destinationViewController as? MovieDetailViewController else {return}
+            toVC.detailMovie = resultsSet.subjects[currentPage]
         }
         
         if segue.identifier == "MenuSegue" {

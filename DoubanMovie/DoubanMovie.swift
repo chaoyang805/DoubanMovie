@@ -73,6 +73,7 @@ class DoubanMovie: Object, Mappable{
         didSet {
             casts.removeAll()
             casts.appendContentsOf(castsArray)
+            self.castsDescription = castsArray.isEmpty ? "" : castsArray.reduce("") { $0 + "/" + $1.name }
         }
     }
     
@@ -80,11 +81,16 @@ class DoubanMovie: Object, Mappable{
         didSet {
             directors.removeAll()
             directors.appendContentsOf(directorsArray)
+            self.directorsDescription = directorsArray.isEmpty ? "" : directorsArray.reduce("") { $0 + "/" + $1.name }
         }
     }
     
+    var castsDescription: String = ""
+    
+    var directorsDescription: String = ""
+    
     override class func ignoredProperties() -> [String] {
-        return ["genresArray", "contriesArray", "castsArray", "directorsArray"]
+        return ["genresArray", "contriesArray", "castsArray", "directorsArray", "castsDescription", "directorsDescription"]
     }
     
     override class func primaryKey() -> String {

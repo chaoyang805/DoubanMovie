@@ -22,7 +22,6 @@ class DoubanService: DoubanAPI {
         
         let _manager = AFHTTPSessionManager(sessionConfiguration: NSURLSessionConfiguration.defaultSessionConfiguration())
         _manager.responseSerializer = AFJSONResponseSerializer(readingOptions: .AllowFragments)
-        
         return _manager
     }()
     
@@ -89,7 +88,7 @@ class DoubanService: DoubanAPI {
      - parameter id:                电影 id
      - parameter completionHanlder: 请求完成的回调
      */
-    func movie(forId id: Int, completionHandler: ResponseHandler?) {
+    func movie(forId id: String, completionHandler: ResponseHandler?) {
         let url = RequestType.subject(subjectId: id).description
         makeGETRequest(
             withURL: url,
@@ -104,7 +103,7 @@ class DoubanService: DoubanAPI {
      - parameter id:                影人 id
      - parameter completionHandler: 请求完成的回调
      */
-    func celebrity(forId id: Int, completionHandler: ResponseHandler?) {
+    func celebrity(forId id: String, completionHandler: ResponseHandler?) {
         let url = RequestType.celebrity(celebritId: id).description
         makeGETRequest(
             withURL: url,
@@ -154,8 +153,8 @@ class DoubanService: DoubanAPI {
 private enum RequestType: CustomStringConvertible {
     case inTheater
     case search
-    case subject(subjectId: Int)
-    case celebrity(celebritId: Int)
+    case subject(subjectId: String)
+    case celebrity(celebritId: String)
     
     private var baseURL: String {
         return "http://api.douban.com/v2/movie/"

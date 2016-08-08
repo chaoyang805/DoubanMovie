@@ -13,40 +13,31 @@ class AvatarView: UIView {
     @IBOutlet weak var avatarImageButton: UIButton!
     @IBOutlet weak var artistNameLabel: UILabel!
 
-    var avatar: Avatar
-    
-    convenience init(avatar: Avatar) {
-        self.init(frame: CGRect(x: 0, y: 0, width: 60, height: 90), avatar: avatar)
+    private(set) var celebrity: DoubanCelebrity
+    convenience init(celebrity: DoubanCelebrity) {
+        self.init(frame: CGRect(x: 0, y: 0, width: 60, height: 90), celebrity: celebrity)
     }
     
     
-    init(frame: CGRect, avatar: Avatar) {
-        self.avatar = avatar
+    init(frame: CGRect, celebrity: DoubanCelebrity) {
+        self.celebrity = celebrity
         super.init(frame: frame)
         NSBundle.mainBundle().loadNibNamed("AvatarView", owner: self, options: nil)
         self.addSubview(containerView)
-//        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        avatar = Avatar(name: "artist", avatarURL: "")
+        celebrity = DoubanCelebrity()
         super.init(coder: aDecoder)
         self.addSubview(containerView)
-//        setup()
-    }
-    
-    func setup() {
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowRadius = 4
-        self.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.layer.shadowColor = UIColor.darkGrayColor().CGColor
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         avatarImageButton.layer.cornerRadius = 30
-        avatarImageButton.setImage(UIImage(named: "director"), forState: .Normal)
-        artistNameLabel.text = avatar.name
+        avatarImageButton.sd_setImageWithURL(NSURL(string: celebrity.avatars!.smallImageURL), forState: .Normal)
+        avatarImageButton.imageView?.contentMode = .ScaleAspectFill
+        artistNameLabel.text = celebrity.name
         
     }
 }

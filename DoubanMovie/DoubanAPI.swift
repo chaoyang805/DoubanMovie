@@ -47,7 +47,7 @@ protocol DoubanAPI {
      - parameter id:                电影 id
      - parameter completionHanlder: 请求完成的回调
      */
-    func movie(forId id: Int, completionHandler: ResponseHandler?)
+    func movie(forId id: String, completionHandler: ResponseHandler?)
     
     /**
      根据 id 获取影人条目
@@ -55,7 +55,7 @@ protocol DoubanAPI {
      - parameter id:                影人 id
      - parameter completionHandler: 请求完成的回调
      */
-    func celebrity(forId id: Int, completionHandler: ResponseHandler?)
+    func celebrity(forId id: String, completionHandler: ResponseHandler?)
     
     
 }
