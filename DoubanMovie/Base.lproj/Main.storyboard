@@ -41,7 +41,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="now-you-see-me" translatesAutoresizingMaskIntoConstraints="NO" id="631-CK-BoP">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="631-CK-BoP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zxz-dG-FP5">
@@ -93,6 +93,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="backgroundImageView" destination="631-CK-BoP" id="xd4-nx-Ehf"/>
                         <outlet property="movieInfoDialog" destination="C9D-Dw-bau" id="8y9-gM-hCp"/>
                         <segue destination="Czh-aZ-EAq" kind="presentation" identifier="ShowDetailSegue" animates="NO" id="CYE-hN-m5s"/>
                         <segue destination="cee-Bv-Vz8" kind="show" identifier="AllMoviesSegue" id="iQ2-4w-inc"/>
@@ -103,7 +104,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sb5-f0-DHA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="Oc8-9w-axw">
                     <connections>
-                        <action selector="handGesture:" destination="RZY-mf-UVa" id="IaV-0a-Egh"/>
+                        <action selector="handleGestures:" destination="RZY-mf-UVa" id="MwO-HP-k1e"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>
@@ -1026,6 +1027,7 @@
         <image name="icon-menu-recent" width="40" height="40"/>
         <image name="icon-menu-search" width="40" height="40"/>
         <image name="now-you-see-me" width="300" height="419"/>
+        <image name="placeholder" width="184" height="254"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CYE-hN-m5s"/>

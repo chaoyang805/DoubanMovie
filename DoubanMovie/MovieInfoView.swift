@@ -45,4 +45,12 @@ class MovieInfoView: UIView {
         }
     }
     
+    func configure(withMovie movie: DoubanMovie) {
+        titleLabel.text = movie.title
+        collectCountLabel.text = String(format: "%d人已看", movie.collectCount)
+        ratingInfoView.ratingScore = CGFloat(movie.rating?.average ?? 0)
+        posterImageButton.sd_setBackgroundImageWithURL(NSURL(string: movie.images!.largeImageURL), forState: .Normal)
+        
+    }
+    
 }
