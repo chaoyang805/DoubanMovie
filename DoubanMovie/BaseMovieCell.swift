@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class BaseMovieCell: UITableViewCell {
     
@@ -15,16 +16,19 @@ class BaseMovieCell: UITableViewCell {
     @IBOutlet weak var movieGenresLabel: UILabel!
     @IBOutlet weak var collectCountLabel: UILabel!
     
-    var movieSubject: DoubanMovie?
+    var movie: DoubanMovie?
     
     func configureCell(withMovie movie: DoubanMovie) {
-        self.movieSubject = movie
-        posterImageView.image = UIImage(named: "now-you-see-me")
-        titleLabel.text = "惊天魔盗团2"
-        movieGenresLabel.text = "动作/喜剧"
-        let collectCount = 142192
-        collectCountLabel.text = "\(collectCount)人看过"
+        self.movie = movie
+        posterImageView.sd_setImageWithURL(NSURL(string: movie.images!.mediumImageURL))
+        titleLabel.text = movie.title
+        movieGenresLabel.text = movie.genres
+        collectCountLabel.text = String(format: "%d人看过", movie.collectCount)
+//        posterImageView.image = UIImage(named: "now-you-see-me")
+//        titleLabel.text = "惊天魔盗团2"
+//        movieGenresLabel.text = "动作/喜剧"
+//        let collectCount = 142192
+//        collectCountLabel.text = "\(collectCount)人看过"
     }
-    
     
 }
