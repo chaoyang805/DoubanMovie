@@ -59,7 +59,16 @@ class RatingBar: UIView {
         
         for index in 0..<appearenceArray.count {
             if index < yellowStarCount {
-                continue
+                if stars[index].appearence != .full {
+                    // TODO
+                    let frame = stars[index].frame
+                    stars[index].removeFromSuperlayer()
+                    let newStar = StarLayer(frame: frame, appearence: .full)
+                    stars[index] = newStar
+                    self.layer.addSublayer(newStar)
+                } else {
+                    continue
+                }
                 
             } else if index == yellowStarCount {
                 
@@ -88,7 +97,7 @@ class RatingBar: UIView {
     /// 是否需要显示半星，ratingScore / 2 后的小数部分在(0.1, 0.6]之间的需要显示半星
     private func hasHalfStar(ratingScore: Float) -> Bool {
         let a = Int(ratingScore * 100) / 2 % 100
-        return 10 < a && a <= 60
+        return 10 < a && a < 60
         
     }
 }
