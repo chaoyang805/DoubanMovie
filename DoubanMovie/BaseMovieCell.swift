@@ -20,7 +20,7 @@ class BaseMovieCell: UITableViewCell {
     
     func configureCell(withMovie movie: DoubanMovie) {
         self.movie = movie
-        posterImageView.sd_setImageWithURL(NSURL(string: movie.images!.mediumImageURL))
+        posterImageView.sd_setImageWithURL(NSURL(string: movie.images!.largeImageURL))
         titleLabel.text = movie.title
         movieGenresLabel.text = movie.genres
         collectCountLabel.text = String(format: "%d人看过", movie.collectCount)

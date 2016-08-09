@@ -35,7 +35,7 @@ class AvatarView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         avatarImageButton.layer.cornerRadius = 30
-        avatarImageButton.sd_setImageWithURL(NSURL(string: celebrity.avatars!.smallImageURL), forState: .Normal)
+        avatarImageButton.sd_setImageWithURL(NSURL(string: celebrity.avatars!.mediumImageURL), forState: .Normal)
         avatarImageButton.imageView?.contentMode = .ScaleAspectFill
         artistNameLabel.text = celebrity.name
         
