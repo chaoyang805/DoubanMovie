@@ -10,9 +10,10 @@ import UIKit
 import ObjectMapper
 
 class MovieDetailViewController: UIViewController {
+    
     // MARK: - Properties
     
-    lazy var doubanService: DoubanService = {
+    private lazy var doubanService: DoubanService = {
     
         return DoubanService.sharedService
     }()

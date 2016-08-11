@@ -46,7 +46,6 @@ class NowMoviesTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        NSLog("prepare for segue:\(segue.identifier)")
         if segue.identifier == "NowTableToDetail" {
             guard let toVC = segue.destinationViewController as? MovieDetailViewController, cell = sender as? DetailMovieCell else { return }
             guard let selectedRow = tableView.indexPathForCell(cell)?.row else { return }

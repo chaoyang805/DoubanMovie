@@ -24,11 +24,7 @@ class BaseMovieCell: UITableViewCell {
         titleLabel.text = movie.title
         movieGenresLabel.text = movie.genres
         collectCountLabel.text = String(format: "%d人看过", movie.collectCount)
-//        posterImageView.image = UIImage(named: "now-you-see-me")
-//        titleLabel.text = "惊天魔盗团2"
-//        movieGenresLabel.text = "动作/喜剧"
-//        let collectCount = 142192
-//        collectCountLabel.text = "\(collectCount)人看过"
+
     }
     
 }
