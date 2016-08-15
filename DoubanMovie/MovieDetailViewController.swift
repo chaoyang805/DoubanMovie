@@ -55,15 +55,6 @@ class MovieDetailViewController: UIViewController {
         configureView()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     @IBAction func favoriteBarButtonPressed(sender: UIBarButtonItem) {
         movieExistAtRealm() ? deleteMovieFromRealm() : addMovieToFavorite()
     
@@ -92,11 +83,11 @@ class MovieDetailViewController: UIViewController {
     }
     
     func addAvatars(withMovie movie: DoubanMovie) {
-        let artistCount = movie.directorsArray.count + movie.castsArray.count
+        let artistCount = movie.directors.count + movie.casts.count
         artistsScrollView.contentSize = CGSize(width: CGFloat(artistCount) * (60 + 20), height: artistsScrollView.frame.height)
+
         artistsScrollView.showsVerticalScrollIndicator = false
         artistsScrollView.showsHorizontalScrollIndicator = false
-        artistsScrollView.bounces = false
         
         for (index, director) in movie.directors.enumerate() {
             guard let _ = director.avatars else { continue }
@@ -176,6 +167,7 @@ extension MovieDetailViewController {
     
     func addMovieToFavorite() {
         guard let movie = detailMovie else { return }
+        movie.collectDate = NSDate()
         realmHelper.addFavoriteMovie(movie, copy: true)
         likeBarButton.image = likedImage
     }

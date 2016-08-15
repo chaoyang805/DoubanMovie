@@ -19,8 +19,10 @@ class DoubanService: DoubanAPI {
     private init() {}
     
     private lazy var manager: AFHTTPSessionManager = {
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        config.requestCachePolicy = .ReturnCacheDataElseLoad
         
-        let _manager = AFHTTPSessionManager(sessionConfiguration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let _manager = AFHTTPSessionManager(sessionConfiguration: config)
         _manager.responseSerializer = AFJSONResponseSerializer(readingOptions: .AllowFragments)
         return _manager
     }()
@@ -38,7 +40,7 @@ class DoubanService: DoubanAPI {
         let url = RequestType.inTheater.description
         
         let parameters = ["start": start, "city": city, "count":count]
-        
+
         makeGETRequest(
             withURL: url,
             parameters: parameters,

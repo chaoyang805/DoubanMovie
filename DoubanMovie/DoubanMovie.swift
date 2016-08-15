@@ -43,6 +43,8 @@ class DoubanMovie: Object, Mappable {
     /// The detail page on Douban
     dynamic var alt = ""
     
+    dynamic var collectDate = NSDate()
+    
     // MARK - One to many properties
     
     /// The movie's actors
@@ -55,17 +57,21 @@ class DoubanMovie: Object, Mappable {
     
     dynamic var contries: String = ""
     
+    dynamic var castsDescription: String = ""
+    
+    dynamic var directorsDescription: String = ""
+    
     // MARK - Ignored Properties
     /// The movie's genres should be ignored by Realm
     var genresArray: [String] = [] {
         didSet {
-            self.genres = genresArray.isEmpty ? "" : genresArray.reduce("") { $0 + "/" + $1 }
+            self.genres = genresArray.isEmpty ? "" : genresArray.reduce("") { $0 + "/" + $1 }.stringByRemoveFirstCharacter()
         }
     }
     
     var contriesArray: [String] = [] {
         didSet {
-            self.contries = contriesArray.isEmpty ? "" : contriesArray.reduce("") { $0 + "/" + $1 }
+            self.contries = contriesArray.isEmpty ? "" : contriesArray.reduce("") { $0 + "/" + $1 }.stringByRemoveFirstCharacter()
         }
     }
     
@@ -73,7 +79,8 @@ class DoubanMovie: Object, Mappable {
         didSet {
             casts.removeAll()
             casts.appendContentsOf(castsArray)
-            self.castsDescription = castsArray.isEmpty ? "" : castsArray.reduce("") { $0 + "/" + $1.name }
+            
+            self.castsDescription = castsArray.isEmpty ? "" : castsArray.reduce("") { $0 + "/" + $1.name }.stringByRemoveFirstCharacter()
         }
     }
     
@@ -81,16 +88,13 @@ class DoubanMovie: Object, Mappable {
         didSet {
             directors.removeAll()
             directors.appendContentsOf(directorsArray)
-            self.directorsDescription = directorsArray.isEmpty ? "" : directorsArray.reduce("") { $0 + "/" + $1.name }
+            
+            self.directorsDescription = directorsArray.isEmpty ? "" : directorsArray.reduce("") { $0 + "/" + $1.name }.stringByRemoveFirstCharacter()
         }
     }
     
-    var castsDescription: String = ""
-    
-    var directorsDescription: String = ""
-    
     override class func ignoredProperties() -> [String] {
-        return ["genresArray", "contriesArray", "castsArray", "directorsArray", "castsDescription", "directorsDescription"]
+        return ["genresArray", "contriesArray", "castsArray", "directorsArray"]
     }
     
     override class func primaryKey() -> String {
@@ -147,6 +151,7 @@ extension DoubanMovie: NSCopying {
             copy.images = images.copy() as? DoubanImage
         }
         copy.alt = self.alt
+        copy.collectDate = self.collectDate
         copy.castsArray = self.castsArray
         copy.directorsArray = self.directorsArray
         copy.genresArray = self.genresArray

@@ -50,7 +50,7 @@ class HomeViewController: UIViewController{
         
         animator = UIDynamicAnimator(referenceView: self.view)
         
-        DoubanService.sharedService.getInTheaterMovies(at: 5, resultCount:20) { (responseJSON, error) in
+        DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount:5) { (responseJSON, error) in
             
             self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
         }

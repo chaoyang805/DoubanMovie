@@ -73,8 +73,4 @@ class NowMoviesTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        NSLog("Selected indexpaht:\(indexPath.row)")
-    }
-    
 }

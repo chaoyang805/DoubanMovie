@@ -485,7 +485,7 @@
                                     <outlet property="movieSummaryLabel" destination="YGi-4g-Kcx" id="iz6-AY-HjV"/>
                                     <outlet property="posterImageView" destination="PdH-pC-QHm" id="6Wi-2V-9AU"/>
                                     <outlet property="titleLabel" destination="Fz1-SE-nHK" id="y40-Xn-zqS"/>
-                                    <segue destination="Czh-aZ-EAq" kind="presentation" id="xDN-xi-gjv"/>
+                                    <segue destination="Czh-aZ-EAq" kind="show" identifier="FavoriteToDetail" id="xDN-xi-gjv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -677,7 +677,7 @@
                                     <outlet property="ratingInfo" destination="x7V-32-ZiB" id="YJX-HS-myG"/>
                                     <outlet property="titleLabel" destination="1P6-TB-Zfb" id="AVz-S6-jLs"/>
                                     <outlet property="yearLabel" destination="b7r-Tt-xDc" id="uoG-Mo-SVu"/>
-                                    <segue destination="Czh-aZ-EAq" kind="presentation" id="gk1-aU-u6p"/>
+                                    <segue destination="Czh-aZ-EAq" kind="show" id="gk1-aU-u6p"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SecondSearchResultCell" rowHeight="120" id="OQc-vg-wgq" customClass="BaseMovieCell" customModule="DoubanMovie" customModuleProvider="target">
@@ -747,7 +747,7 @@
                                     <outlet property="movieGenresLabel" destination="QLc-0v-NQD" id="m3T-eX-Ojk"/>
                                     <outlet property="posterImageView" destination="1OQ-4V-T4B" id="Smx-lg-gZI"/>
                                     <outlet property="titleLabel" destination="BJH-Y9-ZXC" id="BVn-kr-mm3"/>
-                                    <segue destination="Czh-aZ-EAq" kind="presentation" id="tEo-rU-8uF"/>
+                                    <segue destination="Czh-aZ-EAq" kind="show" id="tEo-rU-8uF"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -774,7 +774,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2F-dT-KNI">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2F-dT-KNI">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEJ-RJ-Gfx">
@@ -969,7 +969,7 @@
                                                 </constraints>
                                             </scrollView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="xtY-Gu-Di6" secondAttribute="trailing" constant="25" id="0yU-q6-p0N"/>
                                             <constraint firstItem="xtY-Gu-Di6" firstAttribute="top" secondItem="EU5-nF-ZvU" secondAttribute="bottom" constant="5" id="2hU-J4-hf5"/>
@@ -1020,15 +1020,15 @@
                                     <outlet property="delegate" destination="Czh-aZ-EAq" id="hKX-SS-0zx"/>
                                 </connections>
                             </scrollView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPF-vx-54g">
-                                <rect key="frame" x="20" y="35" width="40" height="40"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPF-vx-54g">
+                                <rect key="frame" x="20" y="35" width="44" height="44"/>
                                 <state key="normal" image="icon-back"/>
                                 <connections>
                                     <segue destination="O7b-iG-Rqn" kind="unwind" unwindAction="unwindSegue:" id="Xsh-Ni-OVM"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="M2F-dT-KNI" secondAttribute="trailing" id="HfE-I2-F0v"/>
                             <constraint firstItem="M2F-dT-KNI" firstAttribute="top" secondItem="ihn-1a-e71" secondAttribute="top" id="IeG-vz-ssI"/>
@@ -1070,7 +1070,7 @@
         <image name="icon-back" width="44" height="44"/>
         <image name="icon-like-normal" width="24" height="22"/>
         <image name="icon-menu" width="22" height="16"/>
-        <image name="icon-menu-like" width="21" height="19"/>
+        <image name="icon-menu-like" width="42" height="38"/>
         <image name="icon-menu-list" width="40" height="32"/>
         <image name="icon-menu-recent" width="40" height="40"/>
         <image name="icon-menu-search" width="40" height="40"/>
@@ -1078,6 +1078,6 @@
         <image name="placeholder" width="184" height="254"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CYE-hN-m5s"/>
+        <segue reference="tEo-rU-8uF"/>
     </inferredMetricsTieBreakers>
 </document>

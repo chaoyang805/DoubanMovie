@@ -14,9 +14,34 @@ class RealmHelper: NSObject {
     private(set) var realm: Realm
     
     override init() {
-        let config = Realm.Configuration(inMemoryIdentifier: nil, encryptionKey: nil, readOnly: false, schemaVersion: 1, migrationBlock: nil, deleteRealmIfMigrationNeeded: true, objectTypes: nil)
+        
+        let migrationBlock: MigrationBlock = { (migration, oldSchemaVersion) in
+        
+            if oldSchemaVersion == 1 {
+                migration.enumerate(DoubanMovie.className(), { (oldObject, newObject) in
+                    newObject!["collectDate"] = NSDate()
+                })
+            }
+            if oldSchemaVersion == 2 {
+                migration.enumerate(DoubanMovie.className(), { (oldObject, newObject) in
+                    
+                    if let directors = oldObject?["directors"] as? List<DoubanCelebrity> {
+                        newObject!["directorsDescription"] = (directors.reduce("") { $0 + "/" + $1.name }.stringByRemoveFirstCharacter() as AnyObject)
+                    }
+                    if let casts = oldObject?["casts"] as? List<DoubanCelebrity> {
+                        newObject!["castsDescription"] = (casts.reduce("") { $0  + "/" + $1.name }.stringByRemoveFirstCharacter() as AnyObject)
+                    }
+                    
+                })
+            }
+        }
+        
+        let config = Realm.Configuration(inMemoryIdentifier: nil, encryptionKey: nil, readOnly: false, schemaVersion: 3, migrationBlock: migrationBlock, deleteRealmIfMigrationNeeded: false, objectTypes: nil)
+        
+//            Realm.Configuration(inMemoryIdentifier: nil, encryptionKey: nil, readOnly: false, schemaVersion: 1, migrationBlock: nil, deleteRealmIfMigrationNeeded: true, objectTypes: nil)
         Realm.Configuration.defaultConfiguration = config
         realm = try! Realm()
+        
         super.init()
     }
     
