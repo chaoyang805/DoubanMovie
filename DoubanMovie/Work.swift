@@ -19,7 +19,7 @@ class Work: Object, Mappable {
     /// 和 roles 字段对应,从 JSON 解析的内容放到此字段,然后转换为 String 更新到 roles 字段, 用于存放到数据库
     var rolesArray: [String] = [] {
         didSet {
-            self.roles = rolesArray.reduce("") { $0 + "/" + $1 }
+            self.roles = rolesArray.reduce("") { $0 + "/" + $1 }.stringByRemoveFirstCharacter()
         }
     }
     

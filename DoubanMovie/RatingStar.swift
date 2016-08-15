@@ -48,7 +48,6 @@ class RatingStar: UIView {
     private var _ratingScore: CGFloat = 10 {
         didSet {
             let widthRatio = _ratingScore / 10
-            print("widthRatio: \(widthRatio)")
             ratingLayer?.frame = CGRect(x: 0, y: 0, width: self.starWidth * widthRatio, height: 22.61)
             ratingLabel.text = "\(_ratingScore)"
         }
@@ -75,7 +74,6 @@ class RatingStar: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("ratingBar's frame:\(self.frame)")
         ratingLayer = CALayer()
         let widthRatio = _ratingScore / 10
         ratingLayer?.frame = CGRect(x: 0, y: 0, width: self.starWidth * widthRatio, height: self.starHeight)

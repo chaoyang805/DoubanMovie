@@ -14,9 +14,34 @@ class RealmHelper: NSObject {
     private(set) var realm: Realm
     
     override init() {
-        let config = Realm.Configuration(inMemoryIdentifier: nil, encryptionKey: nil, readOnly: false, schemaVersion: 1, migrationBlock: nil, deleteRealmIfMigrationNeeded: true, objectTypes: nil)
+        
+        let migrationBlock: MigrationBlock = { (migration, oldSchemaVersion) in
+        
+            if oldSchemaVersion == 1 {
+                migration.enumerate(DoubanMovie.className(), { (oldObject, newObject) in
+                    newObject!["collectDate"] = NSDate()
+                })
+            }
+            if oldSchemaVersion == 2 {
+                migration.enumerate(DoubanMovie.className(), { (oldObject, newObject) in
+                    
+                    if let directors = oldObject?["directors"] as? List<DoubanCelebrity> {
+                        newObject!["directorsDescription"] = (directors.reduce("") { $0 + "/" + $1.name }.stringByRemoveFirstCharacter() as AnyObject)
+                    }
+                    if let casts = oldObject?["casts"] as? List<DoubanCelebrity> {
+                        newObject!["castsDescription"] = (casts.reduce("") { $0  + "/" + $1.name }.stringByRemoveFirstCharacter() as AnyObject)
+                    }
+                    
+                })
+            }
+        }
+        
+        let config = Realm.Configuration(inMemoryIdentifier: nil, encryptionKey: nil, readOnly: false, schemaVersion: 3, migrationBlock: migrationBlock, deleteRealmIfMigrationNeeded: false, objectTypes: nil)
+        
+//            Realm.Configuration(inMemoryIdentifier: nil, encryptionKey: nil, readOnly: false, schemaVersion: 1, migrationBlock: nil, deleteRealmIfMigrationNeeded: true, objectTypes: nil)
         Realm.Configuration.defaultConfiguration = config
         realm = try! Realm()
+        
         super.init()
     }
     
@@ -28,14 +53,17 @@ class RealmHelper: NSObject {
      添加电影到收藏里
      
      - parameter movie: 要添加的电影对象
+     
+     - parameter copy: 是否拷贝对象，如果拷贝的话，当删除后仍然可以访问原来的对象
      */
-    func addFavoriteMovie(movie: DoubanMovie) {
+    func addFavoriteMovie(movie: DoubanMovie, copy: Bool = false) {
         realm.beginWrite()
-        realm.add(movie, update: true)
+        
+        realm.add(copy ? movie.copy() as! DoubanMovie : movie, update: true)
         do {
             try realm.commitWrite()
         } catch {
-            print("error occured while add movie \(error)")
+            NSLog("error occured while add movie \(error)")
             realm.cancelWrite()
         }
     }
@@ -51,7 +79,7 @@ class RealmHelper: NSObject {
         do {
             try realm.commitWrite()
         } catch {
-            print("error occured while add movies \(error)")
+            NSLog("error occured while add movies \(error)")
             realm.cancelWrite()
         }
     }
@@ -70,9 +98,19 @@ class RealmHelper: NSObject {
                 realm.delete(movie)
             }
         } catch {
-            print("error occured while delete a movie \(error)")
+            NSLog("error occured while delete a movie \(error)")
             realm.cancelWrite()
         }
+    }
+    
+    /**
+     根据提供的id从数据库中删除一个电影条目
+     
+     - parameter id: 电影的id
+     */
+    func deleteMovieById(id: String) {
+        guard let movieToDel = realm.objects(DoubanMovie.self).filter("id = %s", id).first else { return }
+        deleteMovieFromFavorite(movieToDel)
     }
     
     /**
@@ -82,7 +120,7 @@ class RealmHelper: NSObject {
      - parameter completion: 查询完成的回调
      */
     func getFavoriteMovie(byId id: String, completion: ((DoubanMovie?) -> Void)?) {
-        
+
         let movie = self.realm.objects(DoubanMovie.self).filter("id = %s", id).first
         completion?(movie)
     
@@ -98,6 +136,29 @@ class RealmHelper: NSObject {
         let results = self.realm.objects(DoubanMovie.self)
         completion?(results)
         
+    }
+    
+    /**
+     某个电影条目是否已经收藏
+     
+     - parameter id: 电影的id
+    
+     - returns: 如果存在则返回true
+     */
+    func movieExists(id: String) -> Bool {
+        let exists = realm.objects(DoubanMovie.self).filter("id = %s", id).count > 0
+        return exists
+    }
+    
+    func updateMovieInfo(@noescape updateBlock: ()-> Void) {
+        realm.beginWrite()
+        updateBlock()
+        do {
+            try realm.commitWrite()
+        } catch {
+            NSLog("error occured while delete a movie \(error)")
+            realm.cancelWrite()
+        }
     }
     
 }

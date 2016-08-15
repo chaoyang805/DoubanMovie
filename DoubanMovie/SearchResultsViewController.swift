@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class SearchResultsViewController: UITableViewController {
     
+    /// SearchResultController 控件
     lazy var searchController: UISearchController = {
         let _searchController = UISearchController(searchResultsController: nil)
         _searchController.searchResultsUpdater = self
@@ -26,16 +28,42 @@ class SearchResultsViewController: UITableViewController {
         return _searchController
     }()
     
-    var datas: [String] = [] {
+    let searchScopeButtonTitles = ["全部", "电影", "电视剧", "其他"]
+    
+    /// 选中的过滤条件的index
+    private var selectedScopeIndex: Int {
+        return searchController.searchBar.selectedScopeButtonIndex
+    }
+    
+    /// searbar上的搜索文字
+    private var queryText: String {
+        guard let query = searchController.searchBar.text else { return _lastQueryText }
+        return  query.isEmpty ? _lastQueryText : query
+    }
+    
+    private var _lastQueryText: String = ""
+    
+    /// 搜索返回的结果集
+    private var searchResultsSet: DoubanResultsSet? {
         didSet {
-            tableView.scrollEnabled = datas.count != 0
+            tableView.scrollEnabled = searchResultsSet?.subjects.count > 0
         }
     }
-    let searchScopeButtonTitles = ["全部", "电影", "电视剧", "其他"]
+    
+    /// 原始结果集
+    private var searchResults: [DoubanMovie] {
+        return searchResultsSet?.subjects ?? []
+    }
+    /// 过滤后的结果集
+    private var filteredSearchResults = [DoubanMovie]()
+    
+    private let DetailCellHeight: CGFloat = 165
+    private let BaseCellHeight: CGFloat = 120
+    private let FirstSearchCellIdentifier = "FirstSearchResultCell"
+    private let SecondSearchCellIdentifier = "SecondSearchResultCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.tableHeaderView = searchController.searchBar
         tableView.scrollEnabled = false
         definesPresentationContext = true
@@ -43,43 +71,60 @@ class SearchResultsViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        if searchResults.count > 0 {
+            return
+        }
         searchController.active = true
-        
     }
     
-    // MARK: UITableViewDataSource
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard let toVC = segue.destinationViewController as? MovieDetailViewController,
+            cell = sender as? UITableViewCell,
+            selectedRow = tableView.indexPathForCell(cell)?.row else {
+                return
+        }
+        toVC.detailMovie = filteredSearchResults[selectedRow]
+    }
+    
+}
+
+// MARK: - UITableViewDataSource
+extension SearchResultsViewController {
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datas.count
+        
+        return filteredSearchResults.count
     }
-    
-    let firstSearchCellIdentifier = "FirstSearchResultCell"
-    let secondSearchCellIdentifier = "SecondSearchResultCell"
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell?
-        if indexPath.row == 0 {
-            cell = tableView.dequeueReusableCellWithIdentifier(firstSearchCellIdentifier, forIndexPath: indexPath)
-            
-        } else {
-            cell = tableView.dequeueReusableCellWithIdentifier(secondSearchCellIdentifier, forIndexPath: indexPath)
-        }
         
-        if cell is DetailMovieCell {
-            (cell as! DetailMovieCell).configureCell(withMovie: DoubanMovie())
-        }
-        if cell is BaseMovieCell {
-            (cell as! BaseMovieCell).configureCell(withMovie: DoubanMovie())
-        }
-        return cell!
+        let identifier = indexPath.row == 0 ? FirstSearchCellIdentifier : SecondSearchCellIdentifier
+        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
+        return cell
     }
     
-    // MARK: - UITableViewDelegate
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let movie = filteredSearchResults[indexPath.row]
+        
         if indexPath.row == 0 {
-            return 165
+            if let detailCell = cell as? DetailMovieCell {
+                detailCell.configureCell(withMovie: movie)
+            }
         } else {
-            return 120
+            if let baseCell = cell as? BaseMovieCell {
+                baseCell.configureCell(withMovie: movie)
+            }
         }
+    }
+    
+}
+
+// MARK: - UITableViewDelegate
+extension SearchResultsViewController {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return indexPath.row == 0 ? DetailCellHeight : BaseCellHeight
     }
 }
 
@@ -94,20 +139,54 @@ extension SearchResultsViewController: UISearchControllerDelegate {
 extension SearchResultsViewController: UISearchBarDelegate {
     
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        filterResults(withQuery: queryText, atScopeIndex: selectedScope)
+    }
+    
+    
+    /**
+     过滤搜索结果
+     
+     - parameter query: 过滤的关键字
+     - parameter index: 当前选中的scopeButtonIndex
+     */
+    func filterResults(withQuery query: String, atScopeIndex index: Int) {
+        guard let subjects = searchResultsSet?.subjects where subjects.count > 0 else { return }
         
+        var subtype = ""
+        switch index {
+        case 1:
+            subtype = "movie"
+        case 2:
+            subtype = "tv"
+        default:
+            break
+        }
+        
+        let filteredResults = subjects.filter{
+            return $0.title.lowercaseString.containsString(query.lowercaseString) ||
+                $0.originalTitle.lowercaseString.containsString(query.lowercaseString)
+        }
+        if subtype.isEmpty {
+            self.filteredSearchResults = filteredResults
+        } else {
+            self.filteredSearchResults = filteredResults.filter({ (movie) -> Bool in
+                return movie.subType.lowercaseString.containsString(subtype)
+            })
+        }
+        tableView.reloadData()
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         // DoubanService.search....
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) {
-            self.datas.append("new")
-            self.datas.append("new2")
-            NSLog("reload")
-            self.tableView.reloadData()
+        guard let queryString = searchBar.text else { return }
+        _lastQueryText = queryString
+        DoubanService.sharedService.searchMovies(withQuery: queryString, at: 0, resultCount: 20) { [weak self](responseJSON, error) in
+            guard let strongSelf = self else { return }
+            let results = Mapper<DoubanResultsSet>().map(responseJSON)
+            strongSelf.searchResultsSet = results
+            strongSelf.updateSearchResultsForSearchController(strongSelf.searchController)
         }
     }
-    
-    
     
 }
 
@@ -115,6 +194,6 @@ extension SearchResultsViewController: UISearchBarDelegate {
 extension SearchResultsViewController: UISearchResultsUpdating {
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        NSLog("updateSearchResultsForSearchController")
+        filterResults(withQuery: queryText, atScopeIndex: selectedScopeIndex)
     }
 }

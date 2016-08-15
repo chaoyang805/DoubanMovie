@@ -25,3 +25,15 @@ class DoubanImage: Object, Mappable {
         largeImageURL <- map["large"]
     }
 }
+
+extension DoubanImage: NSCopying {
+    func copyWithZone(zone: NSZone) -> AnyObject {
+        let copy = DoubanImage()
+        
+        copy.smallImageURL = smallImageURL
+        copy.mediumImageURL = mediumImageURL
+        copy.largeImageURL = largeImageURL
+        
+        return copy
+    }
+}

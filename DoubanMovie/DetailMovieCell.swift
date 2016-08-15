@@ -17,10 +17,11 @@ class DetailMovieCell: BaseMovieCell {
     
     override func configureCell(withMovie movie: DoubanMovie) {
         super.configureCell(withMovie: movie)
-        ratingInfo.ratingScore = 2.3
-        directorsLabel.text = "朱浩伟"
-        castsLabel.text = "伍迪·哈里森/戴夫·弗兰科/杰西·艾森伯格"
-        yearLabel.text = "\(2016)"
+        
+        ratingInfo.ratingScore = movie.rating?.average
+        directorsLabel.text = movie.directorsDescription + " "
+        castsLabel.text = movie.castsDescription + " "
+        yearLabel.text = "\(movie.year)"
     }
     
 }

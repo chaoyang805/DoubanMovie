@@ -27,3 +27,15 @@ class MovieRating: Object, Mappable {
         min <- map["min"]
     }
 }
+
+extension MovieRating: NSCopying {
+    func copyWithZone(zone: NSZone) -> AnyObject {
+        let copy = MovieRating()
+        
+        copy.max = max
+        copy.average = average
+        copy.stars = stars
+        copy.min = min
+        return copy
+    }
+}

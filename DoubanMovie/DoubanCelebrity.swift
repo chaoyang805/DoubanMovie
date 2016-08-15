@@ -40,7 +40,7 @@ class DoubanCelebrity: Object, Mappable {
             if akaArray.isEmpty {
                 return
             }
-            self.aka = akaArray.reduce(""){ $0 + "/" + $1 }
+            self.aka = akaArray.reduce(""){ $0 + "/" + $1 }.stringByRemoveFirstCharacter()
         }
     }
     
@@ -49,12 +49,13 @@ class DoubanCelebrity: Object, Mappable {
             if akaEnArray.isEmpty {
                 return
             }
-            self.akaEn = akaEnArray.reduce(""){ $0 + "/" + $1 }
+            self.akaEn = akaEnArray.reduce(""){ $0 + "/" + $1 }.stringByRemoveFirstCharacter()
         }
     }
     
     var worksArray = [Work]() {
         didSet {
+            works.removeAll()
             works.appendContentsOf(worksArray)
         }
     }

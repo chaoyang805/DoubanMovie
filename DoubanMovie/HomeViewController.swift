@@ -50,7 +50,7 @@ class HomeViewController: UIViewController{
         
         animator = UIDynamicAnimator(referenceView: self.view)
         
-        DoubanService.sharedService.getInTheaterMovies(at: 5, resultCount:20) { (responseJSON, error) in
+        DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount:5) { (responseJSON, error) in
             
             self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
         }
@@ -169,7 +169,8 @@ extension HomeViewController {
     func showCurrentMovie() {
         guard movieCount > 0 && currentPage < movieCount else { return }
         let currentMovie = resultsSet.subjects[currentPage]
-        movieInfoDialog.configure(withMovie: currentMovie)
+//        movieInfoDialog.configure(withMovie: currentMovie)
+        movieInfoDialog.movie = currentMovie
         backgroundImageView.sd_setImageWithURL(NSURL(string: currentMovie.images!.mediumImageURL), placeholderImage: placeHolderImage)
         
     }
