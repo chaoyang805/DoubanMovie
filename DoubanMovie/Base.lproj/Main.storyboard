@@ -95,7 +95,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="631-CK-BoP" id="xd4-nx-Ehf"/>
                         <outlet property="movieInfoDialog" destination="C9D-Dw-bau" id="8y9-gM-hCp"/>
-                        <segue destination="Czh-aZ-EAq" kind="presentation" identifier="ShowDetailSegue" id="CYE-hN-m5s"/>
+                        <segue destination="Czh-aZ-EAq" kind="show" identifier="ShowDetailSegue" id="CYE-hN-m5s"/>
                         <segue destination="cee-Bv-Vz8" kind="show" identifier="AllMoviesSegue" id="iQ2-4w-inc"/>
                         <segue destination="ASB-uZ-FdE" kind="show" identifier="FavoritesSegue" id="gsI-Nt-cBo"/>
                         <segue destination="BYt-HX-hUy" kind="show" identifier="SearchSegue" id="Xa3-Se-dhy"/>
@@ -278,7 +278,7 @@
                                     <outlet property="ratingInfo" destination="GDx-sj-Mdt" id="l0q-xr-Hk7"/>
                                     <outlet property="titleLabel" destination="D0q-tx-zip" id="Elh-mo-vbt"/>
                                     <outlet property="yearLabel" destination="UCv-uN-dkc" id="czm-WO-mDp"/>
-                                    <segue destination="Czh-aZ-EAq" kind="presentation" identifier="NowTableToDetail" id="9Dw-II-F1X"/>
+                                    <segue destination="Czh-aZ-EAq" kind="show" identifier="NowTableToDetail" id="9Dw-II-F1X"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -762,10 +762,10 @@
             </objects>
             <point key="canvasLocation" x="-301.5" y="512.5"/>
         </scene>
-        <!--Movie Detail View Controller-->
+        <!--MovieDetailController-->
         <scene sceneID="cvr-Fe-Zo3">
             <objects>
-                <viewController storyboardIdentifier="DetailViewController" id="Czh-aZ-EAq" customClass="MovieDetailViewController" customModule="DoubanMovie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailViewController" id="Czh-aZ-EAq" userLabel="MovieDetailController" customClass="MovieDetailViewController" customModule="DoubanMovie" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yxQ-3i-0AL"/>
                         <viewControllerLayoutGuide type="bottom" id="Zjb-so-UGe"/>
@@ -1016,13 +1016,12 @@
                                     <constraint firstItem="XEJ-RJ-Gfx" firstAttribute="leading" secondItem="M2F-dT-KNI" secondAttribute="leading" id="hd7-Dm-OrX"/>
                                     <constraint firstItem="XEJ-RJ-Gfx" firstAttribute="centerX" secondItem="M2F-dT-KNI" secondAttribute="centerX" id="uFb-Tw-mxV"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="Czh-aZ-EAq" id="hKX-SS-0zx"/>
+                                </connections>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPF-vx-54g">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPF-vx-54g">
                                 <rect key="frame" x="20" y="35" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="E8D-6S-eS3"/>
-                                    <constraint firstAttribute="height" constant="40" id="Ua2-qS-Pvn"/>
-                                </constraints>
                                 <state key="normal" image="icon-back"/>
                                 <connections>
                                     <segue destination="O7b-iG-Rqn" kind="unwind" unwindAction="unwindSegue:" id="Xsh-Ni-OVM"/>
@@ -1039,8 +1038,17 @@
                             <constraint firstItem="M2F-dT-KNI" firstAttribute="leading" secondItem="ihn-1a-e71" secondAttribute="leading" id="wGa-bf-7R3"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Detail" id="eEF-1F-8jR">
+                        <barButtonItem key="rightBarButtonItem" image="icon-like-normal" id="YTu-Tb-BV6">
+                            <connections>
+                                <action selector="favoriteBarButtonPressed:" destination="Czh-aZ-EAq" id="xB2-hf-cfM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="artistsScrollView" destination="blw-vu-mXN" id="inu-v6-TDj"/>
+                        <outlet property="backButton" destination="qPF-vx-54g" id="tat-D8-8yt"/>
+                        <outlet property="likeBarButton" destination="YTu-Tb-BV6" id="RFa-7F-fSR"/>
                         <outlet property="movieCastsLabel" destination="BxE-Hw-CPJ" id="ila-oV-h7X"/>
                         <outlet property="movieCollectCountLabel" destination="rfS-7H-fbM" id="7A5-Mg-xXN"/>
                         <outlet property="movieDirectorLabel" destination="LM1-62-Qo4" id="ibK-JN-Oad"/>
@@ -1060,8 +1068,9 @@
     </scenes>
     <resources>
         <image name="icon-back" width="44" height="44"/>
+        <image name="icon-like-normal" width="24" height="22"/>
         <image name="icon-menu" width="22" height="16"/>
-        <image name="icon-menu-like" width="42" height="38"/>
+        <image name="icon-menu-like" width="21" height="19"/>
         <image name="icon-menu-list" width="40" height="32"/>
         <image name="icon-menu-recent" width="40" height="40"/>
         <image name="icon-menu-search" width="40" height="40"/>
@@ -1069,6 +1078,6 @@
         <image name="placeholder" width="184" height="254"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xDN-xi-gjv"/>
+        <segue reference="CYE-hN-m5s"/>
     </inferredMetricsTieBreakers>
 </document>

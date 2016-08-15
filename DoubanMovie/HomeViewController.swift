@@ -169,7 +169,8 @@ extension HomeViewController {
     func showCurrentMovie() {
         guard movieCount > 0 && currentPage < movieCount else { return }
         let currentMovie = resultsSet.subjects[currentPage]
-        movieInfoDialog.configure(withMovie: currentMovie)
+//        movieInfoDialog.configure(withMovie: currentMovie)
+        movieInfoDialog.movie = currentMovie
         backgroundImageView.sd_setImageWithURL(NSURL(string: currentMovie.images!.mediumImageURL), placeholderImage: placeHolderImage)
         
     }
