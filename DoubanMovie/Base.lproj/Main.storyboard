@@ -61,10 +61,16 @@
                                                 <outletCollection property="gestureRecognizers" destination="Oc8-9w-axw" appends="YES" id="b3p-VD-rWQ"/>
                                             </connections>
                                         </view>
+                                        <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="N9Y-l4-uYa">
+                                            <rect key="frame" x="152" y="580" width="71" height="37"/>
+                                            <color key="currentPageIndicatorTintColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </pageControl>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="C9D-Dw-bau" firstAttribute="width" secondItem="4Rh-00-uRq" secondAttribute="width" multiplier="280:375" id="73v-Yn-7h5"/>
                                         <constraint firstItem="C9D-Dw-bau" firstAttribute="centerX" secondItem="4Rh-00-uRq" secondAttribute="centerX" id="HtL-7d-4CF"/>
+                                        <constraint firstItem="N9Y-l4-uYa" firstAttribute="centerX" secondItem="4Rh-00-uRq" secondAttribute="centerX" id="SYA-Cx-Bua"/>
+                                        <constraint firstAttribute="bottom" secondItem="N9Y-l4-uYa" secondAttribute="bottom" constant="50" id="hck-qy-3Xh"/>
                                         <constraint firstItem="C9D-Dw-bau" firstAttribute="centerY" secondItem="4Rh-00-uRq" secondAttribute="centerY" constant="22" id="uOd-1K-KPP"/>
                                     </constraints>
                                 </view>
@@ -90,11 +96,17 @@
                                 <segue destination="dTP-Lu-CIG" kind="presentation" identifier="MenuSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="bQa-Av-BYu"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="1N9-tD-hrd">
+                            <connections>
+                                <action selector="refreshButtonDidTouch:" destination="RZY-mf-UVa" id="bVt-ER-fHO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="631-CK-BoP" id="xd4-nx-Ehf"/>
                         <outlet property="movieInfoDialog" destination="C9D-Dw-bau" id="8y9-gM-hCp"/>
+                        <outlet property="pageControl" destination="N9Y-l4-uYa" id="XTp-md-aAz"/>
                         <segue destination="Czh-aZ-EAq" kind="show" identifier="ShowDetailSegue" id="CYE-hN-m5s"/>
                         <segue destination="cee-Bv-Vz8" kind="show" identifier="AllMoviesSegue" id="iQ2-4w-inc"/>
                         <segue destination="ASB-uZ-FdE" kind="show" identifier="FavoritesSegue" id="gsI-Nt-cBo"/>
@@ -1078,6 +1090,6 @@
         <image name="placeholder" width="184" height="254"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tEo-rU-8uF"/>
+        <segue reference="CYE-hN-m5s"/>
     </inferredMetricsTieBreakers>
 </document>

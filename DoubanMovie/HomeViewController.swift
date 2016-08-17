@@ -15,6 +15,7 @@ class HomeViewController: UIViewController{
     
     @IBOutlet weak var movieInfoDialog: MovieInfoView!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     var animator: UIDynamicAnimator!
     var attachmentBehavior: UIAttachmentBehavior!
@@ -36,6 +37,7 @@ class HomeViewController: UIViewController{
     
     var resultsSet: DoubanResultsSet! {
         didSet {
+            self.pageControl.numberOfPages = movieCount
             showCurrentMovie()
         }
     }
@@ -44,21 +46,19 @@ class HomeViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         movieInfoDialog.ratingInfoView.ratingScore = 5
         movieInfoDialog.addTarget(self, action: #selector(HomeViewController.movieInfoDialogDidTouch(_:)), for: .TouchUpInside)
         
         animator = UIDynamicAnimator(referenceView: self.view)
-        
-        DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount:5) { (responseJSON, error) in
+        NSLog("loading...")
+        DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount:5) { [weak self](responseJSON, error) in
+            NSLog("load completed")
+            guard let `self` = self else { return }
             
             self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
     }
     
     func movieInfoDialogDidTouch(sender: AnyObject) {
@@ -69,7 +69,7 @@ class HomeViewController: UIViewController{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "ShowDetailSegue" {
-            guard let toVC = segue.destinationViewController as? MovieDetailViewController else {return}
+            guard let toVC = segue.destinationViewController as? MovieDetailViewController else { return }
             toVC.detailMovie = resultsSet.subjects[currentPage]
         }
         
@@ -84,8 +84,20 @@ class HomeViewController: UIViewController{
     }
 }
 
+extension HomeViewController {
+    
+    @IBAction func refreshButtonDidTouch(sender: UIBarButtonItem) {
+        NSLog("reloading...")
+        DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount: 5, forceReload: true) { [weak self](responseJSON, error) in
+            NSLog("reload completed")
+            guard let `self` = self else { return }
+            self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+        }
+    }
+}
 
-// MARK: - HomeView Gestures
+
+// MARK: - Pages
 extension HomeViewController {
     
     @IBAction func handleGestures(sender: UIPanGestureRecognizer) {
@@ -165,14 +177,14 @@ extension HomeViewController {
             }, completion: nil)
     }
     
-    
     func showCurrentMovie() {
         guard movieCount > 0 && currentPage < movieCount else { return }
+        
+        pageControl.currentPage = currentPage
+        
         let currentMovie = resultsSet.subjects[currentPage]
-//        movieInfoDialog.configure(withMovie: currentMovie)
         movieInfoDialog.movie = currentMovie
         backgroundImageView.sd_setImageWithURL(NSURL(string: currentMovie.images!.mediumImageURL), placeholderImage: placeHolderImage)
-        
     }
     
 }
