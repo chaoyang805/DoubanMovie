@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="60" height="90"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="戴夫·格林" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6S-Dq-KYS">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6S-Dq-KYS">
                     <rect key="frame" x="0.0" y="68" width="60" height="11.5"/>
                     <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="8"/>
                     <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
@@ -28,7 +28,6 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="5cY-xz-i5I" secondAttribute="height" multiplier="1:1" id="PAs-S4-XNr"/>
                     </constraints>
-                    <state key="normal" backgroundImage="director"/>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -45,7 +44,4 @@
             <point key="canvasLocation" x="-71" y="-124"/>
         </view>
     </objects>
-    <resources>
-        <image name="director" width="140" height="200"/>
-    </resources>
 </document>

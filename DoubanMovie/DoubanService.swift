@@ -146,9 +146,11 @@ class DoubanService: DoubanAPI {
                         
                     },
                     success: { (task: NSURLSessionDataTask, object:AnyObject?) in
+                        NSLog("request success")
                         completionHandler?(responseJSON: object as? NSDictionary, error: nil)
                     },
                     failure: { (task: NSURLSessionDataTask?, error: NSError) in
+                        NSLog("request failed")
                         completionHandler?(responseJSON: nil, error: error)
                     })
     }

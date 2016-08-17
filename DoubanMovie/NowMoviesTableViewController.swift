@@ -26,23 +26,43 @@ class NowMoviesTableViewController: UITableViewController {
         return resultsSet == nil ? 0 : resultsSet!.subjects.count
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshControl?.addTarget(self, action: #selector(NowMoviesTableViewController.fetchData), forControlEvents: .ValueChanged)
-        fetchData()
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        forceReloadData(false)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+//        let pullToRefresh = NSAttributedString(string: "下拉刷新", attributes: [NSFontAttributeName:UIFont(name: "Helvetica-Light", size: 14)!])
+//        self.refreshControl?.attributedTitle = pullToRefresh
+    }
+
+    func forceReloadData(forceReload: Bool) {
+        doubanService.getInTheaterMovies(at: fetchOffset, resultCount: fetchResultCount, forceReload: forceReload) { [weak self](responseJSON, error) in
+            
+            guard let `self` = self else { return }
+            self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+            self.tableView.reloadData()
+            if self.refreshControl!.refreshing {
+                self.refreshControl?.endRefreshing()
+                let pullToRefresh = NSAttributedString(string: "下拉刷新", attributes: [NSFontAttributeName:UIFont(name: "Helvetica-Light", size: 14)!])
+                self.refreshControl?.attributedTitle = pullToRefresh
+
+            }
+        }
     }
     
     func fetchData() {
-        doubanService.getInTheaterMovies(at: fetchOffset, resultCount: fetchResultCount) { [weak self](responseJSON, error) in
-            self?.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
-            self?.tableView.reloadData()
-            
-            self?.refreshControl?.endRefreshing()
-        }
+        let refreshing = NSAttributedString(string: "正在刷新", attributes: [NSFontAttributeName:UIFont(name: "Helvetica-Light", size: 14)!])
+        self.refreshControl?.attributedTitle = refreshing
+        forceReloadData(true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

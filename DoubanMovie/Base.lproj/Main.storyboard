@@ -107,6 +107,7 @@
                         <outlet property="backgroundImageView" destination="631-CK-BoP" id="xd4-nx-Ehf"/>
                         <outlet property="movieInfoDialog" destination="C9D-Dw-bau" id="8y9-gM-hCp"/>
                         <outlet property="pageControl" destination="N9Y-l4-uYa" id="XTp-md-aAz"/>
+                        <outlet property="refreshBarButtonItem" destination="1N9-tD-hrd" id="tKj-vf-Cf3"/>
                         <segue destination="Czh-aZ-EAq" kind="show" identifier="ShowDetailSegue" id="CYE-hN-m5s"/>
                         <segue destination="cee-Bv-Vz8" kind="show" identifier="AllMoviesSegue" id="iQ2-4w-inc"/>
                         <segue destination="ASB-uZ-FdE" kind="show" identifier="FavoritesSegue" id="gsI-Nt-cBo"/>
@@ -306,6 +307,7 @@
                         <attributedString key="attributedTitle">
                             <fragment content="下拉刷新">
                                 <attributes>
+                                    <color key="NSBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <font key="NSFont" size="14" name="PingFangSC-Light"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -1090,6 +1092,6 @@
         <image name="placeholder" width="184" height="254"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CYE-hN-m5s"/>
+        <segue reference="9Dw-II-F1X"/>
     </inferredMetricsTieBreakers>
 </document>

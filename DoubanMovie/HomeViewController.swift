@@ -16,6 +16,7 @@ class HomeViewController: UIViewController{
     @IBOutlet weak var movieInfoDialog: MovieInfoView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var refreshBarButtonItem: UIBarButtonItem!
     
     var animator: UIDynamicAnimator!
     var attachmentBehavior: UIAttachmentBehavior!
@@ -84,16 +85,30 @@ class HomeViewController: UIViewController{
     }
 }
 
+// MARK: - refresh home view controller
 extension HomeViewController {
     
     @IBAction func refreshButtonDidTouch(sender: UIBarButtonItem) {
-        NSLog("reloading...")
         DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount: 5, forceReload: true) { [weak self](responseJSON, error) in
-            NSLog("reload completed")
             guard let `self` = self else { return }
             self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+            sender.enabled = true
+        }
+        sender.enabled = false
+    }
+    
+    func performFetch(completion: () -> Void) {
+        dispatch_async(dispatch_queue_create("network", DISPATCH_QUEUE_SERIAL)) {
+            NSLog("perform loading start...")
+            NSThread.sleepForTimeInterval(5)
+            NSLog("perform loading completed")
+            dispatch_sync(dispatch_get_main_queue(), { 
+                completion()
+            })
         }
     }
+    
+    
 }
 
 

@@ -12,7 +12,7 @@ import ObjectMapper
 class SearchResultsViewController: UITableViewController {
     
     /// SearchResultController 控件
-    lazy var searchController: UISearchController = {
+    private lazy var searchController: UISearchController = {
         let _searchController = UISearchController(searchResultsController: nil)
         _searchController.searchResultsUpdater = self
         _searchController.delegate = self
@@ -28,7 +28,7 @@ class SearchResultsViewController: UITableViewController {
         return _searchController
     }()
     
-    let searchScopeButtonTitles = ["全部", "电影", "电视剧", "其他"]
+    private let searchScopeButtonTitles = ["全部", "电影", "电视剧", "其他"]
     
     /// 选中的过滤条件的index
     private var selectedScopeIndex: Int {
@@ -181,10 +181,10 @@ extension SearchResultsViewController: UISearchBarDelegate {
         guard let queryString = searchBar.text else { return }
         _lastQueryText = queryString
         DoubanService.sharedService.searchMovies(withQuery: queryString, at: 0, resultCount: 20) { [weak self](responseJSON, error) in
-            guard let strongSelf = self else { return }
+            guard let `self` = self else { return }
             let results = Mapper<DoubanResultsSet>().map(responseJSON)
-            strongSelf.searchResultsSet = results
-            strongSelf.updateSearchResultsForSearchController(strongSelf.searchController)
+            self.searchResultsSet = results
+            self.updateSearchResultsForSearchController(self.searchController)
         }
     }
     

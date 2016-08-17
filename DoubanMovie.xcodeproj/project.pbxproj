@@ -42,6 +42,7 @@
 		21BC28331D367E9E00E5E98C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BC28311D367E9E00E5E98C /* LaunchScreen.storyboard */; };
 		21BC283E1D367E9E00E5E98C /* DoubanMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC283D1D367E9E00E5E98C /* DoubanMovieTests.swift */; };
 		21BC28491D367E9E00E5E98C /* DoubanMovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC28481D367E9E00E5E98C /* DoubanMovieUITests.swift */; };
+		21BCE0521D643CFC006BB153 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BCE0511D643CFC006BB153 /* Global.swift */; };
 		21BE1DF41D4F3149006D405B /* MovieInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21DC25961D438783009FEA0C /* MovieInfoView.xib */; };
 		21BE1DF51D4F3151006D405B /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2134E50D1D45AEFC00DACE81 /* AvatarView.xib */; };
 		21C247F71D542F9500F919D6 /* DoubanImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C247F61D542F9500F919D6 /* DoubanImage.swift */; };
@@ -107,6 +108,7 @@
 		21BC28441D367E9E00E5E98C /* DoubanMovieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoubanMovieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BC28481D367E9E00E5E98C /* DoubanMovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubanMovieUITests.swift; sourceTree = "<group>"; };
 		21BC284A1D367E9E00E5E98C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21BCE0511D643CFC006BB153 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		21C247F61D542F9500F919D6 /* DoubanImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanImage.swift; sourceTree = "<group>"; };
 		21C247F81D5431E600F919D6 /* MovieRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieRating.swift; sourceTree = "<group>"; };
 		21DC25941D438777009FEA0C /* MovieInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfoView.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				2122EFAF1D61A4C500DA7567 /* String+RemoveFirstChar.swift */,
+				21BCE0511D643CFC006BB153 /* Global.swift */,
 			);
 			name = Utilies;
 			sourceTree = "<group>";
@@ -261,9 +264,9 @@
 			children = (
 				21BC282C1D367E9E00E5E98C /* Main.storyboard */,
 				21BC28311D367E9E00E5E98C /* LaunchScreen.storyboard */,
+				2149FA731D3D2A1500F0D0C6 /* UI */,
 				21A6E0F91D3FC28A000D48D4 /* Utilies */,
 				2149FA591D3D28ED00F0D0C6 /* Controllers */,
-				2149FA731D3D2A1500F0D0C6 /* UI */,
 				2149FA5B1D3D293E00F0D0C6 /* Model */,
 				21BC28281D367E9E00E5E98C /* AppDelegate.swift */,
 				21BC282A1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift */,
@@ -527,6 +530,7 @@
 				2118D3B21D4F34F700644D84 /* MovieInfoView.swift in Sources */,
 				214C5D521D5466D40057B1B8 /* DoubanResultsSet.swift in Sources */,
 				2118D3B31D4F34F700644D84 /* BaseMovieCell.swift in Sources */,
+				21BCE0521D643CFC006BB153 /* Global.swift in Sources */,
 				2118D3B41D4F34F700644D84 /* DetailMovieCell.swift in Sources */,
 				2118D3B51D4F34F700644D84 /* FavoriteMovieCell.swift in Sources */,
 				2118D3B61D4F34F700644D84 /* MovieCardView.swift in Sources */,
