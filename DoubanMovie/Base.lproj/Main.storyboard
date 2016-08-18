@@ -169,6 +169,17 @@
                                                 <constraint firstAttribute="width" constant="108" id="xAj-1h-ADg"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无评分" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRq-IJ-lcP">
+                                            <rect key="frame" x="116" y="46" width="108" height="16"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="PWX-sq-3cH"/>
+                                                <constraint firstAttribute="width" constant="108" id="tze-Wv-TYE"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="戴夫·格林" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1o-o3-aXN">
                                             <rect key="frame" x="142" y="64" width="210" height="14"/>
                                             <constraints>
@@ -249,6 +260,7 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="XRq-IJ-lcP" firstAttribute="leading" secondItem="GDx-sj-Mdt" secondAttribute="leading" id="2Rg-j7-PeR"/>
                                         <constraint firstItem="V1o-o3-aXN" firstAttribute="leading" secondItem="lck-fa-1Td" secondAttribute="trailing" id="2mU-PJ-IxI"/>
                                         <constraint firstItem="Wk7-Jg-1dQ" firstAttribute="top" secondItem="T9s-sq-Ja2" secondAttribute="top" id="2si-ZI-OOX"/>
                                         <constraint firstItem="Jbw-Oe-MSs" firstAttribute="top" secondItem="Wk7-Jg-1dQ" secondAttribute="bottom" constant="2" id="3dx-ML-UAI"/>
@@ -274,6 +286,7 @@
                                         <constraint firstAttribute="trailing" secondItem="D0q-tx-zip" secondAttribute="trailing" constant="8" id="clU-Nb-hI6"/>
                                         <constraint firstItem="UCv-uN-dkc" firstAttribute="top" secondItem="IdE-oS-xQR" secondAttribute="top" id="dQW-pL-EAO"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="V1o-o3-aXN" secondAttribute="trailing" constant="15" id="f55-vG-KX3"/>
+                                        <constraint firstItem="XRq-IJ-lcP" firstAttribute="top" secondItem="GDx-sj-Mdt" secondAttribute="top" id="fUz-CP-pkF"/>
                                         <constraint firstItem="T9s-sq-Ja2" firstAttribute="top" secondItem="lck-fa-1Td" secondAttribute="bottom" constant="2" id="hOc-74-jWF"/>
                                         <constraint firstItem="GDx-sj-Mdt" firstAttribute="top" secondItem="D0q-tx-zip" secondAttribute="bottom" constant="8" id="ibi-Ex-hGi"/>
                                         <constraint firstItem="gL2-id-K7z" firstAttribute="top" secondItem="IdE-oS-xQR" secondAttribute="bottom" constant="2" id="kBb-dK-Lng"/>
@@ -286,6 +299,7 @@
                                     <outlet property="castsLabel" destination="Wk7-Jg-1dQ" id="1I8-D3-HB0"/>
                                     <outlet property="collectCountLabel" destination="gL2-id-K7z" id="VML-p7-qMI"/>
                                     <outlet property="directorsLabel" destination="V1o-o3-aXN" id="VCM-yD-Vz0"/>
+                                    <outlet property="emptyRatingPlaceholderLabel" destination="XRq-IJ-lcP" id="NLD-no-Fdr"/>
                                     <outlet property="movieGenresLabel" destination="DJM-6z-QMO" id="0nf-6F-SFr"/>
                                     <outlet property="posterImageView" destination="6S6-dF-mT3" id="rTq-sM-2E4"/>
                                     <outlet property="ratingInfo" destination="GDx-sj-Mdt" id="l0q-xr-Hk7"/>

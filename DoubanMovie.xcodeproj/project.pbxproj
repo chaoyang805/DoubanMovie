@@ -43,6 +43,7 @@
 		21BC283E1D367E9E00E5E98C /* DoubanMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC283D1D367E9E00E5E98C /* DoubanMovieTests.swift */; };
 		21BC28491D367E9E00E5E98C /* DoubanMovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC28481D367E9E00E5E98C /* DoubanMovieUITests.swift */; };
 		21BCE0521D643CFC006BB153 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BCE0511D643CFC006BB153 /* Global.swift */; };
+		21BCE0541D6451E9006BB153 /* LoadMoreFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BCE0531D6451E9006BB153 /* LoadMoreFooter.swift */; };
 		21BE1DF41D4F3149006D405B /* MovieInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21DC25961D438783009FEA0C /* MovieInfoView.xib */; };
 		21BE1DF51D4F3151006D405B /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2134E50D1D45AEFC00DACE81 /* AvatarView.xib */; };
 		21C247F71D542F9500F919D6 /* DoubanImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C247F61D542F9500F919D6 /* DoubanImage.swift */; };
@@ -109,6 +110,7 @@
 		21BC28481D367E9E00E5E98C /* DoubanMovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubanMovieUITests.swift; sourceTree = "<group>"; };
 		21BC284A1D367E9E00E5E98C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21BCE0511D643CFC006BB153 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		21BCE0531D6451E9006BB153 /* LoadMoreFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreFooter.swift; sourceTree = "<group>"; };
 		21C247F61D542F9500F919D6 /* DoubanImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanImage.swift; sourceTree = "<group>"; };
 		21C247F81D5431E600F919D6 /* MovieRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieRating.swift; sourceTree = "<group>"; };
 		21DC25941D438777009FEA0C /* MovieInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfoView.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				21DC25991D4389EF009FEA0C /* RatingStar.swift */,
 				210EED3F1D4892A1000F3D0D /* StarLayer.swift */,
 				210EED411D48A1DE000F3D0D /* RatingBar.swift */,
+				21BCE0531D6451E9006BB153 /* LoadMoreFooter.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				2118D3BA1D4F34F700644D84 /* RatingBar.swift in Sources */,
 				2118D3BB1D4F34F700644D84 /* DoubanService.swift in Sources */,
 				2118D3BC1D4F34F700644D84 /* DoubanCelebrity.swift in Sources */,
+				21BCE0541D6451E9006BB153 /* LoadMoreFooter.swift in Sources */,
 				2118D3BD1D4F34F700644D84 /* DoubanMovie.swift in Sources */,
 				2118D3BE1D4F34F700644D84 /* Work.swift in Sources */,
 				21C247F91D5431E600F919D6 /* MovieRating.swift in Sources */,
