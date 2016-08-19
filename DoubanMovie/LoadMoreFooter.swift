@@ -23,21 +23,17 @@ class LoadMoreFooter: UIView {
             _state = newValue
             switch _state {
             case .prepare:
-                NSLog("prepare")
                 self.title = "释放加载更多"
                 self.indicator.startAnimating()
             case .began:
-                NSLog("began")
                 self.title = "正在加载"
             case .cancelled:
-                NSLog("cancelled")
                 self.title = "加载更多"
                 self.indicator.stopAnimating()
             case .nomoredata:
                 self.title = "已全部加载"
                 self.indicator.stopAnimating()
             case .ended:
-                NSLog("ended")
                 self.title = "加载更多"
                 self.indicator.stopAnimating()
             }

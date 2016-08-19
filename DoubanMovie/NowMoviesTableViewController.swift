@@ -27,6 +27,9 @@ class NowMoviesTableViewController: UITableViewController {
         return totalMovieCount - movieCount > 20 ? 20 : totalMovieCount - movieCount
     }
     
+    /// 重新刷新时请求的条目数量
+    private let refetchResultCount = 20
+    
     private var totalMovieCount: Int {
         return resultsSet?.total ?? 0
     }
@@ -34,46 +37,48 @@ class NowMoviesTableViewController: UITableViewController {
         return UIScreen.mainScreen().bounds.height
     }
     
-    lazy var doubanService: DoubanService = {
+    private lazy var doubanService: DoubanService = {
         
         return DoubanService.sharedService
         
     }()
     
-    var movieCount: Int {
+    private lazy var refreshingTitle = {
+        return NSAttributedString(string: "正在刷新", attributes: [NSFontAttributeName:UIFont(name: "Helvetica-Light", size: 14)!])
+    }()
+    
+    private lazy var pullToRefreshTitle = {
+        return NSAttributedString(string: "下拉刷新", attributes: [NSFontAttributeName:UIFont(name: "Helvetica-Light", size: 14)!])
+    }()
+    
+    private var movieCount: Int {
         return resultsSet?.subjects.count ?? 0
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshControl?.addTarget(self, action: #selector(NowMoviesTableViewController.fetchData), forControlEvents: .ValueChanged)
-        forceReloadData(false)
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+        self.refreshControl?.addTarget(self, action: #selector(NowMoviesTableViewController.onPullToRefresh), forControlEvents: .ValueChanged)
+        reloadData(false)
     }
 
-    func forceReloadData(forceReload: Bool) {
-        doubanService.getInTheaterMovies(at: initialFetchOffset, resultCount: fetchResultCount, forceReload: forceReload) { [weak self](responseJSON, error) in
+    private func reloadData(force: Bool) {
+        doubanService.getInTheaterMovies(at: initialFetchOffset, resultCount: refetchResultCount, forceReload: force) { [weak self](responseJSON, error) in
             
             guard let `self` = self else { return }
             self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+            self.navigationItem.title = self.resultsSet?.title ?? "全部热映"
             self.tableView.reloadData()
             
             if self.refreshControl!.refreshing {
                 self.refreshControl?.endRefreshing()
-                let pullToRefresh = NSAttributedString(string: "下拉刷新", attributes: [NSFontAttributeName:UIFont(name: "Helvetica-Light", size: 14)!])
-                self.refreshControl?.attributedTitle = pullToRefresh
-
+                self.refreshControl?.attributedTitle = self.pullToRefreshTitle
             }
         }
     }
     
-    func fetchData() {
-        let refreshing = NSAttributedString(string: "正在刷新", attributes: [NSFontAttributeName:UIFont(name: "Helvetica-Light", size: 14)!])
-        self.refreshControl?.attributedTitle = refreshing
-        forceReloadData(true)
+    @objc private func onPullToRefresh() {
+        self.refreshControl?.attributedTitle = refreshingTitle
+        reloadData(true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -113,7 +118,7 @@ class NowMoviesTableViewController: UITableViewController {
     let maxFooterHeight: CGFloat = 85
     
 }
-
+// MARK: - Pull up to load more
 extension NowMoviesTableViewController {
     
     override func scrollViewDidScroll(scrollView: UIScrollView){
@@ -137,8 +142,8 @@ extension NowMoviesTableViewController {
         }
         
     }
+    
     override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        NSLog("end dragging")
         if scrollView.contentSize.height < screenHeight - maxFooterHeight || loadMoreFooter.isLoadingMore {
             return
         }
@@ -173,7 +178,7 @@ extension NowMoviesTableViewController {
         
     }
     
-    func loadMore(completion: (count: Int) -> Void) -> Void {
+    private func loadMore(completion: (count: Int) -> Void) -> Void {
         doubanService.getInTheaterMovies(at: fetchOffset, resultCount: fetchResultCount, forceReload: true) { [weak self](responseJSON, error) in
             guard let `self` = self else { return }
             
@@ -187,13 +192,5 @@ extension NowMoviesTableViewController {
             }
         }
 
-//        dispatch_async(dispatch_queue_create("network", DISPATCH_QUEUE_SERIAL)) {
-//            NSLog("perform loading start...")
-//            NSThread.sleepForTimeInterval(2)
-//            NSLog("perform loading completed")
-//            dispatch_sync(dispatch_get_main_queue(), {
-//                completion()
-//            })
-//        }
     }
 }

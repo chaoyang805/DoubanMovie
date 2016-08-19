@@ -15,7 +15,7 @@ class HomeViewController: UIViewController{
     
     @IBOutlet weak var movieInfoDialog: MovieInfoView!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var pageControl: LoadingPageControl!
     @IBOutlet weak var refreshBarButtonItem: UIBarButtonItem!
     
     var animator: UIDynamicAnimator!
@@ -52,9 +52,8 @@ class HomeViewController: UIViewController{
         movieInfoDialog.addTarget(self, action: #selector(HomeViewController.movieInfoDialogDidTouch(_:)), for: .TouchUpInside)
         
         animator = UIDynamicAnimator(referenceView: self.view)
-        NSLog("loading...")
+
         DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount:5) { [weak self](responseJSON, error) in
-            NSLog("load completed")
             guard let `self` = self else { return }
             
             self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
@@ -89,12 +88,18 @@ class HomeViewController: UIViewController{
 extension HomeViewController {
     
     @IBAction func refreshButtonDidTouch(sender: UIBarButtonItem) {
-        DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount: 5, forceReload: true) { [weak self](responseJSON, error) in
+        DoubanService.sharedService.getInTheaterMovies(at: 0,
+                                                       resultCount: 5,
+                                                       forceReload: true)
+        { [weak self](responseJSON, error) in
             guard let `self` = self else { return }
+            
             self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+            self.pageControl.endLoading()
             sender.enabled = true
         }
         sender.enabled = false
+        pageControl.beginLoading()
     }
     
     func performFetch(completion: () -> Void) {

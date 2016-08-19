@@ -61,7 +61,7 @@
                                                 <outletCollection property="gestureRecognizers" destination="Oc8-9w-axw" appends="YES" id="b3p-VD-rWQ"/>
                                             </connections>
                                         </view>
-                                        <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="N9Y-l4-uYa">
+                                        <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="N9Y-l4-uYa" customClass="LoadingPageControl" customModule="DoubanMovie" customModuleProvider="target">
                                             <rect key="frame" x="152" y="580" width="71" height="37"/>
                                             <color key="currentPageIndicatorTintColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </pageControl>
@@ -1106,6 +1106,6 @@
         <image name="placeholder" width="184" height="254"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9Dw-II-F1X"/>
+        <segue reference="CYE-hN-m5s"/>
     </inferredMetricsTieBreakers>
 </document>
