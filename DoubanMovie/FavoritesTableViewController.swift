@@ -21,6 +21,9 @@ class FavoritesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FavoritesTableViewController.onReceiveItemDeleteNotification(_:)), name: DBMMovieDidDeleteNotificationName, object: nil)
+        
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.navigationItem.rightBarButtonItem?.title = "编辑"
         loadFavoriteMovies()
@@ -46,6 +49,19 @@ class FavoritesTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Notification 
+    
+    @objc private func onReceiveItemDeleteNotification(notification: NSNotification) {
+        guard let deleted = notification.userInfo?[DBMMovieDeleteNotificationKey] as? Bool else { return }
+        if deleted {
+            tableView.reloadData()
+        }
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
 }
 // MARK: - UITableView Datasource
 extension FavoritesTableViewController {
@@ -65,6 +81,7 @@ extension FavoritesTableViewController {
         guard let movie = favoriteMovies?[indexPath.row], cell = cell as? FavoriteMovieCell else { return }
         cell.configureCell(with: movie)
     }
+
 }
 
 // MARK: - Edit Cell
@@ -94,4 +111,3 @@ extension FavoritesTableViewController {
         }
     }
 }
-

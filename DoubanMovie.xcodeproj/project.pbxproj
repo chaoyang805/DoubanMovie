@@ -35,6 +35,7 @@
 		2122EFB01D61A4C500DA7567 /* String+RemoveFirstChar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122EFAF1D61A4C500DA7567 /* String+RemoveFirstChar.swift */; };
 		214C5D521D5466D40057B1B8 /* DoubanResultsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D511D5466D40057B1B8 /* DoubanResultsSet.swift */; };
 		214C5D541D5473AB0057B1B8 /* DoubanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D531D5473AB0057B1B8 /* DoubanAPI.swift */; };
+		2162F3DD1D66E98F00DC12B3 /* LoadingPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */; };
 		219E11D81D581D6500F2A66B /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219E11D71D581D6500F2A66B /* RealmHelper.swift */; };
 		21BC28291D367E9E00E5E98C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC28281D367E9E00E5E98C /* AppDelegate.swift */; };
 		21BC282E1D367E9E00E5E98C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BC282C1D367E9E00E5E98C /* Main.storyboard */; };
@@ -42,6 +43,8 @@
 		21BC28331D367E9E00E5E98C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BC28311D367E9E00E5E98C /* LaunchScreen.storyboard */; };
 		21BC283E1D367E9E00E5E98C /* DoubanMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC283D1D367E9E00E5E98C /* DoubanMovieTests.swift */; };
 		21BC28491D367E9E00E5E98C /* DoubanMovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC28481D367E9E00E5E98C /* DoubanMovieUITests.swift */; };
+		21BCE0521D643CFC006BB153 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BCE0511D643CFC006BB153 /* Global.swift */; };
+		21BCE0541D6451E9006BB153 /* LoadMoreFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BCE0531D6451E9006BB153 /* LoadMoreFooter.swift */; };
 		21BE1DF41D4F3149006D405B /* MovieInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21DC25961D438783009FEA0C /* MovieInfoView.xib */; };
 		21BE1DF51D4F3151006D405B /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2134E50D1D45AEFC00DACE81 /* AvatarView.xib */; };
 		21C247F71D542F9500F919D6 /* DoubanImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C247F61D542F9500F919D6 /* DoubanImage.swift */; };
@@ -90,6 +93,7 @@
 		2149FA741D3D2A2900F0D0C6 /* BaseMovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMovieCell.swift; sourceTree = "<group>"; };
 		214C5D511D5466D40057B1B8 /* DoubanResultsSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanResultsSet.swift; sourceTree = "<group>"; };
 		214C5D531D5473AB0057B1B8 /* DoubanAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanAPI.swift; sourceTree = "<group>"; };
+		2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingPageControl.swift; sourceTree = "<group>"; };
 		216C5DA81D4726E9008A4A75 /* MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+MenuViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		219E11D71D581D6500F2A66B /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 		21BC28441D367E9E00E5E98C /* DoubanMovieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoubanMovieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BC28481D367E9E00E5E98C /* DoubanMovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubanMovieUITests.swift; sourceTree = "<group>"; };
 		21BC284A1D367E9E00E5E98C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21BCE0511D643CFC006BB153 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		21BCE0531D6451E9006BB153 /* LoadMoreFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreFooter.swift; sourceTree = "<group>"; };
 		21C247F61D542F9500F919D6 /* DoubanImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanImage.swift; sourceTree = "<group>"; };
 		21C247F81D5431E600F919D6 /* MovieRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieRating.swift; sourceTree = "<group>"; };
 		21DC25941D438777009FEA0C /* MovieInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfoView.swift; sourceTree = "<group>"; };
@@ -213,6 +219,8 @@
 				21DC25991D4389EF009FEA0C /* RatingStar.swift */,
 				210EED3F1D4892A1000F3D0D /* StarLayer.swift */,
 				210EED411D48A1DE000F3D0D /* RatingBar.swift */,
+				21BCE0531D6451E9006BB153 /* LoadMoreFooter.swift */,
+				2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -221,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				2122EFAF1D61A4C500DA7567 /* String+RemoveFirstChar.swift */,
+				21BCE0511D643CFC006BB153 /* Global.swift */,
 			);
 			name = Utilies;
 			sourceTree = "<group>";
@@ -261,9 +270,9 @@
 			children = (
 				21BC282C1D367E9E00E5E98C /* Main.storyboard */,
 				21BC28311D367E9E00E5E98C /* LaunchScreen.storyboard */,
+				2149FA731D3D2A1500F0D0C6 /* UI */,
 				21A6E0F91D3FC28A000D48D4 /* Utilies */,
 				2149FA591D3D28ED00F0D0C6 /* Controllers */,
-				2149FA731D3D2A1500F0D0C6 /* UI */,
 				2149FA5B1D3D293E00F0D0C6 /* Model */,
 				21BC28281D367E9E00E5E98C /* AppDelegate.swift */,
 				21BC282A1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift */,
@@ -517,6 +526,7 @@
 				2118D3AA1D4F34F700644D84 /* MenuViewControllerDelegate.swift in Sources */,
 				2118D3AB1D4F34F700644D84 /* MovieDetailViewController.swift in Sources */,
 				2118D3AC1D4F34F700644D84 /* NowMoviesTableViewController.swift in Sources */,
+				2162F3DD1D66E98F00DC12B3 /* LoadingPageControl.swift in Sources */,
 				2118D3AD1D4F34F700644D84 /* ArtistDetailViewController.swift in Sources */,
 				2122EFB01D61A4C500DA7567 /* String+RemoveFirstChar.swift in Sources */,
 				214C5D541D5473AB0057B1B8 /* DoubanAPI.swift in Sources */,
@@ -527,6 +537,7 @@
 				2118D3B21D4F34F700644D84 /* MovieInfoView.swift in Sources */,
 				214C5D521D5466D40057B1B8 /* DoubanResultsSet.swift in Sources */,
 				2118D3B31D4F34F700644D84 /* BaseMovieCell.swift in Sources */,
+				21BCE0521D643CFC006BB153 /* Global.swift in Sources */,
 				2118D3B41D4F34F700644D84 /* DetailMovieCell.swift in Sources */,
 				2118D3B51D4F34F700644D84 /* FavoriteMovieCell.swift in Sources */,
 				2118D3B61D4F34F700644D84 /* MovieCardView.swift in Sources */,
@@ -536,6 +547,7 @@
 				2118D3BA1D4F34F700644D84 /* RatingBar.swift in Sources */,
 				2118D3BB1D4F34F700644D84 /* DoubanService.swift in Sources */,
 				2118D3BC1D4F34F700644D84 /* DoubanCelebrity.swift in Sources */,
+				21BCE0541D6451E9006BB153 /* LoadMoreFooter.swift in Sources */,
 				2118D3BD1D4F34F700644D84 /* DoubanMovie.swift in Sources */,
 				2118D3BE1D4F34F700644D84 /* Work.swift in Sources */,
 				21C247F91D5431E600F919D6 /* MovieRating.swift in Sources */,

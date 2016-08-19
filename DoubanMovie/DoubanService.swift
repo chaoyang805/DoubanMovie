@@ -23,6 +23,7 @@ class DoubanService: DoubanAPI {
         config.requestCachePolicy = .ReturnCacheDataElseLoad
         
         let _manager = AFHTTPSessionManager(sessionConfiguration: config)
+        
         _manager.responseSerializer = AFJSONResponseSerializer(readingOptions: .AllowFragments)
         return _manager
     }()
@@ -34,18 +35,20 @@ class DoubanService: DoubanAPI {
      - parameter city:              请求数据所在的城市
      - parameter start:             返回数据的起始位置
      - parameter count:             请求结果数
+     - parameter forceReload        是否忽略缓存强制刷新，默认为false
      - parameter completionHandler: 请求完成的回调
      */
-    func getInTheaterMovies(inCity city: String = "北京", at start: Int, resultCount count: Int, completionHandler: ResponseHandler?) {
+    func getInTheaterMovies(inCity city: String = "北京", at start: Int, resultCount count: Int, forceReload: Bool = false, completionHandler: ResponseHandler?) {
         let url = RequestType.inTheater.description
         
         let parameters = ["start": start, "city": city, "count":count]
 
-        makeGETRequest(
+        let task = makeGETRequest(
             withURL: url,
             parameters: parameters,
-            completionHandler: completionHandler)?
-            .resume()
+            forceReload: forceReload,
+            completionHandler: completionHandler)
+        task?.resume()
     }
     
     /**
@@ -54,14 +57,16 @@ class DoubanService: DoubanAPI {
      - parameter query:             关键字
      - parameter start:             开始位置
      - parameter count:             请求结果数
+     - parameter forceReload        是否忽略缓存强制刷新，默认为false
      - parameter completionHandler: 请求完成的回调
      */
-    func searchMovies(withQuery query: String, at start: Int, resultCount count: Int, completionHandler: ResponseHandler?) {
+    func searchMovies(withQuery query: String, at start: Int, resultCount count: Int, forceReload: Bool = false, completionHandler: ResponseHandler?) {
         let url = RequestType.search.description
         let parameters = ["q": query, "start": start, "count": count]
         makeGETRequest(
             withURL: url,
             parameters: parameters,
+            forceReload: forceReload,
             completionHandler: completionHandler)?
             .resume()
     }
@@ -72,14 +77,16 @@ class DoubanService: DoubanAPI {
      - parameter tag:               搜索标签
      - parameter start:             开始位置
      - parameter count:             请求结果数
+     - parameter forceReload        是否忽略缓存强制刷新，默认为false
      - parameter completionHandler: 请求完成的回调
      */
-    func searchMovies(withTag tag: String, at start: Int, resultCount count: Int, completionHandler: ResponseHandler?) {
+    func searchMovies(withTag tag: String, at start: Int, resultCount count: Int, forceReload: Bool = false, completionHandler: ResponseHandler?) {
         let url = RequestType.search.description
         let parameters = ["tag" : tag, "start": start, "count": count]
         makeGETRequest(
             withURL: url,
             parameters: parameters,
+            forceReload: forceReload,
             completionHandler: completionHandler)?
             .resume()
     }
@@ -88,13 +95,15 @@ class DoubanService: DoubanAPI {
      根据 id 获取对应电影条目
      
      - parameter id:                电影 id
+     - parameter forceReload        是否忽略缓存强制刷新，默认为false
      - parameter completionHanlder: 请求完成的回调
      */
-    func movie(forId id: String, completionHandler: ResponseHandler?) {
+    func movie(forId id: String, forceReload: Bool = false, completionHandler: ResponseHandler?) {
         let url = RequestType.subject(subjectId: id).description
         makeGETRequest(
             withURL: url,
             parameters: nil,
+            forceReload: forceReload,
             completionHandler: completionHandler)?
             .resume()
     }
@@ -103,13 +112,15 @@ class DoubanService: DoubanAPI {
      根据 id 获取影人条目
      
      - parameter id:                影人 id
+     - parameter forceReload        是否忽略缓存强制刷新，默认为false
      - parameter completionHandler: 请求完成的回调
      */
-    func celebrity(forId id: String, completionHandler: ResponseHandler?) {
+    func celebrity(forId id: String, forceReload: Bool = false, completionHandler: ResponseHandler?) {
         let url = RequestType.celebrity(celebritId: id).description
         makeGETRequest(
             withURL: url,
             parameters: nil,
+            forceReload: forceReload,
             completionHandler: completionHandler)?
             .resume()
     }
@@ -118,21 +129,28 @@ class DoubanService: DoubanAPI {
      
      - parameter url:               请求的 url
      - parameter parameters:        请求参数
+     - parameter forceReload        是否忽略缓存强制刷新，默认为false
      - parameter completionHandler: 完成时的回调
      
      - returns: 返回创建好的task
      */
-    private func makeGETRequest(withURL url: String, parameters: AnyObject?, completionHandler: ResponseHandler?) -> NSURLSessionDataTask? {
+    private func makeGETRequest(withURL url: String, parameters: AnyObject?, forceReload: Bool, completionHandler: ResponseHandler?) -> NSURLSessionDataTask? {
         NSLog("request url: \(url)")
-        
+        if forceReload {
+            manager.requestSerializer.cachePolicy = .ReloadIgnoringLocalCacheData
+        } else {
+            manager.requestSerializer.cachePolicy = .ReturnCacheDataElseLoad
+        }
         return manager.GET(url, parameters: parameters,
                     progress: { (progress: NSProgress) in
                         
                     },
                     success: { (task: NSURLSessionDataTask, object:AnyObject?) in
+                        NSLog("request success")
                         completionHandler?(responseJSON: object as? NSDictionary, error: nil)
                     },
                     failure: { (task: NSURLSessionDataTask?, error: NSError) in
+                        NSLog("request failed")
                         completionHandler?(responseJSON: nil, error: error)
                     })
     }

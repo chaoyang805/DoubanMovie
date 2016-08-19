@@ -55,9 +55,19 @@ class MovieDetailViewController: UIViewController {
         configureView()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        notifyObserver()
+    }
+    
+    private var deleted: Bool = false
+    
+    private func notifyObserver() {
+        NSNotificationCenter.defaultCenter().postNotificationName(DBMMovieDidDeleteNotificationName, object: nil, userInfo: [DBMMovieDeleteNotificationKey : deleted])
+    }
+    
     @IBAction func favoriteBarButtonPressed(sender: UIBarButtonItem) {
         movieExistAtRealm() ? deleteMovieFromRealm() : addMovieToFavorite()
-    
     }
     
     func configureView() {
@@ -163,6 +173,7 @@ extension MovieDetailViewController {
         guard let movieId = detailMovie?.id else { return }
         realmHelper.deleteMovieById(movieId)
         likeBarButton.image = normalImage
+        deleted = true
     }
     
     func addMovieToFavorite() {
@@ -170,6 +181,8 @@ extension MovieDetailViewController {
         movie.collectDate = NSDate()
         realmHelper.addFavoriteMovie(movie, copy: true)
         likeBarButton.image = likedImage
+        deleted = false
     }
+
     
 }
