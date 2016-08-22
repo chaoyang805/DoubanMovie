@@ -53,8 +53,8 @@ class MovieInfoView: UIView {
         collectCountLabel.text = String(format: "%d人已看", movie.collectCount)
         ratingInfoView.ratingScore = CGFloat(movie.rating?.average ?? 0)
         ratingInfoView.hidden = false
-        posterImageButton.sd_setBackgroundImageWithURL(NSURL(string: movie.images!.largeImageURL), forState: .Normal)
-        
+        posterImageButton.imageView?.contentMode = .ScaleAspectFill
+        posterImageButton.sd_setImageWithURL(NSURL(string: movie.images!.largeImageURL), forState: .Normal)
     }
     
 }
