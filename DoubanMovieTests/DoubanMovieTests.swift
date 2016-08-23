@@ -84,21 +84,33 @@ class DoubanMovieTests: XCTestCase {
     }
     
     func testRealmWriteMany() {
+        
+        let expectation = self.expectationWithDescription("intheaters")
         var resultsSet: DoubanResultsSet?
+        
         DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount: 5) { (responseJSON, error) in
             resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+            XCTAssertNotNil(responseJSON, "response is nil")
+            
             let realmHelper = RealmHelper()
             if let movies = resultsSet?.subjects where movies.count > 0 {
                 realmHelper.addFavoriteMovies(movies)
             }
+            
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectationsWithTimeout(5) { (error) in
+            NSLog("\(error)")
         }
     }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock {
-            // Put the code you want to measure the time of here.
+            
         }
     }
+    
     
 }

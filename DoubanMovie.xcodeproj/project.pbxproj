@@ -16,7 +16,7 @@
 		2118D3AD1D4F34F700644D84 /* ArtistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA6B1D3D29E900F0D0C6 /* ArtistDetailViewController.swift */; };
 		2118D3AE1D4F34F700644D84 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA6D1D3D29F100F0D0C6 /* FavoritesTableViewController.swift */; };
 		2118D3AF1D4F34F700644D84 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA6F1D3D29FA00F0D0C6 /* SearchResultsViewController.swift */; };
-		2118D3B01D4F34F700644D84 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA711D3D2A0A00F0D0C6 /* BaseViewController.swift */; };
+		2118D3B01D4F34F700644D84 /* ClearTransitionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA711D3D2A0A00F0D0C6 /* ClearTransitionTableViewController.swift */; };
 		2118D3B11D4F34F700644D84 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B8B2E81D45A84700B7D344 /* AvatarView.swift */; };
 		2118D3B21D4F34F700644D84 /* MovieInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC25941D438777009FEA0C /* MovieInfoView.swift */; };
 		2118D3B31D4F34F700644D84 /* BaseMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA741D3D2A2900F0D0C6 /* BaseMovieCell.swift */; };
@@ -36,6 +36,10 @@
 		214C5D521D5466D40057B1B8 /* DoubanResultsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D511D5466D40057B1B8 /* DoubanResultsSet.swift */; };
 		214C5D541D5473AB0057B1B8 /* DoubanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D531D5473AB0057B1B8 /* DoubanAPI.swift */; };
 		2162F3DD1D66E98F00DC12B3 /* LoadingPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */; };
+		2192E86E1D6B372D0099FF3B /* ShareElementPushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192E86D1D6B372D0099FF3B /* ShareElementPushTransition.swift */; };
+		2192E8701D6B3BAB0099FF3B /* ShareElementPopTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192E86F1D6B3BAB0099FF3B /* ShareElementPopTransition.swift */; };
+		2192E8721D6B3EBC0099FF3B /* HomeViewController+ShareElementTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192E8711D6B3EBC0099FF3B /* HomeViewController+ShareElementTransition.swift */; };
+		2192E8741D6B3FC80099FF3B /* MovieDetailViewController+ShareElementTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192E8731D6B3FC80099FF3B /* MovieDetailViewController+ShareElementTransition.swift */; };
 		219E11D81D581D6500F2A66B /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219E11D71D581D6500F2A66B /* RealmHelper.swift */; };
 		21BC28291D367E9E00E5E98C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC28281D367E9E00E5E98C /* AppDelegate.swift */; };
 		21BC282E1D367E9E00E5E98C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BC282C1D367E9E00E5E98C /* Main.storyboard */; };
@@ -89,13 +93,17 @@
 		2149FA6B1D3D29E900F0D0C6 /* ArtistDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewController.swift; sourceTree = "<group>"; };
 		2149FA6D1D3D29F100F0D0C6 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		2149FA6F1D3D29FA00F0D0C6 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
-		2149FA711D3D2A0A00F0D0C6 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		2149FA711D3D2A0A00F0D0C6 /* ClearTransitionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClearTransitionTableViewController.swift; sourceTree = "<group>"; };
 		2149FA741D3D2A2900F0D0C6 /* BaseMovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMovieCell.swift; sourceTree = "<group>"; };
 		214C5D511D5466D40057B1B8 /* DoubanResultsSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanResultsSet.swift; sourceTree = "<group>"; };
 		214C5D531D5473AB0057B1B8 /* DoubanAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanAPI.swift; sourceTree = "<group>"; };
 		2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingPageControl.swift; sourceTree = "<group>"; };
 		216C5DA81D4726E9008A4A75 /* MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+MenuViewControllerDelegate.swift"; sourceTree = "<group>"; };
+		2192E86D1D6B372D0099FF3B /* ShareElementPushTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareElementPushTransition.swift; sourceTree = "<group>"; };
+		2192E86F1D6B3BAB0099FF3B /* ShareElementPopTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareElementPopTransition.swift; sourceTree = "<group>"; };
+		2192E8711D6B3EBC0099FF3B /* HomeViewController+ShareElementTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ShareElementTransition.swift"; sourceTree = "<group>"; };
+		2192E8731D6B3FC80099FF3B /* MovieDetailViewController+ShareElementTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MovieDetailViewController+ShareElementTransition.swift"; sourceTree = "<group>"; };
 		219E11D71D581D6500F2A66B /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		21B8B2E81D45A84700B7D344 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		21BC28251D367E9E00E5E98C /* DoubanMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubanMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,16 +168,19 @@
 		2149FA591D3D28ED00F0D0C6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2192E86C1D6B37100099FF3B /* Transition */,
 				2149FA651D3D29BA00F0D0C6 /* HomeViewController.swift */,
+				2192E8711D6B3EBC0099FF3B /* HomeViewController+ShareElementTransition.swift */,
 				216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */,
 				2149FA631D3D29B000F0D0C6 /* MenuViewController.swift */,
 				216C5DA81D4726E9008A4A75 /* MenuViewControllerDelegate.swift */,
 				2149FA691D3D29E000F0D0C6 /* MovieDetailViewController.swift */,
+				2192E8731D6B3FC80099FF3B /* MovieDetailViewController+ShareElementTransition.swift */,
 				2149FA671D3D29D300F0D0C6 /* NowMoviesTableViewController.swift */,
 				2149FA6B1D3D29E900F0D0C6 /* ArtistDetailViewController.swift */,
 				2149FA6D1D3D29F100F0D0C6 /* FavoritesTableViewController.swift */,
 				2149FA6F1D3D29FA00F0D0C6 /* SearchResultsViewController.swift */,
-				2149FA711D3D2A0A00F0D0C6 /* BaseViewController.swift */,
+				2149FA711D3D2A0A00F0D0C6 /* ClearTransitionTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -223,6 +234,15 @@
 				2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		2192E86C1D6B37100099FF3B /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				2192E86D1D6B372D0099FF3B /* ShareElementPushTransition.swift */,
+				2192E86F1D6B3BAB0099FF3B /* ShareElementPopTransition.swift */,
+			);
+			name = Transition;
 			sourceTree = "<group>";
 		};
 		21A6E0F91D3FC28A000D48D4 /* Utilies */ = {
@@ -526,13 +546,15 @@
 				2118D3AA1D4F34F700644D84 /* MenuViewControllerDelegate.swift in Sources */,
 				2118D3AB1D4F34F700644D84 /* MovieDetailViewController.swift in Sources */,
 				2118D3AC1D4F34F700644D84 /* NowMoviesTableViewController.swift in Sources */,
+				2192E8721D6B3EBC0099FF3B /* HomeViewController+ShareElementTransition.swift in Sources */,
 				2162F3DD1D66E98F00DC12B3 /* LoadingPageControl.swift in Sources */,
 				2118D3AD1D4F34F700644D84 /* ArtistDetailViewController.swift in Sources */,
 				2122EFB01D61A4C500DA7567 /* String+RemoveFirstChar.swift in Sources */,
 				214C5D541D5473AB0057B1B8 /* DoubanAPI.swift in Sources */,
 				2118D3AE1D4F34F700644D84 /* FavoritesTableViewController.swift in Sources */,
 				2118D3AF1D4F34F700644D84 /* SearchResultsViewController.swift in Sources */,
-				2118D3B01D4F34F700644D84 /* BaseViewController.swift in Sources */,
+				2118D3B01D4F34F700644D84 /* ClearTransitionTableViewController.swift in Sources */,
+				2192E86E1D6B372D0099FF3B /* ShareElementPushTransition.swift in Sources */,
 				2118D3B11D4F34F700644D84 /* AvatarView.swift in Sources */,
 				2118D3B21D4F34F700644D84 /* MovieInfoView.swift in Sources */,
 				214C5D521D5466D40057B1B8 /* DoubanResultsSet.swift in Sources */,
@@ -540,6 +562,7 @@
 				21BCE0521D643CFC006BB153 /* Global.swift in Sources */,
 				2118D3B41D4F34F700644D84 /* DetailMovieCell.swift in Sources */,
 				2118D3B51D4F34F700644D84 /* FavoriteMovieCell.swift in Sources */,
+				2192E8741D6B3FC80099FF3B /* MovieDetailViewController+ShareElementTransition.swift in Sources */,
 				2118D3B61D4F34F700644D84 /* MovieCardView.swift in Sources */,
 				2118D3B71D4F34F700644D84 /* MenuButton.swift in Sources */,
 				2118D3B81D4F34F700644D84 /* RatingStar.swift in Sources */,
@@ -549,6 +572,7 @@
 				2118D3BC1D4F34F700644D84 /* DoubanCelebrity.swift in Sources */,
 				21BCE0541D6451E9006BB153 /* LoadMoreFooter.swift in Sources */,
 				2118D3BD1D4F34F700644D84 /* DoubanMovie.swift in Sources */,
+				2192E8701D6B3BAB0099FF3B /* ShareElementPopTransition.swift in Sources */,
 				2118D3BE1D4F34F700644D84 /* Work.swift in Sources */,
 				21C247F91D5431E600F919D6 /* MovieRating.swift in Sources */,
 				219E11D81D581D6500F2A66B /* RealmHelper.swift in Sources */,

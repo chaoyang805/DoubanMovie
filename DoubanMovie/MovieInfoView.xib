@@ -9,6 +9,7 @@
                 <outlet property="collectCountLabel" destination="RO3-Dz-bM9" id="NTw-O8-DEu"/>
                 <outlet property="posterImageButton" destination="BTx-R9-yiQ" id="G6m-gL-yXZ"/>
                 <outlet property="ratingInfoView" destination="K8J-hY-Nqs" id="qFA-dD-Pke"/>
+                <outlet property="titleBarView" destination="Jt2-Lp-MHU" id="HPw-Ax-KJB"/>
                 <outlet property="titleLabel" destination="T3P-Rr-ZcO" id="1bQ-AK-oZj"/>
             </connections>
         </placeholder>

@@ -20,7 +20,9 @@ class DetailMovieCell: BaseMovieCell {
         super.configureCell(withMovie: movie)
         
         ratingInfo.ratingScore = movie.rating?.average
+        ratingInfo.hidden = movie.rating?.average ?? 0 == 0
         emptyRatingPlaceholderLabel.hidden = !(movie.rating?.average == 0)
+        
         directorsLabel.text = movie.directorsDescription + " "
         castsLabel.text = movie.castsDescription + " "
         yearLabel.text = "\(movie.year)"

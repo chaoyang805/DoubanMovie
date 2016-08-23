@@ -110,8 +110,8 @@
                         <outlet property="refreshBarButtonItem" destination="1N9-tD-hrd" id="tKj-vf-Cf3"/>
                         <segue destination="Czh-aZ-EAq" kind="show" identifier="ShowDetailSegue" id="CYE-hN-m5s"/>
                         <segue destination="cee-Bv-Vz8" kind="show" identifier="AllMoviesSegue" id="iQ2-4w-inc"/>
-                        <segue destination="ASB-uZ-FdE" kind="show" identifier="FavoritesSegue" id="gsI-Nt-cBo"/>
                         <segue destination="BYt-HX-hUy" kind="show" identifier="SearchSegue" id="Xa3-Se-dhy"/>
+                        <segue destination="ASB-uZ-FdE" kind="show" identifier="FavoritesSegue" id="P0p-aD-aPb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sb5-f0-DHA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -526,7 +526,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aIg-sK-Nzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-301.5" y="-264.5"/>
+            <point key="canvasLocation" x="-301.5" y="-282.5"/>
         </scene>
         <!--SearchResultController-->
         <scene sceneID="BLT-20-Cfl">

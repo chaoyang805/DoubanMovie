@@ -49,6 +49,8 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var likeBarButton: UIBarButtonItem!
     
+    var percentDrivenInteractiveController: UIPercentDrivenInteractiveTransition!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         queryMovieDetail()
