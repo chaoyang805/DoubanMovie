@@ -14,6 +14,8 @@ class MovieInfoView: UIView {
     @IBOutlet weak var collectCountLabel: UILabel!
     @IBOutlet weak var ratingInfoView: RatingStar!
     @IBOutlet weak var posterImageButton: UIButton!
+    @IBOutlet weak var titleBarView: UIVisualEffectView!
+    
     var movie: DoubanMovie? {
         didSet {
             guard let m = movie  else { return }

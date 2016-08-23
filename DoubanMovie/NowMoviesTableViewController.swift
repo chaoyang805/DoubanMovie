@@ -10,7 +10,7 @@ import UIKit
 import ObjectMapper
 import SDWebImage
 
-class NowMoviesTableViewController: UITableViewController {
+class NowMoviesTableViewController: ClearTransitionTableViewController {
     
     private var resultsSet: DoubanResultsSet?
     

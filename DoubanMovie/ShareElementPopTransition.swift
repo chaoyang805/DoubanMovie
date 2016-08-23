@@ -11,7 +11,7 @@ import UIKit
 class ShareElementPopTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.8
+        return 0.6
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -24,7 +24,7 @@ class ShareElementPopTransition: NSObject, UIViewControllerAnimatedTransitioning
         let snapshotView = UIImageView(image: fromVC.posterImageView.image)
         snapshotView.contentMode = .ScaleAspectFill
         snapshotView.clipsToBounds = true
-        snapshotView.frame = container.convertRect(fromVC.posterImageView.frame, fromView: fromVC.view).offsetBy(dx: 0, dy: 64)
+        snapshotView.frame = container.convertRect(fromVC.posterImageView.frame, fromView: fromVC.scrollView)
         
         fromVC.posterImageView.hidden = true
         fromVC.view.alpha = 1
@@ -48,6 +48,12 @@ class ShareElementPopTransition: NSObject, UIViewControllerAnimatedTransitioning
                                 }) { (done) in
                                     
                                     toVC.movieInfoDialog.hidden = false
+                                    toVC.movieInfoDialog.titleBarView.effect = nil
+                                    UIView.animateWithDuration(0.2, animations: {
+                                        
+                                        toVC.movieInfoDialog.titleBarView.effect = UIBlurEffect(style: .Light)
+                                    })
+                                    
                                     snapshotView.removeFromSuperview()
                                     fromVC.posterImageView.hidden = false
                                     fromVC.view.alpha = 1

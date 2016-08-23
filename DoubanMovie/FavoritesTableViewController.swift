@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class FavoritesTableViewController: UITableViewController {
+class FavoritesTableViewController: ClearTransitionTableViewController {
     
     let FavoriteMovieCellIdentifier = "FavoriteMovieCell"
     

@@ -9,7 +9,7 @@
 import UIKit
 import ObjectMapper
 
-class SearchResultsViewController: UITableViewController {
+class SearchResultsViewController: ClearTransitionTableViewController {
     
     /// SearchResultController 控件
     private lazy var searchController: UISearchController = {

@@ -11,7 +11,7 @@ import UIKit
 class ShareElementPushTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.5
+        return 0.6
     }
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
@@ -38,8 +38,9 @@ class ShareElementPushTransition: NSObject, UIViewControllerAnimatedTransitionin
         
         UIView.animateWithDuration(transitionDuration(transitionContext),
                                    delay: 0,
-                                   
-                                   options: .CurveEaseOut,
+                                   usingSpringWithDamping: 0.7,
+                                   initialSpringVelocity: 0.7,
+                                   options: .CurveEaseInOut,
                                    animations: {
                                     
                                     snapshotView.frame = toVC.posterImageView.frame.offsetBy(dx: 0, dy: 64)
