@@ -56,6 +56,7 @@ class MovieInfoView: UIView {
         ratingInfoView.ratingScore = CGFloat(movie.rating?.average ?? 0)
         ratingInfoView.hidden = false
         posterImageButton.imageView?.contentMode = .ScaleAspectFill
+        posterImageButton.contentHorizontalAlignment = .Fill
         posterImageButton.sd_setImageWithURL(NSURL(string: movie.images!.largeImageURL), forState: .Normal)
     }
     
