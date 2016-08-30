@@ -13,14 +13,39 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-screen-bg" translatesAutoresizingMaskIntoConstraints="NO" id="XkU-4w-nQS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="zcp-t2-Thl">
+                                <rect key="frame" x="112" y="259" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="HDF-ac-h3m"/>
+                                    <constraint firstAttribute="width" constant="150" id="ZUR-6R-n6J"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="XkU-4w-nQS" secondAttribute="trailing" id="El7-HQ-PQb"/>
+                            <constraint firstItem="zcp-t2-Thl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="M58-0X-GsI"/>
+                            <constraint firstItem="XkU-4w-nQS" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="NVO-0E-df3"/>
+                            <constraint firstItem="XkU-4w-nQS" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="PS3-GG-CoQ"/>
+                            <constraint firstAttribute="bottom" secondItem="XkU-4w-nQS" secondAttribute="bottom" id="Wcp-RO-YxG"/>
+                            <constraint firstItem="zcp-t2-Thl" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ySq-hk-hYh"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="147" y="486"/>
+            <point key="canvasLocation" x="146.5" y="485.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launch-screen-bg" width="375" height="667"/>
+        <image name="logo" width="150" height="150"/>
+    </resources>
 </document>
