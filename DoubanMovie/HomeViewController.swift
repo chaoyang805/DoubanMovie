@@ -45,20 +45,15 @@ class HomeViewController: UIViewController{
     
     var currentPage: Int = 0
     
+    var shouldShowLoadingView: Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        movieInfoDialog.ratingInfoView.ratingScore = 5
         movieInfoDialog.addTarget(self, action: #selector(HomeViewController.movieInfoDialogDidTouch(_:)), for: .TouchUpInside)
         
         animator = UIDynamicAnimator(referenceView: self.view)
 
-        DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount:5) { [weak self](responseJSON, error) in
-            guard let `self` = self else { return }
-            
-            self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
-
-        }
+        self.fetchData()
     }
     
     func movieInfoDialogDidTouch(sender: AnyObject) {
@@ -88,18 +83,56 @@ class HomeViewController: UIViewController{
 extension HomeViewController {
     
     @IBAction func refreshButtonDidTouch(sender: UIBarButtonItem) {
-        DoubanService.sharedService.getInTheaterMovies(at: 0,
-                                                       resultCount: 5,
-                                                       forceReload: true)
-        { [weak self](responseJSON, error) in
+        
+        self.fetchData(true)
+        
+    }
+    
+    func fetchData(force: Bool = false) {
+        
+        DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount:5,forceReload: force) { [weak self](responseJSON, error) in
             guard let `self` = self else { return }
-            
+            self.shouldShowLoadingView = false
+            self.endLoading()
+
             self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
-            self.pageControl.endLoading()
-            sender.enabled = true
+            
         }
-        sender.enabled = false
-        pageControl.beginLoading()
+        // 延时 0.5s 如果还没加载出来，就显示加载界面
+        self.shouldShowLoadingView = true
+        delay(500) {
+            if self.shouldShowLoadingView {
+                self.beginLoading()
+                
+            } else {
+                NSLog("not show loading")
+            }
+        }
+    }
+    
+    func beginLoading() {
+        UIView.animateWithDuration(0.2) { [weak self] in
+            
+            guard let `self` = self else { return }
+            self.backgroundImageView.alpha = 0
+            
+        }
+        self.refreshBarButtonItem.enabled = false
+        self.movieInfoDialog.beginLoading()
+        self.pageControl.beginLoading()
+    }
+    
+    func endLoading() {
+
+        UIView.animateWithDuration(0.2) { [weak self] in
+            
+            guard let `self` = self else { return }
+            self.backgroundImageView.alpha = 1
+            
+        }
+        self.refreshBarButtonItem.enabled = true
+        self.movieInfoDialog.endLoading()
+        self.pageControl.endLoading()
     }
     
     func performFetch(completion: () -> Void) {
