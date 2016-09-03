@@ -15,6 +15,7 @@ class MovieInfoView: UIView {
     @IBOutlet weak var ratingInfoView: RatingStar!
     @IBOutlet weak var posterImageButton: UIButton!
     @IBOutlet weak var titleBarView: UIVisualEffectView!
+    @IBOutlet weak var loadingImageView: UIImageView!
     
     var movie: DoubanMovie? {
         didSet {
@@ -56,8 +57,50 @@ class MovieInfoView: UIView {
         ratingInfoView.ratingScore = CGFloat(movie.rating?.average ?? 0)
         ratingInfoView.hidden = false
         posterImageButton.imageView?.contentMode = .ScaleAspectFill
+        posterImageButton.contentHorizontalAlignment = .Fill
         posterImageButton.sd_setImageWithURL(NSURL(string: movie.images!.largeImageURL), forState: .Normal)
     }
     
+}
+// MARK: - Loading
+extension MovieInfoView {
+    
+    func rotateAnimation() -> CABasicAnimation {
+        let animation = CABasicAnimation(keyPath: "transform")
+        animation.duration = 0.5
+        animation.repeatCount = HUGE
+        animation.cumulative = true
+        
+        let angle = -CGFloat(2 * M_PI / 5)
+        let transform = CATransform3DMakeRotation(angle, 0, 0, -1)
+        animation.byValue = NSValue(CATransform3D: transform)
+        return animation
+    }
+    
+    func beginLoading() {
+        self.loadingImageView.alpha = 0
+        self.loadingImageView.hidden = false
+        UIView.animateWithDuration(0.2) { [weak self] in
+            guard let `self` = self else { return }
+            self.loadingImageView.alpha = 1
+            self.titleBarView.alpha = 0
+            self.posterImageButton.alpha = 0
+            self.loadingImageView.layer.addAnimation(self.rotateAnimation(), forKey: "rotateAnimation")
+        }
+    }
+    
+    func endLoading() {
+        self.loadingImageView.layer.removeAllAnimations()
+        UIView.animateWithDuration(0.2, animations: { [weak self] in
+            
+            guard let `self` = self else { return }
+            self.loadingImageView.alpha = 0
+            self.titleBarView.alpha = 1
+            self.posterImageButton.alpha = 1
+            }) {  [weak self](done) in
+                guard let `self` = self else { return }
+                self.loadingImageView.hidden = true
+        }
+    }
 }
 
