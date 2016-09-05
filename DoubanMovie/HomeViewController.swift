@@ -23,6 +23,10 @@ class HomeViewController: UIViewController{
     var gravityBehavior: UIGravityBehavior!
     var snapBehavior: UISnapBehavior!
     
+    var doubanService: DoubanService {
+        return DoubanService.sharedService
+    }
+    
     lazy var realm: RealmHelper = {
         return RealmHelper()
     }()
@@ -84,18 +88,24 @@ extension HomeViewController {
     
     @IBAction func refreshButtonDidTouch(sender: UIBarButtonItem) {
         
-        self.fetchData(true)
-        
+//        self.fetchData(true)
+        Snackbar.make("请求失败", duration: 1.5).show()
     }
     
     func fetchData(force: Bool = false) {
         
-        DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount:5,forceReload: force) { [weak self](responseJSON, error) in
+        doubanService.getInTheaterMovies(at: 0, resultCount:5,forceReload: force) { [weak self](responseJSON, error) in
             guard let `self` = self else { return }
             self.shouldShowLoadingView = false
             self.endLoading()
+            
+            if error != nil {
+                self.handleError(error!)
+            }
+            if responseJSON != nil {
+                self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+            }
 
-            self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
             
         }
         // 延时 0.5s 如果还没加载出来，就显示加载界面
@@ -146,6 +156,15 @@ extension HomeViewController {
         }
     }
     
+    func handleError(error: NSError) {
+        
+        switch doubanService.requestType {
+        case RequestType.inTheater:
+            Snackbar.make("请求失败", duration: 1.5).show()
+        default:
+            break
+        }
+    }
     
 }
 

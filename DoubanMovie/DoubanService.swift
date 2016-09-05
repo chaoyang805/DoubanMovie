@@ -16,6 +16,14 @@ class DoubanService: DoubanAPI {
     
     static let sharedService = DoubanService()
     
+    private(set) var requestType: RequestType = .inTheater
+    
+    var errorHandler: ErrorHandler?
+    
+    var requestURLString: String {
+        return requestType.description
+    }
+    
     private init() {}
     
     private lazy var manager: AFHTTPSessionManager = {
@@ -39,12 +47,13 @@ class DoubanService: DoubanAPI {
      - parameter completionHandler: 请求完成的回调
      */
     func getInTheaterMovies(inCity city: String = "北京", at start: Int, resultCount count: Int, forceReload: Bool = false, completionHandler: ResponseHandler?) {
-        let url = RequestType.inTheater.description
+        
+        self.requestType = RequestType.inTheater
         
         let parameters = ["start": start, "city": city, "count":count]
 
         let task = makeGETRequest(
-            withURL: url,
+            withURL: self.requestURLString,
             parameters: parameters,
             forceReload: forceReload,
             completionHandler: completionHandler)
@@ -61,10 +70,12 @@ class DoubanService: DoubanAPI {
      - parameter completionHandler: 请求完成的回调
      */
     func searchMovies(withQuery query: String, at start: Int, resultCount count: Int, forceReload: Bool = false, completionHandler: ResponseHandler?) {
-        let url = RequestType.search.description
+        
+        self.requestType = RequestType.search
+    
         let parameters = ["q": query, "start": start, "count": count]
         makeGETRequest(
-            withURL: url,
+            withURL: self.requestURLString,
             parameters: parameters,
             forceReload: forceReload,
             completionHandler: completionHandler)?
@@ -81,10 +92,12 @@ class DoubanService: DoubanAPI {
      - parameter completionHandler: 请求完成的回调
      */
     func searchMovies(withTag tag: String, at start: Int, resultCount count: Int, forceReload: Bool = false, completionHandler: ResponseHandler?) {
-        let url = RequestType.search.description
+        
+        self.requestType = RequestType.search
+        
         let parameters = ["tag" : tag, "start": start, "count": count]
         makeGETRequest(
-            withURL: url,
+            withURL: self.requestURLString,
             parameters: parameters,
             forceReload: forceReload,
             completionHandler: completionHandler)?
@@ -99,9 +112,9 @@ class DoubanService: DoubanAPI {
      - parameter completionHanlder: 请求完成的回调
      */
     func movie(forId id: String, forceReload: Bool = false, completionHandler: ResponseHandler?) {
-        let url = RequestType.subject(subjectId: id).description
+        self.requestType = .subject(subjectId: id)
         makeGETRequest(
-            withURL: url,
+            withURL: self.requestURLString,
             parameters: nil,
             forceReload: forceReload,
             completionHandler: completionHandler)?
@@ -116,9 +129,11 @@ class DoubanService: DoubanAPI {
      - parameter completionHandler: 请求完成的回调
      */
     func celebrity(forId id: String, forceReload: Bool = false, completionHandler: ResponseHandler?) {
-        let url = RequestType.celebrity(celebritId: id).description
+        
+        self.requestType = RequestType.celebrity(celebritId: id)
+        
         makeGETRequest(
-            withURL: url,
+            withURL: self.requestURLString,
             parameters: nil,
             forceReload: forceReload,
             completionHandler: completionHandler)?
@@ -170,17 +185,17 @@ class DoubanService: DoubanAPI {
  - subject:   指定的电影条目
  - celebrity: 指定的影人条目
  */
-private enum RequestType: CustomStringConvertible {
+enum RequestType: CustomStringConvertible {
     case inTheater
     case search
     case subject(subjectId: String)
     case celebrity(celebritId: String)
     
-    private var baseURL: String {
+    var baseURL: String {
         return "http://api.douban.com/v2/movie/"
     }
     
-    private var description: String {
+    var description: String {
         switch self {
         case .inTheater:
             return baseURL + "in_theaters"

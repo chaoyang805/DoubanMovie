@@ -53,6 +53,9 @@
 		21BE1DF51D4F3151006D405B /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2134E50D1D45AEFC00DACE81 /* AvatarView.xib */; };
 		21C247F71D542F9500F919D6 /* DoubanImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C247F61D542F9500F919D6 /* DoubanImage.swift */; };
 		21C247F91D5431E600F919D6 /* MovieRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C247F81D5431E600F919D6 /* MovieRating.swift */; };
+		21C9F4721D7D300300507AE7 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9F4711D7D300300507AE7 /* ErrorHandler.swift */; };
+		21C9F4761D7D427800507AE7 /* DoubanServiceErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9F4751D7D427800507AE7 /* DoubanServiceErrorHandler.swift */; };
+		21C9F4781D7D43B100507AE7 /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9F4771D7D43B100507AE7 /* Snackbar.swift */; };
 		C53B3BCBF6AB4007FDAD35DB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA74BB0E5F74D7FD479F432 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +126,9 @@
 		21BCE0531D6451E9006BB153 /* LoadMoreFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreFooter.swift; sourceTree = "<group>"; };
 		21C247F61D542F9500F919D6 /* DoubanImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanImage.swift; sourceTree = "<group>"; };
 		21C247F81D5431E600F919D6 /* MovieRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieRating.swift; sourceTree = "<group>"; };
+		21C9F4711D7D300300507AE7 /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		21C9F4751D7D427800507AE7 /* DoubanServiceErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanServiceErrorHandler.swift; sourceTree = "<group>"; };
+		21C9F4771D7D43B100507AE7 /* Snackbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
 		21DC25941D438777009FEA0C /* MovieInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfoView.swift; sourceTree = "<group>"; };
 		21DC25961D438783009FEA0C /* MovieInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieInfoView.xib; sourceTree = "<group>"; };
 		21DC25991D4389EF009FEA0C /* RatingStar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingStar.swift; sourceTree = "<group>"; };
@@ -213,6 +219,7 @@
 			children = (
 				211B3BDD1D3FC1DD00887B31 /* DoubanService.swift */,
 				214C5D531D5473AB0057B1B8 /* DoubanAPI.swift */,
+				21C9F4711D7D300300507AE7 /* ErrorHandler.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -232,6 +239,7 @@
 				210EED411D48A1DE000F3D0D /* RatingBar.swift */,
 				21BCE0531D6451E9006BB153 /* LoadMoreFooter.swift */,
 				2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */,
+				21C9F4771D7D43B100507AE7 /* Snackbar.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -296,6 +304,7 @@
 				2149FA5B1D3D293E00F0D0C6 /* Model */,
 				21BC28281D367E9E00E5E98C /* AppDelegate.swift */,
 				21BC282A1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift */,
+				21C9F4751D7D427800507AE7 /* DoubanServiceErrorHandler.swift */,
 				21BC282F1D367E9E00E5E98C /* Assets.xcassets */,
 				21BC28341D367E9E00E5E98C /* Info.plist */,
 			);
@@ -543,7 +552,9 @@
 				2118D3A71D4F34F700644D84 /* HomeViewController.swift in Sources */,
 				2118D3A81D4F34F700644D84 /* HomeViewController+MenuViewControllerDelegate.swift in Sources */,
 				2118D3A91D4F34F700644D84 /* MenuViewController.swift in Sources */,
+				21C9F4761D7D427800507AE7 /* DoubanServiceErrorHandler.swift in Sources */,
 				2118D3AA1D4F34F700644D84 /* MenuViewControllerDelegate.swift in Sources */,
+				21C9F4781D7D43B100507AE7 /* Snackbar.swift in Sources */,
 				2118D3AB1D4F34F700644D84 /* MovieDetailViewController.swift in Sources */,
 				2118D3AC1D4F34F700644D84 /* NowMoviesTableViewController.swift in Sources */,
 				2192E8721D6B3EBC0099FF3B /* HomeViewController+ShareElementTransition.swift in Sources */,
@@ -551,6 +562,7 @@
 				2118D3AD1D4F34F700644D84 /* ArtistDetailViewController.swift in Sources */,
 				2122EFB01D61A4C500DA7567 /* String+RemoveFirstChar.swift in Sources */,
 				214C5D541D5473AB0057B1B8 /* DoubanAPI.swift in Sources */,
+				21C9F4721D7D300300507AE7 /* ErrorHandler.swift in Sources */,
 				2118D3AE1D4F34F700644D84 /* FavoritesTableViewController.swift in Sources */,
 				2118D3AF1D4F34F700644D84 /* SearchResultsViewController.swift in Sources */,
 				2118D3B01D4F34F700644D84 /* ClearTransitionTableViewController.swift in Sources */,
