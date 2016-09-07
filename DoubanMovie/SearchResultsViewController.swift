@@ -180,11 +180,33 @@ extension SearchResultsViewController: UISearchBarDelegate {
         // DoubanService.search....
         guard let queryString = searchBar.text else { return }
         _lastQueryText = queryString
-        DoubanService.sharedService.searchMovies(withQuery: queryString, at: 0, resultCount: 20) { [weak self](responseJSON, error) in
+        
+        searchMovie(with: queryString)
+        
+    }
+    
+    func searchMovie(with query: String) {
+        
+        DoubanService.sharedService.searchMovies(withQuery: query, at: 0, resultCount: 20) { [weak self](responseJSON, error) in
             guard let `self` = self else { return }
-            let results = Mapper<DoubanResultsSet>().map(responseJSON)
-            self.searchResultsSet = results
-            self.updateSearchResultsForSearchController(self.searchController)
+            
+            if let error = error {
+                
+                NSLog("error!\(error)")
+                Snackbar.make("搜索失败", duration: .Short).show()
+                
+            }
+            
+            if let results = Mapper<DoubanResultsSet>().map(responseJSON) where results.subjects.count > 0 {
+                
+                self.searchResultsSet = results
+                self.updateSearchResultsForSearchController(self.searchController)
+                
+            } else {
+                
+                Snackbar.make("没有搜索到结果", duration: .Short).show()
+                
+            }
         }
     }
     

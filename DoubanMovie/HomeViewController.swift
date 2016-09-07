@@ -23,6 +23,10 @@ class HomeViewController: UIViewController{
     var gravityBehavior: UIGravityBehavior!
     var snapBehavior: UISnapBehavior!
     
+    var doubanService: DoubanService {
+        return DoubanService.sharedService
+    }
+    
     lazy var realm: RealmHelper = {
         return RealmHelper()
     }()
@@ -90,24 +94,21 @@ extension HomeViewController {
     
     func fetchData(force: Bool = false) {
         
-        DoubanService.sharedService.getInTheaterMovies(at: 0, resultCount:5,forceReload: force) { [weak self](responseJSON, error) in
+        doubanService.getInTheaterMovies(at: 0, resultCount:5,forceReload: force) { [weak self](responseJSON, error) in
             guard let `self` = self else { return }
-            self.shouldShowLoadingView = false
-            self.endLoading()
 
-            self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+            self.endLoading()
             
-        }
-        // 延时 0.5s 如果还没加载出来，就显示加载界面
-        self.shouldShowLoadingView = true
-        delay(500) {
-            if self.shouldShowLoadingView {
-                self.beginLoading()
-                
-            } else {
-                NSLog("not show loading")
+            if error != nil {
+                Snackbar.make("刷新失败，请稍后重试", duration: .Short).show()
             }
+            if responseJSON != nil {
+                self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+            }
+
         }
+        
+        self.beginLoading()
     }
     
     func beginLoading() {
@@ -145,7 +146,6 @@ extension HomeViewController {
             })
         }
     }
-    
     
 }
 

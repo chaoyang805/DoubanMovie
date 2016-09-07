@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DoubanAPI {
-    associatedtype  ResponseHandler
+    associatedtype ResponseHandler
     
     /**
      请求正在上映的电影
