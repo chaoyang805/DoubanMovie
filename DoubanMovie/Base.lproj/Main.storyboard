@@ -572,6 +572,17 @@
                                                 <constraint firstAttribute="width" constant="108" id="gUT-Gp-Ixe"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无评分" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cL6-6o-Ag1">
+                                            <rect key="frame" x="116" y="46" width="108" height="16"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="16" id="7fb-C8-LhR"/>
+                                                <constraint firstAttribute="width" constant="108" id="A3i-Rs-t0c"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="戴夫·格林" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1Q-e4-Hdx">
                                             <rect key="frame" x="142" y="64" width="210" height="14"/>
                                             <constraints>
@@ -671,10 +682,12 @@
                                         <constraint firstItem="4QQ-67-RtD" firstAttribute="top" secondItem="eqG-w0-j5H" secondAttribute="bottom" constant="2" id="H6m-eh-AJh"/>
                                         <constraint firstItem="x7V-32-ZiB" firstAttribute="top" secondItem="1P6-TB-Zfb" secondAttribute="bottom" constant="8" id="HnM-4G-STe"/>
                                         <constraint firstItem="eqG-w0-j5H" firstAttribute="leading" secondItem="vQE-vD-WNl" secondAttribute="trailing" id="IIr-OY-5ZG"/>
+                                        <constraint firstItem="cL6-6o-Ag1" firstAttribute="top" secondItem="x7V-32-ZiB" secondAttribute="top" id="JdF-Rg-Ug8"/>
                                         <constraint firstItem="kCu-l7-iyP" firstAttribute="leading" secondItem="yBr-S8-wKD" secondAttribute="trailing" constant="8" id="Lvt-Nt-q2n"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="W1Q-e4-Hdx" secondAttribute="trailing" constant="15" id="Ntg-wH-xif"/>
                                         <constraint firstItem="WHb-Dj-eGO" firstAttribute="trailing" secondItem="b7r-Tt-xDc" secondAttribute="trailing" id="OyZ-QA-nnC"/>
                                         <constraint firstItem="JkR-Dn-KHM" firstAttribute="top" secondItem="4QQ-67-RtD" secondAttribute="top" id="UP4-uH-c2C"/>
+                                        <constraint firstItem="cL6-6o-Ag1" firstAttribute="leading" secondItem="x7V-32-ZiB" secondAttribute="leading" id="W0z-d6-Y3C"/>
                                         <constraint firstItem="b7r-Tt-xDc" firstAttribute="leading" secondItem="kCu-l7-iyP" secondAttribute="trailing" id="XOJ-ls-yGs"/>
                                         <constraint firstItem="yBr-S8-wKD" firstAttribute="leading" secondItem="CYM-1p-eka" secondAttribute="leading" constant="8" id="bYD-md-3f5"/>
                                         <constraint firstAttribute="trailing" secondItem="wC3-oc-acp" secondAttribute="trailing" id="cKZ-s4-bf0"/>
@@ -699,6 +712,7 @@
                                     <outlet property="castsLabel" destination="eqG-w0-j5H" id="lQ4-Qh-JC6"/>
                                     <outlet property="collectCountLabel" destination="WHb-Dj-eGO" id="qwH-Zh-Gin"/>
                                     <outlet property="directorsLabel" destination="W1Q-e4-Hdx" id="Mxi-Vd-WPJ"/>
+                                    <outlet property="emptyRatingPlaceholderLabel" destination="cL6-6o-Ag1" id="MJA-md-j5S"/>
                                     <outlet property="movieGenresLabel" destination="JkR-Dn-KHM" id="pzN-z4-D1t"/>
                                     <outlet property="posterImageView" destination="yBr-S8-wKD" id="AKz-DI-V2f"/>
                                     <outlet property="ratingInfo" destination="x7V-32-ZiB" id="YJX-HS-myG"/>
@@ -1105,6 +1119,6 @@
         <image name="placeholder" width="184" height="254"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CYE-hN-m5s"/>
+        <segue reference="tEo-rU-8uF"/>
     </inferredMetricsTieBreakers>
 </document>

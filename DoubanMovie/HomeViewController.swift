@@ -88,36 +88,27 @@ extension HomeViewController {
     
     @IBAction func refreshButtonDidTouch(sender: UIBarButtonItem) {
         
-//        self.fetchData(true)
-        Snackbar.make("请求失败", duration: 1.5).show()
+        self.fetchData(true)
+        
     }
     
     func fetchData(force: Bool = false) {
         
         doubanService.getInTheaterMovies(at: 0, resultCount:5,forceReload: force) { [weak self](responseJSON, error) in
             guard let `self` = self else { return }
-            self.shouldShowLoadingView = false
+
             self.endLoading()
             
             if error != nil {
-                self.handleError(error!)
+                Snackbar.make("刷新失败，请稍后重试", duration: .Short).show()
             }
             if responseJSON != nil {
                 self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
             }
 
-            
         }
-        // 延时 0.5s 如果还没加载出来，就显示加载界面
-        self.shouldShowLoadingView = true
-        delay(500) {
-            if self.shouldShowLoadingView {
-                self.beginLoading()
-                
-            } else {
-                NSLog("not show loading")
-            }
-        }
+        
+        self.beginLoading()
     }
     
     func beginLoading() {
@@ -153,16 +144,6 @@ extension HomeViewController {
             dispatch_sync(dispatch_get_main_queue(), { 
                 completion()
             })
-        }
-    }
-    
-    func handleError(error: NSError) {
-        
-        switch doubanService.requestType {
-        case RequestType.inTheater:
-            Snackbar.make("请求失败", duration: 1.5).show()
-        default:
-            break
         }
     }
     

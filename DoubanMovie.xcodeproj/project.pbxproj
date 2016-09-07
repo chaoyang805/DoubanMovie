@@ -41,6 +41,9 @@
 		2192E8721D6B3EBC0099FF3B /* HomeViewController+ShareElementTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192E8711D6B3EBC0099FF3B /* HomeViewController+ShareElementTransition.swift */; };
 		2192E8741D6B3FC80099FF3B /* MovieDetailViewController+ShareElementTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192E8731D6B3FC80099FF3B /* MovieDetailViewController+ShareElementTransition.swift */; };
 		219E11D81D581D6500F2A66B /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219E11D71D581D6500F2A66B /* RealmHelper.swift */; };
+		21A12F8A1D7E574400FC95AC /* SnackbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A12F891D7E574400FC95AC /* SnackbarView.swift */; };
+		21A12F8C1D7E579B00FC95AC /* SnackbarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A12F8B1D7E579B00FC95AC /* SnackbarManager.swift */; };
+		21A12F901D7EA3EF00FC95AC /* SnackbarRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A12F8F1D7EA3EF00FC95AC /* SnackbarRecord.swift */; };
 		21BC28291D367E9E00E5E98C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC28281D367E9E00E5E98C /* AppDelegate.swift */; };
 		21BC282E1D367E9E00E5E98C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BC282C1D367E9E00E5E98C /* Main.storyboard */; };
 		21BC28301D367E9E00E5E98C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BC282F1D367E9E00E5E98C /* Assets.xcassets */; };
@@ -108,6 +111,9 @@
 		2192E8711D6B3EBC0099FF3B /* HomeViewController+ShareElementTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ShareElementTransition.swift"; sourceTree = "<group>"; };
 		2192E8731D6B3FC80099FF3B /* MovieDetailViewController+ShareElementTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MovieDetailViewController+ShareElementTransition.swift"; sourceTree = "<group>"; };
 		219E11D71D581D6500F2A66B /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
+		21A12F891D7E574400FC95AC /* SnackbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnackbarView.swift; sourceTree = "<group>"; };
+		21A12F8B1D7E579B00FC95AC /* SnackbarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnackbarManager.swift; sourceTree = "<group>"; };
+		21A12F8F1D7EA3EF00FC95AC /* SnackbarRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnackbarRecord.swift; sourceTree = "<group>"; };
 		21B8B2E81D45A84700B7D344 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		21BC28251D367E9E00E5E98C /* DoubanMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubanMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BC28281D367E9E00E5E98C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -240,6 +246,9 @@
 				21BCE0531D6451E9006BB153 /* LoadMoreFooter.swift */,
 				2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */,
 				21C9F4771D7D43B100507AE7 /* Snackbar.swift */,
+				21A12F8F1D7EA3EF00FC95AC /* SnackbarRecord.swift */,
+				21A12F891D7E574400FC95AC /* SnackbarView.swift */,
+				21A12F8B1D7E579B00FC95AC /* SnackbarManager.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -563,6 +572,8 @@
 				2122EFB01D61A4C500DA7567 /* String+RemoveFirstChar.swift in Sources */,
 				214C5D541D5473AB0057B1B8 /* DoubanAPI.swift in Sources */,
 				21C9F4721D7D300300507AE7 /* ErrorHandler.swift in Sources */,
+				21A12F8A1D7E574400FC95AC /* SnackbarView.swift in Sources */,
+				21A12F8C1D7E579B00FC95AC /* SnackbarManager.swift in Sources */,
 				2118D3AE1D4F34F700644D84 /* FavoritesTableViewController.swift in Sources */,
 				2118D3AF1D4F34F700644D84 /* SearchResultsViewController.swift in Sources */,
 				2118D3B01D4F34F700644D84 /* ClearTransitionTableViewController.swift in Sources */,
@@ -583,6 +594,7 @@
 				2118D3BB1D4F34F700644D84 /* DoubanService.swift in Sources */,
 				2118D3BC1D4F34F700644D84 /* DoubanCelebrity.swift in Sources */,
 				21BCE0541D6451E9006BB153 /* LoadMoreFooter.swift in Sources */,
+				21A12F901D7EA3EF00FC95AC /* SnackbarRecord.swift in Sources */,
 				2118D3BD1D4F34F700644D84 /* DoubanMovie.swift in Sources */,
 				2192E8701D6B3BAB0099FF3B /* ShareElementPopTransition.swift in Sources */,
 				2118D3BE1D4F34F700644D84 /* Work.swift in Sources */,
