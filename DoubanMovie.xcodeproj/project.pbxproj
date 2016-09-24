@@ -748,7 +748,7 @@
 			baseConfigurationReference = DED5C5293579308EBEF62C66 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DoubanMovie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -764,7 +764,7 @@
 			baseConfigurationReference = 986A683CB4EC90E8174CEFDB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DoubanMovie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

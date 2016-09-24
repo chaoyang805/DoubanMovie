@@ -50,14 +50,32 @@ class HomeViewController: UIViewController{
     var currentPage: Int = 0
     
     var shouldShowLoadingView: Bool = true
+    
+    var screenWidth: CGFloat {
+        return UIScreen.mainScreen().bounds.width
+    }
+    
+    var screenHeight: CGFloat {
+        return UIScreen.mainScreen().bounds.height
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         movieInfoDialog.addTarget(self, action: #selector(HomeViewController.movieInfoDialogDidTouch(_:)), for: .TouchUpInside)
-        
         animator = UIDynamicAnimator(referenceView: self.view)
 
         self.fetchData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let dialogWidth = screenWidth * 280 / 375
+        let dialogHeight = dialogWidth / 280 * 373
+        let x = (screenWidth - dialogWidth) / 2
+        let y = (screenHeight - dialogHeight + 44) / 2
+        movieInfoDialog.frame = CGRect(x: x, y: y, width: dialogWidth, height: dialogHeight)
+        movieInfoDialog.clipsToBounds = true
     }
     
     func movieInfoDialogDidTouch(sender: AnyObject) {
@@ -172,7 +190,9 @@ extension HomeViewController {
             attachmentBehavior.anchorPoint = location
         case .Ended:
             animator.removeBehavior(attachmentBehavior)
-            snapBehavior = UISnapBehavior(item: myView, snapToPoint: CGPoint(x: view.center.x, y: view.center.y + 20))
+            
+            snapBehavior = UISnapBehavior(item: myView, snapToPoint: CGPoint(x: view.center.x, y: view.center.y + 22))
+
             animator.addBehavior(snapBehavior)
             
             let translation = sender.translationInView(view)

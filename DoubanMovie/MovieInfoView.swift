@@ -66,6 +66,7 @@ class MovieInfoView: UIView {
 extension MovieInfoView {
     
     func rotateAnimation() -> CABasicAnimation {
+        
         let animation = CABasicAnimation(keyPath: "transform")
         animation.duration = 0.5
         animation.repeatCount = HUGE

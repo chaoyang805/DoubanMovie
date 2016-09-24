@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1S4-tk-bf1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1S4-tk-bf1">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -50,13 +49,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9D-Dw-bau" customClass="MovieInfoView" customModule="DoubanMovie" customModuleProvider="target">
-                                            <rect key="frame" x="48" y="169" width="280" height="373"/>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C9D-Dw-bau" customClass="MovieInfoView" customModule="DoubanMovie" customModuleProvider="target">
+                                            <rect key="frame" x="47.5" y="169" width="280" height="373"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <gestureRecognizers/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="C9D-Dw-bau" secondAttribute="height" multiplier="280:373" id="x3o-Yv-nN9"/>
-                                            </constraints>
                                             <connections>
                                                 <outletCollection property="gestureRecognizers" destination="Oc8-9w-axw" appends="YES" id="b3p-VD-rWQ"/>
                                             </connections>
@@ -67,11 +63,8 @@
                                         </pageControl>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="C9D-Dw-bau" firstAttribute="width" secondItem="4Rh-00-uRq" secondAttribute="width" multiplier="280:375" id="73v-Yn-7h5"/>
-                                        <constraint firstItem="C9D-Dw-bau" firstAttribute="centerX" secondItem="4Rh-00-uRq" secondAttribute="centerX" id="HtL-7d-4CF"/>
                                         <constraint firstItem="N9Y-l4-uYa" firstAttribute="centerX" secondItem="4Rh-00-uRq" secondAttribute="centerX" id="SYA-Cx-Bua"/>
                                         <constraint firstAttribute="bottom" secondItem="N9Y-l4-uYa" secondAttribute="bottom" constant="50" id="hck-qy-3Xh"/>
-                                        <constraint firstItem="C9D-Dw-bau" firstAttribute="centerY" secondItem="4Rh-00-uRq" secondAttribute="centerY" constant="22" id="uOd-1K-KPP"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="light"/>
@@ -1119,6 +1112,6 @@
         <image name="placeholder" width="184" height="254"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tEo-rU-8uF"/>
+        <segue reference="CYE-hN-m5s"/>
     </inferredMetricsTieBreakers>
 </document>
