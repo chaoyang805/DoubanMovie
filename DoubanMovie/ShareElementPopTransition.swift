@@ -30,7 +30,7 @@ class ShareElementPopTransition: NSObject, UIViewControllerAnimatedTransitioning
         fromVC.view.alpha = 1
         
         toVC.view.frame = transitionContext.finalFrameForViewController(toVC)
-        toVC.movieInfoDialog.hidden = true
+        toVC.movieDialogView.hidden = true
         container.insertSubview(toVC.view, belowSubview: fromVC.view)
         container.addSubview(snapshotView)
         
@@ -41,17 +41,17 @@ class ShareElementPopTransition: NSObject, UIViewControllerAnimatedTransitioning
                                    options: .CurveEaseInOut,
                                    animations: {
             
-                                    snapshotView.frame = container.convertRect(toVC.movieInfoDialog.posterImageButton.frame, fromView: toVC.movieInfoDialog)
+                                    snapshotView.frame = container.convertRect(toVC.movieDialogView.posterImageButton.frame, fromView: toVC.movieDialogView)
                                     snapshotView.layer.cornerRadius = 10
                                     fromVC.view.alpha = 0
                                     
                                 }) { (done) in
                                     
-                                    toVC.movieInfoDialog.hidden = false
-                                    toVC.movieInfoDialog.titleBarView.effect = nil
+                                    toVC.movieDialogView.hidden = false
+                                    toVC.movieDialogView.titleBarView.effect = nil
                                     UIView.animateWithDuration(0.2, animations: {
                                         
-                                        toVC.movieInfoDialog.titleBarView.effect = UIBlurEffect(style: .Light)
+                                        toVC.movieDialogView.titleBarView.effect = UIBlurEffect(style: .Light)
                                     })
                                     
                                     snapshotView.removeFromSuperview()

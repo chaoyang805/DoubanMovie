@@ -7,16 +7,12 @@
 //
 
 import UIKit
-@objc protocol LoadingEffect {
-    optional func setLoading(loading: Bool)
-}
-class LoadingPageControl: UIPageControl {
+
+class LoadingPageControl: UIPageControl, LoadingEffect {
     
     private(set) var isLoading: Bool = false
     private let animateDuration: NSTimeInterval = 0.3
     private let animateOffset: CGFloat = 8
-    
-    
     
     func beginLoading() {
         if isLoading {

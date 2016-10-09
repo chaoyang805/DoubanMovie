@@ -13,6 +13,7 @@ let SnackbarShouldDismissNotification = "dismiss snackbar"
 let SnackbarUserInfoKey = "targetSnackbar"
 
 @objc protocol SnackbarDelegate: NSObjectProtocol {
+    
     optional func snackbarWillAppear(snackbar: Snackbar)
     optional func snackbarDidAppear(snackbar: Snackbar)
     optional func snackbarWillDisappear(snackbar: Snackbar)
@@ -32,6 +33,7 @@ class Snackbar: NSObject {
         _barView.snackbar = self
         return _barView
     }()
+    
     private var showing: Bool = false
     
     private var dismissHandler: (() -> Void)?
@@ -58,7 +60,6 @@ class Snackbar: NSObject {
     func show() {
         
         let record = SnackbarRecord(duration: duration, identifier: hash)
-        NSLog("show snackbar with id:\(record.identifier)")
         SnackbarManager.defaultManager().show(record)
     }
     
@@ -120,6 +121,7 @@ class Snackbar: NSObject {
     // MARK: - Configure Snackbar
     func setSnackbarText(text: String) {
         view.messageView.text = text
+        view.messageView.sizeToFit()
     }
     // MARK: - Warning Retain cycle（solved）
     func setAction(title: String, action: ((sender: AnyObject) -> Void)) -> Snackbar {
@@ -139,7 +141,7 @@ class Snackbar: NSObject {
     
     // MARK: - Snackbar View show & dismiss
     
-    func showView() {
+    private func showView() {
         guard let window = UIApplication.sharedApplication().keyWindow else { return }
         
         self.delegate?.snackbarWillAppear?(self)

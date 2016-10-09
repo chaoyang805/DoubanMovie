@@ -49,7 +49,8 @@ class RatingStar: UIView {
         didSet {
             let widthRatio = _ratingScore / 10
             ratingLayer?.frame = CGRect(x: 0, y: 0, width: self.starWidth * widthRatio, height: 22.61)
-            ratingLabel.text = "\(_ratingScore)"
+            
+            ratingLabel.text = String(format: "%.1f", _ratingScore)
         }
     }
     
@@ -64,16 +65,14 @@ class RatingStar: UIView {
             frame = CGRect(x: 0, y: 0, width: 108, height: 16)
         }
         super.init(frame: frame)
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        ratingbarStyle = .small
-        super.init(coder: aDecoder)
+        initViews()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        initViews()
+    }
+    private func initViews() {
         ratingLayer = CALayer()
         let widthRatio = _ratingScore / 10
         ratingLayer?.frame = CGRect(x: 0, y: 0, width: self.starWidth * widthRatio, height: self.starHeight)
@@ -106,13 +105,18 @@ class RatingStar: UIView {
         }
         
         ratingLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 26, height: 14))
-        ratingLabel.text = "\(_ratingScore)"
+        ratingLabel.text = String(format: "%.1f", _ratingScore)
         ratingLabel.textColor = UIColor(CGColor: yellowColor)
         ratingLabel.font = UIFont(name: "PingFang SC", size: 10)
         ratingLabel.textAlignment = .Center
         ratingLabel.tag = 0x0001
         self.addSubview(ratingLabel)
-        
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        ratingbarStyle = .small
+        super.init(coder: aDecoder)
     }
     
     override func layoutSubviews() {

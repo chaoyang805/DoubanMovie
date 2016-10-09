@@ -12,11 +12,12 @@ import ObjectMapper
 import RealmSwift
 
 class HomeViewController: UIViewController{
-    
-    @IBOutlet weak var movieInfoDialog: MovieInfoView!
+
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var pageControl: LoadingPageControl!
     @IBOutlet weak var refreshBarButtonItem: UIBarButtonItem!
+    
+    var movieDialogView: MovieDialogView!
     
     var animator: UIDynamicAnimator!
     var attachmentBehavior: UIAttachmentBehavior!
@@ -49,18 +50,39 @@ class HomeViewController: UIViewController{
     
     var currentPage: Int = 0
     
-    var shouldShowLoadingView: Bool = true
+    var screenWidth: CGFloat {
+        return UIScreen.mainScreen().bounds.width
+    }
+    var screenHeight: CGFloat {
+        return UIScreen.mainScreen().bounds.height
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        movieInfoDialog.addTarget(self, action: #selector(HomeViewController.movieInfoDialogDidTouch(_:)), for: .TouchUpInside)
-        
-        animator = UIDynamicAnimator(referenceView: self.view)
-
+        setupMovieDialogView()
         self.fetchData()
     }
     
-    func movieInfoDialogDidTouch(sender: AnyObject) {
+    private func setupMovieDialogView() {
+        
+        let dialogWidth = screenWidth * 280 / 375
+        let dialogHeight = dialogWidth / 280 * 373
+        let x = (screenWidth - dialogWidth) / 2
+        let y = (screenHeight - dialogHeight + 44) / 2
+        movieDialogView = MovieDialogView(frame: CGRect(x: x, y: y, width: dialogWidth, height: dialogHeight))
+        
+        movieDialogView.addTarget(self, action: #selector(HomeViewController.movieDialogViewDidTouch(_:)), for: .TouchUpInside)
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(HomeViewController.handleGestures(_:)))
+        self.movieDialogView.addGestureRecognizer(panGesture)
+        
+        self.view.addSubview(movieDialogView)
+        
+        animator = UIDynamicAnimator(referenceView: self.view)
+    }
+    
+    func movieDialogViewDidTouch(sender: AnyObject) {
         self.performSegueWithIdentifier("ShowDetailSegue", sender: self)
     }
     
@@ -89,9 +111,13 @@ extension HomeViewController {
     @IBAction func refreshButtonDidTouch(sender: UIBarButtonItem) {
         
         self.fetchData(true)
-        
     }
     
+    /**
+     refresh home screen data
+    
+     - parameter force: force reload from internet or load local cache data
+     */
     func fetchData(force: Bool = false) {
         
         doubanService.getInTheaterMovies(at: 0, resultCount:5,forceReload: force) { [weak self](responseJSON, error) in
@@ -119,7 +145,7 @@ extension HomeViewController {
             
         }
         self.refreshBarButtonItem.enabled = false
-        self.movieInfoDialog.beginLoading()
+        self.movieDialogView.beginLoading()
         self.pageControl.beginLoading()
     }
     
@@ -132,7 +158,7 @@ extension HomeViewController {
             
         }
         self.refreshBarButtonItem.enabled = true
-        self.movieInfoDialog.endLoading()
+        self.movieDialogView.endLoading()
         self.pageControl.endLoading()
     }
     
@@ -156,8 +182,9 @@ extension HomeViewController {
     @IBAction func handleGestures(sender: UIPanGestureRecognizer) {
         
         let location = sender.locationInView(view)
-        let boxLocation = sender.locationInView(movieInfoDialog)
-        let myView = movieInfoDialog
+        let myView = movieDialogView
+        
+        let boxLocation = sender.locationInView(myView)
         
         switch sender.state {
         case .Began:
@@ -172,7 +199,9 @@ extension HomeViewController {
             attachmentBehavior.anchorPoint = location
         case .Ended:
             animator.removeBehavior(attachmentBehavior)
-            snapBehavior = UISnapBehavior(item: myView, snapToPoint: CGPoint(x: view.center.x, y: view.center.y + 20))
+            
+            snapBehavior = UISnapBehavior(item: myView, snapToPoint: CGPoint(x: view.center.x, y: view.center.y + 22))
+
             animator.addBehavior(snapBehavior)
             
             let translation = sender.translationInView(view)
@@ -203,8 +232,8 @@ extension HomeViewController {
     
     func refreshData() {
         animator.removeAllBehaviors()
-        snapBehavior = UISnapBehavior(item: movieInfoDialog, snapToPoint: view.center)
-        movieInfoDialog.center = CGPoint(x: view.center.x, y: view.center.y + 20)
+        snapBehavior = UISnapBehavior(item: movieDialogView, snapToPoint: view.center)
+        movieDialogView.center = CGPoint(x: view.center.x, y: view.center.y + 20)
         attachmentBehavior.anchorPoint = CGPoint(x: view.center.x, y: view.center.y + 20)
         
         animateShowDialog()
@@ -214,7 +243,7 @@ extension HomeViewController {
         let scale = CGAffineTransformMakeScale(0.5, 0.5)
         let offsetX = gravityBehavior.gravityDirection.dx < 0 ? self.view.frame.width + 200 : -200
         let translation = CGAffineTransformMakeTranslation(offsetX, 0)
-        movieInfoDialog.transform = CGAffineTransformConcat(scale, translation)
+        movieDialogView.transform = CGAffineTransformConcat(scale, translation)
         
         if gravityBehavior.gravityDirection.dx < 0 {
             currentPage = (currentPage + 1) % movieCount
@@ -226,7 +255,7 @@ extension HomeViewController {
         showCurrentMovie()
         
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.movieInfoDialog.transform = CGAffineTransformIdentity
+            self.movieDialogView.transform = CGAffineTransformIdentity
             }, completion: nil)
     }
     
@@ -236,7 +265,7 @@ extension HomeViewController {
         pageControl.currentPage = currentPage
         
         let currentMovie = resultsSet.subjects[currentPage]
-        movieInfoDialog.movie = currentMovie
+        movieDialogView.movie = currentMovie
         backgroundImageView.sd_setImageWithURL(NSURL(string: currentMovie.images!.mediumImageURL), placeholderImage: placeHolderImage)
     }
     

@@ -34,8 +34,9 @@ class SnackbarView: UIView {
         self.layer.shadowRadius = 2
         self.layer.shadowOpacity = 0.5
         
+        // 初始化messageView 用于显示提示信息
         messageView = UILabel()
-        messageView.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        messageView.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
         
         messageView.backgroundColor = UIColor.clearColor()
         messageView.font = UIFont(name: "PingFang SC", size: 14)
