@@ -18,7 +18,6 @@
 		2118D3AF1D4F34F700644D84 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA6F1D3D29FA00F0D0C6 /* SearchResultsViewController.swift */; };
 		2118D3B01D4F34F700644D84 /* ClearTransitionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA711D3D2A0A00F0D0C6 /* ClearTransitionTableViewController.swift */; };
 		2118D3B11D4F34F700644D84 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B8B2E81D45A84700B7D344 /* AvatarView.swift */; };
-		2118D3B21D4F34F700644D84 /* MovieInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21DC25941D438777009FEA0C /* MovieInfoView.swift */; };
 		2118D3B31D4F34F700644D84 /* BaseMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA741D3D2A2900F0D0C6 /* BaseMovieCell.swift */; };
 		2118D3B41D4F34F700644D84 /* DetailMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211B3BD31D3FC11D00887B31 /* DetailMovieCell.swift */; };
 		2118D3B51D4F34F700644D84 /* FavoriteMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211B3BD51D3FC13A00887B31 /* FavoriteMovieCell.swift */; };
@@ -33,6 +32,8 @@
 		2118D3BE1D4F34F700644D84 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA611D3D297E00F0D0C6 /* Work.swift */; };
 		2118D3BF1D4F34F700644D84 /* UIViewController+UnWindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC282A1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift */; };
 		2122EFB01D61A4C500DA7567 /* String+RemoveFirstChar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122EFAF1D61A4C500DA7567 /* String+RemoveFirstChar.swift */; };
+		2146D74E1DA9F72200436FE6 /* MovieDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146D74D1DA9F72200436FE6 /* MovieDialogView.swift */; };
+		2146D7501DAA1FE300436FE6 /* LoadingEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146D74F1DAA1FE300436FE6 /* LoadingEffect.swift */; };
 		214C5D521D5466D40057B1B8 /* DoubanResultsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D511D5466D40057B1B8 /* DoubanResultsSet.swift */; };
 		214C5D541D5473AB0057B1B8 /* DoubanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D531D5473AB0057B1B8 /* DoubanAPI.swift */; };
 		2162F3DD1D66E98F00DC12B3 /* LoadingPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */; };
@@ -52,7 +53,6 @@
 		21BC28491D367E9E00E5E98C /* DoubanMovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC28481D367E9E00E5E98C /* DoubanMovieUITests.swift */; };
 		21BCE0521D643CFC006BB153 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BCE0511D643CFC006BB153 /* Global.swift */; };
 		21BCE0541D6451E9006BB153 /* LoadMoreFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BCE0531D6451E9006BB153 /* LoadMoreFooter.swift */; };
-		21BE1DF41D4F3149006D405B /* MovieInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21DC25961D438783009FEA0C /* MovieInfoView.xib */; };
 		21BE1DF51D4F3151006D405B /* AvatarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2134E50D1D45AEFC00DACE81 /* AvatarView.xib */; };
 		21C247F71D542F9500F919D6 /* DoubanImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C247F61D542F9500F919D6 /* DoubanImage.swift */; };
 		21C247F91D5431E600F919D6 /* MovieRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C247F81D5431E600F919D6 /* MovieRating.swift */; };
@@ -89,6 +89,8 @@
 		211B3BDD1D3FC1DD00887B31 /* DoubanService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanService.swift; sourceTree = "<group>"; };
 		2122EFAF1D61A4C500DA7567 /* String+RemoveFirstChar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+RemoveFirstChar.swift"; sourceTree = "<group>"; };
 		2134E50D1D45AEFC00DACE81 /* AvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AvatarView.xib; sourceTree = "<group>"; };
+		2146D74D1DA9F72200436FE6 /* MovieDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDialogView.swift; sourceTree = "<group>"; };
+		2146D74F1DAA1FE300436FE6 /* LoadingEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingEffect.swift; sourceTree = "<group>"; };
 		2149FA5D1D3D296400F0D0C6 /* DoubanCelebrity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanCelebrity.swift; sourceTree = "<group>"; };
 		2149FA5F1D3D296F00F0D0C6 /* DoubanMovie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanMovie.swift; sourceTree = "<group>"; };
 		2149FA611D3D297E00F0D0C6 /* Work.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Work.swift; sourceTree = "<group>"; };
@@ -135,8 +137,6 @@
 		21C9F4711D7D300300507AE7 /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		21C9F4751D7D427800507AE7 /* DoubanServiceErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanServiceErrorHandler.swift; sourceTree = "<group>"; };
 		21C9F4771D7D43B100507AE7 /* Snackbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
-		21DC25941D438777009FEA0C /* MovieInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieInfoView.swift; sourceTree = "<group>"; };
-		21DC25961D438783009FEA0C /* MovieInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieInfoView.xib; sourceTree = "<group>"; };
 		21DC25991D4389EF009FEA0C /* RatingStar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingStar.swift; sourceTree = "<group>"; };
 		3AA74BB0E5F74D7FD479F432 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		986A683CB4EC90E8174CEFDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +175,17 @@
 				219E11D71D581D6500F2A66B /* RealmHelper.swift */,
 			);
 			name = Realm;
+			sourceTree = "<group>";
+		};
+		2146D7511DAA28CD00436FE6 /* Snackbar */ = {
+			isa = PBXGroup;
+			children = (
+				21C9F4771D7D43B100507AE7 /* Snackbar.swift */,
+				21A12F8F1D7EA3EF00FC95AC /* SnackbarRecord.swift */,
+				21A12F891D7E574400FC95AC /* SnackbarView.swift */,
+				21A12F8B1D7E579B00FC95AC /* SnackbarManager.swift */,
+			);
+			name = Snackbar;
 			sourceTree = "<group>";
 		};
 		2149FA591D3D28ED00F0D0C6 /* Controllers */ = {
@@ -233,8 +244,9 @@
 		2149FA731D3D2A1500F0D0C6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2146D7511DAA28CD00436FE6 /* Snackbar */,
 				21B8B2EA1D45A85000B7D344 /* AvatarView */,
-				21DC25981D43897D009FEA0C /* MovieInfoView */,
+				2146D74D1DA9F72200436FE6 /* MovieDialogView.swift */,
 				2149FA741D3D2A2900F0D0C6 /* BaseMovieCell.swift */,
 				211B3BD31D3FC11D00887B31 /* DetailMovieCell.swift */,
 				211B3BD51D3FC13A00887B31 /* FavoriteMovieCell.swift */,
@@ -245,10 +257,7 @@
 				210EED411D48A1DE000F3D0D /* RatingBar.swift */,
 				21BCE0531D6451E9006BB153 /* LoadMoreFooter.swift */,
 				2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */,
-				21C9F4771D7D43B100507AE7 /* Snackbar.swift */,
-				21A12F8F1D7EA3EF00FC95AC /* SnackbarRecord.swift */,
-				21A12F891D7E574400FC95AC /* SnackbarView.swift */,
-				21A12F8B1D7E579B00FC95AC /* SnackbarManager.swift */,
+				2146D74F1DAA1FE300436FE6 /* LoadingEffect.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -336,15 +345,6 @@
 				21BC284A1D367E9E00E5E98C /* Info.plist */,
 			);
 			path = DoubanMovieUITests;
-			sourceTree = "<group>";
-		};
-		21DC25981D43897D009FEA0C /* MovieInfoView */ = {
-			isa = PBXGroup;
-			children = (
-				21DC25941D438777009FEA0C /* MovieInfoView.swift */,
-				21DC25961D438783009FEA0C /* MovieInfoView.xib */,
-			);
-			name = MovieInfoView;
 			sourceTree = "<group>";
 		};
 		9313CF5249D56B9A9F5330CB /* Pods */ = {
@@ -481,7 +481,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				21BE1DF51D4F3151006D405B /* AvatarView.xib in Resources */,
-				21BE1DF41D4F3149006D405B /* MovieInfoView.xib in Resources */,
 				21BC28331D367E9E00E5E98C /* LaunchScreen.storyboard in Resources */,
 				21BC28301D367E9E00E5E98C /* Assets.xcassets in Resources */,
 				21BC282E1D367E9E00E5E98C /* Main.storyboard in Resources */,
@@ -579,7 +578,6 @@
 				2118D3B01D4F34F700644D84 /* ClearTransitionTableViewController.swift in Sources */,
 				2192E86E1D6B372D0099FF3B /* ShareElementPushTransition.swift in Sources */,
 				2118D3B11D4F34F700644D84 /* AvatarView.swift in Sources */,
-				2118D3B21D4F34F700644D84 /* MovieInfoView.swift in Sources */,
 				214C5D521D5466D40057B1B8 /* DoubanResultsSet.swift in Sources */,
 				2118D3B31D4F34F700644D84 /* BaseMovieCell.swift in Sources */,
 				21BCE0521D643CFC006BB153 /* Global.swift in Sources */,
@@ -588,6 +586,7 @@
 				2192E8741D6B3FC80099FF3B /* MovieDetailViewController+ShareElementTransition.swift in Sources */,
 				2118D3B61D4F34F700644D84 /* MovieCardView.swift in Sources */,
 				2118D3B71D4F34F700644D84 /* MenuButton.swift in Sources */,
+				2146D74E1DA9F72200436FE6 /* MovieDialogView.swift in Sources */,
 				2118D3B81D4F34F700644D84 /* RatingStar.swift in Sources */,
 				2118D3B91D4F34F700644D84 /* StarLayer.swift in Sources */,
 				2118D3BA1D4F34F700644D84 /* RatingBar.swift in Sources */,
@@ -597,6 +596,7 @@
 				21A12F901D7EA3EF00FC95AC /* SnackbarRecord.swift in Sources */,
 				2118D3BD1D4F34F700644D84 /* DoubanMovie.swift in Sources */,
 				2192E8701D6B3BAB0099FF3B /* ShareElementPopTransition.swift in Sources */,
+				2146D7501DAA1FE300436FE6 /* LoadingEffect.swift in Sources */,
 				2118D3BE1D4F34F700644D84 /* Work.swift in Sources */,
 				21C247F91D5431E600F919D6 /* MovieRating.swift in Sources */,
 				219E11D81D581D6500F2A66B /* RealmHelper.swift in Sources */,

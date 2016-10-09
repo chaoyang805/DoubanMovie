@@ -49,13 +49,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C9D-Dw-bau" customClass="MovieInfoView" customModule="DoubanMovie" customModuleProvider="target">
+                                        <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C9D-Dw-bau" customClass="MovieInfoView" customModule="DoubanMovie" customModuleProvider="target">
                                             <rect key="frame" x="47.5" y="169" width="280" height="373"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <gestureRecognizers/>
-                                            <connections>
-                                                <outletCollection property="gestureRecognizers" destination="Oc8-9w-axw" appends="YES" id="b3p-VD-rWQ"/>
-                                            </connections>
                                         </view>
                                         <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="N9Y-l4-uYa" customClass="LoadingPageControl" customModule="DoubanMovie" customModuleProvider="target">
                                             <rect key="frame" x="152" y="580" width="71" height="37"/>
@@ -97,7 +94,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="631-CK-BoP" id="xd4-nx-Ehf"/>
-                        <outlet property="movieInfoDialog" destination="C9D-Dw-bau" id="8y9-gM-hCp"/>
                         <outlet property="pageControl" destination="N9Y-l4-uYa" id="XTp-md-aAz"/>
                         <outlet property="refreshBarButtonItem" destination="1N9-tD-hrd" id="tKj-vf-Cf3"/>
                         <segue destination="Czh-aZ-EAq" kind="show" identifier="ShowDetailSegue" id="CYE-hN-m5s"/>
@@ -107,11 +103,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sb5-f0-DHA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="Oc8-9w-axw">
-                    <connections>
-                        <action selector="handleGestures:" destination="RZY-mf-UVa" id="MwO-HP-k1e"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-991" y="-1052"/>
         </scene>

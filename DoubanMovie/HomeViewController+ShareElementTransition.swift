@@ -22,6 +22,7 @@ extension HomeViewController: UINavigationControllerDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.delegate = self
+        
     }
 }
 

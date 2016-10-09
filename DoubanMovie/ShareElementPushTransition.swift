@@ -20,14 +20,14 @@ class ShareElementPushTransition: NSObject, UIViewControllerAnimatedTransitionin
         }
         guard let container = transitionContext.containerView() else { return }
 
-        let snapshotView = UIImageView(image: fromVC.movieInfoDialog.posterImageButton.imageView?.image)
+        let snapshotView = UIImageView(image: fromVC.movieDialogView.posterImageButton.imageView?.image)
         snapshotView.contentMode = .ScaleAspectFill
         snapshotView.clipsToBounds = true
         snapshotView.layer.cornerRadius = 10
         
-        snapshotView.frame = container.convertRect(fromVC.movieInfoDialog.posterImageButton.frame, fromView: fromVC.movieInfoDialog)
+        snapshotView.frame = container.convertRect(fromVC.movieDialogView.posterImageButton.frame, fromView: fromVC.movieDialogView)
         
-        fromVC.movieInfoDialog.hidden = true
+        fromVC.movieDialogView.hidden = true
         toVC.view.frame = transitionContext.finalFrameForViewController(toVC)
         toVC.view.alpha = 0
         
@@ -48,7 +48,7 @@ class ShareElementPushTransition: NSObject, UIViewControllerAnimatedTransitionin
         
                                 }) { (finished) in
                                     
-                                    fromVC.movieInfoDialog.hidden = false
+                                    fromVC.movieDialogView.hidden = false
                                     snapshotView.removeFromSuperview()
                                     
                                     transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
