@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class ShareElementPopTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
@@ -57,9 +56,15 @@ class ShareElementPopTransition: NSObject, UIViewControllerAnimatedTransitioning
                                     snapshotView.removeFromSuperview()
                                     fromVC.posterImageView.hidden = false
                                     fromVC.view.alpha = 1
-                                    
-                                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
+
+                                    let transitionCancelled = transitionContext.transitionWasCancelled()
+                                    if transitionCancelled {
+                                        transitionContext.cancelInteractiveTransition()
+                                    }
+                                    transitionContext.completeTransition(!transitionCancelled)
                                     
                                 }
+        
     }
+    
 }

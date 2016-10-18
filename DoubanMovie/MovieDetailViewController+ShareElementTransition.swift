@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWPercentDrivenInteractiveTransition
 
 extension MovieDetailViewController: UINavigationControllerDelegate {
     
@@ -38,7 +39,8 @@ extension MovieDetailViewController: UINavigationControllerDelegate {
         let velocityX = sender.velocityInView(self.view).x
         switch sender.state {
         case .Began:
-            percentDrivenInteractiveController = UIPercentDrivenInteractiveTransition()
+            
+            percentDrivenInteractiveController = AWPercentDrivenInteractiveTransition(animator: shareElementPopTransition)
             navigationController?.popViewControllerAnimated(true)
         case .Changed:
             percentDrivenInteractiveController.updateInteractiveTransition(progress)
@@ -47,6 +49,7 @@ extension MovieDetailViewController: UINavigationControllerDelegate {
                 percentDrivenInteractiveController.finishInteractiveTransition()
                 :
                 percentDrivenInteractiveController.cancelInteractiveTransition()
+            
             percentDrivenInteractiveController = nil
         default:
             break
@@ -64,8 +67,12 @@ extension MovieDetailViewController: UINavigationControllerDelegate {
     }
     
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
         if operation == .Pop && fromVC is MovieDetailViewController && toVC is HomeViewController {
-            return ShareElementPopTransition()
+            if shareElementPopTransition == nil {
+                shareElementPopTransition = ShareElementPopTransition()
+            }
+            return shareElementPopTransition
         } else {
             return nil
         }

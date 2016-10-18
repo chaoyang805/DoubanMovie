@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import AWPercentDrivenInteractiveTransition
 
 class MovieDetailViewController: UIViewController {
     
@@ -49,7 +50,8 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var likeBarButton: UIBarButtonItem!
     
-    var percentDrivenInteractiveController: UIPercentDrivenInteractiveTransition!
+    var percentDrivenInteractiveController: AWPercentDrivenInteractiveTransition!
+    var shareElementPopTransition: ShareElementPopTransition! = ShareElementPopTransition()
     
     override func viewDidLoad() {
         super.viewDidLoad()

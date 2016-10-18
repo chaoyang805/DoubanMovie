@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4643DEA8CC5A302F47A7058C'
-               BlueprintName = 'SDWebImage'
+               BlueprintIdentifier = 'ADB6167F12AA064FD4F54A71'
+               BlueprintName = 'AWPercentDrivenInteractiveTransition'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SDWebImage.framework'>
+               BuildableName = 'AWPercentDrivenInteractiveTransition.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

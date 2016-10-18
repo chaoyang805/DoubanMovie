@@ -192,7 +192,7 @@ enum RequestType: CustomStringConvertible {
     case celebrity(celebritId: String)
     
     var baseURL: String {
-        return "http://api.douban.com/v2/movie/"
+        return "https://api.douban.com/v2/movie/"
     }
     
     var description: String {

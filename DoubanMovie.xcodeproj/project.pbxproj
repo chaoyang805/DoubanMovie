@@ -37,6 +37,7 @@
 		214C5D521D5466D40057B1B8 /* DoubanResultsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D511D5466D40057B1B8 /* DoubanResultsSet.swift */; };
 		214C5D541D5473AB0057B1B8 /* DoubanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D531D5473AB0057B1B8 /* DoubanAPI.swift */; };
 		2162F3DD1D66E98F00DC12B3 /* LoadingPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */; };
+		216E35A91DB4D60D0036A625 /* ZCYPercentDrivenInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216E35A81DB4D60D0036A625 /* ZCYPercentDrivenInteractiveTransition.swift */; };
 		2192E86E1D6B372D0099FF3B /* ShareElementPushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192E86D1D6B372D0099FF3B /* ShareElementPushTransition.swift */; };
 		2192E8701D6B3BAB0099FF3B /* ShareElementPopTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192E86F1D6B3BAB0099FF3B /* ShareElementPopTransition.swift */; };
 		2192E8721D6B3EBC0099FF3B /* HomeViewController+ShareElementTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192E8711D6B3EBC0099FF3B /* HomeViewController+ShareElementTransition.swift */; };
@@ -108,6 +109,7 @@
 		2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingPageControl.swift; sourceTree = "<group>"; };
 		216C5DA81D4726E9008A4A75 /* MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+MenuViewControllerDelegate.swift"; sourceTree = "<group>"; };
+		216E35A81DB4D60D0036A625 /* ZCYPercentDrivenInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZCYPercentDrivenInteractiveTransition.swift; sourceTree = "<group>"; };
 		2192E86D1D6B372D0099FF3B /* ShareElementPushTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareElementPushTransition.swift; sourceTree = "<group>"; };
 		2192E86F1D6B3BAB0099FF3B /* ShareElementPopTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareElementPopTransition.swift; sourceTree = "<group>"; };
 		2192E8711D6B3EBC0099FF3B /* HomeViewController+ShareElementTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ShareElementTransition.swift"; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			children = (
 				2192E86D1D6B372D0099FF3B /* ShareElementPushTransition.swift */,
 				2192E86F1D6B3BAB0099FF3B /* ShareElementPopTransition.swift */,
+				216E35A81DB4D60D0036A625 /* ZCYPercentDrivenInteractiveTransition.swift */,
 			);
 			name = Transition;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				2118D3B61D4F34F700644D84 /* MovieCardView.swift in Sources */,
 				2118D3B71D4F34F700644D84 /* MenuButton.swift in Sources */,
 				2146D74E1DA9F72200436FE6 /* MovieDialogView.swift in Sources */,
+				216E35A91DB4D60D0036A625 /* ZCYPercentDrivenInteractiveTransition.swift in Sources */,
 				2118D3B81D4F34F700644D84 /* RatingStar.swift in Sources */,
 				2118D3B91D4F34F700644D84 /* StarLayer.swift in Sources */,
 				2118D3BA1D4F34F700644D84 /* RatingBar.swift in Sources */,

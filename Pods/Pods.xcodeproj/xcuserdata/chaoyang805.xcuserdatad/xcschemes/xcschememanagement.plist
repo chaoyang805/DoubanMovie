@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AWPercentDrivenInteractiveTransition.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1BB965B1389EEA2544C2688D612AC02B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9CA0A9556BD23006DDFD6DEE10A787C0</key>
+		<key>29E764FAA5A013FFA51ADDA3964C084C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B045BCD0F7C7A5CF2F9935BF1C7C3C78</key>
+		<key>3B33BF391D6D8A63309BB9ED85BAC872</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3D6987EE7CC299ECABD01B429A830EAB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CC222090C8DEBB4EC8B76ABFE747FED1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CF5561376C2E1BEC3FAB424CF18E0ED3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>D5D6200D4BE741574DBD4FB768A6F55B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FFF0ECD9FAF75B5F420B78B6B3196C48</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -19,7 +19,7 @@ class SearchResultsViewController: ClearTransitionTableViewController {
         
         let scopeButtonTitles = ["全部", "电影", "电视剧", "其他"]
         _searchController.searchBar.scopeButtonTitles = scopeButtonTitles
-        
+
         _searchController.searchBar.delegate = self
         _searchController.searchBar.barTintColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1)
         _searchController.searchBar.tintColor = UIColor(red: 0.0823, green: 0.584, blue: 0.533, alpha: 1)
