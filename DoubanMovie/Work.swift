@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import RealmSwift
 import ObjectMapper
+import RealmSwift
+
 /// 描述艺人作品的字段
 class Work: Object, Mappable {
     // json 数据中是一个String数组，将其转换为String，通过'/'隔开
@@ -27,7 +28,7 @@ class Work: Object, Mappable {
         return ["rolesArray"]
     }
     
-    required convenience init?(_ map: Map) {
+    required convenience init?(map: Map) {
         self.init()
     }
     

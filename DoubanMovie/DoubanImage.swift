@@ -7,15 +7,16 @@
 //
 
 import UIKit
-import RealmSwift
 import ObjectMapper
+import RealmSwift
+
 class DoubanImage: Object, Mappable {
     
     dynamic var smallImageURL = ""
     dynamic var mediumImageURL = ""
     dynamic var largeImageURL = ""
     
-    required convenience init?(_ map: Map) {
+    required convenience init?(map: Map) {
         self.init()
     }
     
@@ -27,13 +28,13 @@ class DoubanImage: Object, Mappable {
 }
 
 extension DoubanImage: NSCopying {
-    func copyWithZone(zone: NSZone) -> AnyObject {
+    func copy(with zone: NSZone? = nil) -> Any {
         let copy = DoubanImage()
         
         copy.smallImageURL = smallImageURL
         copy.mediumImageURL = mediumImageURL
         copy.largeImageURL = largeImageURL
-        
         return copy
     }
+
 }

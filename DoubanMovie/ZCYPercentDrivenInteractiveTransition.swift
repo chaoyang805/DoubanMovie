@@ -19,12 +19,12 @@ class ZCYPercentDrivenInteractiveTransition: NSObject, UIViewControllerInteracti
     var duration: CGFloat!
     var percentComplete: CGFloat! {
         didSet {
-            self.setTimeOffset(NSTimeInterval(self.percentComplete * self.duration))
+            self.setTimeOffset(timeOffset: TimeInterval(self.percentComplete * self.duration))
         }
     }
     
     var animationCurve: UIViewAnimationCurve {
-        return .Linear
+        return .linear
     }
     
     init(animator: UIViewControllerAnimatedTransitioning) {
@@ -47,38 +47,32 @@ class ZCYPercentDrivenInteractiveTransition: NSObject, UIViewControllerInteracti
     }
     
     func tickAnimation() {
-        let timeOffset = self.timeOffset()! as NSTimeInterval
+        let timeOffset = self.timeOffset()! as TimeInterval
 //        let tick = displayLink.duration * self.completionSpeed()
     }
     
     func timeOffset() -> CFTimeInterval? {
-        return transitionContext.containerView()?.layer.timeOffset
+        return transitionContext.containerView.layer.timeOffset
     }
     
     func finishInteractiveTransition() {
         
     }
     
-    func startInteractiveTransition(transitionContext: UIViewControllerContextTransitioning) {
+    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
         assert(animator != nil, "The animator property must be set at the start of an interactive transition.")
         
         self.transitionContext = transitionContext
         
-        self.transitionContext.containerView()?.layer.speed = 0
-        animator?.animateTransition(transitionContext)
+        self.transitionContext.containerView.layer.speed = 0
+        animator?.animateTransition(using: transitionContext)
     }
+    var completionSpeed: CGFloat = 1.0
     
-    func completionSpeed() -> CGFloat {
-        return 1
-    }
+    var completionCurve: UIViewAnimationCurve = .linear
     
-    func completionCurve() -> UIViewAnimationCurve {
-        return .Linear
-    }
-    
-    func setTimeOffset(timeOffset: NSTimeInterval) {
-        
-        self.transitionContext.containerView()?.layer.timeOffset = timeOffset
+    func setTimeOffset(timeOffset: TimeInterval) {
+        self.transitionContext.containerView.layer.timeOffset = timeOffset
         
     }
 }

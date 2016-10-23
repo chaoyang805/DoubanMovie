@@ -12,7 +12,7 @@ import ObjectMapper
 
 class DoubanService: DoubanAPI {
     
-    typealias ResponseHandler = ((responseJSON: NSDictionary?, error: NSError?) -> Void)
+    typealias ResponseHandler = ((_ responseJSON: [String : Any]?, _ error: Error?) -> Void)
     
     static let sharedService = DoubanService()
     
@@ -27,12 +27,12 @@ class DoubanService: DoubanAPI {
     private init() {}
     
     private lazy var manager: AFHTTPSessionManager = {
-        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-        config.requestCachePolicy = .ReturnCacheDataElseLoad
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .returnCacheDataElseLoad
         
         let _manager = AFHTTPSessionManager(sessionConfiguration: config)
         
-        _manager.responseSerializer = AFJSONResponseSerializer(readingOptions: .AllowFragments)
+        _manager.responseSerializer = AFJSONResponseSerializer(readingOptions: .allowFragments)
         return _manager
     }()
     
@@ -50,7 +50,7 @@ class DoubanService: DoubanAPI {
         
         self.requestType = RequestType.inTheater
         
-        let parameters = ["start": start, "city": city, "count":count]
+        let parameters: [String : Any] = ["start": start, "city": city, "count":count]
 
         let task = makeGETRequest(
             withURL: self.requestURLString,
@@ -73,7 +73,7 @@ class DoubanService: DoubanAPI {
         
         self.requestType = RequestType.search
     
-        let parameters = ["q": query, "start": start, "count": count]
+        let parameters: [String : Any] = ["q": query, "start": start, "count": count]
         makeGETRequest(
             withURL: self.requestURLString,
             parameters: parameters,
@@ -95,7 +95,7 @@ class DoubanService: DoubanAPI {
         
         self.requestType = RequestType.search
         
-        let parameters = ["tag" : tag, "start": start, "count": count]
+        let parameters: [String : Any] = ["tag" : tag, "start": start, "count": count]
         makeGETRequest(
             withURL: self.requestURLString,
             parameters: parameters,
@@ -149,24 +149,24 @@ class DoubanService: DoubanAPI {
      
      - returns: 返回创建好的task
      */
-    private func makeGETRequest(withURL url: String, parameters: AnyObject?, forceReload: Bool, completionHandler: ResponseHandler?) -> NSURLSessionDataTask? {
+    private func makeGETRequest(withURL url: String, parameters: Any?, forceReload: Bool, completionHandler: ResponseHandler?) -> URLSessionDataTask? {
         NSLog("request url: \(url)")
         if forceReload {
-            manager.requestSerializer.cachePolicy = .ReloadIgnoringLocalCacheData
+            manager.requestSerializer.cachePolicy = .reloadIgnoringLocalCacheData
         } else {
-            manager.requestSerializer.cachePolicy = .ReturnCacheDataElseLoad
+            manager.requestSerializer.cachePolicy = .returnCacheDataElseLoad
         }
-        return manager.GET(url, parameters: parameters,
-                    progress: { (progress: NSProgress) in
+        return manager.get(url, parameters: parameters,
+                    progress: { (progress) in
                         
                     },
-                    success: { (task: NSURLSessionDataTask, object:AnyObject?) in
+                    success: { (task, object) in
                         NSLog("request success")
-                        completionHandler?(responseJSON: object as? NSDictionary, error: nil)
+                        completionHandler?(object as! [String : Any]?, nil)
                     },
-                    failure: { (task: NSURLSessionDataTask?, error: NSError) in
+                    failure: { (task, error) in
                         NSLog("request failed")
-                        completionHandler?(responseJSON: nil, error: error)
+                        completionHandler?(nil, error)
                     })
     }
     

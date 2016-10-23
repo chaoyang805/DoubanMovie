@@ -14,22 +14,22 @@ class MovieDetailViewController: UIViewController {
     
     // MARK: - Properties
     
-    private lazy var doubanService: DoubanService = {
+    fileprivate lazy var doubanService: DoubanService = {
         
         return DoubanService.sharedService
     }()
     
-    private lazy var realmHelper: RealmHelper = {
+    fileprivate lazy var realmHelper: RealmHelper = {
         
         return RealmHelper()
     }()
     
-    private lazy var likedImage: UIImage = {
+    fileprivate lazy var likedImage: UIImage = {
         
         return UIImage(named: "icon-liked")!
     }()
     
-    private lazy var normalImage: UIImage = {
+    fileprivate lazy var normalImage: UIImage = {
         return UIImage(named: "icon-like-normal")!
     }()
     
@@ -47,7 +47,6 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var movieCollectCountLabel: UILabel!
     @IBOutlet weak var movieDirectorLabel: UILabel!
     @IBOutlet weak var movieYearLabel: UILabel!
-    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var likeBarButton: UIBarButtonItem!
     
     var percentDrivenInteractiveController: AWPercentDrivenInteractiveTransition!
@@ -59,30 +58,31 @@ class MovieDetailViewController: UIViewController {
         configureView()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         notifyObserver()
     }
     
-    private var deleted: Bool = false
+    fileprivate var deleted: Bool = false
     
     private func notifyObserver() {
-        NSNotificationCenter.defaultCenter().postNotificationName(DBMMovieDidDeleteNotificationName, object: nil, userInfo: [DBMMovieDeleteNotificationKey : deleted])
+
+        NotificationCenter.default.post(name: DBMMovieDidDeleteNotificationName, object: nil, userInfo: [DBMMovieDeleteNotificationKey: deleted])
     }
     
-    @IBAction func favoriteBarButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func favoriteBarButtonPressed(_ sender: UIBarButtonItem) {
         movieExistAtRealm() ? deleteMovieFromRealm() : addMovieToFavorite()
     }
     
     func configureView() {
         guard let movie = detailMovie else { return }
         
-        let exists = realmHelper.movieExists(movie.id)
+        let exists = realmHelper.movieExists(id: movie.id)
         if exists {
             likeBarButton.image = likedImage
         }
         
-        posterImageView.sd_setImageWithURL(NSURL(string: movie.images!.largeImageURL), placeholderImage: UIImage(named: "placeholder"))
+        posterImageView.sd_setImage(with: URL(string: movie.images!.largeImageURL), placeholderImage: UIImage(named: "placeholder"))
         navigationItem.title = movie.title
         movieTitleLabel.text = movie.title
         movieCastsLabel.text = movie.castsDescription
@@ -103,12 +103,12 @@ class MovieDetailViewController: UIViewController {
         artistsScrollView.showsVerticalScrollIndicator = false
         artistsScrollView.showsHorizontalScrollIndicator = false
         
-        for (index, director) in movie.directors.enumerate() {
+        for (index, director) in movie.directors.enumerated() {
             guard let _ = director.avatars else { continue }
             addAvatarView(withCelebrity: director, at: index)
         }
         
-        for (index, actor) in movie.casts.enumerate() {
+        for (index, actor) in movie.casts.enumerated() {
             guard let _ = actor.avatars else { continue }
             addAvatarView(withCelebrity: actor, at: index + movie.directors.count)
         }
@@ -125,7 +125,7 @@ class MovieDetailViewController: UIViewController {
     
     func queryMovieDetail() {
 
-        guard let movie = detailMovie, id = detailMovie?.id else {return }
+        guard let movie = detailMovie, let id = detailMovie?.id else {return }
         
         /**
          *  如果summary不为空，说明已经更新过了
@@ -137,7 +137,7 @@ class MovieDetailViewController: UIViewController {
         // 如果该条目是收藏的条目，直接从数据库中查询summary信息，不再请求网络
         if movieExistAtRealm() {
             realmHelper.getFavoriteMovie(byId: id, completion: { [weak self](movie) in
-                guard let `self` = self, movie = movie else { return }
+                guard let `self` = self, let movie = movie else { return }
                 self.detailMovie?.summary = movie.summary
             })
         } else {
@@ -153,7 +153,7 @@ class MovieDetailViewController: UIViewController {
         
         doubanService.movie(forId: id) { [weak self](responseJSON, error) in
             guard let `self` = self else { return }
-            let updatedMovie = Mapper<DoubanMovie>().map(responseJSON)
+            let updatedMovie = Mapper<DoubanMovie>().map(JSON: responseJSON!)
             
             self.detailMovie?.summary = updatedMovie?.summary ?? "暂无"
             self.movieSummaryText.text = self.detailMovie?.summary
@@ -167,7 +167,7 @@ extension MovieDetailViewController {
     
     func movieExistAtRealm() -> Bool {
         guard let movie = detailMovie else { return false }
-        return realmHelper.movieExists(movie.id)
+        return realmHelper.movieExists(id: movie.id)
     }
     
     /**
@@ -175,14 +175,14 @@ extension MovieDetailViewController {
      */
     func deleteMovieFromRealm() {
         guard let movieId = detailMovie?.id else { return }
-        realmHelper.deleteMovieById(movieId)
+        realmHelper.deleteMovieById(id: movieId)
         likeBarButton.image = normalImage
         deleted = true
     }
     
     func addMovieToFavorite() {
         guard let movie = detailMovie else { return }
-        movie.collectDate = NSDate()
+        movie.collectDate = Date()
         realmHelper.addFavoriteMovie(movie, copy: true)
         likeBarButton.image = likedImage
         deleted = false

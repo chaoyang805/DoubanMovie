@@ -11,7 +11,7 @@ import AWPercentDrivenInteractiveTransition
 
 extension MovieDetailViewController: UINavigationControllerDelegate {
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         setupNavigationTransition()
@@ -23,7 +23,7 @@ extension MovieDetailViewController: UINavigationControllerDelegate {
             
             self.navigationController?.delegate = self
             let edgePanGesture = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(MovieDetailViewController.handleEdgePanGesture(_:)))
-            edgePanGesture.edges = .Left
+            edgePanGesture.edges = .left
             self.view.addGestureRecognizer(edgePanGesture)
             
         }
@@ -34,21 +34,21 @@ extension MovieDetailViewController: UINavigationControllerDelegate {
         return naviVC.viewControllers.count == 2
     }
     
-    func handleEdgePanGesture(sender: UIScreenEdgePanGestureRecognizer) {
-        let progress = sender.translationInView(self.view).x / self.view.bounds.width
-        let velocityX = sender.velocityInView(self.view).x
+    func handleEdgePanGesture(_ sender: UIScreenEdgePanGestureRecognizer) {
+        let progress = sender.translation(in: self.view).x / self.view.bounds.width
+        let velocityX = sender.velocity(in: self.view).x
         switch sender.state {
-        case .Began:
+        case .began:
             
             percentDrivenInteractiveController = AWPercentDrivenInteractiveTransition(animator: shareElementPopTransition)
-            navigationController?.popViewControllerAnimated(true)
-        case .Changed:
-            percentDrivenInteractiveController.updateInteractiveTransition(progress)
-        case .Ended, .Cancelled:
+            let _ = navigationController?.popViewController(animated: true)
+        case .changed:
+            percentDrivenInteractiveController.update(progress)
+        case .ended, .cancelled:
             progress > 0.3 || velocityX > 500 ?
-                percentDrivenInteractiveController.finishInteractiveTransition()
+                percentDrivenInteractiveController.finish()
                 :
-                percentDrivenInteractiveController.cancelInteractiveTransition()
+                percentDrivenInteractiveController.cancel()
             
             percentDrivenInteractiveController = nil
         default:
@@ -57,8 +57,7 @@ extension MovieDetailViewController: UINavigationControllerDelegate {
     }
     
     // MARK - <UINavigationControllerDelegate>
-    func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        
+    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         if animationController is ShareElementPopTransition {
             return percentDrivenInteractiveController
         } else {
@@ -66,9 +65,9 @@ extension MovieDetailViewController: UINavigationControllerDelegate {
         }
     }
     
-    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        if operation == .Pop && fromVC is MovieDetailViewController && toVC is HomeViewController {
+        if operation == .pop && fromVC is MovieDetailViewController && toVC is HomeViewController {
             if shareElementPopTransition == nil {
                 shareElementPopTransition = ShareElementPopTransition()
             }

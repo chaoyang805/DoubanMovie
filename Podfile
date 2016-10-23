@@ -4,8 +4,8 @@ target 'DoubanMovie' do
 
 pod 'SDWebImage', '~> 4.0.0-beta2'
 pod 'AFNetworking', '~> 3.1.0'
-pod 'Realm', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master', :submodules => true
-pod 'RealmSwift', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master',:submodules => true
+#pod 'Realm', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master', submodules: true
+#pod 'RealmSwift', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master', submodules: true
 pod 'ObjectMapper', '~> 2.1.0'
 pod 'AWPercentDrivenInteractiveTransition', '~> 0.2.0'
 end

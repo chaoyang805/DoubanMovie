@@ -10,6 +10,11 @@ import UIKit
 
 class LoadMoreFooter: UIView {
     
+    @available(iOS 10.0, *)
+    private lazy var feedbackGenerator: UISelectionFeedbackGenerator = {
+        return UISelectionFeedbackGenerator()
+    }()
+    
     private var loadingLabel: UILabel
     private var indicator: UIActivityIndicatorView
     private(set) var state: LoadMoreFooterState {
@@ -34,6 +39,7 @@ class LoadMoreFooter: UIView {
                 self.title = "已全部加载"
                 self.indicator.stopAnimating()
             case .ended:
+                changeHeight(0)
                 self.title = "加载更多"
                 self.indicator.stopAnimating()
             }
@@ -55,21 +61,20 @@ class LoadMoreFooter: UIView {
     
     override init(frame: CGRect) {
         loadingLabel = UILabel(frame: CGRect(x: 0, y: 15, width: 90, height: 20))
-        loadingLabel.textAlignment = .Center
+        loadingLabel.textAlignment = .center
         loadingLabel.text = "加载更多"
         loadingLabel.font = UIFont(name: "Helvetica-Light", size: 14)
-        loadingLabel.textColor = UIColor.blackColor()
+        loadingLabel.textColor = UIColor.black
         
-        indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         indicator.frame = CGRect(x: 0, y: 45, width: 20, height: 20)
         indicator.hidesWhenStopped = false
         
         isLoadingMore = false
         
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         self.clipsToBounds = true
-        
         
         addSubview(loadingLabel)
         addSubview(indicator)
@@ -81,10 +86,22 @@ class LoadMoreFooter: UIView {
     
     func willLoadMore() {
         self.state = .prepare
+        if #available(iOS 10.0, *) , isIPhoneSeven() {
+            feedbackGenerator.prepare()
+        }
+    }
+    
+    private func isIPhoneSeven() -> Bool {
+        let name = UIDevice.current.modelName
+        return name == "iPhone 7" || name == "iPhone 7 Plus"
+
     }
     
     func beginLoadMore() {
         self.state = .began
+        if #available(iOS 10.0, *), isIPhoneSeven() {
+            feedbackGenerator.selectionChanged()
+        }
     }
     
     func cancelLoadMore() {
@@ -99,7 +116,7 @@ class LoadMoreFooter: UIView {
         self.state = .nomoredata
     }
     
-    func changeHeight(height: CGFloat) {
+    func changeHeight(_ height: CGFloat) {
         let temp = self.frame
         self.frame = CGRect(x: temp.origin.x, y: temp.origin.y, width: temp.width, height: height)
         setNeedsLayout()

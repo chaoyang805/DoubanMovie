@@ -14,24 +14,18 @@ class FavoriteMovieCell: UITableViewCell {
     @IBOutlet weak var movieSummaryLabel: UILabel!
     @IBOutlet weak var collectDateLabel: UILabel!
     
-//    var movie: DoubanMovie?
     func configureCell(with movie: DoubanMovie) {
-//        self.movie = movie
-        posterImageView.sd_setImageWithURL(NSURL(string: movie.images!.mediumImageURL))
+        posterImageView.sd_setImage(with: URL(string: movie.images!.mediumImageURL))
         titleLabel.text = movie.title
         movieSummaryLabel.text = movie.summary
-        
-//        titleLabel.text = "忍者神龟2:破影而出"
-//        movieSummaryLabel.text = "城市在恢复平静后，大反派重新召集旧部卷土重来，并勾结外星恶势力朗格试图称霸地球，忍者神龟莱昂纳多（皮特·普劳泽克 Pete Ploszek 饰）、拉斐尔（阿兰·里奇森 Alan Ritchson 饰）…"
-//        collectDateLabel.text = "07-01 20:30"
         collectDateLabel.text = formatDate(movie.collectDate)
         
     }
     
-    func formatDate(date: NSDate) -> String {
-        let formatter = NSDateFormatter()
+    func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
         
         formatter.dateFormat = "MM-dd HH:mm"
-        return formatter.stringFromDate(date)
+        return formatter.string(from: date)
     }
 }

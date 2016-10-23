@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MenuViewControllerDelegate: class {
-    func menuViewController(controller: MenuViewController, didClickButtonWithType type: MenuButtonType)
+    func menuViewController(_ controller: MenuViewController, didClickButtonWithType type: MenuButtonType)
 }
 
 enum MenuButtonType {

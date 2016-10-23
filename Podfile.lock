@@ -15,29 +15,23 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - AWPercentDrivenInteractiveTransition (0.2.0)
-  - ObjectMapper (1.3.0)
-  - Realm (1.0.2):
-    - Realm/Headers (= 1.0.2)
-  - Realm/Headers (1.0.2)
-  - RealmSwift (1.0.2):
-    - Realm (= 1.0.2)
-  - SDWebImage (3.8.1):
-    - SDWebImage/Core (= 3.8.1)
-  - SDWebImage/Core (3.8.1)
+  - ObjectMapper (2.1.0)
+  - SDWebImage (4.0.0-beta2):
+    - SDWebImage/Core (= 4.0.0-beta2)
+  - SDWebImage/Core (4.0.0-beta2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - AWPercentDrivenInteractiveTransition (~> 0.2.0)
-  - ObjectMapper (~> 1.3.0)
-  - RealmSwift (~> 1.0.2)
-  - SDWebImage (~> 3.8.1)
+  - ObjectMapper (~> 2.1.0)
+  - SDWebImage (~> 4.0.0-beta2)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AWPercentDrivenInteractiveTransition: 26f1c1f11777e2f6171819a13b458dda021db3ad
-  ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
-  Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
-  RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
-  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+  ObjectMapper: e5e0f8aef8590fc2ddcde7f27eddb255863ee6e9
+  SDWebImage: e379f33106cf8d6766f970c0ef1c3fb609c94d78
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: ae7bff949648a95b5b48fa5cc144b62059b8d4b1
+
+COCOAPODS: 1.1.0

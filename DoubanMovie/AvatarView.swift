@@ -22,7 +22,7 @@ class AvatarView: UIView {
     init(frame: CGRect, celebrity: DoubanCelebrity) {
         self.celebrity = celebrity
         super.init(frame: frame)
-        NSBundle.mainBundle().loadNibNamed("AvatarView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("AvatarView", owner: self, options: nil)
         self.addSubview(containerView)
     }
     
@@ -35,8 +35,8 @@ class AvatarView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         avatarImageButton.layer.cornerRadius = 30
-        avatarImageButton.sd_setImageWithURL(NSURL(string: celebrity.avatars!.mediumImageURL), forState: .Normal)
-        avatarImageButton.imageView?.contentMode = .ScaleAspectFill
+        avatarImageButton.sd_setImage(with: URL(string: celebrity.avatars!.mediumImageURL), for: .normal)
+        avatarImageButton.imageView?.contentMode = .scaleAspectFill
         artistNameLabel.text = celebrity.name
         
     }

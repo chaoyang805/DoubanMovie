@@ -44,7 +44,8 @@ class RatingBar: UIView {
         scoreLabel!.font = UIFont(name: "PingFang SC", size: 12)
         scoreLabel!.textColor = UIColor(red: 1.0, green: 0.678, blue: 0.043, alpha: 1)
         
-        scoreLabel!.frame = CGRect(origin: CGPoint(x: 82, y: 1), size: (scoreLabel!.text! as NSString).sizeWithAttributes([NSFontAttributeName: scoreLabel!.font]))
+        scoreLabel!.frame = CGRect(origin: CGPoint(x: 82, y: 1), size: (scoreLabel!.text! as NSString)
+            .size(attributes: [NSFontAttributeName: scoreLabel!.font]))
         addSubview(scoreLabel!)
     }
     
@@ -53,8 +54,8 @@ class RatingBar: UIView {
         guard let ratingScore = ratingScore else {
             return
         }
-        
-        let appearenceArray =  [StarLayerAppearence](count: 5, repeatedValue: .full)
+
+        let appearenceArray =  [StarLayerAppearence](repeating: .full, count: 5)
         let yellowStarCount = Int(ratingScore / 2)
         
         for index in 0..<appearenceArray.count {
@@ -101,7 +102,7 @@ class RatingBar: UIView {
         
     }
     
-    private func middleStarType(ratingScore: Float) -> StarLayerAppearence {
+    private func middleStarType(_ ratingScore: Float) -> StarLayerAppearence {
         let a = Int(ratingScore * 100) / 2 % 100
         if 10 < a && a < 60 {
             return .half
