@@ -9,7 +9,6 @@
 import UIKit
 import SDWebImage
 import ObjectMapper
-import RealmSwift
 
 class HomeViewController: UIViewController{
 
@@ -17,44 +16,46 @@ class HomeViewController: UIViewController{
     @IBOutlet weak var pageControl: LoadingPageControl!
     @IBOutlet weak var refreshBarButtonItem: UIBarButtonItem!
     
-    var movieDialogView: MovieDialogView!
+    private(set) var movieDialogView: MovieDialogView!
     
-    var animator: UIDynamicAnimator!
-    var attachmentBehavior: UIAttachmentBehavior!
-    var gravityBehavior: UIGravityBehavior!
-    var snapBehavior: UISnapBehavior!
+    fileprivate var animator: UIDynamicAnimator!
+    fileprivate var attachmentBehavior: UIAttachmentBehavior!
+    fileprivate var gravityBehavior: UIGravityBehavior!
+    fileprivate var snapBehavior: UISnapBehavior!
     
-    var doubanService: DoubanService {
+    fileprivate var imagePrefetcher = SDWebImagePrefetcher()
+    
+    fileprivate var doubanService: DoubanService {
         return DoubanService.sharedService
     }
     
-    lazy var realm: RealmHelper = {
+    fileprivate lazy var realm: RealmHelper = {
         return RealmHelper()
     }()
     
-    lazy var placeHolderImage: UIImage = {
+    fileprivate lazy var placeHolderImage: UIImage = {
     
         return UIImage(named: "placeholder")!
     }()
     
-    var movieCount: Int {
+    fileprivate var movieCount: Int {
         return resultsSet != nil ? resultsSet.subjects.count : 0
     }
     
-    var resultsSet: DoubanResultsSet! {
+    fileprivate var resultsSet: DoubanResultsSet! {
         didSet {
             self.pageControl.numberOfPages = movieCount
-            showCurrentMovie()
+            showCurrentMovie(animated: false)
         }
     }
     
-    var currentPage: Int = 0
+    fileprivate var currentPage: Int = 0
     
-    var screenWidth: CGFloat {
-        return UIScreen.mainScreen().bounds.width
+    private var screenWidth: CGFloat {
+        return UIScreen.main.bounds.width
     }
-    var screenHeight: CGFloat {
-        return UIScreen.mainScreen().bounds.height
+    private var screenHeight: CGFloat {
+        return UIScreen.main.bounds.height
     }
     
     override func viewDidLoad() {
@@ -62,6 +63,11 @@ class HomeViewController: UIViewController{
         
         setupMovieDialogView()
         self.fetchData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.imagePrefetcher.cancelPrefetching()
     }
     
     private func setupMovieDialogView() {
@@ -72,7 +78,7 @@ class HomeViewController: UIViewController{
         let y = (screenHeight - dialogHeight + 44) / 2
         movieDialogView = MovieDialogView(frame: CGRect(x: x, y: y, width: dialogWidth, height: dialogHeight))
         
-        movieDialogView.addTarget(self, action: #selector(HomeViewController.movieDialogViewDidTouch(_:)), for: .TouchUpInside)
+        movieDialogView.addTarget(target: self, action: #selector(HomeViewController.movieDialogViewDidTouch(_:)), for: .touchUpInside)
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(HomeViewController.handleGestures(_:)))
         self.movieDialogView.addGestureRecognizer(panGesture)
@@ -82,20 +88,21 @@ class HomeViewController: UIViewController{
         animator = UIDynamicAnimator(referenceView: self.view)
     }
     
-    func movieDialogViewDidTouch(sender: AnyObject) {
-        self.performSegueWithIdentifier("ShowDetailSegue", sender: self)
+    func movieDialogViewDidTouch(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "ShowDetailSegue", sender: self)
     }
     
+    
     // MAKR: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "ShowDetailSegue" {
-            guard let toVC = segue.destinationViewController as? MovieDetailViewController else { return }
+            guard let toVC = segue.destination as? MovieDetailViewController else { return }
             toVC.detailMovie = resultsSet.subjects[currentPage]
         }
         
         if segue.identifier == "MenuSegue" {
-            if let toVC = segue.destinationViewController as? MenuViewController {
+            if let toVC = segue.destination as? MenuViewController {
                 if toVC.delegate == nil {
                     toVC.delegate = self
                 }
@@ -108,9 +115,9 @@ class HomeViewController: UIViewController{
 // MARK: - refresh home view controller
 extension HomeViewController {
     
-    @IBAction func refreshButtonDidTouch(sender: UIBarButtonItem) {
+    @IBAction func refreshButtonDidTouch(_ sender: UIBarButtonItem) {
         
-        self.fetchData(true)
+        self.fetchData(force: true)
     }
     
     /**
@@ -118,7 +125,7 @@ extension HomeViewController {
     
      - parameter force: force reload from internet or load local cache data
      */
-    func fetchData(force: Bool = false) {
+    fileprivate func fetchData(force: Bool = false) {
         
         doubanService.getInTheaterMovies(at: 0, resultCount:5,forceReload: force) { [weak self](responseJSON, error) in
             guard let `self` = self else { return }
@@ -126,10 +133,12 @@ extension HomeViewController {
             self.endLoading()
             
             if error != nil {
-                Snackbar.make("刷新失败，请稍后重试", duration: .Short).show()
+                Snackbar.make(text: "刷新失败，请稍后重试", duration: .Short).show()
             }
             if responseJSON != nil {
-                self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+                self.resultsSet = Mapper<DoubanResultsSet>().map(JSON: responseJSON!)
+                self.prefetchImages()
+    
             }
 
         }
@@ -137,39 +146,46 @@ extension HomeViewController {
         self.beginLoading()
     }
     
-    func beginLoading() {
-        UIView.animateWithDuration(0.2) { [weak self] in
+    private func prefetchImages() {
+        let urls = self.resultsSet.subjects.map { URL(string: $0.images?.mediumImageURL ?? "") }.flatMap { $0 }
+        self.imagePrefetcher.prefetchURLs(urls)
+    }
+    
+    private func beginLoading() {
+        UIView.animate(withDuration: 0.2) { [weak self] in
             
             guard let `self` = self else { return }
             self.backgroundImageView.alpha = 0
             
         }
-        self.refreshBarButtonItem.enabled = false
+        self.refreshBarButtonItem.isEnabled = false
         self.movieDialogView.beginLoading()
         self.pageControl.beginLoading()
     }
     
-    func endLoading() {
+    private func endLoading() {
 
-        UIView.animateWithDuration(0.2) { [weak self] in
+        UIView.animate(withDuration: 0.2) { [weak self] in
             
             guard let `self` = self else { return }
             self.backgroundImageView.alpha = 1
             
         }
-        self.refreshBarButtonItem.enabled = true
+        self.refreshBarButtonItem.isEnabled = true
         self.movieDialogView.endLoading()
         self.pageControl.endLoading()
     }
-    
-    func performFetch(completion: () -> Void) {
-        dispatch_async(dispatch_queue_create("network", DISPATCH_QUEUE_SERIAL)) {
+    // test method
+    private func performFetch(completion: @escaping () -> Void) {
+        DispatchQueue(label: "network", qos: DispatchQoS.default, attributes: DispatchQueue.Attributes.concurrent).async {
+            
             NSLog("perform loading start...")
-            NSThread.sleepForTimeInterval(5)
-            NSLog("perform loading completed")
-            dispatch_sync(dispatch_get_main_queue(), { 
+            Thread.sleep(forTimeInterval: 5)
+            DispatchQueue.main.sync {
                 completion()
-            })
+                NSLog("perform loading completed")
+            }
+            
         }
     }
     
@@ -179,15 +195,15 @@ extension HomeViewController {
 // MARK: - Pages
 extension HomeViewController {
     
-    @IBAction func handleGestures(sender: UIPanGestureRecognizer) {
+    @IBAction func handleGestures(_ sender: UIPanGestureRecognizer) {
         
-        let location = sender.locationInView(view)
-        let myView = movieDialogView
+        let location = sender.location(in: view)
+        guard let myView = movieDialogView else { return }
         
-        let boxLocation = sender.locationInView(myView)
+        let boxLocation = sender.location(in: myView)
         
         switch sender.state {
-        case .Began:
+        case .began:
             if let snap = snapBehavior{
                 animator.removeBehavior(snap)
             }
@@ -195,16 +211,16 @@ extension HomeViewController {
             attachmentBehavior = UIAttachmentBehavior(item: myView, offsetFromCenter: centerOffset, attachedToAnchor: location)
             attachmentBehavior.frequency = 0
             animator.addBehavior(attachmentBehavior)
-        case .Changed:
+        case .changed:
             attachmentBehavior.anchorPoint = location
-        case .Ended:
+        case .ended:
             animator.removeBehavior(attachmentBehavior)
             
-            snapBehavior = UISnapBehavior(item: myView, snapToPoint: CGPoint(x: view.center.x, y: view.center.y + 22))
+            snapBehavior = UISnapBehavior(item: myView, snapTo: CGPoint(x: view.center.x, y: view.center.y + 22))
 
             animator.addBehavior(snapBehavior)
             
-            let translation = sender.translationInView(view)
+            let translation = sender.translation(in: view)
             
             if abs(translation.x) < 150 {
                 return
@@ -221,7 +237,8 @@ extension HomeViewController {
                 gravityBehavior.gravityDirection = CGVector(dx: 20.0, dy: 0)
             }
             animator.addBehavior(gravityBehavior)
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_MSEC * 300)), dispatch_get_main_queue(), {
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.milliseconds(300), execute: {
                 self.refreshData()
             })
         default:
@@ -230,20 +247,17 @@ extension HomeViewController {
         
     }
     
-    func refreshData() {
+    private func refreshData() {
         animator.removeAllBehaviors()
-        snapBehavior = UISnapBehavior(item: movieDialogView, snapToPoint: view.center)
+        snapBehavior = UISnapBehavior(item: movieDialogView, snapTo: view.center)
         movieDialogView.center = CGPoint(x: view.center.x, y: view.center.y + 20)
         attachmentBehavior.anchorPoint = CGPoint(x: view.center.x, y: view.center.y + 20)
         
-        animateShowDialog()
-    }
-    
-    func animateShowDialog() {
-        let scale = CGAffineTransformMakeScale(0.5, 0.5)
+        let scale = CGAffineTransform(scaleX: 0.5, y: 0.5)
         let offsetX = gravityBehavior.gravityDirection.dx < 0 ? self.view.frame.width + 200 : -200
-        let translation = CGAffineTransformMakeTranslation(offsetX, 0)
-        movieDialogView.transform = CGAffineTransformConcat(scale, translation)
+        let translation = CGAffineTransform(translationX:offsetX, y: 0)
+        
+        movieDialogView.transform = scale.concatenating(translation)
         
         if gravityBehavior.gravityDirection.dx < 0 {
             currentPage = (currentPage + 1) % movieCount
@@ -252,21 +266,25 @@ extension HomeViewController {
             currentPage = currentPage <= 0 ? movieCount - 1 : currentPage - 1
         }
         
-        showCurrentMovie()
-        
-        UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.movieDialogView.transform = CGAffineTransformIdentity
-            }, completion: nil)
+        showCurrentMovie(animated: true)
     }
     
-    func showCurrentMovie() {
+    fileprivate func showCurrentMovie(animated: Bool) {
         guard movieCount > 0 && currentPage < movieCount else { return }
         
         pageControl.currentPage = currentPage
         
         let currentMovie = resultsSet.subjects[currentPage]
+        
         movieDialogView.movie = currentMovie
-        backgroundImageView.sd_setImageWithURL(NSURL(string: currentMovie.images!.mediumImageURL), placeholderImage: placeHolderImage)
+    
+        backgroundImageView.sd_setImage(with: URL(string: currentMovie.images!.mediumImageURL), placeholderImage: placeHolderImage)
+        if animated {
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.curveEaseIn, animations: {
+                self.movieDialogView.transform = CGAffineTransform.identity
+                }, completion: nil)
+        }
     }
     
 }

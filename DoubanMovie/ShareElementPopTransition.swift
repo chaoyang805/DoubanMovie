@@ -7,59 +7,65 @@
 //
 
 import UIKit
-
 class ShareElementPopTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.6
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        guard let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as? HomeViewController, fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as? MovieDetailViewController else {
-            return
-        }
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? HomeViewController else { return }
+        guard let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? MovieDetailViewController else { return }
         
-        guard let container = transitionContext.containerView() else { return }
+        let container = transitionContext.containerView
         
         let snapshotView = UIImageView(image: fromVC.posterImageView.image)
-        snapshotView.contentMode = .ScaleAspectFill
+        snapshotView.contentMode = .scaleAspectFill
         snapshotView.clipsToBounds = true
-        snapshotView.frame = container.convertRect(fromVC.posterImageView.frame, fromView: fromVC.scrollView)
+        snapshotView.frame = container.convert(fromVC.posterImageView.frame, from: fromVC.scrollView)
         
-        fromVC.posterImageView.hidden = true
+        fromVC.posterImageView.isHidden = true
         fromVC.view.alpha = 1
         
-        toVC.view.frame = transitionContext.finalFrameForViewController(toVC)
-        toVC.movieDialogView.hidden = true
+        toVC.view.frame = transitionContext.finalFrame(for: toVC)
+        toVC.movieDialogView.isHidden = true
         container.insertSubview(toVC.view, belowSubview: fromVC.view)
         container.addSubview(snapshotView)
         
-        UIView.animateWithDuration(transitionDuration(transitionContext),
-                                   delay: 0,
-                                   usingSpringWithDamping: 0.7,
-                                   initialSpringVelocity: 0.7,
-                                   options: .CurveEaseInOut,
-                                   animations: {
+        UIView.animate(
+            withDuration: transitionDuration(using: transitionContext),
+            delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0.7,
+            options: .curveEaseInOut,
+            animations: {
+
+                snapshotView.frame = container.convert(toVC.movieDialogView.posterImageButton.frame, from: toVC.movieDialogView)
+                snapshotView.layer.cornerRadius = 10
+                fromVC.view.alpha = 0
+        
+            },
+            completion: { (done) in
+        
+                toVC.movieDialogView.isHidden = false
+                toVC.movieDialogView.titleBarView.effect = nil
+                UIView.animate(withDuration: 0.2, animations: {
             
-                                    snapshotView.frame = container.convertRect(toVC.movieDialogView.posterImageButton.frame, fromView: toVC.movieDialogView)
-                                    snapshotView.layer.cornerRadius = 10
-                                    fromVC.view.alpha = 0
-                                    
-                                }) { (done) in
-                                    
-                                    toVC.movieDialogView.hidden = false
-                                    toVC.movieDialogView.titleBarView.effect = nil
-                                    UIView.animateWithDuration(0.2, animations: {
-                                        
-                                        toVC.movieDialogView.titleBarView.effect = UIBlurEffect(style: .Light)
-                                    })
-                                    
-                                    snapshotView.removeFromSuperview()
-                                    fromVC.posterImageView.hidden = false
-                                    fromVC.view.alpha = 1
-                                    
-                                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
-                                    
-                                }
+                    toVC.movieDialogView.titleBarView.effect = UIBlurEffect(style: .light)
+                })
+        
+                snapshotView.removeFromSuperview()
+                fromVC.posterImageView.isHidden = false
+                fromVC.view.alpha = 1
+
+                let transitionCancelled = transitionContext.transitionWasCancelled
+                if transitionCancelled {
+                    transitionContext.cancelInteractiveTransition()
+                }
+                transitionContext.completeTransition(!transitionCancelled)
+                
+            })
+
     }
+    
 }

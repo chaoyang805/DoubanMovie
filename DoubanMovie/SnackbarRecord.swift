@@ -10,7 +10,7 @@ import Foundation
 
 struct SnackbarRecord {
     
-    var duration: NSTimeInterval
+    var duration: TimeInterval
     var identifier: Int
     
 }

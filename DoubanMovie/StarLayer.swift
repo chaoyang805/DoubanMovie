@@ -24,12 +24,12 @@ class StarLayer: CALayer {
         return 22.61
     }
     
-    private var grayColor: CGColor {
-        return UIColor(red: 0.592, green: 0.592, blue: 0.592, alpha: 1).CGColor
+    private var gray: CGColor {
+        return UIColor(red: 0.592, green: 0.592, blue: 0.592, alpha: 1).cgColor
     }
     
-    private var yellowColor: CGColor {
-        return UIColor(red: 1.0, green: 0.678, blue: 0.043, alpha: 1).CGColor
+    private var yellow: CGColor {
+        return UIColor(red: 1.0, green: 0.678, blue: 0.043, alpha: 1).cgColor
     }
     
     init(frame: CGRect, appearence: StarLayerAppearence) {
@@ -48,44 +48,47 @@ class StarLayer: CALayer {
     }
     
     private func drawStar() {
-        
-        let scale = self.frame.width / starWidth
+    
         let bezier = UIBezierPath()
         
-        bezier.moveToPoint(CGPoint(x: 0 * scale, y: 8.64 * scale))
-        bezier.addLineToPoint(CGPoint(x: 5.94 * scale, y: 14.43 * scale))
-        bezier.addLineToPoint(CGPoint(x: 4.54 * scale, y: 22.61 * scale))
-        bezier.addLineToPoint(CGPoint(x: 11.89 * scale, y: 18.75 * scale))
-        bezier.addLineToPoint(CGPoint(x: 19.24 * scale, y: 22.61 * scale))
-        bezier.addLineToPoint(CGPoint(x: 17.83 * scale, y: 14.43 * scale))
-        bezier.addLineToPoint(CGPoint(x: 23.78 * scale, y: 8.64 * scale))
-        bezier.addLineToPoint(CGPoint(x: 15.56 * scale, y: 7.44 * scale))
-        bezier.addLineToPoint(CGPoint(x: 11.89 * scale, y: 0 * scale))
-        bezier.addLineToPoint(CGPoint(x: 8.21 * scale, y: 7.44 * scale))
-        bezier.addLineToPoint(CGPoint(x: 0 * scale, y: 8.64 * scale))
+        bezier.move(to: CGPoint(x: 0, y: 8.64))
+        bezier.addLine(to: CGPoint(x: 5.94, y: 14.43))
+        bezier.addLine(to: CGPoint(x: 4.54, y: 22.61))
+        bezier.addLine(to: CGPoint(x: 11.89, y: 18.75))
+        bezier.addLine(to: CGPoint(x: 19.24, y: 22.61))
+        bezier.addLine(to: CGPoint(x: 17.83, y: 14.43))
+        bezier.addLine(to: CGPoint(x: 23.78, y: 8.64))
+        bezier.addLine(to: CGPoint(x: 15.56, y: 7.44))
+        bezier.addLine(to: CGPoint(x: 11.89, y: 0))
+        bezier.addLine(to: CGPoint(x: 8.21, y: 7.44))
+        bezier.addLine(to: CGPoint(x: 0, y: 8.64))
+        
+        let scale = self.frame.width / starWidth
+        let scaleTransform = CGAffineTransform(scaleX: scale, y: scale)
+        bezier.apply(scaleTransform)
         
         let shape = CAShapeLayer()
-        shape.path = bezier.CGPath
+        shape.path = bezier.cgPath
         shape.frame = bezier.bounds
         
         ratingLayer = CALayer()
         if let layer = ratingLayer {
             switch appearence {
             case .full:
-                layer.backgroundColor = yellowColor
+                layer.backgroundColor = yellow
                 layer.frame = CGRect(x: 0, y: 0, width: shape.frame.width, height: shape.frame.height)
             case .half:
                 
                 let shapeCopy = CAShapeLayer()
-                shapeCopy.fillColor = grayColor
-                shapeCopy.path = bezier.CGPath
+                shapeCopy.fillColor = gray
+                shapeCopy.path = bezier.cgPath
                 shapeCopy.contentsScale = scale
                 self.addSublayer(shapeCopy)
                 
-                layer.backgroundColor = yellowColor
+                layer.backgroundColor = yellow
                 layer.frame = CGRect(x: 0, y: 0, width: shape.frame.width / 2, height: shape.frame.height)
             case .empty:
-                layer.backgroundColor = grayColor
+                layer.backgroundColor = gray
                 layer.frame = CGRect(x: 0, y: 0, width: shape.frame.width, height: shape.frame.height)
             }
             layer.mask = shape

@@ -13,18 +13,18 @@ class FavoritesTableViewController: ClearTransitionTableViewController {
     
     let FavoriteMovieCellIdentifier = "FavoriteMovieCell"
     
-    private var favoriteMovies: Results<DoubanMovie>?
+    fileprivate var favoriteMovies: Results<DoubanMovie>?
     
-    private lazy var realmHelper: RealmHelper = {
+    fileprivate lazy var realmHelper: RealmHelper = {
         return RealmHelper()
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(FavoritesTableViewController.onReceiveItemDeleteNotification(_:)), name: DBMMovieDidDeleteNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(FavoritesTableViewController.onReceiveItemDeleteNotification(_:)), name: DBMMovieDidDeleteNotificationName, object: nil)
         
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.rightBarButtonItem?.title = "编辑"
         loadFavoriteMovies()
     }
@@ -39,19 +39,16 @@ class FavoritesTableViewController: ClearTransitionTableViewController {
     }
     
     // MARK: - Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FavoriteToDetail" {
-            guard let toVC = segue.destinationViewController as? MovieDetailViewController, cell = sender as? FavoriteMovieCell, selectedRow = tableView.indexPathForCell(cell)?.row else {
-                return
-            }
+            guard let toVC = segue.destination as? MovieDetailViewController, let cell = sender as? FavoriteMovieCell, let selectedRow = tableView.indexPath(for: cell)?.row else { return }
             toVC.detailMovie = favoriteMovies?[selectedRow]
         }
     }
     
     // MARK: - Notification 
     
-    @objc private func onReceiveItemDeleteNotification(notification: NSNotification) {
+    @objc private func onReceiveItemDeleteNotification(_ notification: NSNotification) {
         guard let deleted = notification.userInfo?[DBMMovieDeleteNotificationKey] as? Bool else { return }
         if deleted {
             tableView.reloadData()
@@ -59,26 +56,25 @@ class FavoritesTableViewController: ClearTransitionTableViewController {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
 }
 // MARK: - UITableView Datasource
 extension FavoritesTableViewController {
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return favoriteMovies?.count ?? 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(FavoriteMovieCellIdentifier, forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteMovieCellIdentifier, for: indexPath)
         return cell
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        guard let movie = favoriteMovies?[indexPath.row], cell = cell as? FavoriteMovieCell else { return }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let movie = favoriteMovies?[indexPath.row], let cell = cell as? FavoriteMovieCell else { return }
         cell.configureCell(with: movie)
     }
 
@@ -87,27 +83,26 @@ extension FavoritesTableViewController {
 // MARK: - Edit Cell
 extension FavoritesTableViewController {
     
-    override func setEditing(editing: Bool, animated: Bool) {
+    override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         if editing {
-            self.editButtonItem().title = "完成"
+            self.editButtonItem.title = "完成"
         } else {
-            self.editButtonItem().title = "编辑"
+            self.editButtonItem.title = "编辑"
         }
     }
-    
-    override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "取消收藏"
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            realmHelper.deleteMovieById(favoriteMovies![indexPath.row].id)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            realmHelper.deleteMovieById(id: favoriteMovies![indexPath.row].id)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
 }

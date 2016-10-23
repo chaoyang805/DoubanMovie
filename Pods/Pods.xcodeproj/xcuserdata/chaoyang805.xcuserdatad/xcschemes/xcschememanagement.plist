@@ -9,22 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AWPercentDrivenInteractiveTransition.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Realm.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>RealmSwift.xcscheme</key>
+		<key>Pods-DoubanMovie.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -37,32 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1BB965B1389EEA2544C2688D612AC02B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9CA0A9556BD23006DDFD6DEE10A787C0</key>
+		<key>3FB6F99903F4791F84F236AD66A4A4B4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B045BCD0F7C7A5CF2F9935BF1C7C3C78</key>
+		<key>89BF58D8FA17F76AB6963CFF710E6741</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D5D6200D4BE741574DBD4FB768A6F55B</key>
+		<key>C8A84485A82D0105AD90775E6388A52B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FFF0ECD9FAF75B5F420B78B6B3196C48</key>
+		<key>CC222090C8DEBB4EC8B76ABFE747FED1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -17,7 +17,7 @@ class DoubanResultsSet: NSObject, Mappable {
     var title: String = ""
     var subjects: [DoubanMovie] = []
     
-    required convenience init?(_ map: Map) {
+    required convenience init?(map: Map) {
         self.init()
     }
     

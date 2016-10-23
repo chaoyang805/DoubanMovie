@@ -13,15 +13,15 @@ class SnackbarView: UIView {
     var messageView: UILabel!
     
     var actionButton: UIButton!
-    var actionBlock: ((sender: AnyObject) -> Void)?
+    var actionBlock: ((_ sender: AnyObject) -> Void)?
     
     var snackbar: Snackbar?
     
     convenience init() {
 
         let x: CGFloat = 0
-        let y = UIScreen.mainScreen().bounds.height
-        let width = UIScreen.mainScreen().bounds.width
+        let y = UIScreen.main.bounds.height
+        let width = UIScreen.main.bounds.width
         self.init(frame: CGRect(x: x, y: y, width: width, height: 40))
     }
     
@@ -30,7 +30,7 @@ class SnackbarView: UIView {
         
         self.backgroundColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.layer.shadowColor = UIColor.blackColor().CGColor
+        self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowRadius = 2
         self.layer.shadowOpacity = 0.5
         
@@ -38,31 +38,31 @@ class SnackbarView: UIView {
         messageView = UILabel()
         messageView.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
         
-        messageView.backgroundColor = UIColor.clearColor()
+        messageView.backgroundColor = UIColor.clear
         messageView.font = UIFont(name: "PingFang SC", size: 14)
         messageView.text = "Placeholder text"
         messageView.sizeToFit()
-        messageView.textColor = UIColor.whiteColor()
+        messageView.textColor = UIColor.white
         self.addSubview(messageView)
         
-        actionButton = UIButton(type: .System)
-        actionButton.setTitle("OK", forState: .Normal)
+        actionButton = UIButton(type: .system)
+        actionButton.setTitle("OK", for: .normal)
         actionButton.tintColor = UIColor(red: 0.188, green: 0.688, blue: 0.296, alpha: 1)
         actionButton.sizeToFit()
     }
     
-    func setAction(title: String, block: (sender: AnyObject) -> Void) {
+    func setAction(title: String, block: @escaping (_ sender: AnyObject) -> Void) {
         self.actionBlock = block
         
-        actionButton.setTitle(title, forState: .Normal)
+        actionButton.setTitle(title, for: .normal)
         if actionButton.superview == nil {
             self.addSubview(actionButton)
         }
-        self.actionButton.addTarget(self, action: #selector(SnackbarView.actionSelector(_:)), forControlEvents: .TouchUpInside)
+        self.actionButton.addTarget(self, action: #selector(SnackbarView.actionSelector(_:)), for: .touchUpInside)
     }
     
-    func actionSelector(sender: AnyObject) {
-        self.actionBlock?(sender: sender)
+    func actionSelector(_ sender: AnyObject) {
+        self.actionBlock?(sender)
     }
     
     override func layoutSubviews() {

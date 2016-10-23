@@ -12,14 +12,14 @@ import ObjectMapper
 class SearchResultsViewController: ClearTransitionTableViewController {
     
     /// SearchResultController 控件
-    private lazy var searchController: UISearchController = {
+    fileprivate lazy var searchController: UISearchController = {
         let _searchController = UISearchController(searchResultsController: nil)
         _searchController.searchResultsUpdater = self
         _searchController.delegate = self
         
         let scopeButtonTitles = ["全部", "电影", "电视剧", "其他"]
         _searchController.searchBar.scopeButtonTitles = scopeButtonTitles
-        
+
         _searchController.searchBar.delegate = self
         _searchController.searchBar.barTintColor = UIColor(red: 0.937, green: 0.937, blue: 0.957, alpha: 1)
         _searchController.searchBar.tintColor = UIColor(red: 0.0823, green: 0.584, blue: 0.533, alpha: 1)
@@ -31,56 +31,55 @@ class SearchResultsViewController: ClearTransitionTableViewController {
     private let searchScopeButtonTitles = ["全部", "电影", "电视剧", "其他"]
     
     /// 选中的过滤条件的index
-    private var selectedScopeIndex: Int {
+    fileprivate var selectedScopeIndex: Int {
         return searchController.searchBar.selectedScopeButtonIndex
     }
     
     /// searbar上的搜索文字
-    private var queryText: String {
+    fileprivate var queryText: String {
         guard let query = searchController.searchBar.text else { return _lastQueryText }
         return  query.isEmpty ? _lastQueryText : query
     }
     
-    private var _lastQueryText: String = ""
+    fileprivate var _lastQueryText: String = ""
     
     /// 搜索返回的结果集
-    private var searchResultsSet: DoubanResultsSet? {
+    fileprivate var searchResultsSet: DoubanResultsSet? {
         didSet {
-            tableView.scrollEnabled = searchResultsSet?.subjects.count > 0
+            tableView.isScrollEnabled = (searchResultsSet?.subjects.count)! > 0
         }
     }
     
     /// 原始结果集
-    private var searchResults: [DoubanMovie] {
+    fileprivate var searchResults: [DoubanMovie] {
         return searchResultsSet?.subjects ?? []
     }
     /// 过滤后的结果集
-    private var filteredSearchResults = [DoubanMovie]()
+    fileprivate var filteredSearchResults = [DoubanMovie]()
     
-    private let DetailCellHeight: CGFloat = 165
-    private let BaseCellHeight: CGFloat = 120
-    private let FirstSearchCellIdentifier = "FirstSearchResultCell"
-    private let SecondSearchCellIdentifier = "SecondSearchResultCell"
+    fileprivate let DetailCellHeight: CGFloat = 165
+    fileprivate let BaseCellHeight: CGFloat = 120
+    fileprivate let FirstSearchCellIdentifier = "FirstSearchResultCell"
+    fileprivate let SecondSearchCellIdentifier = "SecondSearchResultCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableHeaderView = searchController.searchBar
-        tableView.scrollEnabled = false
+        tableView.isScrollEnabled = false
         definesPresentationContext = true
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if searchResults.count > 0 {
             return
         }
-        searchController.active = true
+        searchController.isActive = true
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let toVC = segue.destinationViewController as? MovieDetailViewController,
-            cell = sender as? UITableViewCell,
-            selectedRow = tableView.indexPathForCell(cell)?.row else {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let toVC = segue.destination as? MovieDetailViewController,
+            let cell = sender as? UITableViewCell,
+            let selectedRow = tableView.indexPath(for: cell)?.row else {
                 return
         }
         toVC.detailMovie = filteredSearchResults[selectedRow]
@@ -91,19 +90,17 @@ class SearchResultsViewController: ClearTransitionTableViewController {
 // MARK: - UITableViewDataSource
 extension SearchResultsViewController {
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredSearchResults.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let identifier = indexPath.row == 0 ? FirstSearchCellIdentifier : SecondSearchCellIdentifier
-        let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         return cell
     }
-    
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         let movie = filteredSearchResults[indexPath.row]
         
@@ -122,26 +119,23 @@ extension SearchResultsViewController {
 
 // MARK: - UITableViewDelegate
 extension SearchResultsViewController {
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.row == 0 ? DetailCellHeight : BaseCellHeight
     }
 }
 
 extension SearchResultsViewController: UISearchControllerDelegate {
-    
-    func didPresentSearchController(searchController: UISearchController) {
+    func didPresentSearchController(_ searchController: UISearchController) {
         searchController.searchBar.becomeFirstResponder()
     }
 }
 
 // MARK: - UISearchBarDelegate
 extension SearchResultsViewController: UISearchBarDelegate {
-    
-    func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         filterResults(withQuery: queryText, atScopeIndex: selectedScope)
     }
-    
     
     /**
      过滤搜索结果
@@ -150,7 +144,7 @@ extension SearchResultsViewController: UISearchBarDelegate {
      - parameter index: 当前选中的scopeButtonIndex
      */
     func filterResults(withQuery query: String, atScopeIndex index: Int) {
-        guard let subjects = searchResultsSet?.subjects where subjects.count > 0 else { return }
+        guard let subjects = searchResultsSet?.subjects , subjects.count > 0 else { return }
         
         var subtype = ""
         switch index {
@@ -163,20 +157,20 @@ extension SearchResultsViewController: UISearchBarDelegate {
         }
         
         let filteredResults = subjects.filter{
-            return $0.title.lowercaseString.containsString(query.lowercaseString) ||
-                $0.originalTitle.lowercaseString.containsString(query.lowercaseString)
+            return $0.title.lowercased().contains(query.lowercased()) ||
+            $0.originalTitle.lowercased().contains(query.lowercased())
         }
         if subtype.isEmpty {
             self.filteredSearchResults = filteredResults
         } else {
             self.filteredSearchResults = filteredResults.filter({ (movie) -> Bool in
-                return movie.subType.lowercaseString.containsString(subtype)
+                return movie.subType.lowercased().contains(subtype)
             })
         }
         tableView.reloadData()
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // DoubanService.search....
         guard let queryString = searchBar.text else { return }
         _lastQueryText = queryString
@@ -193,18 +187,18 @@ extension SearchResultsViewController: UISearchBarDelegate {
             if let error = error {
                 
                 NSLog("error!\(error)")
-                Snackbar.make("搜索失败", duration: .Short).show()
+                Snackbar.make(text: "搜索失败", duration: .Short).show()
                 
             }
             
-            if let results = Mapper<DoubanResultsSet>().map(responseJSON) where results.subjects.count > 0 {
+            if let results = Mapper<DoubanResultsSet>().map(JSON: responseJSON!) , results.subjects.count > 0 {
                 
                 self.searchResultsSet = results
-                self.updateSearchResultsForSearchController(self.searchController)
+                self.updateSearchResults(for: self.searchController)
                 
             } else {
                 
-                Snackbar.make("没有搜索到结果", duration: .Short).show()
+                Snackbar.make(text: "没有搜索到结果", duration: .Short).show()
                 
             }
         }
@@ -215,7 +209,7 @@ extension SearchResultsViewController: UISearchBarDelegate {
 // MARK: - UISearchResultsUpdating
 extension SearchResultsViewController: UISearchResultsUpdating {
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         filterResults(withQuery: queryText, atScopeIndex: selectedScopeIndex)
     }
 }
