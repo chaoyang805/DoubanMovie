@@ -11,7 +11,7 @@ import Foundation
 extension String {
     func stringByRemoveFirstCharacter() -> String {
         guard self.characters.count >= 2 else { return "" }
-        
-        return self.substringFromIndex(self.startIndex.advancedBy(1))
+        let secondIndex = self.index(after: self.startIndex)
+        return self.substring(from: secondIndex)
     }
 }

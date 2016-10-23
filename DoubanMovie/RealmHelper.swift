@@ -18,12 +18,12 @@ class RealmHelper: NSObject {
         let migrationBlock: MigrationBlock = { (migration, oldSchemaVersion) in
         
             if oldSchemaVersion == 1 {
-                migration.enumerate(DoubanMovie.className(), { (oldObject, newObject) in
+                migration.enumerateObjects(ofType: DoubanMovie.className(), { (oldObject, newObject) in
                     newObject!["collectDate"] = NSDate()
                 })
             }
             if oldSchemaVersion == 2 {
-                migration.enumerate(DoubanMovie.className(), { (oldObject, newObject) in
+                migration.enumerateObjects(ofType: DoubanMovie.className(), { (oldObject, newObject) in
                     
                     if let directors = oldObject?["directors"] as? List<DoubanCelebrity> {
                         newObject!["directorsDescription"] = (directors.reduce("") { $0 + "/" + $1.name }.stringByRemoveFirstCharacter() as AnyObject)
@@ -56,7 +56,7 @@ class RealmHelper: NSObject {
      
      - parameter copy: 是否拷贝对象，如果拷贝的话，当删除后仍然可以访问原来的对象
      */
-    func addFavoriteMovie(movie: DoubanMovie, copy: Bool = false) {
+    func addFavoriteMovie(_ movie: DoubanMovie, copy: Bool = false) {
         realm.beginWrite()
         
         realm.add(copy ? movie.copy() as! DoubanMovie : movie, update: true)
@@ -91,7 +91,7 @@ class RealmHelper: NSObject {
      
      - returns: 删除是否成功
      */
-    func deleteMovieFromFavorite(movie: DoubanMovie) {
+    func deleteMovieFromFavorite(_ movie: DoubanMovie) {
         
         do {
             try realm.write {
@@ -150,7 +150,7 @@ class RealmHelper: NSObject {
         return exists
     }
     
-    func updateMovieInfo(@noescape updateBlock: ()-> Void) {
+    func updateMovieInfo(updateBlock: ()-> Void) {
         realm.beginWrite()
         updateBlock()
         do {

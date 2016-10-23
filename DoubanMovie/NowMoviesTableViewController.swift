@@ -12,32 +12,32 @@ import SDWebImage
 
 class NowMoviesTableViewController: ClearTransitionTableViewController {
     
-    private var resultsSet: DoubanResultsSet?
+    fileprivate var resultsSet: DoubanResultsSet?
     
     /// 初始的偏移量，永远是0
-    private var initialFetchOffset = 0
+    fileprivate var initialFetchOffset = 0
     
     /// 请求数据的偏移量根据当前已有数据的数量
-    private var fetchOffset: Int {
+    fileprivate var fetchOffset: Int {
         return movieCount
     }
 
     /// 每次请求数据的数量根据当前展示的数据量和总数据量决定
-    private var fetchResultCount: Int {
+    fileprivate var fetchResultCount: Int {
         return totalMovieCount - movieCount > 20 ? 20 : totalMovieCount - movieCount
     }
     
     /// 重新刷新时请求的条目数量
-    private let refetchResultCount = 20
+    fileprivate let refetchResultCount = 20
     
-    private var totalMovieCount: Int {
+    fileprivate var totalMovieCount: Int {
         return resultsSet?.total ?? 0
     }
-    private var screenHeight: CGFloat {
-        return UIScreen.mainScreen().bounds.height
+    fileprivate var screenHeight: CGFloat {
+        return UIScreen.main.bounds.height
     }
     
-    private lazy var doubanService: DoubanService = {
+    fileprivate lazy var doubanService: DoubanService = {
         
         return DoubanService.sharedService
         
@@ -57,19 +57,19 @@ class NowMoviesTableViewController: ClearTransitionTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshControl?.addTarget(self, action: #selector(NowMoviesTableViewController.onPullToRefresh), forControlEvents: .ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(NowMoviesTableViewController.onPullToRefresh), for: .valueChanged)
         reloadData(false)
     }
 
-    private func reloadData(force: Bool) {
+    private func reloadData(_ force: Bool) {
         doubanService.getInTheaterMovies(at: initialFetchOffset, resultCount: refetchResultCount, forceReload: force) { [weak self](responseJSON, error) in
             
             guard let `self` = self else { return }
-            self.resultsSet = Mapper<DoubanResultsSet>().map(responseJSON)
+            self.resultsSet = Mapper<DoubanResultsSet>().map(JSON: responseJSON!)
             self.navigationItem.title = self.resultsSet?.title ?? "全部热映"
             self.tableView.reloadData()
             
-            if self.refreshControl!.refreshing {
+            if self.refreshControl!.isRefreshing {
                 self.refreshControl?.endRefreshing()
                 self.refreshControl?.attributedTitle = self.pullToRefreshTitle
             }
@@ -81,32 +81,31 @@ class NowMoviesTableViewController: ClearTransitionTableViewController {
         reloadData(true)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "NowTableToDetail" {
-            guard let toVC = segue.destinationViewController as? MovieDetailViewController, cell = sender as? DetailMovieCell else { return }
-            guard let selectedRow = tableView.indexPathForCell(cell)?.row else { return }
+            guard let toVC = segue.destination as? MovieDetailViewController, let cell = sender as? DetailMovieCell else { return }
+            guard let selectedRow = tableView.indexPath(for: cell)?.row else { return }
             
             toVC.detailMovie = resultsSet?.subjects[selectedRow]
         }
+
     }
     
-    // MARK: UITableViewControllerDelegate
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // MARK: UITableViewControllerDataSource
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieCount
     }
-    
-    let DetailCellIdentifier = "DetailMovieCell"
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(DetailCellIdentifier, forIndexPath: indexPath)
 
+    let DetailCellIdentifier = "DetailMovieCell"
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DetailCellIdentifier, for: indexPath)
+    
         return cell
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        guard let detailCell = cell as? DetailMovieCell, subjects = self.resultsSet?.subjects where subjects.count > 0 else { return }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let detailCell = cell as? DetailMovieCell, let subjects = self.resultsSet?.subjects , subjects.count > 0 else { return }
         detailCell.configureCell(withMovie: subjects[indexPath.row])
-        
     }
     
     lazy var loadMoreFooter: LoadMoreFooter = {
@@ -121,7 +120,7 @@ class NowMoviesTableViewController: ClearTransitionTableViewController {
 // MARK: - Pull up to load more
 extension NowMoviesTableViewController {
     
-    override func scrollViewDidScroll(scrollView: UIScrollView){
+    override func scrollViewDidScroll(_ scrollView: UIScrollView){
         if scrollView.contentSize.height < screenHeight - maxFooterHeight || loadMoreFooter.isLoadingMore {
             return
         }
@@ -143,7 +142,7 @@ extension NowMoviesTableViewController {
         
     }
     
-    override func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if scrollView.contentSize.height < screenHeight - maxFooterHeight || loadMoreFooter.isLoadingMore {
             return
         }
@@ -156,20 +155,25 @@ extension NowMoviesTableViewController {
             scrollView.bounces = false
             
             self.tableView.contentSize.height += self.maxFooterHeight
+    
             scrollView.setContentOffset(CGPoint(x: 0, y: self.tableView.contentSize.height - screenHeight), animated: true)
             
             loadMore { (count: Int) in
+                
                 scrollView.bounces = true
                 if count > 0 {
                     self.loadMoreFooter.endLoadMore()
+                    self.loadMoreFooter.changeHeight(0)
                 } else {
                     self.loadMoreFooter.nomoreData()
-                    delay(1) { [weak self] in
+                    delay(timeInterval: 1) { [weak self] in
+                        
                         guard let `self` = self else { return }
                         self.tableView.contentSize.height -= self.maxFooterHeight
                         self.loadMoreFooter.endLoadMore()
                     }
                 }
+                
             }
             
         } else if delta > maxFooterHeight - 10 {
@@ -178,17 +182,18 @@ extension NowMoviesTableViewController {
         
     }
     
-    private func loadMore(completion: (count: Int) -> Void) -> Void {
+    private func loadMore(completion: @escaping (_ count: Int) -> Void) -> Void {
         doubanService.getInTheaterMovies(at: fetchOffset, resultCount: fetchResultCount, forceReload: true) { [weak self](responseJSON, error) in
             guard let `self` = self else { return }
             
-            if let resultsSet = Mapper<DoubanResultsSet>().map(responseJSON) where resultsSet.subjects.count > 0 {
+            if let resultsSet = Mapper<DoubanResultsSet>().map(JSON: responseJSON!) , resultsSet.subjects.count > 0 {
                 
-                completion(count: resultsSet.subjects.count)
-                self.resultsSet?.subjects.appendContentsOf(resultsSet.subjects)
+                completion(resultsSet.subjects.count)
+                self.resultsSet?.subjects.append(contentsOf: resultsSet.subjects)
                 self.tableView.reloadData()
             } else {
-                completion(count: 0)
+                completion(0)
+                
             }
         }
 

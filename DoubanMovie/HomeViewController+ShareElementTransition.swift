@@ -11,15 +11,15 @@ import UIKit
 
 extension HomeViewController: UINavigationControllerDelegate {
     
-    func navigationController(navigationController: UINavigationController,animationControllerForOperation operation: UINavigationControllerOperation,fromViewController fromVC: UIViewController,toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if operation == .Push && fromVC is HomeViewController && toVC is MovieDetailViewController {
+    func navigationController(_ navigationController: UINavigationController,animationControllerFor operation: UINavigationControllerOperation,from fromVC: UIViewController,to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if operation == .push && fromVC is HomeViewController && toVC is MovieDetailViewController {
             return ShareElementPushTransition()
         } else {
             return nil
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.delegate = self
         

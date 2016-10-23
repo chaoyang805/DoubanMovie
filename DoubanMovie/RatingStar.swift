@@ -12,12 +12,12 @@ class RatingStar: UIView {
     
     private var ratingbarStyle: RatingbarStyle
     
-    private var grayColor: CGColor {
-        return UIColor(red: 0.592, green: 0.592, blue: 0.592, alpha: 1).CGColor
+    private var gray: CGColor {
+        return UIColor(red: 0.592, green: 0.592, blue: 0.592, alpha: 1).cgColor
     }
     
-    private var yellowColor: CGColor {
-        return UIColor(red: 1.0, green: 0.678, blue: 0.043, alpha: 1).CGColor
+    private var yellow: CGColor {
+        return UIColor(red: 1.0, green: 0.678, blue: 0.043, alpha: 1).cgColor
     }
     
     private var starWidth: CGFloat {
@@ -49,8 +49,8 @@ class RatingStar: UIView {
         didSet {
             let widthRatio = _ratingScore / 10
             ratingLayer?.frame = CGRect(x: 0, y: 0, width: self.starWidth * widthRatio, height: 22.61)
-            
-            ratingLabel.text = String(format: "%.1f", _ratingScore)
+            let score = String(format: "%.1f", _ratingScore)
+            ratingLabel.text = score
         }
     }
     
@@ -76,27 +76,29 @@ class RatingStar: UIView {
         ratingLayer = CALayer()
         let widthRatio = _ratingScore / 10
         ratingLayer?.frame = CGRect(x: 0, y: 0, width: self.starWidth * widthRatio, height: self.starHeight)
-        ratingLayer?.backgroundColor = yellowColor
+        ratingLayer?.backgroundColor = yellow
         
         let bezier = UIBezierPath()
-        bezier.moveToPoint(CGPoint(x: 0, y: 8.64))
-        bezier.addLineToPoint(CGPoint(x: 5.94, y: 14.43))
-        bezier.addLineToPoint(CGPoint(x: 4.54, y: 22.61))
-        bezier.addLineToPoint(CGPoint(x: 11.89, y: 18.75))
-        bezier.addLineToPoint(CGPoint(x: 19.24, y: 22.61))
-        bezier.addLineToPoint(CGPoint(x: 17.83, y: 14.43))
-        bezier.addLineToPoint(CGPoint(x: 23.78, y: 8.64))
-        bezier.addLineToPoint(CGPoint(x: 15.56, y: 7.44))
-        bezier.addLineToPoint(CGPoint(x: 11.89, y: 0))
-        bezier.addLineToPoint(CGPoint(x: 8.21, y: 7.44))
-        bezier.addLineToPoint(CGPoint(x: 0, y: 8.64))
+        bezier.move(to: CGPoint(x: 0, y: 8.64))
+        
+        bezier.addLine(to: CGPoint(x: 5.94, y: 14.43))
+        bezier.addLine(to: CGPoint(x: 4.54, y: 22.61))
+        bezier.addLine(to: CGPoint(x: 11.89, y: 18.75))
+        bezier.addLine(to: CGPoint(x: 19.24, y: 22.61))
+        bezier.addLine(to: CGPoint(x: 17.83, y: 14.43))
+        bezier.addLine(to: CGPoint(x: 23.78, y: 8.64))
+        bezier.addLine(to: CGPoint(x: 15.56, y: 7.44))
+        bezier.addLine(to: CGPoint(x: 11.89, y: 0))
+        bezier.addLine(to: CGPoint(x: 8.21, y: 7.44))
+        bezier.addLine(to: CGPoint(x: 0, y: 8.64))
         
         let shape = CAShapeLayer()
-        shape.path = bezier.CGPath
+        shape.path = bezier.cgPath
         
         let shapeCopy = CAShapeLayer()
-        shapeCopy.fillColor = grayColor
-        shapeCopy.path = bezier.CGPath
+        shapeCopy.fillColor = gray
+        shapeCopy.path = bezier.cgPath
+
         self.layer.addSublayer(shapeCopy)
         
         if let layer = ratingLayer {
@@ -106,9 +108,9 @@ class RatingStar: UIView {
         
         ratingLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 26, height: 14))
         ratingLabel.text = String(format: "%.1f", _ratingScore)
-        ratingLabel.textColor = UIColor(CGColor: yellowColor)
+        ratingLabel.textColor = UIColor(cgColor: yellow)
         ratingLabel.font = UIFont(name: "PingFang SC", size: 10)
-        ratingLabel.textAlignment = .Center
+        ratingLabel.textAlignment = .center
         ratingLabel.tag = 0x0001
         self.addSubview(ratingLabel)
 

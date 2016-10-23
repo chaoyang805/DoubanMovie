@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import RealmSwift
 import ObjectMapper
+import RealmSwift
 
-class DoubanCelebrity: Object, Mappable {
+class DoubanCelebrity:Object, Mappable {
     
     dynamic var id: String = ""
     
@@ -56,7 +56,7 @@ class DoubanCelebrity: Object, Mappable {
     var worksArray = [Work]() {
         didSet {
             works.removeAll()
-            works.appendContentsOf(worksArray)
+            works.append(objectsIn: worksArray)
         }
     }
     
@@ -72,7 +72,7 @@ class DoubanCelebrity: Object, Mappable {
         return ["akaArray", "akaEnArray", "worksArray"]
     }
     
-    required convenience init?(_ map: Map) {
+    required convenience init?(map: Map) {
         self.init()
     }
     

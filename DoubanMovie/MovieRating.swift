@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import RealmSwift
 import ObjectMapper
+import RealmSwift
 
 class MovieRating: Object, Mappable {
     dynamic var max: Float = 0
@@ -16,7 +16,7 @@ class MovieRating: Object, Mappable {
     dynamic var stars: String = "0"
     dynamic var min: String = "0"
     
-    required convenience init?(_ map: Map) {
+    required convenience init?(map: Map) {
         self.init()
     }
     
@@ -29,7 +29,7 @@ class MovieRating: Object, Mappable {
 }
 
 extension MovieRating: NSCopying {
-    func copyWithZone(zone: NSZone) -> AnyObject {
+    func copy(with zone: NSZone? = nil) -> Any {
         let copy = MovieRating()
         
         copy.max = max

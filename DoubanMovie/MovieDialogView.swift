@@ -39,42 +39,43 @@ class MovieDialogView: UIView, LoadingEffect {
         
     }
     
-    func configureWithMovie(movie: DoubanMovie) {
+    func configureWithMovie(_ movie: DoubanMovie) {
         titleLabel.text = movie.title
         collectCountLabel.text = String(format: "%d人看过", movie.collectCount)
+        
         ratingInfoView.ratingScore = CGFloat(movie.rating?.average ?? 0)
-        ratingInfoView.hidden = false
-        posterImageButton.imageView?.contentMode = .ScaleAspectFill
-        posterImageButton.contentHorizontalAlignment = .Fill
-        posterImageButton.sd_setImageWithURL(NSURL(string: movie.images!.largeImageURL), forState: .Normal)
+        ratingInfoView.isHidden = false
+        posterImageButton.imageView?.contentMode = .scaleAspectFill
+        posterImageButton.contentHorizontalAlignment = .fill
+        posterImageButton.sd_setImage(with: URL(string: movie.images!.largeImageURL), for: .normal)
     }
     
     func addTarget(target: AnyObject?, action: Selector, for controlEvents: UIControlEvents) {
         if posterImageButton != nil {
-            posterImageButton.addTarget(target, action: action, forControlEvents: controlEvents)
+            posterImageButton.addTarget(target, action: action, for: controlEvents)
         }
     }
     
     private func addBackgroundButton() {
-        posterImageButton = UIButton(type: .Custom)
+        posterImageButton = UIButton(type: .custom)
         posterImageButton.frame = self.bounds
         addSubview(posterImageButton)
     }
     
     private func addTitlebar() {
         
-        titleBarView = UIVisualEffectView(effect: UIBlurEffect(style: .Light))
+        titleBarView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
         titleBarView.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: 80)
         
         // add title label
         titleLabel = UILabel(frame: CGRect(x: 20, y: 18, width: 190, height: 26))
-        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont(name: "PingFang SC", size: 18)
         titleBarView.contentView.addSubview(titleLabel)
         
         // add collect count label
         collectCountLabel = UILabel(frame: CGRect(x: 20, y: 49, width: 150, height: 14))
-        collectCountLabel.textColor = UIColor.whiteColor()
+        collectCountLabel.textColor = UIColor.white
         collectCountLabel.font = UIFont(name: "PingFang SC", size: 10)
         titleBarView.contentView.addSubview(collectCountLabel)
         
@@ -88,8 +89,8 @@ class MovieDialogView: UIView, LoadingEffect {
         // add loading imageView default hidden
         loadingImageView = UIImageView(image: UIImage(named: "loading")!)
         loadingImageView.frame = CGRect(x: 0, y: 0, width: 120, height: 120)
-        loadingImageView.center = CGPoint(x: CGRectGetMidX(self.bounds), y: CGRectGetMidY(self.bounds))
-        loadingImageView.hidden = true
+        loadingImageView.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
+        loadingImageView.isHidden = true
         self.addSubview(loadingImageView)
         
         self.addSubview(titleBarView)
@@ -100,17 +101,12 @@ class MovieDialogView: UIView, LoadingEffect {
         self.layer.shadowOpacity = 0.5
         self.layer.shadowRadius = 4
         self.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.layer.shadowColor = UIColor.darkGrayColor().CGColor
+        self.layer.shadowColor = UIColor.darkGray.cgColor
         
-        self.backgroundColor = UIColor.lightGrayColor()
+        self.backgroundColor = UIColor.lightGray
         self.clipsToBounds = true
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-    }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -124,11 +120,11 @@ class MovieDialogView: UIView, LoadingEffect {
         let animation = CABasicAnimation(keyPath: "transform")
         animation.duration = 0.5
         animation.repeatCount = HUGE
-        animation.cumulative = true
+        animation.isCumulative = true
         
         let angle = -CGFloat(2 * M_PI / 5)
         let transform = CATransform3DMakeRotation(angle, 0, 0, -1)
-        animation.byValue = NSValue(CATransform3D: transform)
+        animation.byValue = NSValue(caTransform3D: transform)
         return animation
     }
     
@@ -139,13 +135,13 @@ class MovieDialogView: UIView, LoadingEffect {
         
         self.isLoading = true
         self.loadingImageView.alpha = 0
-        self.loadingImageView.hidden = false
-        UIView.animateWithDuration(0.2) { [weak self] in
+        self.loadingImageView.isHidden = false
+        UIView.animate(withDuration: 0.2) { [weak self] in
             guard let `self` = self else { return }
             self.loadingImageView.alpha = 1
             self.titleBarView.alpha = 0
             self.posterImageButton.alpha = 0
-            self.loadingImageView.layer.addAnimation(self.rotateAnimation(), forKey: "rotateAnimation")
+            self.loadingImageView.layer.add(self.rotateAnimation(), forKey: "rotateAnimation")
         }
     }
     
@@ -156,7 +152,7 @@ class MovieDialogView: UIView, LoadingEffect {
         }
         
         self.loadingImageView.layer.removeAllAnimations()
-        UIView.animateWithDuration(0.2, animations: { [weak self] in
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
             
             guard let `self` = self else { return }
             self.loadingImageView.alpha = 0
@@ -166,7 +162,7 @@ class MovieDialogView: UIView, LoadingEffect {
         }) {  [weak self](done) in
             
             guard let `self` = self else { return }
-            self.loadingImageView.hidden = true
+            self.loadingImageView.isHidden = true
             self.isLoading = false
         }
     }

@@ -11,7 +11,7 @@ import UIKit
 extension HomeViewController: MenuViewControllerDelegate {
     
     // MARK - MenuViewControllerDelegate
-    func menuViewController(controller: MenuViewController, didClickButtonWithType type: MenuButtonType) {
+    func menuViewController(_ controller: MenuViewController, didClickButtonWithType type: MenuButtonType) {
         switch type {
         case .now:
             break
@@ -25,16 +25,16 @@ extension HomeViewController: MenuViewControllerDelegate {
         }
     }
     
-    func presentNowTableViewController() {
-        self.performSegueWithIdentifier("AllMoviesSegue", sender: self)
+    private func presentNowTableViewController() {
+        self.performSegue(withIdentifier: "AllMoviesSegue", sender: self)
     }
     
-    func presentFavoritesTableViewController() {
-        self.performSegueWithIdentifier("FavoritesSegue", sender: self)
+    private func presentFavoritesTableViewController() {
+        self.performSegue(withIdentifier: "FavoritesSegue", sender: self)
     }
     
-    func presentSearchTableViewController() {
-        self.performSegueWithIdentifier("SearchSegue", sender: self)
+    private func presentSearchTableViewController() {
+        self.performSegue(withIdentifier: "SearchSegue", sender: self)
     }
     
 }

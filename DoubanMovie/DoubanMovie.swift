@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import RealmSwift
 import ObjectMapper
+import RealmSwift
 
 class DoubanMovie: Object, Mappable {
 
@@ -43,7 +43,7 @@ class DoubanMovie: Object, Mappable {
     /// The detail page on Douban
     dynamic var alt = ""
     
-    dynamic var collectDate = NSDate()
+    dynamic var collectDate = Date()
     
     // MARK - One to many properties
     
@@ -78,8 +78,7 @@ class DoubanMovie: Object, Mappable {
     var castsArray: [DoubanCelebrity] = [] {
         didSet {
             casts.removeAll()
-            casts.appendContentsOf(castsArray)
-            
+            casts.append(objectsIn: castsArray)
             self.castsDescription = castsArray.isEmpty ? "" : castsArray.reduce("") { $0 + "/" + $1.name }.stringByRemoveFirstCharacter()
         }
     }
@@ -87,7 +86,7 @@ class DoubanMovie: Object, Mappable {
     var directorsArray: [DoubanCelebrity] = [] {
         didSet {
             directors.removeAll()
-            directors.appendContentsOf(directorsArray)
+            directors.append(objectsIn: directorsArray)
             
             self.directorsDescription = directorsArray.isEmpty ? "" : directorsArray.reduce("") { $0 + "/" + $1.name }.stringByRemoveFirstCharacter()
         }
@@ -105,7 +104,7 @@ class DoubanMovie: Object, Mappable {
         return ["title", "originalTitle", "year"]
     }
     // MARK - Mappable
-    required convenience init?(_ map: Map) {
+    required convenience init?(map: Map) {
         self.init()
     }
     
@@ -132,7 +131,8 @@ class DoubanMovie: Object, Mappable {
 }
 
 extension DoubanMovie: NSCopying {
-    func copyWithZone(zone: NSZone) -> AnyObject {
+    
+    func copy(with zone: NSZone? = nil) -> Any {
         let copy = DoubanMovie()
         copy.id = self.id
         if let rating = self.rating {
@@ -159,6 +159,7 @@ extension DoubanMovie: NSCopying {
         
         return copy
     }
+
 }
 
 

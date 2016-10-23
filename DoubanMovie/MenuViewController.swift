@@ -21,33 +21,33 @@ class MenuViewController: UIViewController {
     
     // MARK: - IBActions
     
-    @IBAction func inTheaterButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(false) {
+    @IBAction func inTheaterButtonPressed(_ sender: AnyObject) {
+        dismiss(animated: false) {
             self.delegate?.menuViewController(self, didClickButtonWithType: .now)
         }
     }
     
-    @IBAction func searchButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(false) {
+    @IBAction func searchButtonPressed(_ sender: AnyObject) {
+        dismiss(animated: false) {
             self.delegate?.menuViewController(self, didClickButtonWithType: .search)
         }
     }
     
-    @IBAction func allMovieButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(false) {
+    @IBAction func allMovieButtonPressed(_ sender: AnyObject) {
+        dismiss(animated: false) {
             self.delegate?.menuViewController(self, didClickButtonWithType: .all)
         }
     }
     
-    @IBAction func favoritesButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(false) {
+    @IBAction func favoritesButtonPressed(_ sender: AnyObject) {
+        dismiss(animated: false) {
             self.delegate?.menuViewController(self, didClickButtonWithType: .favorite)
         }
     }
     
     // MARK: - Segues
     
-    override func unwindSegue(sender: UIStoryboardSegue) {
+    override func unwindSegue(_ sender: UIStoryboardSegue) {
         super.unwindSegue(sender)
     }
 }

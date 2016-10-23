@@ -10,25 +10,25 @@ import UIKit
 
 class ShareElementPushTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.6
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as? HomeViewController, toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as? MovieDetailViewController else {
-            return
-        }
-        guard let container = transitionContext.containerView() else { return }
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        guard let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as? HomeViewController else { return }
+        
+        guard let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) as? MovieDetailViewController else { return }
+        
+        let container = transitionContext.containerView
 
         let snapshotView = UIImageView(image: fromVC.movieDialogView.posterImageButton.imageView?.image)
-        snapshotView.contentMode = .ScaleAspectFill
+        snapshotView.contentMode = .scaleAspectFill
         snapshotView.clipsToBounds = true
         snapshotView.layer.cornerRadius = 10
+        snapshotView.frame = container.convert(fromVC.movieDialogView.posterImageButton.frame, from: fromVC.movieDialogView)
         
-        snapshotView.frame = container.convertRect(fromVC.movieDialogView.posterImageButton.frame, fromView: fromVC.movieDialogView)
-        
-        fromVC.movieDialogView.hidden = true
-        toVC.view.frame = transitionContext.finalFrameForViewController(toVC)
+        fromVC.movieDialogView.isHidden = true
+        toVC.view.frame = transitionContext.finalFrame(for: toVC)
         toVC.view.alpha = 0
         
         container.addSubview(toVC.view)
@@ -36,24 +36,23 @@ class ShareElementPushTransition: NSObject, UIViewControllerAnimatedTransitionin
         
         toVC.view.layoutIfNeeded()
         
-        UIView.animateWithDuration(transitionDuration(transitionContext),
-                                   delay: 0,
-                                   usingSpringWithDamping: 0.7,
-                                   initialSpringVelocity: 0.7,
-                                   options: .CurveEaseInOut,
-                                   animations: {
-                                    
-                                    snapshotView.frame = toVC.posterImageView.frame.offsetBy(dx: 0, dy: 64)
-                                    toVC.view.alpha = 1
-        
-                                }) { (finished) in
-                                    
-                                    fromVC.movieDialogView.hidden = false
-                                    snapshotView.removeFromSuperview()
-                                    
-                                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
-                                    
-                                }
+        UIView.animate(
+            withDuration: transitionDuration(using: transitionContext),
+            delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0.7,
+            options: .curveEaseInOut,
+            animations: {
+
+                snapshotView.frame = toVC.posterImageView.frame.offsetBy(dx: 0, dy: 64)
+                toVC.view.alpha = 1
+            }) { done in
+                
+                fromVC.movieDialogView.isHidden = false
+                snapshotView.removeFromSuperview()
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+                
+            }
         
     }
 

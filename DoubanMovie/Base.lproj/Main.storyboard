@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1S4-tk-bf1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1S4-tk-bf1">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="lAL-si-RgZ">
             <objects>
                 <navigationController id="1S4-tk-bf1" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="b8e-T5-RYp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="17"/>
-                            <color key="textColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -26,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55W-Rl-xv2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1487.5" y="-1052.5"/>
+            <point key="canvasLocation" x="-1871" y="-1067"/>
         </scene>
         <!--HomeViewController-->
         <scene sceneID="5lu-bQ-RAp">
@@ -40,23 +40,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="631-CK-BoP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="631-CK-BoP"/>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zxz-dG-FP5">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4Rh-00-uRq">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <frame key="frameInset"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C9D-Dw-bau" customClass="MovieInfoView" customModule="DoubanMovie" customModuleProvider="target">
-                                            <rect key="frame" x="47.5" y="169" width="280" height="373"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <gestureRecognizers/>
-                                        </view>
                                         <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="N9Y-l4-uYa" customClass="LoadingPageControl" customModule="DoubanMovie" customModuleProvider="target">
-                                            <rect key="frame" x="152" y="580" width="71" height="37"/>
-                                            <color key="currentPageIndicatorTintColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="currentPageIndicatorTintColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </pageControl>
                                     </subviews>
                                     <constraints>
@@ -80,7 +71,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="正在热映" id="F91-UI-7WP">
                         <barButtonItem key="leftBarButtonItem" image="icon-menu" id="E60-HS-rFX">
-                            <color key="tintColor" red="0.082352941176470587" green="0.58431372549019611" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.082352941176470587" green="0.58431372549019611" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="dTP-Lu-CIG" kind="presentation" identifier="MenuSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="bQa-Av-BYu"/>
                             </connections>
@@ -91,7 +82,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="631-CK-BoP" id="xd4-nx-Ehf"/>
                         <outlet property="pageControl" destination="N9Y-l4-uYa" id="XTp-md-aAz"/>
@@ -104,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sb5-f0-DHA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-991" y="-1052"/>
+            <point key="canvasLocation" x="-1095" y="-1067"/>
         </scene>
         <!--NowMoviesTableViewController-->
         <scene sceneID="qA5-ZQ-GXb">
@@ -113,18 +103,17 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="165" sectionHeaderHeight="28" sectionFooterHeight="28" id="E8k-R5-8Pq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="116" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailMovieCell" rowHeight="165" id="VUn-SZ-8w0" customClass="DetailMovieCell" customModule="DoubanMovie" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="165"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VUn-SZ-8w0" id="hJG-Zx-quH">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="164.5"/>
+                                    <frame key="frameInset" width="375" height="164.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="now-you-see-me" translatesAutoresizingMaskIntoConstraints="NO" id="6S6-dF-mT3">
-                                            <rect key="frame" x="8" y="8" width="100" height="148"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="148" id="Xa0-Gs-3Y2"/>
                                                 <constraint firstAttribute="width" constant="100" id="e6R-N4-Rbj"/>
@@ -136,109 +125,97 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="忍者神龟2：破影而出" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0q-tx-zip">
-                                            <rect key="frame" x="116" y="15" width="251" height="23"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="23" id="k2P-5O-K1W"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
-                                            <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GDx-sj-Mdt" customClass="RatingBar" customModule="DoubanMovie" customModuleProvider="target">
-                                            <rect key="frame" x="116" y="46" width="108" height="16"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="TJB-va-XJj"/>
                                                 <constraint firstAttribute="width" constant="108" id="xAj-1h-ADg"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无评分" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRq-IJ-lcP">
-                                            <rect key="frame" x="116" y="46" width="108" height="16"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="PWX-sq-3cH"/>
                                                 <constraint firstAttribute="width" constant="108" id="tze-Wv-TYE"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="戴夫·格林" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1o-o3-aXN">
-                                            <rect key="frame" x="142" y="64" width="210" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="Fef-Ut-iXV"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745098039217" green="0.29803921568627451" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745098039217" green="0.29803921568627451" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="喜剧 动作 科幻 奇幻 冒险" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJM-6z-QMO">
-                                            <rect key="frame" x="142" y="110" width="210" height="14"/>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCv-uN-dkc">
-                                            <rect key="frame" x="142" y="126" width="210" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="k5u-WN-gTJ"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主演: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9s-sq-Ja2">
-                                            <rect key="frame" x="116" y="80" width="26" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="2Bu-RX-dZx"/>
                                                 <constraint firstAttribute="width" constant="26" id="TgU-bS-tV4"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类型: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbw-Oe-MSs">
-                                            <rect key="frame" x="116" y="110" width="26" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="26" id="AgW-Le-xGO"/>
                                                 <constraint firstAttribute="height" constant="14" id="Sun-vn-6Qx"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年代:  " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdE-oS-xQR">
-                                            <rect key="frame" x="116" y="126" width="26" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="GXe-cL-ieN"/>
                                                 <constraint firstAttribute="width" constant="26" id="ebN-aP-cPz"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wk7-Jg-1dQ">
-                                            <rect key="frame" x="142" y="80" width="210" height="28"/>
                                             <string key="text">梅根·福克斯/斯蒂芬·阿美尔/威尔·阿奈特/                           
 皮特·普劳泽克/阿兰·里奇森</string>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="142192人看过" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gL2-id-K7z">
-                                            <rect key="frame" x="116" y="142" width="236" height="14"/>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="导演: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lck-fa-1Td">
-                                            <rect key="frame" x="116" y="64" width="26" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="26" id="l15-DF-A15"/>
                                                 <constraint firstAttribute="height" constant="14" id="wxD-gD-rWd"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -298,14 +275,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="全部热映" id="EJv-H4-VgE"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="JAa-mL-pOd">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <attributedString key="attributedTitle">
                             <fragment content="下拉刷新">
                                 <attributes>
-                                    <color key="NSBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
-                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="NSBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <font key="NSFont" size="14" name="PingFangSC-Light"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
@@ -315,7 +292,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dlr-7R-2yS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-301.5" y="-1066.5"/>
+            <point key="canvasLocation" x="-302" y="-1067"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="YX1-8Y-Glq">
@@ -330,72 +307,74 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhR-n2-b1g">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <connections>
                                     <segue destination="TFn-mO-fiP" kind="unwind" unwindAction="unwindSegue:" id="jBa-tQ-5w4"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2tq-Gw-p1j">
-                                <rect key="frame" x="48" y="194" width="280" height="280"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Sd-Ti-bn5">
-                                        <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
+                                        <frame key="frameInset" width="140" height="140"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
                                         <inset key="titleEdgeInsets" minX="-40" minY="45" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="45" minY="-45" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="正在热映" image="icon-menu-recent">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="inTheaterButtonPressed:" destination="dTP-Lu-CIG" eventType="touchUpInside" id="F64-j0-vM9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXd-SZ-Ge5">
-                                        <rect key="frame" x="140" y="0.0" width="140" height="140"/>
+                                        <frame key="frameInset" minX="140" width="140" height="140"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
                                         <inset key="titleEdgeInsets" minX="-40" minY="45" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="30" minY="-45" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="搜索" image="icon-menu-search">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="searchButtonPressed:" destination="dTP-Lu-CIG" eventType="touchUpInside" id="YbJ-00-iTs"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3jJ-QP-EFU">
-                                        <rect key="frame" x="140" y="140" width="140" height="140"/>
+                                        <frame key="frameInset" minX="140" minY="140" width="140" height="140"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
                                         <inset key="titleEdgeInsets" minX="-40" minY="45" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="45" minY="-45" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="我的收藏" image="icon-menu-like">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="favoritesButtonPressed:" destination="dTP-Lu-CIG" eventType="touchUpInside" id="bfQ-O2-nWy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4A-cD-afL">
-                                        <rect key="frame" x="0.0" y="140" width="140" height="140"/>
+                                        <frame key="frameInset" minY="140" width="140" height="140"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
                                         <inset key="titleEdgeInsets" minX="-40" minY="45" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="30" minY="-45" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="全部" image="icon-menu-list">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="allMovieButtonPressed:" destination="dTP-Lu-CIG" eventType="touchUpInside" id="rFf-sO-lSH"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="280" id="JIg-uG-pru"/>
                                     <constraint firstAttribute="width" constant="280" id="vex-jK-Mb6"/>
@@ -407,7 +386,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2tq-Gw-p1j" firstAttribute="centerX" secondItem="75M-zo-V6E" secondAttribute="centerX" id="5nR-I0-O9c"/>
                             <constraint firstItem="tYB-Hz-Fjj" firstAttribute="top" secondItem="KhR-n2-b1g" secondAttribute="bottom" id="Wsq-kg-tyt"/>
@@ -421,7 +400,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mwo-6C-JSF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="TFn-mO-fiP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-991.5" y="-264.5"/>
+            <point key="canvasLocation" x="-1095" y="-283"/>
         </scene>
         <!--FavoritesTableViewController-->
         <scene sceneID="wjV-5w-MAO">
@@ -430,19 +409,18 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="Q61-c0-buD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="100" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <color key="sectionIndexBackgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteMovieCell" rowHeight="100" id="ZcC-yg-7HE" customClass="FavoriteMovieCell" customModule="DoubanMovie" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZcC-yg-7HE" id="Jcl-HY-eiT">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <frame key="frameInset" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="now-you-see-me" translatesAutoresizingMaskIntoConstraints="NO" id="PdH-pC-QHm">
-                                            <rect key="frame" x="8" y="10" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="PdH-pC-QHm" secondAttribute="height" multiplier="1:1" id="7Az-hq-8x4"/>
                                                 <constraint firstAttribute="height" constant="80" id="YyM-U0-jSZ"/>
@@ -454,27 +432,24 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07-01 20:30" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65L-Mz-8Ks">
-                                            <rect key="frame" x="305" y="18" width="60" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="0Ee-kb-u3g"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.65490196078431373" green="0.65490196078431373" blue="0.65490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.65490196078431373" green="0.65490196078431373" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="忍者神龟2：破影而出" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fz1-SE-nHK">
-                                            <rect key="frame" x="98" y="10" width="199" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="22" id="12h-LL-MGU"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
-                                            <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="城市在恢复平静后，大反派重新召集旧部卷土重来，并勾结外星恶势力朗格试图称霸地球，忍者神龟莱昂纳多（皮特·普劳泽克 Pete Ploszek 饰）、拉斐尔（阿兰·里奇森 Alan Ritchson 饰）" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGi-4g-Kcx">
-                                            <rect key="frame" x="100" y="40" width="260" height="34"/>
                                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="8"/>
-                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -509,7 +484,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aIg-sK-Nzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-301.5" y="-282.5"/>
+            <point key="canvasLocation" x="-303" y="-284"/>
         </scene>
         <!--SearchResultController-->
         <scene sceneID="BLT-20-Cfl">
@@ -518,17 +493,16 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="165" sectionHeaderHeight="28" sectionFooterHeight="28" id="p5h-4g-Clz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FirstSearchResultCell" rowHeight="165" id="rwz-Ef-lnp" userLabel="FirstSearchResultCell" customClass="DetailMovieCell" customModule="DoubanMovie" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="165"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rwz-Ef-lnp" id="CYM-1p-eka">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
+                                    <frame key="frameInset" width="375" height="165"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="now-you-see-me" translatesAutoresizingMaskIntoConstraints="NO" id="yBr-S8-wKD">
-                                            <rect key="frame" x="8" y="8" width="100" height="148"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="WDe-TU-jCo"/>
                                                 <constraint firstAttribute="height" constant="148" id="haH-sg-Ywt"/>
@@ -540,114 +514,101 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="惊天魔盗团2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1P6-TB-Zfb">
-                                            <rect key="frame" x="116" y="15" width="251" height="23"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="23" id="zxx-ZW-ZFV"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
-                                            <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7V-32-ZiB" customClass="RatingBar" customModule="DoubanMovie" customModuleProvider="target">
-                                            <rect key="frame" x="116" y="46" width="108" height="16"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="fO8-M2-AcJ"/>
                                                 <constraint firstAttribute="width" constant="108" id="gUT-Gp-Ixe"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无评分" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cL6-6o-Ag1">
-                                            <rect key="frame" x="116" y="46" width="108" height="16"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="7fb-C8-LhR"/>
                                                 <constraint firstAttribute="width" constant="108" id="A3i-Rs-t0c"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="戴夫·格林" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1Q-e4-Hdx">
-                                            <rect key="frame" x="142" y="64" width="210" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="V0I-Wi-tQO"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="喜剧 动作 科幻 奇幻 冒险" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkR-Dn-KHM">
-                                            <rect key="frame" x="142" y="110" width="210" height="14"/>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7r-Tt-xDc">
-                                            <rect key="frame" x="142" y="126" width="210" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="4Ut-z8-Yql"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主演: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQE-vD-WNl">
-                                            <rect key="frame" x="116" y="80" width="26" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="UQL-J2-0ep"/>
                                                 <constraint firstAttribute="width" constant="26" id="iXF-0n-pwq"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类型: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4QQ-67-RtD">
-                                            <rect key="frame" x="116" y="110" width="26" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="26" id="OrU-Hm-NLN"/>
                                                 <constraint firstAttribute="height" constant="14" id="plX-Fc-kVx"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年代:  " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCu-l7-iyP">
-                                            <rect key="frame" x="116" y="126" width="26" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="NpB-af-Kzm"/>
                                                 <constraint firstAttribute="width" constant="26" id="mlq-lm-QaD"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqG-w0-j5H">
-                                            <rect key="frame" x="142" y="80" width="210" height="28"/>
                                             <string key="text">梅根·福克斯/斯蒂芬·阿美尔/威尔·阿奈特/                           
 皮特·普劳泽克/阿兰·里奇森</string>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="142192人看过" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHb-Dj-eGO">
-                                            <rect key="frame" x="116" y="142" width="236" height="14"/>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="导演: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hY0-oL-saL">
-                                            <rect key="frame" x="116" y="64" width="26" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="14" id="itY-Us-0gM"/>
                                                 <constraint firstAttribute="width" constant="26" id="wSI-G3-FTu"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.16862745100000001" green="0.29803921570000003" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wC3-oc-acp" userLabel="separator">
-                                            <rect key="frame" x="116" y="164" width="259" height="1"/>
-                                            <color key="backgroundColor" red="0.6705882353" green="0.66274509800000003" blue="0.67450980390000004" alpha="0.29800646551724136" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.6705882353" green="0.66274509800000003" blue="0.67450980390000004" alpha="0.29800646551724136" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="pkb-6N-g7E"/>
                                             </constraints>
@@ -709,11 +670,10 @@
                                 <rect key="frame" x="0.0" y="257" width="375" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OQc-vg-wgq" id="5CK-Qc-jLY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                    <frame key="frameInset" width="375" height="120"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="now-you-see-me" translatesAutoresizingMaskIntoConstraints="NO" id="1OQ-4V-T4B">
-                                            <rect key="frame" x="8" y="8" width="70" height="104"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="70" id="AUw-VA-EBB"/>
                                                 <constraint firstAttribute="width" secondItem="1OQ-4V-T4B" secondAttribute="height" multiplier="25:37" id="HjL-g1-gyY"/>
@@ -725,26 +685,22 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="惊天魔盗团" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJH-Y9-ZXC">
-                                            <rect key="frame" x="86" y="25" width="281" height="23"/>
                                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="16"/>
-                                            <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类型:动作 喜剧" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLc-0v-NQD">
-                                            <rect key="frame" x="88" y="53" width="279" height="14"/>
                                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20229人看过" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1XT-sD-Xvy">
-                                            <rect key="frame" x="88" y="72" width="279" height="14"/>
                                             <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="10"/>
-                                            <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dQ-pr-UnQ" userLabel="separator">
-                                            <rect key="frame" x="86" y="119" width="289" height="1"/>
-                                            <color key="backgroundColor" red="0.6705882353" green="0.66274509800000003" blue="0.67450980390000004" alpha="0.29881465517241379" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.6705882353" green="0.66274509800000003" blue="0.67450980390000004" alpha="0.29881465517241379" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="7d7-SU-sus"/>
                                             </constraints>
@@ -800,32 +756,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2F-dT-KNI">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEJ-RJ-Gfx">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="736"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iiM-hm-AwM">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="iiM-hm-AwM" secondAttribute="height" multiplier="5:4" id="jDg-xx-dek"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剧情简介" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHD-UW-QdC">
-                                                <rect key="frame" x="20" y="320" width="64" height="23"/>
                                                 <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="16"/>
-                                                <color key="textColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="影片信息" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezh-pk-9xm">
-                                                <rect key="frame" x="20" y="410" width="64" height="22"/>
                                                 <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="16"/>
-                                                <color key="textColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S5B-j2-ttx">
-                                                <rect key="frame" x="25" y="353" width="325" height="37"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="...">
                                                         <attributes>
@@ -837,21 +787,18 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="EU5-nF-ZvU" userLabel="movie-title">
-                                                <rect key="frame" x="25" y="442" width="325" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="片名: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7m9-tJ-Kjh">
-                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="fJx-fr-svp"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="12"/>
-                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="忍者神龟2：破影而出 / 忍者龟：魅影突击(港)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEg-db-MDi">
-                                                        <rect key="frame" x="30" y="0.0" width="295" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
-                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -861,21 +808,18 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Zow-ai-gH7" userLabel="movie-casts">
-                                                <rect key="frame" x="25" y="486" width="325" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="主演: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOU-8F-Cqg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="Zfy-m3-L1t"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="12"/>
-                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="梅根·福克斯/斯蒂芬·阿美尔/威尔·阿奈特/皮特·普劳泽克/阿兰·里奇森 ..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxE-Hw-CPJ">
-                                                        <rect key="frame" x="30" y="0.0" width="295" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
-                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -885,21 +829,18 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="q6M-rN-S0j" userLabel="movie-type">
-                                                <rect key="frame" x="25" y="508" width="325" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="类型: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKL-gI-GlS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="80f-mV-cQz"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="12"/>
-                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="  " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3OJ-is-pEn">
-                                                        <rect key="frame" x="30" y="0.0" width="295" height="17"/>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
-                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -909,21 +850,18 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="wiI-hA-KNC" userLabel="movie-hot">
-                                                <rect key="frame" x="25" y="530" width="325" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="热度: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogd-rI-mOb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="2XY-Q0-hIU"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="12"/>
-                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="  " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfS-7H-fbM">
-                                                        <rect key="frame" x="30" y="0.0" width="295" height="17"/>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="12"/>
-                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -933,21 +871,18 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="xtY-Gu-Di6" userLabel="movie-director">
-                                                <rect key="frame" x="25" y="464" width="325" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="导演: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIL-wK-jMl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="svV-bP-lZw"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="12"/>
-                                                        <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="  " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LM1-62-Qo4">
-                                                        <rect key="frame" x="30" y="0.0" width="295" height="17"/>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
-                                                        <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.25098039220000001" green="0.25098039220000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -957,21 +892,18 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="S5J-Y0-3Fh" userLabel="movie-year">
-                                                <rect key="frame" x="25" y="552" width="325" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="年代: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSK-h0-Xpo">
-                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="30" id="6IK-Ex-wGM"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="12"/>
-                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text=" " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gzp-Uo-Crq">
-                                                        <rect key="frame" x="30" y="0.0" width="295" height="17"/>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Light" family="PingFang SC" pointSize="12"/>
-                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -981,20 +913,18 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="影人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqf-nn-zDT">
-                                                <rect key="frame" x="20" y="589" width="32" height="22"/>
                                                 <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="16"/>
-                                                <color key="textColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blw-vu-mXN">
-                                                <rect key="frame" x="25" y="621" width="350" height="90"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="90" id="dZG-YJ-KK0"/>
                                                 </constraints>
                                             </scrollView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="xtY-Gu-Di6" secondAttribute="trailing" constant="25" id="0yU-q6-p0N"/>
                                             <constraint firstItem="xtY-Gu-Di6" firstAttribute="top" secondItem="EU5-nF-ZvU" secondAttribute="bottom" constant="5" id="2hU-J4-hf5"/>
@@ -1033,7 +963,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="XEJ-RJ-Gfx" secondAttribute="bottom" id="B5x-RR-SGa"/>
                                     <constraint firstAttribute="trailing" secondItem="XEJ-RJ-Gfx" secondAttribute="trailing" id="Kn7-an-pi7"/>
@@ -1045,21 +975,12 @@
                                     <outlet property="delegate" destination="Czh-aZ-EAq" id="hKX-SS-0zx"/>
                                 </connections>
                             </scrollView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPF-vx-54g">
-                                <rect key="frame" x="20" y="35" width="44" height="44"/>
-                                <state key="normal" image="icon-back"/>
-                                <connections>
-                                    <segue destination="O7b-iG-Rqn" kind="unwind" unwindAction="unwindSegue:" id="Xsh-Ni-OVM"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="M2F-dT-KNI" secondAttribute="trailing" id="HfE-I2-F0v"/>
                             <constraint firstItem="M2F-dT-KNI" firstAttribute="top" secondItem="ihn-1a-e71" secondAttribute="top" id="IeG-vz-ssI"/>
                             <constraint firstItem="Zjb-so-UGe" firstAttribute="top" secondItem="M2F-dT-KNI" secondAttribute="bottom" id="Iy8-dJ-KvE"/>
-                            <constraint firstItem="qPF-vx-54g" firstAttribute="leading" secondItem="ihn-1a-e71" secondAttribute="leading" constant="20" id="XFt-i8-NWU"/>
-                            <constraint firstItem="qPF-vx-54g" firstAttribute="top" secondItem="ihn-1a-e71" secondAttribute="top" constant="35" id="qGd-lp-nYB"/>
                             <constraint firstItem="M2F-dT-KNI" firstAttribute="leading" secondItem="ihn-1a-e71" secondAttribute="leading" id="wGa-bf-7R3"/>
                         </constraints>
                     </view>
@@ -1072,7 +993,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="artistsScrollView" destination="blw-vu-mXN" id="inu-v6-TDj"/>
-                        <outlet property="backButton" destination="qPF-vx-54g" id="tat-D8-8yt"/>
                         <outlet property="likeBarButton" destination="YTu-Tb-BV6" id="RFa-7F-fSR"/>
                         <outlet property="movieCastsLabel" destination="BxE-Hw-CPJ" id="ila-oV-h7X"/>
                         <outlet property="movieCollectCountLabel" destination="rfS-7H-fbM" id="7A5-Mg-xXN"/>
@@ -1086,14 +1006,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LfE-1N-Dau" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="O7b-iG-Rqn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-301.5" y="-1858.5"/>
+            <point key="canvasLocation" x="-302" y="-1841"/>
         </scene>
     </scenes>
     <resources>
-        <image name="icon-back" width="44" height="44"/>
-        <image name="icon-like-normal" width="24" height="22"/>
+        <image name="icon-like-normal" width="23" height="22"/>
         <image name="icon-menu" width="22" height="16"/>
         <image name="icon-menu-like" width="42" height="38"/>
         <image name="icon-menu-list" width="40" height="32"/>
@@ -1103,6 +1021,6 @@
         <image name="placeholder" width="184" height="254"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CYE-hN-m5s"/>
+        <segue reference="xDN-xi-gjv"/>
     </inferredMetricsTieBreakers>
 </document>

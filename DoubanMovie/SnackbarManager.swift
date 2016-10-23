@@ -25,10 +25,10 @@ class SnackbarManager: NSObject {
         return instance
     }
     
-    private var currentSnackbar: SnackbarRecord?
+    fileprivate var currentSnackbar: SnackbarRecord?
     private var nextSnackbar: SnackbarRecord?
     
-    func show(r: SnackbarRecord) {
+    func show(_ r: SnackbarRecord) {
         // 如果当前有显示的Snackbar
         if isCurrentSnackbar(r) {
              updateTimeout(r)
@@ -49,7 +49,7 @@ class SnackbarManager: NSObject {
         
     }
     
-    func dismiss(r: SnackbarRecord) {
+    func dismiss(_ r: SnackbarRecord) {
         if isCurrentSnackbar(r) {
             
             cancelCurrentSnackbar()
@@ -62,26 +62,26 @@ class SnackbarManager: NSObject {
     
     func cancelCurrentSnackbar() {
         
-        let notification = NSNotification(name: SnackbarShouldDismissNotification, object: self, userInfo: [SnackbarUserInfoKey: currentSnackbar!.identifier])
+        let notification = Notification(name: SnackbarShouldDismissNotification, object: self, userInfo: [SnackbarUserInfoKey: currentSnackbar!.identifier])
         
-        NSNotificationCenter.defaultCenter().postNotification(notification)
+        NotificationCenter.default.post(notification)
         
     }
     
     func cancelNextSnackbar() {
-        let notification = NSNotification(name: SnackbarShouldDismissNotification, object: self, userInfo: [SnackbarUserInfoKey: nextSnackbar!.identifier])
+        let notification = Notification(name: SnackbarShouldDismissNotification, object: self, userInfo: [SnackbarUserInfoKey: nextSnackbar!.identifier])
         
-        NSNotificationCenter.defaultCenter().postNotification(notification)
+        NotificationCenter.default.post(notification)
     }
     
-    func isCurrentSnackbar(r: SnackbarRecord) -> Bool {
+    func isCurrentSnackbar(_ r: SnackbarRecord) -> Bool {
         if currentSnackbar != nil && currentSnackbar!.identifier == r.identifier {
             return true
         }
         return false
     }
     
-    func isNextSnackbar(r: SnackbarRecord) -> Bool {
+    func isNextSnackbar(_ r: SnackbarRecord) -> Bool {
         if nextSnackbar != nil && nextSnackbar!.identifier == r.identifier {
             return true
         }
@@ -94,28 +94,28 @@ class SnackbarManager: NSObject {
 
             currentSnackbar = nextSnackbar
             nextSnackbar = nil
-            let notification = NSNotification(name: SnackbarShouldShowNotification, object: self, userInfo: [SnackbarUserInfoKey: currentSnackbar!.identifier])
+            let notification = Notification(name: SnackbarShouldShowNotification, object: self, userInfo: [SnackbarUserInfoKey: currentSnackbar!.identifier])
 
-            NSNotificationCenter.defaultCenter().postNotification(notification)
+            NotificationCenter.default.post(notification)
         }
     }
     
     
     // MARK: - Scheduled Timer
-    var timer: NSTimer!
+    var timer: Timer!
     
-    func scheduleTimeout(r: SnackbarRecord) {
+    func scheduleTimeout(_ r: SnackbarRecord) {
         let duration = r.duration
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(SnackbarManager.onTimeout(_:)), userInfo: r.identifier, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(SnackbarManager.onTimeout(_:)), userInfo: r.identifier, repeats: false)
     }
     
-    func updateTimeout(record: SnackbarRecord) {
+    func updateTimeout(_ record: SnackbarRecord) {
         timer.invalidate()
         scheduleTimeout(record)
     }
     
-    func onTimeout(timer: NSTimer) {
+    func onTimeout(_ timer: Timer) {
         
         if let identifier = timer.userInfo as? Int {
             self.dismiss(SnackbarRecord(duration: 0, identifier: identifier))
@@ -128,12 +128,12 @@ class SnackbarManager: NSObject {
 // MARK: - SnackbarDelegate
 extension SnackbarManager: SnackbarDelegate {
     
-    func snackbarDidAppear(snackbar: Snackbar) {
+    func snackbarDidAppear(_ snackbar: Snackbar) {
         let r = SnackbarRecord(duration: snackbar.duration, identifier: snackbar.hash)
         scheduleTimeout(r)
     }
     
-    func snackbarDidDisappear(snackbar: Snackbar) {
+    func snackbarDidDisappear(_ snackbar: Snackbar) {
         let r = SnackbarRecord(duration: snackbar.duration, identifier: snackbar.hash)
         if isCurrentSnackbar(r) {
             currentSnackbar = nil
