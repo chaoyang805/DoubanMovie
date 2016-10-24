@@ -14,17 +14,17 @@ This is a movie explore app using douban movie api.
 
 * View movie's detail.
 
-  ![detail](./Pictures/detail.png)
+  ![detail](./Pictures/detail.PNG)
 
-  ![detail-2](./Pictures/detail-2.png)
+  ![detail-2](./Pictures/detail-2.PNG)
 
 * Search movie or tv shows
 
-  ![search](./Pictures/search.png)
+  ![search](./Pictures/search.PNG)
 
 * Add the movie you love to your favorites collection
 
-  ![favorite](./Pictures/favorite.png)
+  ![favorite](./Pictures/favorite.PNG)
 
 ### Uses of frameworks
 
