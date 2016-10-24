@@ -924,7 +924,7 @@
 				INFOPLIST_FILE = DoubanMovie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jikexueyuan.DoubanMovie;
+				PRODUCT_BUNDLE_IDENTIFIER = me.chaoyang805.DoubanMovie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -946,7 +946,7 @@
 				INFOPLIST_FILE = DoubanMovie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jikexueyuan.DoubanMovie;
+				PRODUCT_BUNDLE_IDENTIFIER = me.chaoyang805.DoubanMovie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
