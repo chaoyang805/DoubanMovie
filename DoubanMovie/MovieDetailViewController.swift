@@ -16,16 +16,22 @@
 
 import UIKit
 import ObjectMapper
+import RxSwift
 import AWPercentDrivenInteractiveTransition
 
 class MovieDetailViewController: UIViewController {
     
     // MARK: - Properties
     
-    fileprivate lazy var doubanService: DoubanService = {
-        
-        return DoubanService.sharedService
+//    fileprivate lazy var doubanService: DoubanService = {
+//        
+//        return DoubanService.sharedService
+//    }()
+    
+    fileprivate lazy var afService: RxAlamofireService = {
+        return RxAlamofireService.shared
     }()
+    fileprivate var disposeBag = DisposeBag()
     
     fileprivate lazy var realmHelper: RealmHelper = {
         
@@ -159,14 +165,33 @@ class MovieDetailViewController: UIViewController {
      */
     func loadMovieSummaryFromNetwork(byId id: String) {
         
-        doubanService.movie(forId: id) { [weak self](responseJSON, error) in
-            guard let `self` = self else { return }
-            let updatedMovie = Mapper<DoubanMovie>().map(JSON: responseJSON!)
-            
-            self.detailMovie?.summary = updatedMovie?.summary ?? "暂无"
-            self.movieSummaryText.text = self.detailMovie?.summary
-        }
+        afService.getMovie(by: id)
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: updateSummary,
+                onError: self.onLoadingError,
+                onCompleted: {
+                    
+                },
+                onDisposed: nil)
+            .addDisposableTo(disposeBag)
     }
+    
+    lazy var updateSummary: (DoubanMovie) -> Void = {
+        return {
+            let summary = $0.summary
+            NSLog("update summary\(summary)")
+            self.detailMovie?.summary = summary
+            self.movieSummaryText.text = summary
+        }
+    }()
+    
+    lazy var onLoadingError: (Error) -> Void = {
+        return {
+            NSLog("\($0.localizedDescription)")
+            Snackbar.make(text: "获取详情失败", duration: .Short).show()
+        }
+    }()
     
 }
 

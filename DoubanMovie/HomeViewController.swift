@@ -17,6 +17,10 @@
 import UIKit
 import SDWebImage
 import ObjectMapper
+import RxSwift
+import RxAlamofire
+import Alamofire
+import RxCocoa
 
 class HomeViewController: UIViewController{
 
@@ -33,9 +37,8 @@ class HomeViewController: UIViewController{
     
     fileprivate var imagePrefetcher = SDWebImagePrefetcher()
     
-    fileprivate var doubanService: DoubanService {
-        return DoubanService.sharedService
-    }
+    fileprivate var disposeBag = DisposeBag()
+    fileprivate let afService = RxAlamofireService.shared
     
     fileprivate lazy var realm: RealmHelper = {
         return RealmHelper()
@@ -47,10 +50,10 @@ class HomeViewController: UIViewController{
     }()
     
     fileprivate var movieCount: Int {
-        return resultsSet != nil ? resultsSet.subjects.count : 0
+        return movies.count
     }
     
-    fileprivate var resultsSet: DoubanResultsSet! {
+    fileprivate var movies: [DoubanMovie] = [] {
         didSet {
             self.pageControl.numberOfPages = movieCount
             showCurrentMovie(animated: false)
@@ -79,7 +82,7 @@ class HomeViewController: UIViewController{
     }
     
     private func setupMovieDialogView() {
-        
+
         let dialogWidth = screenWidth * 280 / 375
         let dialogHeight = dialogWidth / 280 * 373
         let x = (screenWidth - dialogWidth) / 2
@@ -106,7 +109,7 @@ class HomeViewController: UIViewController{
         
         if segue.identifier == "ShowDetailSegue" {
             guard let toVC = segue.destination as? MovieDetailViewController else { return }
-            toVC.detailMovie = resultsSet.subjects[currentPage]
+            toVC.detailMovie = movies[currentPage]
         }
         
         if segue.identifier == "MenuSegue" {
@@ -135,27 +138,46 @@ extension HomeViewController {
      */
     fileprivate func fetchData(force: Bool = false) {
         
-        doubanService.getInTheaterMovies(at: 0, resultCount:5,forceReload: force) { [weak self](responseJSON, error) in
-            guard let `self` = self else { return }
-
-            self.endLoading()
-            
-            if error != nil {
-                Snackbar.make(text: "刷新失败，请稍后重试", duration: .Short).show()
-            }
-            if responseJSON != nil {
-                self.resultsSet = Mapper<DoubanResultsSet>().map(JSON: responseJSON!)
-                self.prefetchImages()
-    
-            }
-
-        }
-        
         self.beginLoading()
+        
+        afService
+            .loadMovies(forceReload: force)
+            .subscribeOn(MainScheduler.instance)
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: showMovies,
+                onError: showLoadingError,
+                onCompleted: {
+                    self.prefetchImages()
+                    self.endLoading()
+                },
+                onDisposed: {
+                    NSLog("on disposed")
+            })
+            .addDisposableTo(disposeBag)
+        
+//        self.disposeBag.insert(disposable)
+        
+    }
+    
+    var showMovies: (([DoubanMovie]) -> Void) {
+        return {
+            self.movies = $0
+        }
+    }
+    
+    var showLoadingError: ((Error) -> Void) {
+        
+        return {
+            NSLog("loading error:\($0.localizedDescription)")
+            Snackbar.make(text: "刷新失败，请稍后重试", duration: .Short).show()
+        }
     }
     
     private func prefetchImages() {
-        let urls = self.resultsSet.subjects.map { URL(string: $0.images?.mediumImageURL ?? "") }.flatMap { $0 }
+        let urls = self.movies
+            .map { URL(string: $0.images?.mediumImageURL ?? "") }
+            .flatMap { $0 }
         self.imagePrefetcher.prefetchURLs(urls)
     }
     
@@ -186,6 +208,7 @@ extension HomeViewController {
     // test method
     private func performFetch(completion: @escaping () -> Void) {
         DispatchQueue(label: "network", qos: DispatchQoS.default, attributes: DispatchQueue.Attributes.concurrent).async {
+            
             
             NSLog("perform loading start...")
             Thread.sleep(forTimeInterval: 5)
@@ -282,8 +305,7 @@ extension HomeViewController {
         
         pageControl.currentPage = currentPage
         
-        let currentMovie = resultsSet.subjects[currentPage]
-        
+        let currentMovie = movies[currentPage]
         movieDialogView.movie = currentMovie
     
         backgroundImageView.sd_setImage(with: URL(string: currentMovie.images!.mediumImageURL), placeholderImage: placeHolderImage)

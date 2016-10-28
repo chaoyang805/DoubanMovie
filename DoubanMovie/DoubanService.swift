@@ -18,6 +18,9 @@
 import UIKit
 import AFNetworking
 import ObjectMapper
+import RxSwift
+import RxAlamofire
+import Alamofire
 
 class DoubanService: DoubanAPI {
     
@@ -45,6 +48,13 @@ class DoubanService: DoubanAPI {
         return _manager
     }()
     
+    private lazy var alamofireManager: Alamofire.SessionManager = {
+        let config = URLSessionConfiguration.default
+        config.requestCachePolicy = .returnCacheDataElseLoad
+        let manager = Alamofire.SessionManager(configuration: config)
+        return manager
+    }()
+    
     
     /**
      请求正在上映的电影
@@ -58,9 +68,9 @@ class DoubanService: DoubanAPI {
     func getInTheaterMovies(inCity city: String = "北京", at start: Int, resultCount count: Int, forceReload: Bool = false, completionHandler: ResponseHandler?) {
         
         self.requestType = RequestType.inTheater
-        
-        let parameters: [String : Any] = ["start": start, "city": city, "count":count]
 
+        let parameters: [String : Any] = ["start": start, "city": city, "count":count]
+        
         let task = makeGETRequest(
             withURL: self.requestURLString,
             parameters: parameters,
@@ -68,7 +78,7 @@ class DoubanService: DoubanAPI {
             completionHandler: completionHandler)
         task?.resume()
     }
-    
+
     /**
      根据关键字搜索电影
      
@@ -139,7 +149,7 @@ class DoubanService: DoubanAPI {
      */
     func celebrity(forId id: String, forceReload: Bool = false, completionHandler: ResponseHandler?) {
         
-        self.requestType = RequestType.celebrity(celebritId: id)
+        self.requestType = RequestType.celebrity(celebrityId: id)
         
         makeGETRequest(
             withURL: self.requestURLString,
@@ -182,39 +192,6 @@ class DoubanService: DoubanAPI {
     deinit{
         for task in manager.dataTasks {
             task.suspend()
-        }
-    }
-}
-
-/**
- 网络请求的类型
- 
- - inTheater: 请求正在热映
- - search:    搜索电影
- - subject:   指定的电影条目
- - celebrity: 指定的影人条目
- */
-enum RequestType: CustomStringConvertible {
-    case inTheater
-    case search
-    case subject(subjectId: String)
-    case celebrity(celebritId: String)
-    
-    var baseURL: String {
-        return "https://api.douban.com/v2/movie/"
-    }
-    
-    var description: String {
-        switch self {
-        case .inTheater:
-            return baseURL + "in_theaters"
-        case .search:
-            return baseURL + "search"
-        case .celebrity(let id):
-            return baseURL + "celebrity/\(id)"
-            
-        case .subject(let id):
-            return baseURL + "subject/\(id)"
         }
     }
 }

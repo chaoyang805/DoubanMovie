@@ -34,7 +34,6 @@
 		214C5D521D5466D40057B1B8 /* DoubanResultsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D511D5466D40057B1B8 /* DoubanResultsSet.swift */; };
 		214C5D541D5473AB0057B1B8 /* DoubanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D531D5473AB0057B1B8 /* DoubanAPI.swift */; };
 		2162F3DD1D66E98F00DC12B3 /* LoadingPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */; };
-		216E35A91DB4D60D0036A625 /* ZCYPercentDrivenInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216E35A81DB4D60D0036A625 /* ZCYPercentDrivenInteractiveTransition.swift */; };
 		217692FF1DBD13B00015037E /* UIDevice+ModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217692FE1DBD13B00015037E /* UIDevice+ModelName.swift */; };
 		2192E86E1D6B372D0099FF3B /* ShareElementPushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192E86D1D6B372D0099FF3B /* ShareElementPushTransition.swift */; };
 		2192E8701D6B3BAB0099FF3B /* ShareElementPopTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192E86F1D6B3BAB0099FF3B /* ShareElementPopTransition.swift */; };
@@ -44,6 +43,7 @@
 		21A12F8A1D7E574400FC95AC /* SnackbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A12F891D7E574400FC95AC /* SnackbarView.swift */; };
 		21A12F8C1D7E579B00FC95AC /* SnackbarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A12F8B1D7E579B00FC95AC /* SnackbarManager.swift */; };
 		21A12F901D7EA3EF00FC95AC /* SnackbarRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A12F8F1D7EA3EF00FC95AC /* SnackbarRecord.swift */; };
+		21A7A97A1DC3450B00432FD5 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7A9791DC3450B00432FD5 /* RequestType.swift */; };
 		21BC28291D367E9E00E5E98C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC28281D367E9E00E5E98C /* AppDelegate.swift */; };
 		21BC282E1D367E9E00E5E98C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BC282C1D367E9E00E5E98C /* Main.storyboard */; };
 		21BC28301D367E9E00E5E98C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BC282F1D367E9E00E5E98C /* Assets.xcassets */; };
@@ -62,6 +62,8 @@
 		21C9F4721D7D300300507AE7 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9F4711D7D300300507AE7 /* ErrorHandler.swift */; };
 		21C9F4761D7D427800507AE7 /* DoubanServiceErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9F4751D7D427800507AE7 /* DoubanServiceErrorHandler.swift */; };
 		21C9F4781D7D43B100507AE7 /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C9F4771D7D43B100507AE7 /* Snackbar.swift */; };
+		21F8C3181DC2FE6600570823 /* Observable+UnWrapOptional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F8C3171DC2FE6600570823 /* Observable+UnWrapOptional.swift */; };
+		21F8C31A1DC3028600570823 /* RxAlamofireService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F8C3191DC3028600570823 /* RxAlamofireService.swift */; };
 		93EE8469A867E7D5901A47A7 /* Pods_DoubanMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD7A4CEB7995A8C5DE6C24B5 /* Pods_DoubanMovie.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,7 +125,6 @@
 		2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingPageControl.swift; sourceTree = "<group>"; };
 		216C5DA81D4726E9008A4A75 /* MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+MenuViewControllerDelegate.swift"; sourceTree = "<group>"; };
-		216E35A81DB4D60D0036A625 /* ZCYPercentDrivenInteractiveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZCYPercentDrivenInteractiveTransition.swift; sourceTree = "<group>"; };
 		217692FE1DBD13B00015037E /* UIDevice+ModelName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+ModelName.swift"; sourceTree = "<group>"; };
 		2192E86D1D6B372D0099FF3B /* ShareElementPushTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareElementPushTransition.swift; sourceTree = "<group>"; };
 		2192E86F1D6B3BAB0099FF3B /* ShareElementPopTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareElementPopTransition.swift; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 		21A12F891D7E574400FC95AC /* SnackbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnackbarView.swift; sourceTree = "<group>"; };
 		21A12F8B1D7E579B00FC95AC /* SnackbarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnackbarManager.swift; sourceTree = "<group>"; };
 		21A12F8F1D7EA3EF00FC95AC /* SnackbarRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnackbarRecord.swift; sourceTree = "<group>"; };
+		21A7A9791DC3450B00432FD5 /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		21B8B2E81D45A84700B7D344 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		21BC28251D367E9E00E5E98C /* DoubanMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoubanMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BC28281D367E9E00E5E98C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,8 @@
 		21C9F4751D7D427800507AE7 /* DoubanServiceErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanServiceErrorHandler.swift; sourceTree = "<group>"; };
 		21C9F4771D7D43B100507AE7 /* Snackbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
 		21DC25991D4389EF009FEA0C /* RatingStar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingStar.swift; sourceTree = "<group>"; };
+		21F8C3171DC2FE6600570823 /* Observable+UnWrapOptional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+UnWrapOptional.swift"; sourceTree = "<group>"; };
+		21F8C3191DC3028600570823 /* RxAlamofireService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxAlamofireService.swift; sourceTree = "<group>"; };
 		3AA74BB0E5F74D7FD479F432 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50D35D86E1B949D51125818C /* Pods-DoubanMovie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoubanMovie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoubanMovie/Pods-DoubanMovie.debug.xcconfig"; sourceTree = "<group>"; };
 		CD7A4CEB7995A8C5DE6C24B5 /* Pods_DoubanMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoubanMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,6 +251,7 @@
 		2146B8381DBB4B3900B54A2A /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				21F8C3161DC2FE4600570823 /* Extensions */,
 				2149FA5B1D3D293E00F0D0C6 /* Model */,
 				2146B84A1DBB4D8200B54A2A /* Animations */,
 				2146B8491DBB4D6F00B54A2A /* UI */,
@@ -379,7 +384,6 @@
 			children = (
 				2192E86D1D6B372D0099FF3B /* ShareElementPushTransition.swift */,
 				2192E86F1D6B3BAB0099FF3B /* ShareElementPopTransition.swift */,
-				216E35A81DB4D60D0036A625 /* ZCYPercentDrivenInteractiveTransition.swift */,
 			);
 			name = Animations;
 			sourceTree = "<group>";
@@ -424,6 +428,8 @@
 				21C9F4751D7D427800507AE7 /* DoubanServiceErrorHandler.swift */,
 				211B3BDD1D3FC1DD00887B31 /* DoubanService.swift */,
 				214C5D531D5473AB0057B1B8 /* DoubanAPI.swift */,
+				21F8C3191DC3028600570823 /* RxAlamofireService.swift */,
+				21A7A9791DC3450B00432FD5 /* RequestType.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -504,6 +510,14 @@
 				21BC284A1D367E9E00E5E98C /* Info.plist */,
 			);
 			path = DoubanMovieUITests;
+			sourceTree = "<group>";
+		};
+		21F8C3161DC2FE4600570823 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				21F8C3171DC2FE6600570823 /* Observable+UnWrapOptional.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		C8BC44A5CC8A36EF866368CE /* Frameworks */ = {
@@ -717,12 +731,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21A7A97A1DC3450B00432FD5 /* RequestType.swift in Sources */,
 				21C247F71D542F9500F919D6 /* DoubanImage.swift in Sources */,
 				2118D3A71D4F34F700644D84 /* HomeViewController.swift in Sources */,
 				2118D3A81D4F34F700644D84 /* HomeViewController+MenuViewControllerDelegate.swift in Sources */,
 				2118D3A91D4F34F700644D84 /* MenuViewController.swift in Sources */,
 				21C9F4761D7D427800507AE7 /* DoubanServiceErrorHandler.swift in Sources */,
 				2118D3AA1D4F34F700644D84 /* MenuViewControllerDelegate.swift in Sources */,
+				21F8C3181DC2FE6600570823 /* Observable+UnWrapOptional.swift in Sources */,
 				21C9F4781D7D43B100507AE7 /* Snackbar.swift in Sources */,
 				2118D3AB1D4F34F700644D84 /* MovieDetailViewController.swift in Sources */,
 				2118D3AC1D4F34F700644D84 /* NowMoviesTableViewController.swift in Sources */,
@@ -730,6 +746,7 @@
 				2162F3DD1D66E98F00DC12B3 /* LoadingPageControl.swift in Sources */,
 				2122EFB01D61A4C500DA7567 /* String+RemoveFirstChar.swift in Sources */,
 				214C5D541D5473AB0057B1B8 /* DoubanAPI.swift in Sources */,
+				21F8C31A1DC3028600570823 /* RxAlamofireService.swift in Sources */,
 				217692FF1DBD13B00015037E /* UIDevice+ModelName.swift in Sources */,
 				21C9F4721D7D300300507AE7 /* ErrorHandler.swift in Sources */,
 				21A12F8A1D7E574400FC95AC /* SnackbarView.swift in Sources */,
@@ -746,7 +763,6 @@
 				2118D3B51D4F34F700644D84 /* FavoriteMovieCell.swift in Sources */,
 				2192E8741D6B3FC80099FF3B /* MovieDetailViewController+ShareElementTransition.swift in Sources */,
 				2146D74E1DA9F72200436FE6 /* MovieDialogView.swift in Sources */,
-				216E35A91DB4D60D0036A625 /* ZCYPercentDrivenInteractiveTransition.swift in Sources */,
 				2118D3B81D4F34F700644D84 /* RatingStar.swift in Sources */,
 				2118D3B91D4F34F700644D84 /* StarLayer.swift in Sources */,
 				2118D3BA1D4F34F700644D84 /* RatingBar.swift in Sources */,

@@ -14,8 +14,17 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - Alamofire (4.0.1)
   - AWPercentDrivenInteractiveTransition (0.2.0)
   - ObjectMapper (2.1.0)
+  - RxAlamofire (3.0.0-rc.1):
+    - RxAlamofire/Core (= 3.0.0-rc.1)
+  - RxAlamofire/Core (3.0.0-rc.1):
+    - Alamofire (~> 4.0)
+    - RxSwift (~> 3.0.0-rc.1)
+  - RxCocoa (3.0.0-rc.1):
+    - RxSwift (~> 3.0.0-rc.1)
+  - RxSwift (3.0.0-rc.1)
   - SDWebImage (4.0.0-beta2):
     - SDWebImage/Core (= 4.0.0-beta2)
   - SDWebImage/Core (4.0.0-beta2)
@@ -24,14 +33,20 @@ DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - AWPercentDrivenInteractiveTransition (~> 0.2.0)
   - ObjectMapper (~> 2.1.0)
+  - RxAlamofire (~> 3.0.0-rc.1)
+  - RxCocoa (~> 3.0.0-rc.1)
   - SDWebImage (~> 4.0.0-beta2)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   AWPercentDrivenInteractiveTransition: 26f1c1f11777e2f6171819a13b458dda021db3ad
   ObjectMapper: e5e0f8aef8590fc2ddcde7f27eddb255863ee6e9
+  RxAlamofire: 5e544296d77b754c4ad9cb419c29936e6bc9711d
+  RxCocoa: e72a074a7f38896ec0382d096df5f58df10115c7
+  RxSwift: d7a3819dd71789c473e3cbf1a0c02d58b2692739
   SDWebImage: e379f33106cf8d6766f970c0ef1c3fb609c94d78
 
-PODFILE CHECKSUM: ae7bff949648a95b5b48fa5cc144b62059b8d4b1
+PODFILE CHECKSUM: 312cf6effa34e6c76f58b4b9662d8eb860bde544
 
 COCOAPODS: 1.1.0

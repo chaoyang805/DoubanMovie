@@ -23,8 +23,8 @@ class DetailMovieCell: BaseMovieCell {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var emptyRatingPlaceholderLabel: UILabel!
     
-    override func configureCell(withMovie movie: DoubanMovie) {
-        super.configureCell(withMovie: movie)
+    override func configureCell(with movie: DoubanMovie) {
+        super.configureCell(with: movie)
         
         ratingInfo.ratingScore = movie.rating?.average
         ratingInfo.isHidden = movie.rating?.average ?? 0 == 0

@@ -14,12 +14,32 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-DoubanMovie.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxAlamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RxSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,17 +52,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>087A05D8B0184F7D90C74AA81808B661</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1C3436CEA5C3D39764C5F54374794ECB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3FB6F99903F4791F84F236AD66A4A4B4</key>
+		<key>4F8F3A467A18EA08DBCE1D39291EAF45</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>89BF58D8FA17F76AB6963CFF710E6741</key>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>94F2FE2AD92C1E794E47AB54335C7B98</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A1A1F0776029A317B4669202621AE500</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -53,6 +88,11 @@
 			<true/>
 		</dict>
 		<key>CC222090C8DEBB4EC8B76ABFE747FED1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D1EE5B00ECFF538FBB5D31F804BBB70E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

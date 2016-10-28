@@ -17,39 +17,34 @@
 import UIKit
 import ObjectMapper
 import SDWebImage
+import RxSwift
 
 class NowMoviesTableViewController: ClearTransitionTableViewController {
     
-    fileprivate var resultsSet: DoubanResultsSet?
-    
-    /// 初始的偏移量，永远是0
-    fileprivate var initialFetchOffset = 0
+    fileprivate var movies: [DoubanMovie] = []
     
     /// 请求数据的偏移量根据当前已有数据的数量
     fileprivate var fetchOffset: Int {
-        return movieCount
+        return movies.count
     }
-
-    /// 每次请求数据的数量根据当前展示的数据量和总数据量决定
+    
+    /// 每次请求数据的数量为20
     fileprivate var fetchResultCount: Int {
-        return totalMovieCount - movieCount > 20 ? 20 : totalMovieCount - movieCount
+        return 20
     }
     
     /// 重新刷新时请求的条目数量
     fileprivate let refetchResultCount = 20
-    
-    fileprivate var totalMovieCount: Int {
-        return resultsSet?.total ?? 0
-    }
+
     fileprivate var screenHeight: CGFloat {
         return UIScreen.main.bounds.height
     }
     
-    fileprivate lazy var doubanService: DoubanService = {
-        
-        return DoubanService.sharedService
-        
+    fileprivate lazy var afService: RxAlamofireService = {
+        return RxAlamofireService.shared
     }()
+    
+    fileprivate var disposeBag = DisposeBag()
     
     private lazy var refreshingTitle = {
         return NSAttributedString(string: "正在刷新", attributes: [NSFontAttributeName:UIFont(name: "Helvetica-Light", size: 14)!])
@@ -59,10 +54,6 @@ class NowMoviesTableViewController: ClearTransitionTableViewController {
         return NSAttributedString(string: "下拉刷新", attributes: [NSFontAttributeName:UIFont(name: "Helvetica-Light", size: 14)!])
     }()
     
-    private var movieCount: Int {
-        return resultsSet?.subjects.count ?? 0
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshControl?.addTarget(self, action: #selector(NowMoviesTableViewController.onPullToRefresh), for: .valueChanged)
@@ -70,19 +61,39 @@ class NowMoviesTableViewController: ClearTransitionTableViewController {
     }
 
     private func reloadData(_ force: Bool) {
-        doubanService.getInTheaterMovies(at: initialFetchOffset, resultCount: refetchResultCount, forceReload: force) { [weak self](responseJSON, error) in
-            
-            guard let `self` = self else { return }
-            self.resultsSet = Mapper<DoubanResultsSet>().map(JSON: responseJSON!)
-            self.navigationItem.title = self.resultsSet?.title ?? "全部热映"
+        
+        afService
+            .loadMovies(at: 0, resultCount: fetchResultCount, forceReload: force)
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: onLoaded,
+                onError: nil,
+                onCompleted: endLoading,
+                onDisposed: nil)
+            .addDisposableTo(disposeBag)
+    }
+    
+    private lazy var onLoaded: ([DoubanMovie]) -> Void = {
+        
+        return {
+        
+            self.navigationItem.title = "全部上映中"
+            self.movies = $0
             self.tableView.reloadData()
             
-            if self.refreshControl!.isRefreshing {
-                self.refreshControl?.endRefreshing()
-                self.refreshControl?.attributedTitle = self.pullToRefreshTitle
-            }
         }
-    }
+        
+    }()
+    
+    private lazy var endLoading: () -> Void = {
+    
+        return {
+            
+            self.refreshControl?.endRefreshing()
+            self.refreshControl?.attributedTitle = self.pullToRefreshTitle
+            
+        }
+    }()
     
     @objc private func onPullToRefresh() {
         self.refreshControl?.attributedTitle = refreshingTitle
@@ -94,14 +105,14 @@ class NowMoviesTableViewController: ClearTransitionTableViewController {
             guard let toVC = segue.destination as? MovieDetailViewController, let cell = sender as? DetailMovieCell else { return }
             guard let selectedRow = tableView.indexPath(for: cell)?.row else { return }
             
-            toVC.detailMovie = resultsSet?.subjects[selectedRow]
+            toVC.detailMovie = movies[selectedRow]
         }
 
     }
     
     // MARK: UITableViewControllerDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieCount
+        return movies.count
     }
 
     let DetailCellIdentifier = "DetailMovieCell"
@@ -112,8 +123,8 @@ class NowMoviesTableViewController: ClearTransitionTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let detailCell = cell as? DetailMovieCell, let subjects = self.resultsSet?.subjects , subjects.count > 0 else { return }
-        detailCell.configureCell(withMovie: subjects[indexPath.row])
+        guard let detailCell = cell as? DetailMovieCell else { return }
+        detailCell.configureCell(with: movies[indexPath.row])
     }
     
     lazy var loadMoreFooter: LoadMoreFooter = {
@@ -168,7 +179,7 @@ extension NowMoviesTableViewController {
             
             loadMore { (count: Int) in
                 
-                scrollView.bounces = true
+//                scrollView.bounces = true
                 if count > 0 {
                     self.loadMoreFooter.endLoadMore()
                     self.loadMoreFooter.changeHeight(0)
@@ -177,6 +188,7 @@ extension NowMoviesTableViewController {
                     delay(timeInterval: 1) { [weak self] in
                         
                         guard let `self` = self else { return }
+                        scrollView.bounces = true
                         self.tableView.contentSize.height -= self.maxFooterHeight
                         self.loadMoreFooter.endLoadMore()
                     }
@@ -191,19 +203,27 @@ extension NowMoviesTableViewController {
     }
     
     private func loadMore(completion: @escaping (_ count: Int) -> Void) -> Void {
-        doubanService.getInTheaterMovies(at: fetchOffset, resultCount: fetchResultCount, forceReload: true) { [weak self](responseJSON, error) in
-            guard let `self` = self else { return }
-            
-            if let resultsSet = Mapper<DoubanResultsSet>().map(JSON: responseJSON!) , resultsSet.subjects.count > 0 {
-                
-                completion(resultsSet.subjects.count)
-                self.resultsSet?.subjects.append(contentsOf: resultsSet.subjects)
+        
+        let onLoaded: ([DoubanMovie]) -> Void = {
+            NSLog("onLoaded \($0.count)")
+            if $0.count > 0 {
+                completion($0.count)
+                self.movies.append(contentsOf: $0)
                 self.tableView.reloadData()
             } else {
                 completion(0)
-                
             }
         }
+        
+        afService
+            .loadMovies(at: fetchOffset, resultCount: fetchResultCount, forceReload: true)
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext:onLoaded,
+                onError: nil,
+                onCompleted: nil,
+                onDisposed: nil)
+            .addDisposableTo(disposeBag)
 
     }
 }

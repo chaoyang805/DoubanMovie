@@ -26,7 +26,7 @@ class BaseMovieCell: UITableViewCell {
     
     var movie: DoubanMovie?
     
-    func configureCell(withMovie movie: DoubanMovie) {
+    func configureCell(with movie: DoubanMovie) {
         self.movie = movie
         posterImageView.sd_setImage(with: URL(string: movie.images!.largeImageURL))
         titleLabel.text = movie.title

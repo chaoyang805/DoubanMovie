@@ -16,6 +16,7 @@
 
 import UIKit
 import ObjectMapper
+import RxSwift
 
 class SearchResultsViewController: ClearTransitionTableViewController {
     
@@ -51,17 +52,17 @@ class SearchResultsViewController: ClearTransitionTableViewController {
     
     fileprivate var _lastQueryText: String = ""
     
-    /// 搜索返回的结果集
-    fileprivate var searchResultsSet: DoubanResultsSet? {
+    fileprivate var disposeBag: DisposeBag = DisposeBag()
+    fileprivate lazy var afService: RxAlamofireService = {
+        return RxAlamofireService.shared
+    }()
+    
+    fileprivate var resultsMovie: [DoubanMovie] = [] {
         didSet {
-            tableView.isScrollEnabled = (searchResultsSet?.subjects.count)! > 0
+            tableView.isScrollEnabled = resultsMovie.count > 0
         }
     }
     
-    /// 原始结果集
-    fileprivate var searchResults: [DoubanMovie] {
-        return searchResultsSet?.subjects ?? []
-    }
     /// 过滤后的结果集
     fileprivate var filteredSearchResults = [DoubanMovie]()
     
@@ -79,11 +80,13 @@ class SearchResultsViewController: ClearTransitionTableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if searchResults.count > 0 {
+
+        if resultsMovie.count > 0 {
             return
         }
         searchController.isActive = true
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let toVC = segue.destination as? MovieDetailViewController,
             let cell = sender as? UITableViewCell,
@@ -108,17 +111,21 @@ extension SearchResultsViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         let movie = filteredSearchResults[indexPath.row]
         
         if indexPath.row == 0 {
+            
             if let detailCell = cell as? DetailMovieCell {
-                detailCell.configureCell(withMovie: movie)
+                detailCell.configureCell(with: movie)
             }
+            
         } else {
+            
             if let baseCell = cell as? BaseMovieCell {
-                baseCell.configureCell(withMovie: movie)
+                baseCell.configureCell(with: movie)
             }
         }
     }
@@ -152,7 +159,6 @@ extension SearchResultsViewController: UISearchBarDelegate {
      - parameter index: 当前选中的scopeButtonIndex
      */
     func filterResults(withQuery query: String, atScopeIndex index: Int) {
-        guard let subjects = searchResultsSet?.subjects , subjects.count > 0 else { return }
         
         var subtype = ""
         switch index {
@@ -164,10 +170,11 @@ extension SearchResultsViewController: UISearchBarDelegate {
             break
         }
         
-        let filteredResults = subjects.filter{
+        let filteredResults = resultsMovie.filter{
             return $0.title.lowercased().contains(query.lowercased()) ||
             $0.originalTitle.lowercased().contains(query.lowercased())
         }
+        
         if subtype.isEmpty {
             self.filteredSearchResults = filteredResults
         } else {
@@ -178,37 +185,34 @@ extension SearchResultsViewController: UISearchBarDelegate {
         tableView.reloadData()
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // DoubanService.search....
-        guard let queryString = searchBar.text else { return }
-        _lastQueryText = queryString
+        guard let query = searchBar.text else { return }
+        _lastQueryText = query
         
-        searchMovie(with: queryString)
+        afService
+            .searchMovies(byQuery: query, from: 0, resultCount: 20, forceReload: true)
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: onLoadSearchResult,
+                onError: onLoadSearchError,
+                onCompleted: nil,
+                onDisposed: nil)
+            .addDisposableTo(disposeBag)
         
     }
     
-    func searchMovie(with query: String) {
-        
-        DoubanService.sharedService.searchMovies(withQuery: query, at: 0, resultCount: 20) { [weak self](responseJSON, error) in
-            guard let `self` = self else { return }
-            
-            if let error = error {
-                
-                NSLog("error!\(error)")
-                Snackbar.make(text: "搜索失败", duration: .Short).show()
-                
-            }
-            
-            if let results = Mapper<DoubanResultsSet>().map(JSON: responseJSON!) , results.subjects.count > 0 {
-                
-                self.searchResultsSet = results
-                self.updateSearchResults(for: self.searchController)
-                
-            } else {
-                
-                Snackbar.make(text: "没有搜索到结果", duration: .Short).show()
-                
-            }
+    private var onLoadSearchResult: ([DoubanMovie]) -> Void {
+        return {
+            self.resultsMovie = $0
+            self.updateSearchResults(for: self.searchController)
+        }
+    }
+    
+    private var onLoadSearchError: (Error) -> Void {
+        return {
+            NSLog("search failed:\($0.localizedDescription)")
+            Snackbar.make(text: "搜索失败", duration: .Short).show()
         }
     }
     

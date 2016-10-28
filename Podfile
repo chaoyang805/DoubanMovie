@@ -8,6 +8,8 @@ pod 'AFNetworking', '~> 3.1.0'
 #pod 'RealmSwift', git: 'https://github.com/realm/realm-cocoa.git', branch: 'master', submodules: true
 pod 'ObjectMapper', '~> 2.1.0'
 pod 'AWPercentDrivenInteractiveTransition', '~> 0.2.0'
+pod 'RxAlamofire', '~> 3.0.0-rc.1'
+pod 'RxCocoa', '~> 3.0.0-rc.1'
 end
 post_install do |installer|
     installer.pods_project.targets.each do |target|	
