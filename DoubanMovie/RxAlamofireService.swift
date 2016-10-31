@@ -16,7 +16,7 @@ class RxAlamofireService: NSObject {
     
     private lazy var alamofireManager: Alamofire.SessionManager = {
         let config = URLSessionConfiguration.default
-        config.requestCachePolicy = .returnCacheDataElseLoad
+        config.requestCachePolicy = .useProtocolCachePolicy
         let manager = Alamofire.SessionManager(configuration: config)
         return manager
     }()
@@ -115,7 +115,7 @@ class RxAlamofireService: NSObject {
     private func makeGetRequest<T>(with requestType: RequestType, modelType: T.Type, parameters: [String : Any]? = nil, forceReload: Bool = false) -> Observable<T> where T: BaseMappable {
         
         let backgroundScheduler = ConcurrentDispatchQueueScheduler(qos: DispatchQoS.default)
-        
+
         return alamofireManager.rx
             .json(.get, requestType.description, parameters: parameters)
             .map { Mapper<T>().map(JSONObject: $0) }

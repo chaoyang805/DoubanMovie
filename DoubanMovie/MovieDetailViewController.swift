@@ -23,11 +23,6 @@ class MovieDetailViewController: UIViewController {
     
     // MARK: - Properties
     
-//    fileprivate lazy var doubanService: DoubanService = {
-//        
-//        return DoubanService.sharedService
-//    }()
-    
     fileprivate lazy var afService: RxAlamofireService = {
         return RxAlamofireService.shared
     }()
@@ -112,10 +107,11 @@ class MovieDetailViewController: UIViewController {
     
     func addAvatars(withMovie movie: DoubanMovie) {
         let artistCount = movie.directors.count + movie.casts.count
+        artistsScrollView.layoutIfNeeded()
         artistsScrollView.contentSize = CGSize(width: CGFloat(artistCount) * (60 + 20), height: artistsScrollView.frame.height)
-
-        artistsScrollView.showsVerticalScrollIndicator = false
-        artistsScrollView.showsHorizontalScrollIndicator = false
+        
+        artistsScrollView.showsVerticalScrollIndicator = true
+        artistsScrollView.showsHorizontalScrollIndicator = true
         
         for (index, director) in movie.directors.enumerated() {
             guard let _ = director.avatars else { continue }
@@ -158,6 +154,7 @@ class MovieDetailViewController: UIViewController {
             loadMovieSummaryFromNetwork(byId:id)
         }
     }
+    
     /**
      从网络请求电影的summary
     
@@ -180,7 +177,6 @@ class MovieDetailViewController: UIViewController {
     lazy var updateSummary: (DoubanMovie) -> Void = {
         return {
             let summary = $0.summary
-            NSLog("update summary\(summary)")
             self.detailMovie?.summary = summary
             self.movieSummaryText.text = summary
         }

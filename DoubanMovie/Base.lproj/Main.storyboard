@@ -917,8 +917,7 @@
                                                 <color key="textColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blw-vu-mXN">
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <scrollView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blw-vu-mXN">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="90" id="dZG-YJ-KK0"/>
                                                 </constraints>

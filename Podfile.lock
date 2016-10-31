@@ -17,6 +17,11 @@ PODS:
   - Alamofire (4.0.1)
   - AWPercentDrivenInteractiveTransition (0.2.0)
   - ObjectMapper (2.1.0)
+  - Realm (2.0.3):
+    - Realm/Headers (= 2.0.3)
+  - Realm/Headers (2.0.3)
+  - RealmSwift (2.0.3):
+    - Realm (= 2.0.3)
   - RxAlamofire (3.0.0-rc.1):
     - RxAlamofire/Core (= 3.0.0-rc.1)
   - RxAlamofire/Core (3.0.0-rc.1):
@@ -33,20 +38,44 @@ DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - AWPercentDrivenInteractiveTransition (~> 0.2.0)
   - ObjectMapper (~> 2.1.0)
+  - Realm (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
+  - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
   - RxAlamofire (~> 3.0.0-rc.1)
   - RxCocoa (~> 3.0.0-rc.1)
   - SDWebImage (~> 4.0.0-beta2)
+
+EXTERNAL SOURCES:
+  Realm:
+    :branch: master
+    :git: https://github.com/realm/realm-cocoa.git
+    :submodules: true
+  RealmSwift:
+    :branch: master
+    :git: https://github.com/realm/realm-cocoa.git
+    :submodules: true
+
+CHECKOUT OPTIONS:
+  Realm:
+    :commit: eb4c36f2b7e287f82bb1ca67602fff20ac030a1a
+    :git: https://github.com/realm/realm-cocoa.git
+    :submodules: true
+  RealmSwift:
+    :commit: eb4c36f2b7e287f82bb1ca67602fff20ac030a1a
+    :git: https://github.com/realm/realm-cocoa.git
+    :submodules: true
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   AWPercentDrivenInteractiveTransition: 26f1c1f11777e2f6171819a13b458dda021db3ad
   ObjectMapper: e5e0f8aef8590fc2ddcde7f27eddb255863ee6e9
+  Realm: 5f008bfe3c8c47142eddfc30b8c1584cde22db24
+  RealmSwift: 79a9bc83e7ef4fbde17e0f303c5fadb99264a6be
   RxAlamofire: 5e544296d77b754c4ad9cb419c29936e6bc9711d
   RxCocoa: e72a074a7f38896ec0382d096df5f58df10115c7
   RxSwift: d7a3819dd71789c473e3cbf1a0c02d58b2692739
   SDWebImage: e379f33106cf8d6766f970c0ef1c3fb609c94d78
 
-PODFILE CHECKSUM: 312cf6effa34e6c76f58b4b9662d8eb860bde544
+PODFILE CHECKSUM: 621e0ea8797dfe65444432bb17cf24093def0e28
 
 COCOAPODS: 1.1.0

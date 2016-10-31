@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CC222090C8DEBB4EC8B76ABFE747FED1"
-               BlueprintName = "AWPercentDrivenInteractiveTransition"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "AWPercentDrivenInteractiveTransition.framework">
+               BuildableIdentifier = 'primary'
+               BlueprintIdentifier = 'CC222090C8DEBB4EC8B76ABFE747FED1'
+               BlueprintName = 'AWPercentDrivenInteractiveTransition'
+               ReferencedContainer = 'container:Pods.xcodeproj'
+               BuildableName = 'AWPercentDrivenInteractiveTransition.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

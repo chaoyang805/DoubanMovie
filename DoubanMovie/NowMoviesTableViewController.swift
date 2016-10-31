@@ -183,6 +183,7 @@ extension NowMoviesTableViewController {
                 if count > 0 {
                     self.loadMoreFooter.endLoadMore()
                     self.loadMoreFooter.changeHeight(0)
+                    scrollView.bounces = true
                 } else {
                     self.loadMoreFooter.nomoreData()
                     delay(timeInterval: 1) { [weak self] in

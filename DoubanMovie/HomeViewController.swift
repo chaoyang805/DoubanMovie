@@ -156,8 +156,6 @@ extension HomeViewController {
             })
             .addDisposableTo(disposeBag)
         
-//        self.disposeBag.insert(disposable)
-        
     }
     
     var showMovies: (([DoubanMovie]) -> Void) {
