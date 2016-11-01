@@ -134,8 +134,6 @@
 		21BCE0531D6451E9006BB153 /* LoadMoreFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreFooter.swift; sourceTree = "<group>"; };
 		21C247F61D542F9500F919D6 /* DoubanImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanImage.swift; sourceTree = "<group>"; };
 		21C247F81D5431E600F919D6 /* MovieRating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieRating.swift; sourceTree = "<group>"; };
-		21C315CA1DB9A91100C1DF86 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		21C315CB1DB9A91100C1DF86 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		21C9F4711D7D300300507AE7 /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		21C9F4751D7D427800507AE7 /* DoubanServiceErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanServiceErrorHandler.swift; sourceTree = "<group>"; };
 		21C9F4771D7D43B100507AE7 /* Snackbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
@@ -435,8 +433,6 @@
 		21BC281C1D367E9E00E5E98C = {
 			isa = PBXGroup;
 			children = (
-				21C315CA1DB9A91100C1DF86 /* Realm.framework */,
-				21C315CB1DB9A91100C1DF86 /* RealmSwift.framework */,
 				21BC28271D367E9E00E5E98C /* DoubanMovie */,
 				21BC283C1D367E9E00E5E98C /* DoubanMovieTests */,
 				21BC28471D367E9E00E5E98C /* DoubanMovieUITests */,
