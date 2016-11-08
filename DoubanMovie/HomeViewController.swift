@@ -24,6 +24,7 @@ import RxCocoa
 
 class HomeViewController: UIViewController{
 
+
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var pageControl: LoadingPageControl!
     @IBOutlet weak var refreshBarButtonItem: UIBarButtonItem!
@@ -38,11 +39,6 @@ class HomeViewController: UIViewController{
     fileprivate var imagePrefetcher = SDWebImagePrefetcher()
     
     fileprivate var disposeBag = DisposeBag()
-    fileprivate let afService = RxAlamofireService.shared
-    
-    fileprivate lazy var realm: RealmHelper = {
-        return RealmHelper()
-    }()
     
     fileprivate lazy var placeHolderImage: UIImage = {
     
@@ -53,18 +49,14 @@ class HomeViewController: UIViewController{
         return movies.count
     }
     
-    fileprivate var movies: [DoubanMovie] = [] {
-        didSet {
-            self.pageControl.numberOfPages = movieCount
-            showCurrentMovie(animated: false)
-        }
-    }
+    fileprivate var movies: [DoubanMovie] = []
     
     fileprivate var currentPage: Int = 0
     
     private var screenWidth: CGFloat {
         return UIScreen.main.bounds.width
     }
+    
     private var screenHeight: CGFloat {
         return UIScreen.main.bounds.height
     }
@@ -121,11 +113,11 @@ class HomeViewController: UIViewController{
         }
         
     }
-}
+//}
 
 // MARK: - refresh home view controller
-extension HomeViewController {
-    
+//extension HomeViewController {
+
     @IBAction func refreshButtonDidTouch(_ sender: UIBarButtonItem) {
         
         self.fetchData(force: true)
@@ -140,37 +132,35 @@ extension HomeViewController {
         
         self.beginLoading()
         
-        afService
+        RxAlamofireService.shared
             .loadMovies(forceReload: force)
-            .subscribeOn(MainScheduler.instance)
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: showMovies,
-                onError: showLoadingError,
-                onCompleted: {
-                    self.prefetchImages()
-                    self.endLoading()
-                },
-                onDisposed: {
-                    NSLog("on disposed")
-            })
+                onError: nil,
+                onCompleted: nil,
+                onDisposed:nil)
             .addDisposableTo(disposeBag)
         
     }
     
-    var showMovies: (([DoubanMovie]) -> Void) {
+    private lazy var showMovies: (([DoubanMovie]) -> Void) = {
         return {
             self.movies = $0
+            self.pageControl.numberOfPages = self.movieCount
+            self.showCurrentMovie(animated: false)
+            self.endLoading()
+            self.prefetchImages()
         }
-    }
+    }()
     
-    var showLoadingError: ((Error) -> Void) {
+    private lazy var showLoadingError: ((Error) -> Void) = {
         
         return {
             NSLog("loading error:\($0.localizedDescription)")
             Snackbar.make(text: "刷新失败，请稍后重试", duration: .Short).show()
         }
-    }
+    }()
     
     private func prefetchImages() {
         let urls = self.movies
@@ -218,12 +208,12 @@ extension HomeViewController {
         }
     }
     
-}
+//}
 
 
 // MARK: - Pages
-extension HomeViewController {
-    
+//extension HomeViewController {
+
     @IBAction func handleGestures(_ sender: UIPanGestureRecognizer) {
         
         let location = sender.location(in: view)
@@ -304,7 +294,7 @@ extension HomeViewController {
         pageControl.currentPage = currentPage
         
         let currentMovie = movies[currentPage]
-        movieDialogView.movie = currentMovie
+        movieDialogView.configureWith(currentMovie)
     
         backgroundImageView.sd_setImage(with: URL(string: currentMovie.images!.mediumImageURL), placeholderImage: placeHolderImage)
         if animated {

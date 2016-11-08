@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @discardableResult
     private func handleShortcutItem(_ shortcutItem: UIApplicationShortcutItem) -> Bool {
         var handled = false
-        
+
         guard ShortcutIdentifier(fullType: shortcutItem.type) != nil else { return false }
         
         switch shortcutItem.type {

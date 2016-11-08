@@ -113,14 +113,22 @@ class RxAlamofireService: NSObject {
     ///
     /// - returns: 返回 Observable<T>
     private func makeGetRequest<T>(with requestType: RequestType, modelType: T.Type, parameters: [String : Any]? = nil, forceReload: Bool = false) -> Observable<T> where T: BaseMappable {
+    
+        do {
+            var request = try URLRequest(url: requestType.description, method: .get)
+            request = try URLEncoding.default.encode(request, with: parameters)
+            request.cachePolicy = forceReload ? .useProtocolCachePolicy : .returnCacheDataElseLoad
+            
+            return URLSession.shared.rx
+                .JSON(request)
+                .map { Mapper<T>().map(JSONObject: $0) }
+                .unwrap()
+                .subscribeOn(ConcurrentDispatchQueueScheduler(qos: DispatchQoS.default))
+            
+        } catch {
+            return Observable<T>.error(error)
+        }
         
-        let backgroundScheduler = ConcurrentDispatchQueueScheduler(qos: DispatchQoS.default)
-
-        return alamofireManager.rx
-            .json(.get, requestType.description, parameters: parameters)
-            .map { Mapper<T>().map(JSONObject: $0) }
-            .unwrap()
-            .subscribeOn(backgroundScheduler)
     }
 
 

@@ -24,12 +24,6 @@ class MovieDialogView: UIView, LoadingEffect {
     var titleBarView: UIVisualEffectView!
     var loadingImageView: UIImageView!
     
-    var movie: DoubanMovie? {
-        didSet {
-            guard let m = movie else { return }
-            configureWithMovie(m)
-        }
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,7 +40,7 @@ class MovieDialogView: UIView, LoadingEffect {
         
     }
     
-    func configureWithMovie(_ movie: DoubanMovie) {
+    func configureWith(_ movie: DoubanMovie) {
         titleLabel.text = movie.title
         collectCountLabel.text = String(format: "%d人看过", movie.collectCount)
         

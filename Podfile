@@ -10,6 +10,7 @@ pod 'ObjectMapper', '~> 2.1.0'
 pod 'AWPercentDrivenInteractiveTransition', '~> 0.2.0'
 pod 'RxAlamofire', '~> 3.0.0-rc.1'
 pod 'RxCocoa', '~> 3.0.0-rc.1'
+pod 'FBMemoryProfiler', '~> 0.1.3'
 end
 post_install do |installer|
     installer.pods_project.targets.each do |target|	

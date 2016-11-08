@@ -70,6 +70,11 @@ class MovieDetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         notifyObserver()
+        self.detailMovie = nil
+    }
+    
+    deinit {
+        NSLog("deinit \(self)")
     }
     
     fileprivate var deleted: Bool = false

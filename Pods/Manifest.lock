@@ -16,6 +16,11 @@ PODS:
     - AFNetworking/NSURLSession
   - Alamofire (4.0.1)
   - AWPercentDrivenInteractiveTransition (0.2.0)
+  - FBAllocationTracker (0.1.5)
+  - FBMemoryProfiler (0.1.3):
+    - FBAllocationTracker (~> 0.1)
+    - FBRetainCycleDetector (~> 0.1)
+  - FBRetainCycleDetector (0.1.3)
   - ObjectMapper (2.1.0)
   - Realm (2.0.3):
     - Realm/Headers (= 2.0.3)
@@ -37,6 +42,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - AWPercentDrivenInteractiveTransition (~> 0.2.0)
+  - FBMemoryProfiler (~> 0.1.3)
   - ObjectMapper (~> 2.1.0)
   - Realm (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
   - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
@@ -68,6 +74,9 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   AWPercentDrivenInteractiveTransition: 26f1c1f11777e2f6171819a13b458dda021db3ad
+  FBAllocationTracker: dfdca3f71aceca6a85e95e3c6ec76a9785eba0f1
+  FBMemoryProfiler: 623fc5f8a61f7d02ec75c87e3b97c90f621d8b02
+  FBRetainCycleDetector: f0c7b290bf48ae77f6ae060843ce34ae341781eb
   ObjectMapper: e5e0f8aef8590fc2ddcde7f27eddb255863ee6e9
   Realm: 5f008bfe3c8c47142eddfc30b8c1584cde22db24
   RealmSwift: 79a9bc83e7ef4fbde17e0f303c5fadb99264a6be
@@ -76,6 +85,6 @@ SPEC CHECKSUMS:
   RxSwift: d7a3819dd71789c473e3cbf1a0c02d58b2692739
   SDWebImage: e379f33106cf8d6766f970c0ef1c3fb609c94d78
 
-PODFILE CHECKSUM: 621e0ea8797dfe65444432bb17cf24093def0e28
+PODFILE CHECKSUM: 211129aa141e7ba834651f72af7454bb8e5efc16
 
 COCOAPODS: 1.1.0

@@ -74,13 +74,13 @@ class DoubanMovie: Object, Mappable {
     /// The movie's genres should be ignored by Realm
     var genresArray: [String] = [] {
         didSet {
-            self.genres = genresArray.isEmpty ? "" : genresArray.reduce("") { $0 + "/" + $1 }.stringByRemoveFirstCharacter()
+            self.genres = genresArray.isEmpty ? "" : genresArray.joined(separator: "/")
         }
     }
     
     var contriesArray: [String] = [] {
         didSet {
-            self.contries = contriesArray.isEmpty ? "" : contriesArray.reduce("") { $0 + "/" + $1 }.stringByRemoveFirstCharacter()
+            self.contries = contriesArray.isEmpty ? "" : contriesArray.joined(separator: "/")
         }
     }
     
@@ -88,7 +88,7 @@ class DoubanMovie: Object, Mappable {
         didSet {
             casts.removeAll()
             casts.append(objectsIn: castsArray)
-            self.castsDescription = castsArray.isEmpty ? "" : castsArray.reduce("") { $0 + "/" + $1.name }.stringByRemoveFirstCharacter()
+            self.castsDescription = castsArray.isEmpty ? "" : castsArray.map { $0.name }.joined(separator: "/")
         }
     }
     
@@ -97,7 +97,7 @@ class DoubanMovie: Object, Mappable {
             directors.removeAll()
             directors.append(objectsIn: directorsArray)
             
-            self.directorsDescription = directorsArray.isEmpty ? "" : directorsArray.reduce("") { $0 + "/" + $1.name }.stringByRemoveFirstCharacter()
+            self.directorsDescription = directorsArray.isEmpty ? "" : directorsArray.map { $0.name }.joined(separator: "/")
         }
     }
     

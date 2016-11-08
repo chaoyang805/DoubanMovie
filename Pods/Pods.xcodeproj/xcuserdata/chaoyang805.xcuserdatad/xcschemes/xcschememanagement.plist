@@ -19,6 +19,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FBAllocationTracker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBMemoryProfiler.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBRetainCycleDetector.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,12 +77,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>07FC857C325FA278A4684FCACBAB36CC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>18A5AF160CE4A1DEAA1D4FA1AE674A0A</key>
+		<key>10669175A8B8ECE271A631C978B8B602</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,7 +87,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B0A27E5588C2FCC7551689D7306EF5F</key>
+		<key>558CE72F3CED09F44C9C2374F581897E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,12 +97,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AC6D66E25BBA0B772C105623A4E1EFF3</key>
+		<key>7F8AB1CE32BDFFFFC2AF57563968B242</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B6AF2B161FACFE370E48826015A7CF11</key>
+		<key>986A5D677AF00E8270BEBC52F8B684C0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BC858ECDC484C8DC9CDBE9C0A394C9A9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,17 +117,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C8EA94856B9F0CECED26E67EB4F8B65B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>CC222090C8DEBB4EC8B76ABFE747FED1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F71C8A3862B68C46F1B46ED82A4743A6</key>
+		<key>CC80FA944A43CDAB9F70585D446658B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F0F4DE81EB410C6CDDFD1E6054028C83</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FC8C8C87A10DB3F831F8FB646516AB93</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF7BAA818D1B95C0DF3D358C0082E843</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FFA1F0CBFACA179B410042657038F708</key>
 		<dict>
 			<key>primary</key>
 			<true/>

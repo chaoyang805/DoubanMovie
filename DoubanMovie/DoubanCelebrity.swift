@@ -18,7 +18,7 @@ import UIKit
 import ObjectMapper
 import RealmSwift
 
-class DoubanCelebrity:Object, Mappable {
+class DoubanCelebrity: Object, Mappable {
     
     dynamic var id: String = ""
     
