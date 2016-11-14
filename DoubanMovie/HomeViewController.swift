@@ -18,40 +18,39 @@ import UIKit
 import SDWebImage
 import ObjectMapper
 import RxSwift
+import RxCocoa
 import RxAlamofire
 import Alamofire
-import RxCocoa
 
 class HomeViewController: UIViewController{
-
 
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var pageControl: LoadingPageControl!
     @IBOutlet weak var refreshBarButtonItem: UIBarButtonItem!
     
-    private(set) var movieDialogView: MovieDialogView!
+    internal(set) var movieDialogView: MovieDialogView!
     
-    fileprivate var animator: UIDynamicAnimator!
-    fileprivate var attachmentBehavior: UIAttachmentBehavior!
-    fileprivate var gravityBehavior: UIGravityBehavior!
-    fileprivate var snapBehavior: UISnapBehavior!
+    internal var animator: UIDynamicAnimator!
+    internal var attachmentBehavior: UIAttachmentBehavior!
+    internal var gravityBehavior: UIGravityBehavior!
+    internal var snapBehavior: UISnapBehavior!
     
     fileprivate var imagePrefetcher = SDWebImagePrefetcher()
     
     fileprivate var disposeBag = DisposeBag()
     
-    fileprivate lazy var placeHolderImage: UIImage = {
+    internal lazy var placeHolderImage: UIImage = {
     
         return UIImage(named: "placeholder")!
     }()
     
-    fileprivate var movieCount: Int {
+    internal var movieCount: Int {
         return movies.count
     }
     
-    fileprivate var movies: [DoubanMovie] = []
+    internal var movies: [DoubanMovie] = []
     
-    fileprivate var currentPage: Int = 0
+    internal var currentPage: Int = 0
     
     private var screenWidth: CGFloat {
         return UIScreen.main.bounds.width
@@ -113,10 +112,10 @@ class HomeViewController: UIViewController{
         }
         
     }
-//}
+}
 
 // MARK: - refresh home view controller
-//extension HomeViewController {
+extension HomeViewController {
 
     @IBAction func refreshButtonDidTouch(_ sender: UIBarButtonItem) {
         
@@ -135,16 +134,11 @@ class HomeViewController: UIViewController{
         RxAlamofireService.shared
             .loadMovies(forceReload: force)
             .observeOn(MainScheduler.instance)
-            .subscribe(
-                onNext: showMovies,
-                onError: nil,
-                onCompleted: nil,
-                onDisposed:nil)
+            .subscribe(onNext: showMovies, onError: showLoadingError)
             .addDisposableTo(disposeBag)
-        
     }
     
-    private lazy var showMovies: (([DoubanMovie]) -> Void) = {
+    private var showMovies: (([DoubanMovie]) -> Void) {
         return {
             self.movies = $0
             self.pageControl.numberOfPages = self.movieCount
@@ -152,15 +146,16 @@ class HomeViewController: UIViewController{
             self.endLoading()
             self.prefetchImages()
         }
-    }()
+    }
     
-    private lazy var showLoadingError: ((Error) -> Void) = {
+    private var showLoadingError: ((Error) -> Void) {
         
         return {
             NSLog("loading error:\($0.localizedDescription)")
-            Snackbar.make(text: "刷新失败，请稍后重试", duration: .Short).show()
+            self.endLoading()
+            Snackbar.make(text: $0.localizedDescription, duration: .Short).show()
         }
-    }()
+    }
     
     private func prefetchImages() {
         let urls = self.movies
@@ -208,101 +203,5 @@ class HomeViewController: UIViewController{
         }
     }
     
-//}
-
-
-// MARK: - Pages
-//extension HomeViewController {
-
-    @IBAction func handleGestures(_ sender: UIPanGestureRecognizer) {
-        
-        let location = sender.location(in: view)
-        guard let myView = movieDialogView else { return }
-        
-        let boxLocation = sender.location(in: myView)
-        
-        switch sender.state {
-        case .began:
-            if let snap = snapBehavior{
-                animator.removeBehavior(snap)
-            }
-            let centerOffset = UIOffset(horizontal: boxLocation.x - myView.bounds.midX, vertical: boxLocation.y - myView.bounds.midY)
-            attachmentBehavior = UIAttachmentBehavior(item: myView, offsetFromCenter: centerOffset, attachedToAnchor: location)
-            attachmentBehavior.frequency = 0
-            animator.addBehavior(attachmentBehavior)
-        case .changed:
-            attachmentBehavior.anchorPoint = location
-        case .ended:
-            animator.removeBehavior(attachmentBehavior)
-            
-            snapBehavior = UISnapBehavior(item: myView, snapTo: CGPoint(x: view.center.x, y: view.center.y + 22))
-
-            animator.addBehavior(snapBehavior)
-            
-            let translation = sender.translation(in: view)
-            
-            if abs(translation.x) < 150 {
-                return
-            }
-            animator.removeAllBehaviors()
-            if gravityBehavior == nil {
-                gravityBehavior = UIGravityBehavior(items: [myView])
-            }
-            if translation.x < -150 {
-                // 左
-                gravityBehavior.gravityDirection = CGVector(dx: -20.0, dy: 0)
-            } else if translation.x > 150 {
-                // 右
-                gravityBehavior.gravityDirection = CGVector(dx: 20.0, dy: 0)
-            }
-            animator.addBehavior(gravityBehavior)
-            
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.milliseconds(300), execute: {
-                self.refreshData()
-            })
-        default:
-            break
-        }
-        
-    }
-    
-    private func refreshData() {
-        animator.removeAllBehaviors()
-        snapBehavior = UISnapBehavior(item: movieDialogView, snapTo: view.center)
-        movieDialogView.center = CGPoint(x: view.center.x, y: view.center.y + 20)
-        attachmentBehavior.anchorPoint = CGPoint(x: view.center.x, y: view.center.y + 20)
-        
-        let scale = CGAffineTransform(scaleX: 0.5, y: 0.5)
-        let offsetX = gravityBehavior.gravityDirection.dx < 0 ? self.view.frame.width + 200 : -200
-        let translation = CGAffineTransform(translationX:offsetX, y: 0)
-        
-        movieDialogView.transform = scale.concatenating(translation)
-        
-        if gravityBehavior.gravityDirection.dx < 0 {
-            currentPage = (currentPage + 1) % movieCount
-            
-        } else {
-            currentPage = currentPage <= 0 ? movieCount - 1 : currentPage - 1
-        }
-        
-        showCurrentMovie(animated: true)
-    }
-    
-    fileprivate func showCurrentMovie(animated: Bool) {
-        guard movieCount > 0 && currentPage < movieCount else { return }
-        
-        pageControl.currentPage = currentPage
-        
-        let currentMovie = movies[currentPage]
-        movieDialogView.configureWith(currentMovie)
-    
-        backgroundImageView.sd_setImage(with: URL(string: currentMovie.images!.mediumImageURL), placeholderImage: placeHolderImage)
-        if animated {
-            
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.curveEaseIn, animations: {
-                self.movieDialogView.transform = CGAffineTransform.identity
-                }, completion: nil)
-        }
-    }
-    
 }
+

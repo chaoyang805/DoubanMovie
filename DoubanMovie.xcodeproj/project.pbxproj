@@ -29,6 +29,7 @@
 		2118D3BE1D4F34F700644D84 /* Work.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2149FA611D3D297E00F0D0C6 /* Work.swift */; };
 		2118D3BF1D4F34F700644D84 /* UIViewController+UnWindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BC282A1D367E9E00E5E98C /* UIViewController+UnWindSegue.swift */; };
 		2122EFB01D61A4C500DA7567 /* String+RemoveFirstChar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122EFAF1D61A4C500DA7567 /* String+RemoveFirstChar.swift */; };
+		213DC0551DD2C428002CE5AF /* HomeViewController+Paging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213DC0541DD2C428002CE5AF /* HomeViewController+Paging.swift */; };
 		2146D74E1DA9F72200436FE6 /* MovieDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146D74D1DA9F72200436FE6 /* MovieDialogView.swift */; };
 		2146D7501DAA1FE300436FE6 /* LoadingEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146D74F1DAA1FE300436FE6 /* LoadingEffect.swift */; };
 		214C5D521D5466D40057B1B8 /* DoubanResultsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D511D5466D40057B1B8 /* DoubanResultsSet.swift */; };
@@ -88,6 +89,7 @@
 		211B3BDD1D3FC1DD00887B31 /* DoubanService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanService.swift; sourceTree = "<group>"; };
 		2122EFAF1D61A4C500DA7567 /* String+RemoveFirstChar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+RemoveFirstChar.swift"; sourceTree = "<group>"; };
 		2134E50D1D45AEFC00DACE81 /* AvatarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AvatarView.xib; sourceTree = "<group>"; };
+		213DC0541DD2C428002CE5AF /* HomeViewController+Paging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Paging.swift"; sourceTree = "<group>"; };
 		2146D74D1DA9F72200436FE6 /* MovieDialogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDialogView.swift; sourceTree = "<group>"; };
 		2146D74F1DAA1FE300436FE6 /* LoadingEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingEffect.swift; sourceTree = "<group>"; };
 		2149FA5D1D3D296400F0D0C6 /* DoubanCelebrity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanCelebrity.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				2149FA651D3D29BA00F0D0C6 /* HomeViewController.swift */,
+				213DC0541DD2C428002CE5AF /* HomeViewController+Paging.swift */,
 				2192E8711D6B3EBC0099FF3B /* HomeViewController+ShareElementTransition.swift */,
 				216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */,
 			);
@@ -740,6 +743,7 @@
 				2118D3B81D4F34F700644D84 /* RatingStar.swift in Sources */,
 				2118D3B91D4F34F700644D84 /* StarLayer.swift in Sources */,
 				2118D3BA1D4F34F700644D84 /* RatingBar.swift in Sources */,
+				213DC0551DD2C428002CE5AF /* HomeViewController+Paging.swift in Sources */,
 				2118D3BB1D4F34F700644D84 /* DoubanService.swift in Sources */,
 				2118D3BC1D4F34F700644D84 /* DoubanCelebrity.swift in Sources */,
 				21BCE0541D6451E9006BB153 /* LoadMoreFooter.swift in Sources */,

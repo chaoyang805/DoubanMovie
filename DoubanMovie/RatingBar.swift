@@ -109,12 +109,12 @@ class RatingBar: UIView {
         return 10 < a && a < 60
         
     }
-    
+
     private func middleStarType(_ ratingScore: Float) -> StarLayerAppearence {
         let a = Int(ratingScore * 100) / 2 % 100
         if 10 < a && a < 60 {
             return .half
-        } else if 0 < a && a <= 10 {
+        } else if 0 <= a && a <= 10 {
             return .empty
         } else {
             return .full
