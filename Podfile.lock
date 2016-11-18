@@ -34,6 +34,9 @@ PODS:
     - RxSwift (~> 3.0.0-rc.1)
   - RxCocoa (3.0.0-rc.1):
     - RxSwift (~> 3.0.0-rc.1)
+  - RxDataSources (1.0.0-rc.2):
+    - RxCocoa (~> 3.0.0-rc.1)
+    - RxSwift (~> 3.0.0-rc.1)
   - RxSwift (3.0.0-rc.1)
   - SDWebImage (4.0.0-beta2):
     - SDWebImage/Core (= 4.0.0-beta2)
@@ -48,6 +51,7 @@ DEPENDENCIES:
   - RealmSwift (from `https://github.com/realm/realm-cocoa.git`, branch `master`)
   - RxAlamofire (~> 3.0.0-rc.1)
   - RxCocoa (~> 3.0.0-rc.1)
+  - RxDataSources (~> 1.0.0-rc.2)
   - SDWebImage (~> 4.0.0-beta2)
 
 EXTERNAL SOURCES:
@@ -82,9 +86,10 @@ SPEC CHECKSUMS:
   RealmSwift: 79a9bc83e7ef4fbde17e0f303c5fadb99264a6be
   RxAlamofire: 5e544296d77b754c4ad9cb419c29936e6bc9711d
   RxCocoa: e72a074a7f38896ec0382d096df5f58df10115c7
+  RxDataSources: f7de4f2a0725332319a4322dd795ae45ce28c529
   RxSwift: d7a3819dd71789c473e3cbf1a0c02d58b2692739
   SDWebImage: e379f33106cf8d6766f970c0ef1c3fb609c94d78
 
-PODFILE CHECKSUM: 211129aa141e7ba834651f72af7454bb8e5efc16
+PODFILE CHECKSUM: 325643737ff44dc1d30220f9795b50ed04539a43
 
 COCOAPODS: 1.1.0

@@ -117,8 +117,9 @@ class RxAlamofireService: NSObject {
         do {
             var request = try URLRequest(url: requestType.description, method: .get)
             request = try URLEncoding.default.encode(request, with: parameters)
-            request.cachePolicy = forceReload ? .useProtocolCachePolicy : .returnCacheDataElseLoad
+            request.cachePolicy = true ? .useProtocolCachePolicy : .returnCacheDataElseLoad
             request.timeoutInterval = 10
+            
             return URLSession.shared.rx
                 .JSON(request)
                 .map { Mapper<T>().map(JSONObject: $0) }

@@ -21,8 +21,10 @@ extension Reactive where Base: UIRefreshControl {
     public var refreshing: UIBindingObserver<Base, Bool> {
         return UIBindingObserver(UIElement: self.base) { refreshControl, refresh in
             if refresh {
+                NSLog("beginRefreshing")
                 refreshControl.beginRefreshing()
             } else {
+                NSLog("endRefreshing")
                 refreshControl.endRefreshing()
             }
         }

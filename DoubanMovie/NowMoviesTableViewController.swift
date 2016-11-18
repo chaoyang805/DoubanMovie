@@ -18,6 +18,10 @@ import UIKit
 import ObjectMapper
 import SDWebImage
 import RxSwift
+import RxCocoa
+import RxDataSources
+
+let DetailCellIdentifier = "DetailMovieCell"
 
 class NowMoviesTableViewController: ClearTransitionTableViewController {
     
@@ -53,13 +57,95 @@ class NowMoviesTableViewController: ClearTransitionTableViewController {
     private lazy var pullToRefreshTitle = {
         return NSAttributedString(string: "下拉刷新", attributes: [NSFontAttributeName:UIFont(name: "Helvetica-Light", size: 14)!])
     }()
+    typealias MovieSectionModel = SectionModel<String, DoubanMovie>
+    private let dataSource = RxTableViewSectionedReloadDataSource<MovieSectionModel>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshControl?.addTarget(self, action: #selector(NowMoviesTableViewController.onPullToRefresh), for: .valueChanged)
-        reloadData(false)
+        
+        
+        do {
+            tableView.delegate = nil
+            tableView.dataSource = nil
+        }
+        
+        do {
+            dataSource.configureCell = { dataSource, tableView, indexPath, element in
+            
+                let cell = tableView.dequeueReusableCell(withIdentifier: DetailCellIdentifier, for: indexPath) as! DetailMovieCell
+                cell.configureCell(with: element)
+                return cell
+            }
+            
+        }
+        
+        do {
+            tableView.rx
+                .modelSelected(DoubanMovie.self)
+                .map(detailVcForMovie)
+                .observeOn(MainScheduler.instance)
+                .subscribe(
+                    onNext: { (detailVC) in
+                        self.navigationController?.pushViewController(detailVC, animated: true)
+                    },
+                    onError: { (error) in
+                        NSLog("error!:\(error.localizedDescription)")
+                    })
+                .addDisposableTo(disposeBag)
+        }
+        
+        do {
+            let refresh = self.refreshControl!.rx
+                .controlEvent(.valueChanged)
+                .startWith(())
+                .shareReplay(1)
+                .subscribeOn(MainScheduler.instance)
+            
+            refresh
+                .flatMap {
+                    RxAlamofireService.shared.loadMovies()
+                }
+                .map { (movies: [DoubanMovie]) -> [MovieSectionModel] in
+                    NSLog("load movie finished")
+                    return [MovieSectionModel(model: "", items: movies)]
+                }
+                .observeOn(MainScheduler.instance)
+                .bindTo(tableView.rx.items(dataSource: dataSource))
+                .addDisposableTo(disposeBag)
+            
+            Observable
+                .from([refresh.skip(1).map { true }, refresh.skip(1).map { false }])
+                .merge()
+                .bindTo(refreshControl!.rx.refreshing)
+                .addDisposableTo(disposeBag)
+            
+        }
+        
+        do {
+            
+            tableView.rx
+                .contentOffset
+                .asObservable()
+                .subscribe(
+                    onNext: { (point) in
+//                        NSLog("\(point)")
+                })
+                .addDisposableTo(disposeBag)
+        }
+        
+//        self.refreshControl?.addTarget(self, action: #selector(NowMoviesTableViewController.onPullToRefresh), for: .valueChanged)
+//        reloadData(false)
     }
-
+    
+    private var detailVcForMovie : ((DoubanMovie) -> MovieDetailViewController) {
+        
+        return {
+            let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! MovieDetailViewController
+            detailVC.detailMovie = $0
+            return detailVC
+        }
+    }
+    
     private func reloadData(_ force: Bool) {
         
         afService
@@ -101,12 +187,12 @@ class NowMoviesTableViewController: ClearTransitionTableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "NowTableToDetail" {
-            guard let toVC = segue.destination as? MovieDetailViewController, let cell = sender as? DetailMovieCell else { return }
-            guard let selectedRow = tableView.indexPath(for: cell)?.row else { return }
-            
-            toVC.detailMovie = movies[selectedRow]
-        }
+//        if segue.identifier == "NowTableToDetail" {
+//            guard let toVC = segue.destination as? MovieDetailViewController, let cell = sender as? DetailMovieCell else { return }
+//            guard let selectedRow = tableView.indexPath(for: cell)?.row else { return }
+//            
+//            toVC.detailMovie = movies[selectedRow]
+//        }
 
     }
     
@@ -115,7 +201,7 @@ class NowMoviesTableViewController: ClearTransitionTableViewController {
         return movies.count
     }
 
-    let DetailCellIdentifier = "DetailMovieCell"
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailCellIdentifier, for: indexPath)
     
