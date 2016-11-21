@@ -83,11 +83,7 @@
                                 <segue destination="dTP-Lu-CIG" kind="presentation" identifier="MenuSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="bQa-Av-BYu"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="1N9-tD-hrd">
-                            <connections>
-                                <action selector="refreshButtonDidTouch:" destination="RZY-mf-UVa" id="bVt-ER-fHO"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="1N9-tD-hrd"/>
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundImageView" destination="631-CK-BoP" id="xd4-nx-Ehf"/>
@@ -117,7 +113,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="165"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VUn-SZ-8w0" id="hJG-Zx-quH">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="164"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="164.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="now-you-see-me" translatesAutoresizingMaskIntoConstraints="NO" id="6S6-dF-mT3">
@@ -438,7 +434,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZcC-yg-7HE" id="Jcl-HY-eiT">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="now-you-see-me" translatesAutoresizingMaskIntoConstraints="NO" id="PdH-pC-QHm">
@@ -803,7 +799,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XEJ-RJ-Gfx">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="6856"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="736"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iiM-hm-AwM">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
@@ -849,7 +845,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="忍者神龟2：破影而出 / 忍者龟：魅影突击(港)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEg-db-MDi">
-                                                        <rect key="frame" x="30" y="0.0" width="295" height="17"/>
+                                                        <rect key="frame" x="30" y="0.0" width="295" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
                                                         <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -861,7 +857,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Zow-ai-gH7" userLabel="movie-casts">
-                                                <rect key="frame" x="25" y="485.5" width="325" height="6137"/>
+                                                <rect key="frame" x="25" y="485.5" width="325" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="主演: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOU-8F-Cqg">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="17"/>
@@ -873,7 +869,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="梅根·福克斯/斯蒂芬·阿美尔/威尔·阿奈特/皮特·普劳泽克/阿兰·里奇森 ..." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxE-Hw-CPJ">
-                                                        <rect key="frame" x="30" y="0.0" width="295" height="6137"/>
+                                                        <rect key="frame" x="30" y="0.0" width="295" height="0.0"/>
                                                         <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
                                                         <color key="textColor" red="0.25098039215686274" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -885,7 +881,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="q6M-rN-S0j" userLabel="movie-type">
-                                                <rect key="frame" x="25" y="6627.5" width="325" height="17"/>
+                                                <rect key="frame" x="25" y="507.5" width="325" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="类型: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BKL-gI-GlS">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="17"/>
@@ -909,7 +905,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="wiI-hA-KNC" userLabel="movie-hot">
-                                                <rect key="frame" x="25" y="6649.5" width="325" height="17"/>
+                                                <rect key="frame" x="25" y="529.5" width="325" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="热度: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogd-rI-mOb">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="17"/>
@@ -957,7 +953,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="S5J-Y0-3Fh" userLabel="movie-year">
-                                                <rect key="frame" x="25" y="6671.5" width="325" height="17"/>
+                                                <rect key="frame" x="25" y="551.5" width="325" height="17"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="年代: " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSK-h0-Xpo">
                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="17"/>
@@ -981,13 +977,13 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="影人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqf-nn-zDT">
-                                                <rect key="frame" x="20" y="6708.5" width="32" height="22.5"/>
+                                                <rect key="frame" x="20" y="588.5" width="32" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="PingFangSC-Medium" family="PingFang SC" pointSize="16"/>
                                                 <color key="textColor" red="0.08235294118" green="0.58431372550000005" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <scrollView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="blw-vu-mXN">
-                                                <rect key="frame" x="25" y="6741" width="350" height="90"/>
+                                                <rect key="frame" x="25" y="621" width="350" height="90"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="90" id="dZG-YJ-KK0"/>
                                                 </constraints>
@@ -1090,6 +1086,6 @@
         <image name="placeholder" width="184" height="254"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xDN-xi-gjv"/>
+        <segue reference="CYE-hN-m5s"/>
     </inferredMetricsTieBreakers>
 </document>

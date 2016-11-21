@@ -34,6 +34,7 @@
 		2146D7501DAA1FE300436FE6 /* LoadingEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146D74F1DAA1FE300436FE6 /* LoadingEffect.swift */; };
 		214C5D521D5466D40057B1B8 /* DoubanResultsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D511D5466D40057B1B8 /* DoubanResultsSet.swift */; };
 		214C5D541D5473AB0057B1B8 /* DoubanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214C5D531D5473AB0057B1B8 /* DoubanAPI.swift */; };
+		214F94871DE2EF39005655AD /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214F94861DE2EF39005655AD /* ActivityIndicator.swift */; };
 		2162F3DD1D66E98F00DC12B3 /* LoadingPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */; };
 		217692FF1DBD13B00015037E /* UIDevice+ModelName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217692FE1DBD13B00015037E /* UIDevice+ModelName.swift */; };
 		2192E86E1D6B372D0099FF3B /* ShareElementPushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2192E86D1D6B372D0099FF3B /* ShareElementPushTransition.swift */; };
@@ -105,6 +106,7 @@
 		2149FA741D3D2A2900F0D0C6 /* BaseMovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMovieCell.swift; sourceTree = "<group>"; };
 		214C5D511D5466D40057B1B8 /* DoubanResultsSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanResultsSet.swift; sourceTree = "<group>"; };
 		214C5D531D5473AB0057B1B8 /* DoubanAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubanAPI.swift; sourceTree = "<group>"; };
+		214F94861DE2EF39005655AD /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		2162F3DC1D66E98F00DC12B3 /* LoadingPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingPageControl.swift; sourceTree = "<group>"; };
 		216C5DA81D4726E9008A4A75 /* MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewControllerDelegate.swift; sourceTree = "<group>"; };
 		216C5DAA1D47295B008A4A75 /* HomeViewController+MenuViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+MenuViewControllerDelegate.swift"; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				2149FA671D3D29D300F0D0C6 /* NowMoviesTableViewController.swift */,
+				214F94861DE2EF39005655AD /* ActivityIndicator.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -726,6 +729,7 @@
 				21F8C31A1DC3028600570823 /* RxAlamofireService.swift in Sources */,
 				217692FF1DBD13B00015037E /* UIDevice+ModelName.swift in Sources */,
 				21C9F4721D7D300300507AE7 /* ErrorHandler.swift in Sources */,
+				214F94871DE2EF39005655AD /* ActivityIndicator.swift in Sources */,
 				21A12F8A1D7E574400FC95AC /* SnackbarView.swift in Sources */,
 				21A12F8C1D7E579B00FC95AC /* SnackbarManager.swift in Sources */,
 				2118D3AE1D4F34F700644D84 /* FavoritesTableViewController.swift in Sources */,

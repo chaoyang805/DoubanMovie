@@ -28,29 +28,29 @@ class HomeViewController: UIViewController{
     @IBOutlet weak var pageControl: LoadingPageControl!
     @IBOutlet weak var refreshBarButtonItem: UIBarButtonItem!
     
-    internal(set) var movieDialogView: MovieDialogView!
+    private(set) var movieDialogView: MovieDialogView!
     
-    internal var animator: UIDynamicAnimator!
-    internal var attachmentBehavior: UIAttachmentBehavior!
-    internal var gravityBehavior: UIGravityBehavior!
-    internal var snapBehavior: UISnapBehavior!
+    var animator: UIDynamicAnimator!
+    var attachmentBehavior: UIAttachmentBehavior!
+    var gravityBehavior: UIGravityBehavior!
+    var snapBehavior: UISnapBehavior!
     
-    fileprivate var imagePrefetcher = SDWebImagePrefetcher()
+    private var imagePrefetcher = SDWebImagePrefetcher()
     
-    fileprivate var disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
     
-    internal lazy var placeHolderImage: UIImage = {
+    lazy var placeHolderImage: UIImage = {
     
         return UIImage(named: "placeholder")!
     }()
     
-    internal var movieCount: Int {
+    var movieCount: Int {
         return movies.count
     }
     
-    internal var movies: [DoubanMovie] = []
+    var movies: [DoubanMovie] = []
     
-    internal var currentPage: Int = 0
+    var currentPage: Int = 0
     
     private var screenWidth: CGFloat {
         return UIScreen.main.bounds.width
@@ -60,11 +60,46 @@ class HomeViewController: UIViewController{
         return UIScreen.main.bounds.height
     }
     
+    private var refreshing: UIBindingObserver<HomeViewController, Bool> {
+        return UIBindingObserver(UIElement: self) { viewController, refresh in
+            if refresh {
+                viewController.beginLoading()
+            } else {
+                viewController.endLoading()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupMovieDialogView()
-        self.fetchData()
+        do {
+            setupMovieDialogView()
+        }
+        
+        do {
+            let activityIndicator = ActivityIndicator()
+            
+            self.refreshBarButtonItem.rx
+                .tap
+                .asObservable()
+                .startWith(())
+                .mapWithIndex { $1 != 0 }
+                .flatMap {
+                    RxAlamofireService.shared
+                        .loadMovies(forceReload: $0)
+                        .trackActivity(activityIndicator)
+                }
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: showMovies, onError: showLoadingError)
+                .addDisposableTo(disposeBag)
+            
+            activityIndicator
+                .asObservable()
+                .bindTo(refreshing)
+                .addDisposableTo(disposeBag)
+        }
+    
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,7 +114,6 @@ class HomeViewController: UIViewController{
         let x = (screenWidth - dialogWidth) / 2
         let y = (screenHeight - dialogHeight + 44) / 2
         movieDialogView = MovieDialogView(frame: CGRect(x: x, y: y, width: dialogWidth, height: dialogHeight))
-        
         movieDialogView.addTarget(target: self, action: #selector(HomeViewController.movieDialogViewDidTouch(_:)), for: .touchUpInside)
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(HomeViewController.handleGestures(_:)))
@@ -93,7 +127,6 @@ class HomeViewController: UIViewController{
     func movieDialogViewDidTouch(_ sender: AnyObject) {
         self.performSegue(withIdentifier: "ShowDetailSegue", sender: self)
     }
-    
     
     // MAKR: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -112,36 +145,12 @@ class HomeViewController: UIViewController{
         }
         
     }
-}
-
-// MARK: - refresh home view controller
-extension HomeViewController {
-
-    @IBAction func refreshButtonDidTouch(_ sender: UIBarButtonItem) {
-        
-        self.fetchData(force: true)
-    }
-    
-    /**
-     refresh home screen data
-    
-     - parameter force: force reload from internet or load local cache data
-     */
-    fileprivate func fetchData(force: Bool = false) {
-        
-        self.beginLoading()
-        
-        RxAlamofireService.shared
-            .loadMovies(forceReload: force)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: showMovies, onError: showLoadingError)
-            .addDisposableTo(disposeBag)
-    }
     
     private var showMovies: (([DoubanMovie]) -> Void) {
         return {
+            NSLog("show movies")
             self.movies = $0
-            self.pageControl.numberOfPages = self.movieCount
+            self.pageControl.numberOfPages = self.movies.count
             self.showCurrentMovie(animated: false)
             self.endLoading()
             self.prefetchImages()
@@ -164,6 +173,7 @@ extension HomeViewController {
         self.imagePrefetcher.prefetchURLs(urls)
     }
     
+    // MARK: - loading
     private func beginLoading() {
         UIView.animate(withDuration: 0.2) { [weak self] in
             
@@ -187,20 +197,6 @@ extension HomeViewController {
         self.refreshBarButtonItem.isEnabled = true
         self.movieDialogView.endLoading()
         self.pageControl.endLoading()
-    }
-    // test method
-    private func performFetch(completion: @escaping () -> Void) {
-        DispatchQueue(label: "network", qos: DispatchQoS.default, attributes: DispatchQueue.Attributes.concurrent).async {
-            
-            
-            NSLog("perform loading start...")
-            Thread.sleep(forTimeInterval: 5)
-            DispatchQueue.main.sync {
-                completion()
-                NSLog("perform loading completed")
-            }
-            
-        }
     }
     
 }
