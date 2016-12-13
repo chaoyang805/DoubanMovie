@@ -16,7 +16,7 @@
 
 import Foundation
 // UIViews that have a loading effect should confirm to this protocol
-protocol LoadingEffect {
+protocol LoadingEffect: AnyObject {
     
     var isLoading: Bool { get }
     

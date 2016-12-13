@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -1050,11 +1051,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="eEF-1F-8jR">
-                        <barButtonItem key="rightBarButtonItem" image="icon-like-normal" id="YTu-Tb-BV6">
-                            <connections>
-                                <action selector="favoriteBarButtonPressed:" destination="Czh-aZ-EAq" id="xB2-hf-cfM"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="icon-like-normal" id="YTu-Tb-BV6"/>
                     </navigationItem>
                     <connections>
                         <outlet property="artistsScrollView" destination="blw-vu-mXN" id="inu-v6-TDj"/>

@@ -190,8 +190,9 @@ class DoubanService: DoubanAPI {
     }
     
     deinit{
-        for task in manager.dataTasks {
-            task.suspend()
-        }
+        manager.invalidateSessionCancelingTasks(true)
+//        for task in manager.dataTasks {
+//            task.suspend()
+//        }
     }
 }

@@ -27,11 +27,14 @@ class FavoritesTableViewController: ClearTransitionTableViewController {
         return RealmHelper()
     }()
     
+    private var observer: NSObjectProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(FavoritesTableViewController.onReceiveItemDeleteNotification(_:)), name: DBMMovieDidDeleteNotificationName, object: nil)
-        
+    
+        observer = NotificationCenter.default.addObserver(forName: TableViewShouldReloadNotification, object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.tableView.reloadData()
+        }
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.rightBarButtonItem?.title = "编辑"
         loadFavoriteMovies()
@@ -54,17 +57,12 @@ class FavoritesTableViewController: ClearTransitionTableViewController {
         }
     }
     
-    // MARK: - Notification 
-    
-    @objc private func onReceiveItemDeleteNotification(_ notification: NSNotification) {
-        guard let deleted = notification.userInfo?[DBMMovieDeleteNotificationKey] as? Bool else { return }
-        if deleted {
-            tableView.reloadData()
-        }
-    }
+    // MARK: - Notification
     
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        if let observer = observer {
+            NotificationCenter.default.removeObserver(observer)
+        }
     }
     
 }

@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Pages
 extension HomeViewController {
     
-    @IBAction func handleGestures(_ sender: UIPanGestureRecognizer) {
+    func handleGestures(_ sender: UIPanGestureRecognizer) {
         
         let location = sender.location(in: view)
         guard let myView = movieDialogView else { return }
@@ -85,7 +85,7 @@ extension HomeViewController {
         showCurrentMovie(animated: true)
     }
     
-    internal func showCurrentMovie(animated: Bool) {
+    func showCurrentMovie(animated: Bool) {
         guard movieCount > 0 && currentPage < movieCount else { return }
         
         pageControl.currentPage = currentPage

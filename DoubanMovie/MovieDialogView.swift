@@ -14,6 +14,27 @@
  * limitations under the License.
  */
 import UIKit
+import RxSwift
+import RxCocoa
+
+extension Reactive where Base: LoadingEffect {
+    
+    var refreshing: UIBindingObserver<Base, Bool> {
+        return UIBindingObserver(UIElement: base) { (loadingView, refreshing) in
+            if refreshing {
+                loadingView.beginLoading()
+            } else {
+                loadingView.endLoading()
+            }
+        }
+    }
+}
+
+extension Reactive where Base: MovieDialogView {
+    var tap: ControlEvent<Void> {
+        return base.posterImageButton.rx.tap
+    }
+}
 
 class MovieDialogView: UIView, LoadingEffect {
 
@@ -23,7 +44,6 @@ class MovieDialogView: UIView, LoadingEffect {
     var posterImageButton: UIButton!
     var titleBarView: UIVisualEffectView!
     var loadingImageView: UIImageView!
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

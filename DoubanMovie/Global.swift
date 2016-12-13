@@ -16,8 +16,7 @@
 import Foundation
 
 // Global Constant
-let DBMMovieDidDeleteNotificationName = Notification.Name("MovieDidDelete")
-let DBMMovieDeleteNotificationKey = "IsMovieDeleted"
+let TableViewShouldReloadNotification = Notification.Name("ShouldReloadData")
 
 // Global Functions
 

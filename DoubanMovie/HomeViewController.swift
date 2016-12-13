@@ -60,16 +60,6 @@ class HomeViewController: UIViewController{
         return UIScreen.main.bounds.height
     }
     
-    private var refreshing: UIBindingObserver<HomeViewController, Bool> {
-        return UIBindingObserver(UIElement: self) { viewController, refresh in
-            if refresh {
-                viewController.beginLoading()
-            } else {
-                viewController.endLoading()
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,7 +86,7 @@ class HomeViewController: UIViewController{
             
             activityIndicator
                 .asObservable()
-                .bindTo(refreshing)
+                .bindTo(movieDialogView.rx.refreshing)
                 .addDisposableTo(disposeBag)
         }
     
@@ -114,18 +104,23 @@ class HomeViewController: UIViewController{
         let x = (screenWidth - dialogWidth) / 2
         let y = (screenHeight - dialogHeight + 44) / 2
         movieDialogView = MovieDialogView(frame: CGRect(x: x, y: y, width: dialogWidth, height: dialogHeight))
-        movieDialogView.addTarget(target: self, action: #selector(HomeViewController.movieDialogViewDidTouch(_:)), for: .touchUpInside)
+
+        self.movieDialogView.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.performSegue(withIdentifier: "ShowDetailSegue", sender: self)
+            })
+            .addDisposableTo(disposeBag)
         
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(HomeViewController.handleGestures(_:)))
+        let panGesture = UIPanGestureRecognizer()
+        
+        panGesture.rx.event
+            .subscribe(onNext: self.handleGestures)
+            .addDisposableTo(disposeBag)
+        
         self.movieDialogView.addGestureRecognizer(panGesture)
-        
         self.view.addSubview(movieDialogView)
         
         animator = UIDynamicAnimator(referenceView: self.view)
-    }
-    
-    func movieDialogViewDidTouch(_ sender: AnyObject) {
-        self.performSegue(withIdentifier: "ShowDetailSegue", sender: self)
     }
     
     // MAKR: - Navigation
@@ -143,7 +138,6 @@ class HomeViewController: UIViewController{
                 }
             }
         }
-        
     }
     
     private var showMovies: (([DoubanMovie]) -> Void) {
@@ -152,16 +146,13 @@ class HomeViewController: UIViewController{
             self.movies = $0
             self.pageControl.numberOfPages = self.movies.count
             self.showCurrentMovie(animated: false)
-            self.endLoading()
             self.prefetchImages()
         }
     }
     
     private var showLoadingError: ((Error) -> Void) {
-        
         return {
             NSLog("loading error:\($0.localizedDescription)")
-            self.endLoading()
             Snackbar.make(text: $0.localizedDescription, duration: .Short).show()
         }
     }
@@ -171,32 +162,6 @@ class HomeViewController: UIViewController{
             .map { URL(string: $0.images?.mediumImageURL ?? "") }
             .flatMap { $0 }
         self.imagePrefetcher.prefetchURLs(urls)
-    }
-    
-    // MARK: - loading
-    private func beginLoading() {
-        UIView.animate(withDuration: 0.2) { [weak self] in
-            
-            guard let `self` = self else { return }
-            self.backgroundImageView.alpha = 0
-            
-        }
-        self.refreshBarButtonItem.isEnabled = false
-        self.movieDialogView.beginLoading()
-        self.pageControl.beginLoading()
-    }
-    
-    private func endLoading() {
-
-        UIView.animate(withDuration: 0.2) { [weak self] in
-            
-            guard let `self` = self else { return }
-            self.backgroundImageView.alpha = 1
-            
-        }
-        self.refreshBarButtonItem.isEnabled = true
-        self.movieDialogView.endLoading()
-        self.pageControl.endLoading()
     }
     
 }

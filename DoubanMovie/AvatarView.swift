@@ -15,6 +15,14 @@
  */
 
 import UIKit
+import RxSwift
+import RxCocoa
+
+extension Reactive where Base: AvatarView {
+    var tap: ControlEvent<Void> {
+        return base.avatarImageButton.rx.tap
+    }
+}
 
 class AvatarView: UIView {
     @IBOutlet var containerView: UIView!
@@ -25,7 +33,6 @@ class AvatarView: UIView {
     convenience init(celebrity: DoubanCelebrity) {
         self.init(frame: CGRect(x: 0, y: 0, width: 60, height: 90), celebrity: celebrity)
     }
-    
     
     init(frame: CGRect, celebrity: DoubanCelebrity) {
         self.celebrity = celebrity
