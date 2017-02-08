@@ -104,7 +104,7 @@ class DetailMovieViewModel {
             let tapLikeEvent = Driver
                 .combineLatest(
                     input.likeButtonTap,
-                    localModel
+                    remoteModel
                 ) { _, movie -> Bool in
                     let liked = realm.movieExists(id: movie.id)
                     liked ?

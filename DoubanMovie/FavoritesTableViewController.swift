@@ -31,7 +31,6 @@ class FavoritesTableViewController: ClearTransitionTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         observer = NotificationCenter.default.addObserver(forName: TableViewShouldReloadNotification, object: nil, queue: OperationQueue.main) { [weak self] _ in
             self?.tableView.reloadData()
         }

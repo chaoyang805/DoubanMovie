@@ -19,6 +19,7 @@ import UIKit
 import ObjectMapper
 import RxSwift
 import RxCocoa
+import SafariServices
 
 class MovieDetailViewController: UIViewController {
     
@@ -124,6 +125,7 @@ class MovieDetailViewController: UIViewController {
             guard let _ = actor.avatars else { continue }
             addAvatarView(with: actor, at: index + movie.directors.count)
         }
+    
     }
     
     private let vSpacing: CGFloat = 20
@@ -133,6 +135,18 @@ class MovieDetailViewController: UIViewController {
         let position = CGPoint(x: CGFloat(position) * (width + vSpacing), y: 0)
         let avatarView = AvatarView(frame: CGRect(origin: position, size: CGSize(width: width, height: 90)), celebrity: celebrity)
         artistsScrollView.addSubview(avatarView)
+        
+        avatarView.avatarImageButton.rx
+            .tap
+            .subscribe(onNext: {
+                if let url = URL(string: celebrity.alt) {
+                    
+                    let safari = SFSafariViewController(url: url)
+                    safari.modalPresentationStyle = .popover
+                    self.present(safari, animated: true, completion: nil)
+                }
+            })
+            .addDisposableTo(disposeBag)
     }
     
     
