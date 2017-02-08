@@ -36,6 +36,7 @@ class NowMoviesTableViewController: ClearTransitionTableViewController {
         do {
             tableView.delegate = nil
             tableView.dataSource = nil
+            tableView.tableFooterView = UIView()
         }
         
         do {
